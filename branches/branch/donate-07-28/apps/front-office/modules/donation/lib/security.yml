@@ -1,5 +1,0 @@
-approve:
-  is_secure:   on
-  credentials: [[ manager, administrator]]
-
-  
