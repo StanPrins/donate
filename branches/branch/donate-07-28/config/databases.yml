@@ -1,0 +1,17 @@
+#all:
+#  propel:
+#    class:          sfPropelDatabase
+#    param:
+#      dsn:          mysql://root:pangbo@localhost/dbname
+
+
+all:
+  propel:
+    class:          sfPropelDatabase
+    param:
+      phptype:      mysql
+      host:         localhost
+      database:     donate
+      username:     root
+      password:     pangbo
+      encoding:     utf8
