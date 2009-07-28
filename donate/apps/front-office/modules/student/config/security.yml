@@ -1,0 +1,17 @@
+create:
+  is_secure:   on
+  credentials: [[ surveyor, manager, administrator]]
+
+edit:
+  is_secure:   on
+  credentials: [[ surveyor, manager, administrator]]
+
+delete:
+  is_secure:   on
+  credentials: [[ surveyor, manager, administrator]]
+
+listall:
+  is_secure:   on
+  credentials: [[ surveyor, manager, administrator]]
+
+  
