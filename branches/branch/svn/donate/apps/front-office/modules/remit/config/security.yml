@@ -1,6 +1,0 @@
-delete:
-  is_secure:   on
-  credentials: [[ surveyor, manager, administrator]]
-
-
-  
