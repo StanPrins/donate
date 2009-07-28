@@ -1,0 +1,978 @@
+User:
+  user1:
+    user_id:     1
+    username:    userone
+    nickname:    user1
+    password:    123
+    name:        九品芝麻官
+    photo:       1
+    bbs_id:      12345
+    ofs_id:      12345
+    duty:        clean
+    mobile:      111222333
+    tel:         111222444
+    user_type:   volunteer
+    identity:    老大
+    email:       111@ddd.com
+    qq:          12345678
+    msn:         aaaa@hotmail.com
+    address:     11street
+    created_at:
+  user2:
+    user_id:     2
+    username:    usertwo
+    nickname:    user2
+    password:    123
+    name:        七品县太爷
+    photo:       1
+    bbs_id:      12345
+    ofs_id:      12345
+    duty:        clean
+    mobile:      111222333
+    tel:         111222444
+    user_type:   surveyor
+    identity:    老2    
+    email:       111@ddd.com
+    qq:          12345678
+    msn:         aaaa@hotmail.com
+    address:     11street
+    created_at:        
+  user3:
+    user_id:     3
+    username:    userthree
+    nickname:    user3
+    password:    123
+    name:        顺天巡抚
+    photo:       1
+    bbs_id:      12345
+    ofs_id:      12345
+    duty:        clean
+    mobile:      111222333
+    tel:         111222444
+    user_type:   manager
+    identity:    老3    
+    email:       111@ddd.com
+    qq:          12345678
+    msn:         aaaa@hotmail.com
+    address:     11street
+    created_at:    
+  user4:
+    user_id:     4
+    username:    userfour
+    nickname:    user4
+    password:    123
+    name:        内阁首辅
+    photo:       1
+    bbs_id:      12345
+    ofs_id:      12345
+    duty:        clean
+    mobile:      111222333
+    tel:         111222444
+    user_type:   administrator
+    identity:    老4    
+    email:       111@ddd.com
+    qq:          12345678
+    msn:         aaaa@hotmail.com
+    address:     11street        
+    created_at:
+    
+ProjectSite:
+  ps1:
+    site_id:     1
+    site_name:   广西捐助点
+    province:    广西
+    city:        桂林
+    district:    第一区
+    discription: 这是一个描述
+  ps2:
+    site_id:     2
+    site_name:   贵州捐助点
+    province:    贵州
+    city:        贵州
+    district:    第一区
+    discription: 这是一个描述    
+    
+School:
+  sch1:
+    school_id:   1
+    site_id:     ps1
+    school_name: 一中
+    type:        公立
+    master:      杰克逊
+    contact:     乔丹
+    phone:       223-36655
+    address:     这是一个地址2233
+    postal:      100102
+    discription: 这是第一个学校    
+  sch2:
+    school_id:   2
+    site_id:     ps1
+    school_name: 二中
+    type:        私立
+    master:      梁朝伟
+    contact:     刘嘉玲
+    phone:       223-36655
+    address:     这是一个地址2233
+    postal:      100102
+    discription: 这是第二个学校    
+  sch3:
+    school_id:   3
+    site_id:     ps1
+    school_name: 三中
+    type:        公立
+    master:      杨利伟
+    contact:     胡锦涛
+    phone:       223-36655
+    address:     这是一个地址2233
+    postal:      100102
+    discription: 这是第三个学校    
+  sch4:
+    school_id:   4
+    site_id:     ps2
+    school_name: 四中
+    type:        公立
+    master:      郭晶晶
+    contact:     霍启刚
+    phone:       223-36655
+    address:     这是一个地址2233
+    postal:      100102
+    discription: 这是第一个学校    
+  sch5:
+    school_id:   5
+    site_id:     ps2
+    school_name: 五中
+    type:        公立
+    master:      张三
+    contact:     李四
+    phone:       223-36655
+    address:     这是一个地址2233
+    postal:      100102
+    discription: 这是第一个学校                
+    
+Student:
+  stu1:
+    student_id:     1
+    school_id:      sch1
+    name:   周杰伦
+    nickname:      Jay
+    photo:          1
+    head_teacher:   吴宗宪
+    guardian:       叶惠美
+    birthday:       1999-02-02
+    grade:          11
+    male:           1
+    address:        地址一
+    postal:         101100
+    city:           台北
+    province:       台湾
+    assist_history: 这个就有很多了
+    is_instudy:     1
+    is_boarder:     1
+    is_donated:     1
+    has_dropout_history: 1
+    term_expense:   1100$
+    discription:    有很多描述
+    created_at:
+    fm1_relation:   母亲
+    fm1_name:       叶惠美
+    fm1_age:        21
+    fm1_occupation: 无
+    fm1_discription:还有很多很多描述
+    fm2_relation:   爷爷
+    fm2_name:       爷爷
+    fm2_age:        21
+    fm2_occupation: 无
+    fm2_discription:还有很多很多描述
+    fm3_relation:   父亲
+    fm3_name:       父亲
+    fm3_age:        21
+    fm3_occupation: 无
+    fm3_discription:还有很多很多描述
+    fm4_relation:   外婆
+    fm4_name:       外婆
+    fm4_age:        21
+    fm4_occupation: 无
+    fm4_discription:还有很多很多描述            
+    
+  stu2:
+    student_id:     2
+    school_id:      sch1
+    name:   学生二
+    nickname:      Jay
+    photo:          1
+    head_teacher:   吴宗宪
+    guardian:       叶惠美
+    birthday:       1999-02-02
+    grade:          11
+    male:           1
+    address:        地址一
+    postal:         101100
+    city:           台北
+    province:       台湾
+    assist_history: 这个就有很多了
+    is_instudy:     1
+    is_boarder:     1
+    is_donated:     1
+    has_dropout_history: 1
+    term_expense:   1100$
+    discription:    有很多描述
+    created_at:
+
+
+  stu3:
+    student_id:     3
+    school_id:      sch1
+    name:   学生三
+    nickname:      Jay
+    photo:          1
+    head_teacher:   吴宗宪
+    guardian:       叶惠美
+    birthday:       1999-02-02
+    grade:          11
+    male:           1
+    address:        地址一
+    postal:         101100
+    city:           台北
+    province:       台湾
+    assist_history: 这个就有很多了
+    is_instudy:     1
+    is_boarder:     1
+    is_donated:     1
+    has_dropout_history: 1
+    term_expense:   1100$
+    discription:    有很多描述
+    created_at:
+    fm1_relation:   母亲
+    fm1_name:       叶惠美
+    fm1_age:        21
+    fm1_occupation: 无
+    fm1_discription:还有很多很多描述
+    fm2_relation:   爷爷
+    fm2_name:       爷爷
+    fm2_age:        21
+    fm2_occupation: 无
+    fm2_discription:还有很多很多描述
+    fm3_relation:   父亲
+    fm3_name:       父亲
+    fm3_age:        21
+    fm3_occupation: 无
+    fm3_discription:还有很多很多描述
+    fm4_relation:   外婆
+    fm4_name:       外婆
+    fm4_age:        21
+    fm4_occupation: 无
+    fm4_discription:还有很多很多描述          
+    
+  stu4:
+    student_id:     4
+    school_id:      sch2
+    name:   学生四
+    nickname:      Jay
+    photo:          1
+    head_teacher:   吴宗宪
+    guardian:       叶惠美
+    birthday:       1999-02-02
+    grade:          11
+    male:           1
+    address:        地址一
+    postal:         101100
+    city:           台北
+    province:       台湾
+    assist_history: 这个就有很多了
+    is_instudy:     1
+    is_boarder:     1
+    is_donated:     1
+    has_dropout_history: 1
+    term_expense:   1100$
+    discription:    有很多描述
+    created_at:
+    fm1_relation:   母亲
+    fm1_name:       叶惠美
+    fm1_age:        21
+    fm1_occupation: 无
+    fm1_discription:还有很多很多描述
+    fm2_relation:   爷爷
+    fm2_name:       爷爷
+    fm2_age:        21
+    fm2_occupation: 无
+    fm2_discription:还有很多很多描述
+    fm3_relation:   父亲
+    fm3_name:       父亲
+    fm3_age:        21
+    fm3_occupation: 无
+    fm3_discription:还有很多很多描述
+ 
+    
+  stu5:
+    student_id:     5
+    school_id:      sch3
+    name:   学生五
+    nickname:      Jay
+    photo:          1
+    head_teacher:   吴宗宪
+    guardian:       叶惠美
+    birthday:       1999-02-02
+    grade:          11
+    male:           1
+    address:        地址一
+    postal:         101100
+    city:           台北
+    province:       台湾
+    assist_history: 这个就有很多了
+    is_instudy:     1
+    is_boarder:     1
+    is_donated:     1
+    has_dropout_history: 1
+    term_expense:   1100$
+    discription:    有很多描述
+    created_at:
+    fm1_relation:   母亲
+    fm1_name:       叶惠美
+    fm1_age:        21
+    fm1_occupation: 无
+    fm1_discription:还有很多很多描述
+           
+  stu6:
+    student_id:     6
+    school_id:      sch4
+    name:   学生六
+    nickname:      Jay
+    photo:          1
+    head_teacher:   吴宗宪
+    guardian:       叶惠美
+    birthday:       1999-02-02
+    grade:          11
+    male:           1
+    address:        地址一
+    postal:         101100
+    city:           台北
+    province:       台湾
+    assist_history: 这个就有很多了
+    is_instudy:     1
+    is_boarder:     1
+    is_donated:     0
+    has_dropout_history: 1
+    term_expense:   1100$
+    discription:    有很多描述
+    created_at:
+    fm1_relation:   母亲
+    fm1_name:       叶惠美
+    fm1_age:        21
+    fm1_occupation: 无
+    fm1_discription:还有很多很多描述
+    fm2_relation:   爷爷
+    fm2_name:       爷爷
+    fm2_age:        21
+    fm2_occupation: 无
+    fm2_discription:还有很多很多描述
+    fm3_relation:   父亲
+    fm3_name:       父亲
+    fm3_age:        21
+    fm3_occupation: 无
+    fm3_discription:还有很多很多描述
+    fm4_relation:   外婆
+    fm4_name:       外婆
+    fm4_age:        21
+    fm4_occupation: 无
+    fm4_discription:还有很多很多描述          
+    
+  stu7:
+    student_id:     7
+    school_id:      sch4
+    name:   学生七
+    nickname:      Jay
+    photo:          1
+    head_teacher:   吴宗宪
+    guardian:       叶惠美
+    birthday:       1999-02-02
+    grade:          11
+    male:           1
+    address:        地址一
+    postal:         101100
+    city:           台北
+    province:       台湾
+    assist_history: 这个就有很多了
+    is_instudy:     1
+    is_boarder:     1
+    is_donated:     0
+    has_dropout_history: 1
+    term_expense:   1100$
+    discription:    有很多描述
+    created_at:
+    fm1_relation:   母亲
+    fm1_name:       叶惠美
+    fm1_age:        21
+    fm1_occupation: 无
+    fm1_discription:还有很多很多描述
+    fm2_relation:   爷爷
+    fm2_name:       爷爷
+    fm2_age:        21
+    fm2_occupation: 无
+    fm2_discription:还有很多很多描述
+    fm3_relation:   父亲
+    fm3_name:       父亲
+    fm3_age:        21
+    fm3_occupation: 无
+    fm3_discription:还有很多很多描述
+     
+    
+  stu8:
+    student_id:     8
+    school_id:      sch5
+    name:   学生八
+    nickname:      Jay
+    photo:          1
+    head_teacher:   吴宗宪
+    guardian:       叶惠美
+    birthday:       1999-02-02
+    grade:          11
+    male:           1
+    address:        地址一
+    postal:         101100
+    city:           台北
+    province:       台湾
+    assist_history: 这个就有很多了
+    is_instudy:     1
+    is_boarder:     1
+    is_donated:     0
+    has_dropout_history: 1
+    term_expense:   1100$
+    discription:    有很多描述
+    created_at:
+    fm1_relation:   母亲
+    fm1_name:       叶惠美
+    fm1_age:        21
+    fm1_occupation: 无
+    fm1_discription:还有很多很多描述
+    fm2_relation:   爷爷
+    fm2_name:       爷爷
+    fm2_age:        21
+    fm2_occupation: 无
+    fm2_discription:还有很多很多描述
+
+  stu9:
+    student_id:     9
+    school_id:      sch5
+    name:           学生九
+    nickname:       Jay
+    photo:          1
+    head_teacher:   吴宗宪
+    guardian:       叶惠美
+    birthday:       1999-02-02
+    grade:          11
+    male:           1
+    address:        地址一
+    postal:         101100
+    city:           台北
+    province:       台湾
+    assist_history: 这个就有很多了
+    is_instudy:     1
+    is_boarder:     1
+    is_donated:     0
+    has_dropout_history: 1
+    term_expense:   1100$
+    discription:    有很多描述
+    created_at:
+    fm1_relation:   母亲
+    fm1_name:       叶惠美
+    fm1_age:        21
+    fm1_occupation: 无
+    fm1_discription:还有很多很多描述
+    fm2_relation:   爷爷
+    fm2_name:       爷爷
+    fm2_age:        21
+    fm2_occupation: 无
+    fm2_discription:还有很多很多描述
+
+Donation:
+  don1:
+    donation_id:    1
+    student_id:     stu1
+    user_id:        user1
+    amount:         1000￥
+    start_date:     2009-01-01
+    end_date:       2010-01-01
+    approve:        1
+    is_active:      1
+    created_at:
+  don2:
+    donation_id:    2
+    student_id:     stu2
+    user_id:        user1
+    amount:         1300￥    
+    start_date:     2009-01-01
+    end_date:       2010-01-01
+    approve:        1
+    is_active:      1        
+    created_at:
+  don3:
+    donation_id:    3
+    student_id:     stu3
+    user_id:        user1
+    amount:         1022200￥    
+    start_date:     2009-01-01
+    end_date:       2010-01-01
+    approve:        1
+    is_active:      1        
+    created_at:
+  don4:
+    donation_id:    4
+    student_id:     stu4
+    user_id:        user2
+    amount:         1000$    
+    start_date:     2009-01-01
+    end_date:       2010-01-01
+    approve:        1
+    is_active:      1        
+    created_at:
+  don5:
+    donation_id:    5
+    student_id:     stu5
+    user_id:        user2
+    amount:         10￥    
+    start_date:     2009-01-01
+    end_date:       2010-01-01
+    approve:        1
+    is_active:      1        
+    created_at:
+  don6:
+    donation_id:    6
+    student_id:     stu6
+    user_id:        user3
+    amount:         88767$       
+    start_date:     2009-01-01
+    end_date:       2010-01-01
+    approve:        0
+    is_active:      0        
+    created_at:
+  don7:
+    donation_id:    7
+    student_id:     stu1
+    user_id:        user1
+    amount:         1000￥
+    start_date:     2008-01-01
+    end_date:       2009-01-01
+    approve:        1
+    is_active:      0
+    created_at:
+  don8:
+    donation_id:    8
+    student_id:     stu1
+    user_id:        user1
+    amount:         1000￥
+    start_date:     2007-01-01
+    end_date:       2008-01-01
+    approve:        1
+    is_active:      0
+    created_at:            
+  don9:
+    donation_id:    9
+    student_id:     stu7
+    user_id:        user1
+    amount:         12300￥
+    start_date:     2009-01-01
+    end_date:       2010-01-01
+    approve:        0
+    is_active:      0
+    created_at:         
+  don10:
+    donation_id:    10
+    student_id:     stu8
+    user_id:        user1
+    amount:         10320￥
+    start_date:     2009-01-01
+    end_date:       2010-01-01
+    approve:        0
+    is_active:      0
+    created_at:         
+  don11:
+    donation_id:    11
+    student_id:     stu9
+    user_id:        user1
+    amount:         1
+    start_date:     2009-01-01
+    end_date:       2010-01-01
+    approve:        0
+    is_active:      0
+    created_at:                 
+Remit:
+  rem1:
+    remit_id:       1
+    donation_id:    don1
+    amount:         1000$
+    is_by_ofs:      1
+    is_received:    1
+    receive_date:   2009-02-03
+    receive_user_id:user2
+    is_sendout:     1
+    sendout_date:   2009-04-05
+    sendout_user_id:user3
+    created_at:
+  rem2:
+    remit_id:       2
+    donation_id:    don1
+    amount:         100$
+    is_by_ofs:      1
+    is_received:    1
+    receive_date:   2009-02-03
+    receive_user_id:user2
+    is_sendout:     1
+    sendout_date:   2009-04-05
+    sendout_user_id:user3
+    created_at:
+  rem3:
+    remit_id:       3
+    donation_id:    don2
+    amount:         1000￥
+    is_by_ofs:      1
+    is_received:    1
+    receive_date:   2009-02-03
+    receive_user_id:user2
+    is_sendout:     1
+    sendout_date:   2009-04-05
+    sendout_user_id:user3
+    created_at:
+  rem4:
+    remit_id:       4
+    donation_id:    don3
+    amount:         166$
+    is_by_ofs:      0
+    created_at:
+  rem5:
+    remit_id:       5
+    donation_id:    don3
+    amount:         13000$
+    is_by_ofs:      1
+    is_received:    1
+    receive_date:   2009-02-03
+    receive_user_id:user2
+    is_sendout:     1
+    sendout_date:   2009-04-05
+    sendout_user_id:user3
+    created_at:
+  rem6:
+    remit_id:       6
+    donation_id:    don4
+    amount:         45￥
+    is_by_ofs:      1
+    is_received:    1
+    receive_date:   2009-02-03
+    receive_user_id:user2
+    is_sendout:     1
+    sendout_date:   2009-04-05
+    sendout_user_id:user3
+    created_at:
+  rem7:
+    remit_id:       7
+    donation_id:    don5
+    amount:         100$
+    is_by_ofs:      1
+    is_received:    1
+    receive_date:   2009-02-03
+    receive_user_id:user2
+    is_sendout:     1
+    sendout_date:   2009-04-05
+    sendout_user_id:user3
+    created_at:
+  rem8:
+    remit_id:       8
+    donation_id:    don4
+    amount:         2340$
+    is_by_ofs:      1
+    is_received:    1
+    receive_date:   2009-02-03
+    receive_user_id:user2
+    is_sendout:     1
+    sendout_date:   2009-04-05
+    sendout_user_id:user3
+    created_at:
+
+ReportCard:
+  rep1:
+    report_id:      1
+    student_id:     stu1
+    user_id:        user2
+    term:           09年第一学期
+    yuwen:          25
+    shuxue:         36
+    yingyu:         11
+    wuli:           54
+    huaxue:         98
+    lishi:          65
+    dili:           58
+    ziran:          78
+    shengwu:        58
+    tiyu:           45
+    zhengzhi:       25
+    zonghe:         03
+    rank:           11/23
+    teacher_remark: 这是个好孩子
+    created_at:
+  rep2:
+    report_id:      2
+    student_id:     stu1
+    user_id:        user2
+    term:           09年第二学期
+    yuwen:          25
+    shuxue:         36
+    yingyu:         11
+    wuli:           54
+    huaxue:         98
+    lishi:          65
+    dili:           58
+    ziran:          78
+    shengwu:        58
+    tiyu:           45
+    zhengzhi:       25
+    zonghe:         03
+    rank:           11/23
+    teacher_remark: 这是个好孩子
+    created_at:    
+  rep3:
+    report_id:      3
+    student_id:     stu2
+    user_id:        user3
+    term:           09年第二学期
+    yuwen:          25
+    shuxue:         36
+    yingyu:         11
+    wuli:           54
+    huaxue:         98
+    lishi:          65
+    dili:           58
+    ziran:          78
+    shengwu:        58
+    tiyu:           45
+    zhengzhi:       25
+    zonghe:         03
+    rank:           11/23
+    teacher_remark: 这是个好孩子
+    created_at:    
+  rep4:
+    report_id:      2
+    student_id:     stu2
+    user_id:        user2
+    term:           08年第二学期
+    yuwen:          25
+    shuxue:         36
+    yingyu:         11
+    wuli:           54
+    huaxue:         98
+    lishi:          65
+    dili:           58
+    ziran:          78
+    shengwu:        58
+    tiyu:           45
+    zhengzhi:       25
+    zonghe:         03
+    rank:           11/23
+    teacher_remark: 这是个好孩子
+    created_at:    
+  rep5:
+    report_id:      5
+    student_id:     stu1
+    user_id:        user2
+    term:           08年第一学期
+    yuwen:          25
+    shuxue:         36
+    yingyu:         11
+    wuli:           54
+    huaxue:         98
+    lishi:          65
+    dili:           58
+    ziran:          78
+    shengwu:        58
+    tiyu:           45
+    zhengzhi:       25
+    zonghe:         03
+    rank:           11/23
+    teacher_remark: 这是个好孩子
+    created_at:    
+  rep6:
+    report_id:      6
+    student_id:     stu4
+    user_id:        user2
+    term:           09年第二学期
+    yuwen:          25
+    shuxue:         36
+    yingyu:         11
+    wuli:           54
+    huaxue:         98
+    lishi:          65
+    dili:           58
+    ziran:          78
+    shengwu:        58
+    tiyu:           45
+    zhengzhi:       25
+    zonghe:         03
+    rank:           11/23
+    teacher_remark: 这是个好孩子
+    created_at:    
+  rep7:
+    report_id:      7
+    student_id:     stu6
+    user_id:        user2
+    term:           09年第二学期
+    yuwen:          25
+    shuxue:         36
+    yingyu:         11
+    wuli:           54
+    huaxue:         98
+    lishi:          65
+    dili:           58
+    ziran:          78
+    shengwu:        58
+    tiyu:           45
+    zhengzhi:       25
+    zonghe:         03
+    rank:           11/23
+    teacher_remark: 这是个好孩子
+    created_at:    
+  rep8:
+    report_id:      8
+    student_id:     stu4
+    user_id:        user2
+    term:           09年第二学期
+    yuwen:          25
+    shuxue:         36
+    yingyu:         11
+    wuli:           54
+    huaxue:         98
+    lishi:          65
+    dili:           58
+    ziran:          78
+    shengwu:        58
+    tiyu:           45
+    zhengzhi:       25
+    zonghe:         03
+    rank:           11/23
+    teacher_remark: 这是个好孩子
+    created_at:                            
+    
+Survey:
+  sur1:
+    survey_id:         1
+    student_id:        stu1
+    user_id:           user2
+    survey_date:       2008-06-06
+    family_condition:  还可以把
+    grade:             12
+    other_assist:      还有很多很多哦
+    dropout_info:      以前没有退学记录
+    presentation:      这次调查很成功
+    revenue:           他们家收入只有10000元
+    property:          财产很少
+    donation_usage:    用来上学和吃饭
+    donor_concerned:   他都干了什么
+    msg_to_donor:      谢谢捐助人的钱
+    msg_to_stu:        别客气
+    school_opinion:    你们真是好人啊
+    teacher_opinion:   感谢政府给我一次改过自新的机会
+    user_opinion:      很和谐
+    discription:       不错不错很不错
+    created_at:
+  sur2:
+    survey_id:         2
+    student_id:        stu2
+    user_id:           user2
+    survey_date:       2008-06-06
+    family_condition:  还可以把
+    grade:             12
+    other_assist:      还有很多很多哦
+    dropout_info:      以前没有退学记录
+    presentation:      这次调查很成功
+    revenue:           他们家收入只有10000元
+    property:          财产很少
+    donation_usage:    用来上学和吃饭
+    donor_concerned:   他都干了什么
+    msg_to_donor:      谢谢捐助人的钱
+    msg_to_stu:        别客气
+    school_opinion:    你们真是好人啊
+    teacher_opinion:   感谢政府给我一次改过自新的机会
+    user_opinion:      很和谐
+    discription:       不错不错很不错
+    created_at: 
+  sur3:
+    survey_id:         3
+    student_id:        stu3
+    user_id:           user2
+    survey_date:       2008-06-06
+    family_condition:  还可以把
+    grade:             12
+    other_assist:      还有很多很多哦
+    dropout_info:      以前没有退学记录
+    presentation:      这次调查很成功
+    revenue:           他们家收入只有10000元
+    property:          财产很少
+    donation_usage:    用来上学和吃饭
+    donor_concerned:   他都干了什么
+    msg_to_donor:      谢谢捐助人的钱
+    msg_to_stu:        别客气
+    school_opinion:    你们真是好人啊
+    teacher_opinion:   感谢政府给我一次改过自新的机会
+    user_opinion:      很和谐
+    discription:       不错不错很不错
+    created_at: 
+  sur4:
+    survey_id:         4
+    student_id:        stu4
+    user_id:           user2
+    survey_date:       2008-06-06
+    family_condition:  还可以把
+    grade:             12
+    other_assist:      还有很多很多哦
+    dropout_info:      以前没有退学记录
+    presentation:      这次调查很成功
+    revenue:           他们家收入只有10000元
+    property:          财产很少
+    donation_usage:    用来上学和吃饭
+    donor_concerned:   他都干了什么
+    msg_to_donor:      谢谢捐助人的钱
+    msg_to_stu:        别客气
+    school_opinion:    你们真是好人啊
+    teacher_opinion:   感谢政府给我一次改过自新的机会
+    user_opinion:      很和谐
+    discription:       不错不错很不错
+    created_at: 
+  sur5:
+    survey_id:         5
+    student_id:        stu1
+    user_id:           user2
+    survey_date:       2007-06-06
+    family_condition:  还可以把
+    grade:             12
+    other_assist:      还有很多很多哦
+    dropout_info:      以前没有退学记录
+    presentation:      这次调查很成功
+    revenue:           他们家收入只有10000元
+    property:          财产很少
+    donation_usage:    用来上学和吃饭
+    donor_concerned:   他都干了什么
+    msg_to_donor:      谢谢捐助人的钱
+    msg_to_stu:        别客气
+    school_opinion:    你们真是好人啊
+    teacher_opinion:   感谢政府给我一次改过自新的机会
+    user_opinion:      很和谐
+    discription:       不错不错很不错
+    created_at: 
+  sur6:
+    survey_id:         6
+    student_id:        stu1
+    user_id:           user2
+    survey_date:       2006-06-06
+    family_condition:  还可以把
+    grade:             12
+    other_assist:      还有很多很多哦
+    dropout_info:      以前没有退学记录
+    presentation:      这次调查很成功
+    revenue:           他们家收入只有10000元
+    property:          财产很少
+    donation_usage:    用来上学和吃饭
+    donor_concerned:   他都干了什么
+    msg_to_donor:      谢谢捐助人的钱
+    msg_to_stu:        别客气
+    school_opinion:    你们真是好人啊
+    teacher_opinion:   感谢政府给我一次改过自新的机会
+    user_opinion:      很和谐
+    discription:       不错不错很不错
+    created_at:                       
