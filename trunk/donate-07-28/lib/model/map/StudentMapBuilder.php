@@ -4,25 +4,25 @@
 
 class StudentMapBuilder {
 
-	
+
 	const CLASS_NAME = 'lib.model.map.StudentMapBuilder';
 
-	
+
 	private $dbMap;
 
-	
+
 	public function isBuilt()
 	{
 		return ($this->dbMap !== null);
 	}
 
-	
+
 	public function getDatabaseMap()
 	{
 		return $this->dbMap;
 	}
 
-	
+
 	public function doBuild()
 	{
 		$this->dbMap = Propel::getDatabaseMap('propel');
@@ -116,5 +116,5 @@ class StudentMapBuilder {
 
 		$tMap->addColumn('FM4_DISCRIPTION', 'Fm4Discription', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
-	} 
-} 
+	}
+}

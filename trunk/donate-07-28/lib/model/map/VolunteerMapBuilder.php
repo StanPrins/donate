@@ -4,25 +4,25 @@
 
 class VolunteerMapBuilder {
 
-	
+
 	const CLASS_NAME = 'lib.model.map.VolunteerMapBuilder';
 
-	
+
 	private $dbMap;
 
-	
+
 	public function isBuilt()
 	{
 		return ($this->dbMap !== null);
 	}
 
-	
+
 	public function getDatabaseMap()
 	{
 		return $this->dbMap;
 	}
 
-	
+
 	public function doBuild()
 	{
 		$this->dbMap = Propel::getDatabaseMap('propel');
@@ -66,5 +66,5 @@ class VolunteerMapBuilder {
 
 		$tMap->addColumn('CREATE_AT', 'CreateAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 
-	} 
-} 
+	}
+}

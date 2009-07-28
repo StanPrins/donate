@@ -3,106 +3,106 @@
 
 abstract class BaseReportCardPeer {
 
-	
+
 	const DATABASE_NAME = 'propel';
 
-	
+
 	const TABLE_NAME = 'reportcard';
 
-	
+
 	const CLASS_DEFAULT = 'lib.model.ReportCard';
 
-	
+
 	const NUM_COLUMNS = 19;
 
-	
+
 	const NUM_LAZY_LOAD_COLUMNS = 0;
 
 
-	
+
 	const REPORT_ID = 'reportcard.REPORT_ID';
 
-	
+
 	const STUDENT_ID = 'reportcard.STUDENT_ID';
 
-	
+
 	const USER_ID = 'reportcard.USER_ID';
 
-	
+
 	const TERM = 'reportcard.TERM';
 
-	
+
 	const YUWEN = 'reportcard.YUWEN';
 
-	
+
 	const SHUXUE = 'reportcard.SHUXUE';
 
-	
+
 	const YINGYU = 'reportcard.YINGYU';
 
-	
+
 	const WULI = 'reportcard.WULI';
 
-	
+
 	const HUAXUE = 'reportcard.HUAXUE';
 
-	
+
 	const LISHI = 'reportcard.LISHI';
 
-	
+
 	const DILI = 'reportcard.DILI';
 
-	
+
 	const ZIRAN = 'reportcard.ZIRAN';
 
-	
+
 	const SHENGWU = 'reportcard.SHENGWU';
 
-	
+
 	const TIYU = 'reportcard.TIYU';
 
-	
+
 	const ZHENGZHI = 'reportcard.ZHENGZHI';
 
-	
+
 	const ZONGHE = 'reportcard.ZONGHE';
 
-	
+
 	const RANK = 'reportcard.RANK';
 
-	
+
 	const TEACHER_REMARK = 'reportcard.TEACHER_REMARK';
 
-	
+
 	const CREATED_AT = 'reportcard.CREATED_AT';
 
-	
+
 	private static $phpNameMap = null;
 
 
-	
+
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('ReportId', 'StudentId', 'UserId', 'Term', 'Yuwen', 'Shuxue', 'Yingyu', 'Wuli', 'Huaxue', 'Lishi', 'Dili', 'Ziran', 'Shengwu', 'Tiyu', 'Zhengzhi', 'Zonghe', 'Rank', 'TeacherRemark', 'CreatedAt', ),
-		BasePeer::TYPE_COLNAME => array (ReportCardPeer::REPORT_ID, ReportCardPeer::STUDENT_ID, ReportCardPeer::USER_ID, ReportCardPeer::TERM, ReportCardPeer::YUWEN, ReportCardPeer::SHUXUE, ReportCardPeer::YINGYU, ReportCardPeer::WULI, ReportCardPeer::HUAXUE, ReportCardPeer::LISHI, ReportCardPeer::DILI, ReportCardPeer::ZIRAN, ReportCardPeer::SHENGWU, ReportCardPeer::TIYU, ReportCardPeer::ZHENGZHI, ReportCardPeer::ZONGHE, ReportCardPeer::RANK, ReportCardPeer::TEACHER_REMARK, ReportCardPeer::CREATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('report_id', 'student_id', 'user_id', 'term', 'yuwen', 'shuxue', 'yingyu', 'wuli', 'huaxue', 'lishi', 'dili', 'ziran', 'shengwu', 'tiyu', 'zhengzhi', 'zonghe', 'rank', 'teacher_remark', 'created_at', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, )
+	BasePeer::TYPE_PHPNAME => array ('ReportId', 'StudentId', 'UserId', 'Term', 'Yuwen', 'Shuxue', 'Yingyu', 'Wuli', 'Huaxue', 'Lishi', 'Dili', 'Ziran', 'Shengwu', 'Tiyu', 'Zhengzhi', 'Zonghe', 'Rank', 'TeacherRemark', 'CreatedAt', ),
+	BasePeer::TYPE_COLNAME => array (ReportCardPeer::REPORT_ID, ReportCardPeer::STUDENT_ID, ReportCardPeer::USER_ID, ReportCardPeer::TERM, ReportCardPeer::YUWEN, ReportCardPeer::SHUXUE, ReportCardPeer::YINGYU, ReportCardPeer::WULI, ReportCardPeer::HUAXUE, ReportCardPeer::LISHI, ReportCardPeer::DILI, ReportCardPeer::ZIRAN, ReportCardPeer::SHENGWU, ReportCardPeer::TIYU, ReportCardPeer::ZHENGZHI, ReportCardPeer::ZONGHE, ReportCardPeer::RANK, ReportCardPeer::TEACHER_REMARK, ReportCardPeer::CREATED_AT, ),
+	BasePeer::TYPE_FIELDNAME => array ('report_id', 'student_id', 'user_id', 'term', 'yuwen', 'shuxue', 'yingyu', 'wuli', 'huaxue', 'lishi', 'dili', 'ziran', 'shengwu', 'tiyu', 'zhengzhi', 'zonghe', 'rank', 'teacher_remark', 'created_at', ),
+	BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, )
 	);
 
-	
+
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('ReportId' => 0, 'StudentId' => 1, 'UserId' => 2, 'Term' => 3, 'Yuwen' => 4, 'Shuxue' => 5, 'Yingyu' => 6, 'Wuli' => 7, 'Huaxue' => 8, 'Lishi' => 9, 'Dili' => 10, 'Ziran' => 11, 'Shengwu' => 12, 'Tiyu' => 13, 'Zhengzhi' => 14, 'Zonghe' => 15, 'Rank' => 16, 'TeacherRemark' => 17, 'CreatedAt' => 18, ),
-		BasePeer::TYPE_COLNAME => array (ReportCardPeer::REPORT_ID => 0, ReportCardPeer::STUDENT_ID => 1, ReportCardPeer::USER_ID => 2, ReportCardPeer::TERM => 3, ReportCardPeer::YUWEN => 4, ReportCardPeer::SHUXUE => 5, ReportCardPeer::YINGYU => 6, ReportCardPeer::WULI => 7, ReportCardPeer::HUAXUE => 8, ReportCardPeer::LISHI => 9, ReportCardPeer::DILI => 10, ReportCardPeer::ZIRAN => 11, ReportCardPeer::SHENGWU => 12, ReportCardPeer::TIYU => 13, ReportCardPeer::ZHENGZHI => 14, ReportCardPeer::ZONGHE => 15, ReportCardPeer::RANK => 16, ReportCardPeer::TEACHER_REMARK => 17, ReportCardPeer::CREATED_AT => 18, ),
-		BasePeer::TYPE_FIELDNAME => array ('report_id' => 0, 'student_id' => 1, 'user_id' => 2, 'term' => 3, 'yuwen' => 4, 'shuxue' => 5, 'yingyu' => 6, 'wuli' => 7, 'huaxue' => 8, 'lishi' => 9, 'dili' => 10, 'ziran' => 11, 'shengwu' => 12, 'tiyu' => 13, 'zhengzhi' => 14, 'zonghe' => 15, 'rank' => 16, 'teacher_remark' => 17, 'created_at' => 18, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, )
+	BasePeer::TYPE_PHPNAME => array ('ReportId' => 0, 'StudentId' => 1, 'UserId' => 2, 'Term' => 3, 'Yuwen' => 4, 'Shuxue' => 5, 'Yingyu' => 6, 'Wuli' => 7, 'Huaxue' => 8, 'Lishi' => 9, 'Dili' => 10, 'Ziran' => 11, 'Shengwu' => 12, 'Tiyu' => 13, 'Zhengzhi' => 14, 'Zonghe' => 15, 'Rank' => 16, 'TeacherRemark' => 17, 'CreatedAt' => 18, ),
+	BasePeer::TYPE_COLNAME => array (ReportCardPeer::REPORT_ID => 0, ReportCardPeer::STUDENT_ID => 1, ReportCardPeer::USER_ID => 2, ReportCardPeer::TERM => 3, ReportCardPeer::YUWEN => 4, ReportCardPeer::SHUXUE => 5, ReportCardPeer::YINGYU => 6, ReportCardPeer::WULI => 7, ReportCardPeer::HUAXUE => 8, ReportCardPeer::LISHI => 9, ReportCardPeer::DILI => 10, ReportCardPeer::ZIRAN => 11, ReportCardPeer::SHENGWU => 12, ReportCardPeer::TIYU => 13, ReportCardPeer::ZHENGZHI => 14, ReportCardPeer::ZONGHE => 15, ReportCardPeer::RANK => 16, ReportCardPeer::TEACHER_REMARK => 17, ReportCardPeer::CREATED_AT => 18, ),
+	BasePeer::TYPE_FIELDNAME => array ('report_id' => 0, 'student_id' => 1, 'user_id' => 2, 'term' => 3, 'yuwen' => 4, 'shuxue' => 5, 'yingyu' => 6, 'wuli' => 7, 'huaxue' => 8, 'lishi' => 9, 'dili' => 10, 'ziran' => 11, 'shengwu' => 12, 'tiyu' => 13, 'zhengzhi' => 14, 'zonghe' => 15, 'rank' => 16, 'teacher_remark' => 17, 'created_at' => 18, ),
+	BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, )
 	);
 
-	
+
 	public static function getMapBuilder()
 	{
 		include_once 'lib/model/map/ReportCardMapBuilder.php';
 		return BasePeer::getMapBuilder('lib.model.map.ReportCardMapBuilder');
 	}
-	
+
 	public static function getPhpNameMap()
 	{
 		if (self::$phpNameMap === null) {
@@ -116,7 +116,7 @@ abstract class BaseReportCardPeer {
 		}
 		return self::$phpNameMap;
 	}
-	
+
 	static public function translateFieldName($name, $fromType, $toType)
 	{
 		$toNames = self::getFieldNames($toType);
@@ -127,7 +127,7 @@ abstract class BaseReportCardPeer {
 		return $toNames[$key];
 	}
 
-	
+
 
 	static public function getFieldNames($type = BasePeer::TYPE_PHPNAME)
 	{
@@ -137,13 +137,13 @@ abstract class BaseReportCardPeer {
 		return self::$fieldNames[$type];
 	}
 
-	
+
 	public static function alias($alias, $column)
 	{
 		return str_replace(ReportCardPeer::TABLE_NAME.'.', $alias.'.', $column);
 	}
 
-	
+
 	public static function addSelectColumns(Criteria $criteria)
 	{
 
@@ -190,19 +190,19 @@ abstract class BaseReportCardPeer {
 	const COUNT = 'COUNT(reportcard.REPORT_ID)';
 	const COUNT_DISTINCT = 'COUNT(DISTINCT reportcard.REPORT_ID)';
 
-	
+
 	public static function doCount(Criteria $criteria, $distinct = false, $con = null)
 	{
-				$criteria = clone $criteria;
+		$criteria = clone $criteria;
 
-				$criteria->clearSelectColumns()->clearOrderByColumns();
+		$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT_DISTINCT);
 		} else {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT);
 		}
 
-				foreach($criteria->getGroupByColumns() as $column)
+		foreach($criteria->getGroupByColumns() as $column)
 		{
 			$criteria->addSelectColumn($column);
 		}
@@ -211,10 +211,10 @@ abstract class BaseReportCardPeer {
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
-						return 0;
+			return 0;
 		}
 	}
-	
+
 	public static function doSelectOne(Criteria $criteria, $con = null)
 	{
 		$critcopy = clone $criteria;
@@ -225,12 +225,12 @@ abstract class BaseReportCardPeer {
 		}
 		return null;
 	}
-	
+
 	public static function doSelect(Criteria $criteria, $con = null)
 	{
 		return ReportCardPeer::populateObjects(ReportCardPeer::doSelectRS($criteria, $con));
 	}
-	
+
 	public static function doSelectRS(Criteria $criteria, $con = null)
 	{
 		if ($con === null) {
@@ -242,40 +242,40 @@ abstract class BaseReportCardPeer {
 			ReportCardPeer::addSelectColumns($criteria);
 		}
 
-				$criteria->setDbName(self::DATABASE_NAME);
+		$criteria->setDbName(self::DATABASE_NAME);
 
-						return BasePeer::doSelect($criteria, $con);
+		return BasePeer::doSelect($criteria, $con);
 	}
-	
+
 	public static function populateObjects(ResultSet $rs)
 	{
 		$results = array();
-	
-				$cls = ReportCardPeer::getOMClass();
+
+		$cls = ReportCardPeer::getOMClass();
 		$cls = Propel::import($cls);
-				while($rs->next()) {
-		
+		while($rs->next()) {
+
 			$obj = new $cls();
 			$obj->hydrate($rs);
 			$results[] = $obj;
-			
+				
 		}
 		return $results;
 	}
 
-	
+
 	public static function doCountJoinStudent(Criteria $criteria, $distinct = false, $con = null)
 	{
-				$criteria = clone $criteria;
+		$criteria = clone $criteria;
 
-				$criteria->clearSelectColumns()->clearOrderByColumns();
+		$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT_DISTINCT);
 		} else {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT);
 		}
 
-				foreach($criteria->getGroupByColumns() as $column)
+		foreach($criteria->getGroupByColumns() as $column)
 		{
 			$criteria->addSelectColumn($column);
 		}
@@ -286,24 +286,24 @@ abstract class BaseReportCardPeer {
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
-						return 0;
+			return 0;
 		}
 	}
 
 
-	
+
 	public static function doCountJoinUser(Criteria $criteria, $distinct = false, $con = null)
 	{
-				$criteria = clone $criteria;
+		$criteria = clone $criteria;
 
-				$criteria->clearSelectColumns()->clearOrderByColumns();
+		$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT_DISTINCT);
 		} else {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT);
 		}
 
-				foreach($criteria->getGroupByColumns() as $column)
+		foreach($criteria->getGroupByColumns() as $column)
 		{
 			$criteria->addSelectColumn($column);
 		}
@@ -314,17 +314,17 @@ abstract class BaseReportCardPeer {
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
-						return 0;
+			return 0;
 		}
 	}
 
 
-	
+
 	public static function doSelectJoinStudent(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 
-				if ($c->getDbName() == Propel::getDefaultDB()) {
+		if ($c->getDbName() == Propel::getDefaultDB()) {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
@@ -354,24 +354,24 @@ abstract class BaseReportCardPeer {
 			foreach($results as $temp_obj1) {
 				$temp_obj2 = $temp_obj1->getStudent(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
-										$temp_obj2->addReportCard($obj1); 					break;
+					$temp_obj2->addReportCard($obj1); 					break;
 				}
 			}
 			if ($newObject) {
 				$obj2->initReportCards();
 				$obj2->addReportCard($obj1); 			}
-			$results[] = $obj1;
+				$results[] = $obj1;
 		}
 		return $results;
 	}
 
 
-	
+
 	public static function doSelectJoinUser(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 
-				if ($c->getDbName() == Propel::getDefaultDB()) {
+		if ($c->getDbName() == Propel::getDefaultDB()) {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
@@ -401,31 +401,31 @@ abstract class BaseReportCardPeer {
 			foreach($results as $temp_obj1) {
 				$temp_obj2 = $temp_obj1->getUser(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
-										$temp_obj2->addReportCard($obj1); 					break;
+					$temp_obj2->addReportCard($obj1); 					break;
 				}
 			}
 			if ($newObject) {
 				$obj2->initReportCards();
 				$obj2->addReportCard($obj1); 			}
-			$results[] = $obj1;
+				$results[] = $obj1;
 		}
 		return $results;
 	}
 
 
-	
+
 	public static function doCountJoinAll(Criteria $criteria, $distinct = false, $con = null)
 	{
 		$criteria = clone $criteria;
 
-				$criteria->clearSelectColumns()->clearOrderByColumns();
+		$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT_DISTINCT);
 		} else {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT);
 		}
 
-				foreach($criteria->getGroupByColumns() as $column)
+		foreach($criteria->getGroupByColumns() as $column)
 		{
 			$criteria->addSelectColumn($column);
 		}
@@ -438,17 +438,17 @@ abstract class BaseReportCardPeer {
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
-						return 0;
+			return 0;
 		}
 	}
 
 
-	
+
 	public static function doSelectJoinAll(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 
-				if ($c->getDbName() == Propel::getDefaultDB()) {
+		if ($c->getDbName() == Propel::getDefaultDB()) {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
@@ -478,7 +478,7 @@ abstract class BaseReportCardPeer {
 			$obj1->hydrate($rs);
 
 
-					
+				
 			$omClass = StudentPeer::getOMClass();
 
 
@@ -501,7 +501,7 @@ abstract class BaseReportCardPeer {
 			}
 
 
-					
+				
 			$omClass = UserPeer::getOMClass();
 
 
@@ -529,19 +529,19 @@ abstract class BaseReportCardPeer {
 	}
 
 
-	
+
 	public static function doCountJoinAllExceptStudent(Criteria $criteria, $distinct = false, $con = null)
 	{
-				$criteria = clone $criteria;
+		$criteria = clone $criteria;
 
-				$criteria->clearSelectColumns()->clearOrderByColumns();
+		$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT_DISTINCT);
 		} else {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT);
 		}
 
-				foreach($criteria->getGroupByColumns() as $column)
+		foreach($criteria->getGroupByColumns() as $column)
 		{
 			$criteria->addSelectColumn($column);
 		}
@@ -552,24 +552,24 @@ abstract class BaseReportCardPeer {
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
-						return 0;
+			return 0;
 		}
 	}
 
 
-	
+
 	public static function doCountJoinAllExceptUser(Criteria $criteria, $distinct = false, $con = null)
 	{
-				$criteria = clone $criteria;
+		$criteria = clone $criteria;
 
-				$criteria->clearSelectColumns()->clearOrderByColumns();
+		$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT_DISTINCT);
 		} else {
 			$criteria->addSelectColumn(ReportCardPeer::COUNT);
 		}
 
-				foreach($criteria->getGroupByColumns() as $column)
+		foreach($criteria->getGroupByColumns() as $column)
 		{
 			$criteria->addSelectColumn($column);
 		}
@@ -580,17 +580,17 @@ abstract class BaseReportCardPeer {
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
-						return 0;
+			return 0;
 		}
 	}
 
 
-	
+
 	public static function doSelectJoinAllExceptStudent(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 
-								if ($c->getDbName() == Propel::getDefaultDB()) {
+		if ($c->getDbName() == Propel::getDefaultDB()) {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
@@ -642,12 +642,12 @@ abstract class BaseReportCardPeer {
 	}
 
 
-	
+
 	public static function doSelectJoinAllExceptUser(Criteria $c, $con = null)
 	{
 		$c = clone $c;
 
-								if ($c->getDbName() == Propel::getDefaultDB()) {
+		if ($c->getDbName() == Propel::getDefaultDB()) {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
@@ -698,19 +698,19 @@ abstract class BaseReportCardPeer {
 		return $results;
 	}
 
-	
+
 	public static function getTableMap()
 	{
 		return Propel::getDatabaseMap(self::DATABASE_NAME)->getTable(self::TABLE_NAME);
 	}
 
-	
+
 	public static function getOMClass()
 	{
 		return ReportCardPeer::CLASS_DEFAULT;
 	}
 
-	
+
 	public static function doInsert($values, $con = null)
 	{
 		if ($con === null) {
@@ -719,25 +719,25 @@ abstract class BaseReportCardPeer {
 
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; 		} else {
-			$criteria = $values->buildCriteria(); 		}
+				$criteria = $values->buildCriteria(); 		}
 
-		$criteria->remove(ReportCardPeer::REPORT_ID); 
+				$criteria->remove(ReportCardPeer::REPORT_ID);
 
 				$criteria->setDbName(self::DATABASE_NAME);
 
-		try {
-									$con->begin();
-			$pk = BasePeer::doInsert($criteria, $con);
-			$con->commit();
-		} catch(PropelException $e) {
-			$con->rollback();
-			throw $e;
-		}
+				try {
+					$con->begin();
+					$pk = BasePeer::doInsert($criteria, $con);
+					$con->commit();
+				} catch(PropelException $e) {
+					$con->rollback();
+					throw $e;
+				}
 
-		return $pk;
+				return $pk;
 	}
 
-	
+
 	public static function doUpdate($values, $con = null)
 	{
 		if ($con === null) {
@@ -747,25 +747,25 @@ abstract class BaseReportCardPeer {
 		$selectCriteria = new Criteria(self::DATABASE_NAME);
 
 		if ($values instanceof Criteria) {
-			$criteria = clone $values; 
+			$criteria = clone $values;
 			$comparison = $criteria->getComparison(ReportCardPeer::REPORT_ID);
 			$selectCriteria->add(ReportCardPeer::REPORT_ID, $criteria->remove(ReportCardPeer::REPORT_ID), $comparison);
 
 		} else { 			$criteria = $values->buildCriteria(); 			$selectCriteria = $values->buildPkeyCriteria(); 		}
 
-				$criteria->setDbName(self::DATABASE_NAME);
+		$criteria->setDbName(self::DATABASE_NAME);
 
 		return BasePeer::doUpdate($selectCriteria, $criteria, $con);
 	}
 
-	
+
 	public static function doDeleteAll($con = null)
 	{
 		if ($con === null) {
 			$con = Propel::getConnection(self::DATABASE_NAME);
 		}
 		$affectedRows = 0; 		try {
-									$con->begin();
+			$con->begin();
 			$affectedRows += BasePeer::doDeleteAll(ReportCardPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -775,9 +775,9 @@ abstract class BaseReportCardPeer {
 		}
 	}
 
-	
-	 public static function doDelete($values, $con = null)
-	 {
+
+	public static function doDelete($values, $con = null)
+	{
 		if ($con === null) {
 			$con = Propel::getConnection(ReportCardPeer::DATABASE_NAME);
 		}
@@ -785,28 +785,28 @@ abstract class BaseReportCardPeer {
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; 		} elseif ($values instanceof ReportCard) {
 
-			$criteria = $values->buildPkeyCriteria();
-		} else {
-						$criteria = new Criteria(self::DATABASE_NAME);
-			$criteria->add(ReportCardPeer::REPORT_ID, (array) $values, Criteria::IN);
-		}
+				$criteria = $values->buildPkeyCriteria();
+			} else {
+				$criteria = new Criteria(self::DATABASE_NAME);
+				$criteria->add(ReportCardPeer::REPORT_ID, (array) $values, Criteria::IN);
+			}
 
-				$criteria->setDbName(self::DATABASE_NAME);
+			$criteria->setDbName(self::DATABASE_NAME);
 
-		$affectedRows = 0; 
-		try {
-									$con->begin();
-			
-			$affectedRows += BasePeer::doDelete($criteria, $con);
-			$con->commit();
-			return $affectedRows;
-		} catch (PropelException $e) {
-			$con->rollback();
-			throw $e;
-		}
+			$affectedRows = 0;
+			try {
+				$con->begin();
+					
+				$affectedRows += BasePeer::doDelete($criteria, $con);
+				$con->commit();
+				return $affectedRows;
+			} catch (PropelException $e) {
+				$con->rollback();
+				throw $e;
+			}
 	}
 
-	
+
 	public static function doValidate(ReportCard $obj, $cols = null)
 	{
 		$columns = array();
@@ -830,18 +830,18 @@ abstract class BaseReportCardPeer {
 		}
 
 		$res =  BasePeer::doValidate(ReportCardPeer::DATABASE_NAME, ReportCardPeer::TABLE_NAME, $columns);
-    if ($res !== true) {
-        $request = sfContext::getInstance()->getRequest();
-        foreach ($res as $failed) {
-            $col = ReportCardPeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
-            $request->setError($col, $failed->getMessage());
-        }
-    }
+		if ($res !== true) {
+			$request = sfContext::getInstance()->getRequest();
+			foreach ($res as $failed) {
+				$col = ReportCardPeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
+				$request->setError($col, $failed->getMessage());
+			}
+		}
 
-    return $res;
+		return $res;
 	}
 
-	
+
 	public static function retrieveByPK($pk, $con = null)
 	{
 		if ($con === null) {
@@ -858,7 +858,7 @@ abstract class BaseReportCardPeer {
 		return !empty($v) > 0 ? $v[0] : null;
 	}
 
-	
+
 	public static function retrieveByPKs($pks, $con = null)
 	{
 		if ($con === null) {
@@ -876,14 +876,14 @@ abstract class BaseReportCardPeer {
 		return $objs;
 	}
 
-} 
+}
 if (Propel::isInit()) {
-			try {
+	try {
 		BaseReportCardPeer::getMapBuilder();
 	} catch (Exception $e) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-			require_once 'lib/model/map/ReportCardMapBuilder.php';
+	require_once 'lib/model/map/ReportCardMapBuilder.php';
 	Propel::registerMapBuilder('lib.model.map.ReportCardMapBuilder');
 }

@@ -13,35 +13,35 @@ class loginActions extends sfActions
 	//Login
 	public function executeLogin()
 	{
-	  if ($this->getRequest()->getMethod() != sfRequest::POST)
-	  {
-	    // display the form
-	    $this->getRequest()->getParameterHolder()->set('referer', $this->getRequest()->getReferer());
-	 
-	    return sfView::SUCCESS;
-	  }
-	  else
-	  {
-	    // handle the form submission
-	    // redirect to last page
-	    return $this->redirect('donation/listmy');
-	  }
+		if ($this->getRequest()->getMethod() != sfRequest::POST)
+		{
+			// display the form
+			$this->getRequest()->getParameterHolder()->set('referer', $this->getRequest()->getReferer());
+
+			return sfView::SUCCESS;
+		}
+		else
+		{
+			// handle the form submission
+			// redirect to last page
+			return $this->redirect('donation/listmy');
+		}
 	}
-	
+
 	//User log out
 	public function executeLogout()
 	{
-	  $this->getUser()->setAuthenticated(false);
-	  $this->getUser()->clearCredentials();
-	 
-	  $this->getUser()->getAttributeHolder()->removeNamespace('');
-	 
-	  $this->redirect('login/login');
+		$this->getUser()->setAuthenticated(false);
+		$this->getUser()->clearCredentials();
+
+		$this->getUser()->getAttributeHolder()->removeNamespace('');
+
+		$this->redirect('login/login');
 	}
-		 
+		
 	//Error actioin of login
 	public function handleErrorLogin()
 	{
-	  return sfView::SUCCESS;
+		return sfView::SUCCESS;
 	}
 }

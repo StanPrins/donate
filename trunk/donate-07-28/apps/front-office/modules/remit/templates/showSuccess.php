@@ -5,8 +5,7 @@
 <div id="sf_admin_container">
 
 <h1>到款信息</h1>
-<?php echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId()) ?>
-&nbsp;<?php echo link_to('返回', 'remit/list') ?>
+
 <?php use_helper('Object') ?>
 
 <div id="sf_admin_content">
@@ -100,5 +99,7 @@
   </tbody>
 </table>
 
+<?php //echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId()) ?>
+&nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>
 </div>
 

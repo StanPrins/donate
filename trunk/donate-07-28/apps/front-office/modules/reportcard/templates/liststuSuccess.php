@@ -87,6 +87,6 @@
           echo link_to ('创建成绩单', 'reportcard/create?student_id='.$sf_params->get('student_id'));
       }
  ?>
-
+<a href="javascript:history.go(-1)">返回</a>
 </div>
 </div>

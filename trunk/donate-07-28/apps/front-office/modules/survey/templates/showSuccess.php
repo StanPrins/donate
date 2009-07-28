@@ -11,7 +11,7 @@
 <?php use_helper('Object') ?>
 
 <div id="sf_admin_content">
-<?php echo link_to('返回', 'survey/list') ?>
+
 <table>
   <tbody>
   <tr>
@@ -92,6 +92,6 @@
   </tr>
   </tbody>
 </table>
-
+<a href="javascript:history.go(-1)">返回</a>
 </div>
 </div>

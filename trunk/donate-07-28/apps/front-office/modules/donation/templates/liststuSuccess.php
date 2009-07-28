@@ -79,5 +79,6 @@
 <?php endif;?>
 
 <?php echo link_to('新建资助','donation/create?student_id='.$sf_params->get('student_id').'&user_id='.$sf_user->getAttribute('user_id', ''));?>
+&nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>
 </div>
 </div>

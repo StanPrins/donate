@@ -91,5 +91,7 @@
          echo link_to ('添加调查记录', 'survey/create?student_id='.$sf_params->get('student_id'));
       }
 ?>
+
+<a href="javascript:history.go(-1)">返回</a>
 </div>
 </div>

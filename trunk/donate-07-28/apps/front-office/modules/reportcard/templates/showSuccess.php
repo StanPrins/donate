@@ -13,7 +13,7 @@
       	  echo link_to('修改', 'reportcard/edit?report_id='.$report_card->getReportId()); 
       }
  ?>
-&nbsp;<?php echo link_to('返回', 'reportcard/list') ?>
+
 <div id="sf_admin_content">
 
 <table>
@@ -88,6 +88,6 @@
   </tr>
   </tbody>
 </table>
-
+<a href="javascript:history.go(-1)">返回</a>
 </div>
 </div>

@@ -14,119 +14,119 @@
  */
 class surveyActions extends sfActions
 {
-  public function executeListstu()
-  {
-  	$c = new Criteria();
-    $c -> add(SurveyPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
-    $pager = new sfPropelPager('Survey', sfConfig::get('app_pager_homepage_max'));
-    $pager->setPeerMethod('doSelectJoinAll');    
-    $pager->setCriteria($c);
-    $pager->setPage($this->getRequestParameter('page', 1));
-    $pager->init();
-    $this->pager = $pager;
-  }
+	public function executeListstu()
+	{
+		$c = new Criteria();
+		$c -> add(SurveyPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
+		$pager = new sfPropelPager('Survey', sfConfig::get('app_pager_homepage_max'));
+		$pager->setPeerMethod('doSelectJoinAll');
+		$pager->setCriteria($c);
+		$pager->setPage($this->getRequestParameter('page', 1));
+		$pager->init();
+		$this->pager = $pager;
+	}
 
-  public function executeListmy()
-  {
-  	$c = new Criteria();
-    $c -> add(SurveyPeer::USER_ID, $this->getUser()->getAttribute('user_id'));
-    $pager = new sfPropelPager('Survey', sfConfig::get('app_pager_homepage_max'));
-    $pager->setPeerMethod('doSelectJoinAll');    
-    $pager->setCriteria($c);
-    $pager->setPage($this->getRequestParameter('page', 1));
-    $pager->init();
-    $this->pager = $pager;
-  }  
-  
-  public function executeListall()
-  {
-  	$c = new Criteria();
-    $pager = new sfPropelPager('Survey', sfConfig::get('app_pager_homepage_max'));
-    $pager->setPeerMethod('doSelectJoinAll');    
-    $pager->setCriteria($c);
-    $pager->setPage($this->getRequestParameter('page', 1));
-    $pager->init();
-    $this->pager = $pager;
-  }  
+	public function executeListmy()
+	{
+		$c = new Criteria();
+		$c -> add(SurveyPeer::USER_ID, $this->getUser()->getAttribute('user_id'));
+		$pager = new sfPropelPager('Survey', sfConfig::get('app_pager_homepage_max'));
+		$pager->setPeerMethod('doSelectJoinAll');
+		$pager->setCriteria($c);
+		$pager->setPage($this->getRequestParameter('page', 1));
+		$pager->init();
+		$this->pager = $pager;
+	}
 
-  public function executeShow()
-  {
-    $this->survey = SurveyPeer::retrieveByPk($this->getRequestParameter('survey_id'));
-    $this->forward404Unless($this->survey);
-  }
+	public function executeListall()
+	{
+		$c = new Criteria();
+		$pager = new sfPropelPager('Survey', sfConfig::get('app_pager_homepage_max'));
+		$pager->setPeerMethod('doSelectJoinAll');
+		$pager->setCriteria($c);
+		$pager->setPage($this->getRequestParameter('page', 1));
+		$pager->init();
+		$this->pager = $pager;
+	}
 
-  public function executeCreate()
-  {
-    $this->survey = new Survey();
-    
-    $this->survey->setStudentId($this->getRequestParameter('student_id'));
-    $this->survey->setUserId($this->getUser()->getAttribute('user_id'));
-    
-    $c = new Criteria();
-  	$c -> add(StudentPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
-  	$this->student = StudentPeer::doSelectOne($c);
+	public function executeShow()
+	{
+		$this->survey = SurveyPeer::retrieveByPk($this->getRequestParameter('survey_id'));
+		$this->forward404Unless($this->survey);
+	}
 
-    $d = new Criteria();
-  	$d -> add(UserPeer::USER_ID, $this->getUser()->getAttribute('user_id'));
-  	$this->user = UserPeer::doSelectOne($d);  	    
-    
-  }
+	public function executeCreate()
+	{
+		$this->survey = new Survey();
 
-  public function executeEdit()
-  {
-    $this->survey = SurveyPeer::retrieveByPk($this->getRequestParameter('survey_id'));
-    $this->forward404Unless($this->survey);
-  }
+		$this->survey->setStudentId($this->getRequestParameter('student_id'));
+		$this->survey->setUserId($this->getUser()->getAttribute('user_id'));
 
-  public function executeUpdate()
-  {
-    if (!$this->getRequestParameter('survey_id'))
-    {
-      $survey = new Survey();
-    }
-    else
-    {
-      $survey = SurveyPeer::retrieveByPk($this->getRequestParameter('survey_id'));
-      $this->forward404Unless($survey);
-    }
+		$c = new Criteria();
+		$c -> add(StudentPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
+		$this->student = StudentPeer::doSelectOne($c);
 
-    $survey->setSurveyId($this->getRequestParameter('survey_id'));
-    $survey->setStudentId($this->getRequestParameter('student_id') ? $this->getRequestParameter('student_id') : null);
-    $survey->setUserId($this->getRequestParameter('user_id') ? $this->getRequestParameter('user_id') : null);
-    if ($this->getRequestParameter('survey_date'))
-    {
-      list($d, $m, $y) = sfI18N::getDateForCulture($this->getRequestParameter('survey_date'), $this->getUser()->getCulture());
-      $survey->setSurveyDate("$y-$m-$d");
-    }
-    $survey->setFamilyCondition($this->getRequestParameter('family_condition'));
-    $survey->setGrade($this->getRequestParameter('grade'));
-    $survey->setOtherAssist($this->getRequestParameter('other_assist'));
-    $survey->setDropoutInfo($this->getRequestParameter('dropout_info'));
-    $survey->setPresentation($this->getRequestParameter('presentation'));
-    $survey->setRevenue($this->getRequestParameter('revenue'));
-    $survey->setProperty($this->getRequestParameter('property'));
-    $survey->setDonationUsage($this->getRequestParameter('donation_usage'));
-    $survey->setDonorConcerned($this->getRequestParameter('donor_concerned'));
-    $survey->setMsgToDonor($this->getRequestParameter('msg_to_donor'));
-    $survey->setMsgToStu($this->getRequestParameter('msg_to_stu'));
-    $survey->setSchoolOpinion($this->getRequestParameter('school_opinion'));
-    $survey->setTeacherOpinion($this->getRequestParameter('teacher_opinion'));
-    $survey->setUserOpinion($this->getRequestParameter('user_opinion'));
-    $survey->setDiscription($this->getRequestParameter('discription'));
+		$d = new Criteria();
+		$d -> add(UserPeer::USER_ID, $this->getUser()->getAttribute('user_id'));
+		$this->user = UserPeer::doSelectOne($d);
 
-    $survey->save();
+	}
 
-    return $this->redirect('survey/show?survey_id='.$survey->getSurveyId());
-  }
+	public function executeEdit()
+	{
+		$this->survey = SurveyPeer::retrieveByPk($this->getRequestParameter('survey_id'));
+		$this->forward404Unless($this->survey);
+	}
 
-  public function executeDelete()
-  {
-    $survey = SurveyPeer::retrieveByPk($this->getRequestParameter('survey_id'));
+	public function executeUpdate()
+	{
+		if (!$this->getRequestParameter('survey_id'))
+		{
+			$survey = new Survey();
+		}
+		else
+		{
+			$survey = SurveyPeer::retrieveByPk($this->getRequestParameter('survey_id'));
+			$this->forward404Unless($survey);
+		}
 
-    $this->forward404Unless($survey);
+		$survey->setSurveyId($this->getRequestParameter('survey_id'));
+		$survey->setStudentId($this->getRequestParameter('student_id') ? $this->getRequestParameter('student_id') : null);
+		$survey->setUserId($this->getRequestParameter('user_id') ? $this->getRequestParameter('user_id') : null);
+		if ($this->getRequestParameter('survey_date'))
+		{
+			list($d, $m, $y) = sfI18N::getDateForCulture($this->getRequestParameter('survey_date'), $this->getUser()->getCulture());
+			$survey->setSurveyDate("$y-$m-$d");
+		}
+		$survey->setFamilyCondition($this->getRequestParameter('family_condition'));
+		$survey->setGrade($this->getRequestParameter('grade'));
+		$survey->setOtherAssist($this->getRequestParameter('other_assist'));
+		$survey->setDropoutInfo($this->getRequestParameter('dropout_info'));
+		$survey->setPresentation($this->getRequestParameter('presentation'));
+		$survey->setRevenue($this->getRequestParameter('revenue'));
+		$survey->setProperty($this->getRequestParameter('property'));
+		$survey->setDonationUsage($this->getRequestParameter('donation_usage'));
+		$survey->setDonorConcerned($this->getRequestParameter('donor_concerned'));
+		$survey->setMsgToDonor($this->getRequestParameter('msg_to_donor'));
+		$survey->setMsgToStu($this->getRequestParameter('msg_to_stu'));
+		$survey->setSchoolOpinion($this->getRequestParameter('school_opinion'));
+		$survey->setTeacherOpinion($this->getRequestParameter('teacher_opinion'));
+		$survey->setUserOpinion($this->getRequestParameter('user_opinion'));
+		$survey->setDiscription($this->getRequestParameter('discription'));
 
-    $survey->delete();
+		$survey->save();
 
-    return $this->redirect('survey/list');
-  }
+		return $this->redirect('survey/show?survey_id='.$survey->getSurveyId());
+	}
+
+	public function executeDelete()
+	{
+		$survey = SurveyPeer::retrieveByPk($this->getRequestParameter('survey_id'));
+
+		$this->forward404Unless($survey);
+
+		$survey->delete();
+
+		return $this->redirect('survey/list');
+	}
 }

@@ -13,7 +13,7 @@
          echo link_to('修改', 'student/edit?student_id='.$student->getStudentId());
       }
  ?>
-&nbsp;<?php echo link_to('返回', 'student/list') ?>
+
 <div id="sf_admin_content">
 <table>
   <tbody>
@@ -204,9 +204,6 @@
   </tr>
   </tbody>
 </table>
-      
-
-
-
+<a href="javascript:history.go(-1)">返回</a>      
 </div>
 </div>
