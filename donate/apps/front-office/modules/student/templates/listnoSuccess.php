@@ -47,6 +47,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
  </tr>
  </table>
  </form>
+ <?php if(sizeof($pager->getResults())>0):?>
 <table class="sf_student_list">
 
 <tbody>
@@ -83,6 +84,11 @@ $default_site_id = empty($site_id)?-1:$site_id;
 </table>
 
 <?php include_partial('listpager',array('pager' => $pager, 'page_to_link' => 'listno', 'school_id'=>$default_school_id, 'site_id'=>$default_site_id ))?>
+<?php else:?>
+<table class="sf_student_list">
+<tr><td align="center">无相关记录</td></tr>
+</table>
+<?php endif;?>
 </div>
 <?php echo observe_form('Find',array(
  		'update'=>'sf_admin_content',
