@@ -38,16 +38,77 @@ class studentActions extends sfActions
     
   }  
 
-  public function executeListno()
+public function executeListno()
   {
+  	$site_id = $this->getRequestParameter('site_id');
+  	$school_id = $this->getRequestParameter('school_id');
+  	$student_name = $this->getRequestParameter('student_name');
+
   	$c = new Criteria();
-  	$c -> add(StudentPeer::IS_DONATED, 0);   	
+  	$c -> add(StudentPeer::IS_DONATED, 0); 
+ 	$c->addJoin(StudentPeer::SCHOOL_ID, SchoolPeer::SCHOOL_ID, Criteria::LEFT_JOIN);
+    
+  	if(!empty($school_id)&& ($school_id!=-1))
+  	{
+      $c->add(StudentPeer::SCHOOL_ID,$school_id);
+      $this->school_id = $school_id;
+  	}  	
+  	if(!empty($site_id)&&($site_id!=-1))
+    {
+      $c->add(SchoolPeer::SITE_ID,$site_id); 
+      $this->site_id = $site_id;
+    }         	
+    if(!empty($student_name))
+    {
+      $c->add(StudentPeer::NAME,$student_name.'%',Criteria::LIKE);
+      $this->student_name = $student_name;
+    }
+   	
     $pager = new sfPropelPager('Student', sfConfig::get('app_pager_homepage_max'));    
     $pager->setPeerMethod('doSelectJoinSchool');
+    $pager->setPeerCountMethod('doCountJoinSchool');
     $pager->setCriteria($c);
     $pager->setPage($this->getRequestParameter('page', 1));
     $pager->init();
-    $this->pager = $pager;    
+    $this->pager = $pager;
+    
+    $d = new Criteria();
+    $d->clearSelectColumns();  // Clear select columns
+    $d->addSelectColumn(ProjectSitePeer::SITE_ID); // Add new select columns 
+    $d->addSelectColumn(ProjectSitePeer::SITE_NAME);   
+    $d->addAscendingOrderByColumn(ProjectSitePeer::SITE_NAME);
+    $this->projectsites = ProjectSitePeer::doSelectRS($d);
+
+    $e = new Criteria();
+    $e->clearSelectColumns();  // Clear select columns
+    $e->addSelectColumn(SchoolPeer::SCHOOL_ID);// Add new select columns
+    $e->addSelectColumn(SchoolPeer::SCHOOL_NAME);
+    if(!empty($site_id)&&($site_id!=-1))
+    {
+      $e->add(SchoolPeer::SITE_ID,$site_id); 
+      $this->site_id = $site_id;
+    }  
+    $e->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
+    $this->schools = SchoolPeer::doSelectRS($e);
+    $this->school_count = SchoolPeer::doCount($e);
+   
+  }
+  public function executeAutocomplete()
+  {
+  	$str = $this->getRequestParameter('student_name');
+  	$school_id = $this->getRequestParameter('school_id');
+  	$site_id = $this->getRequestParameter('site_id');
+  	$c = new Criteria();
+    $c->add(StudentPeer::IS_DONATED,0);
+    $c->addJoin(StudentPeer::SCHOOL_ID, SchoolPeer::SCHOOL_ID, Criteria::LEFT_JOIN);
+    if(!empty($school_id)&&($school_id!=-1))
+      $c->add(StudentPeer::SCHOOL_ID,$school_id);
+    if(!empty($site_id)&&($site_id!=-1))
+      $c->add(SchoolPeer::SITE_ID,$site_id);
+  	$c->add(StudentPeer::NAME,$str.'%',Criteria::LIKE);
+  	$c->addAscendingOrderByColumn(StudentPeer::NAME);
+  	$students = StudentPeer::doSelectJoinSchool($c);
+  	$this->students = $students;
   }
   
   public function executeShow()
@@ -132,7 +193,7 @@ class studentActions extends sfActions
     return $this->redirect('student/show?student_id='.$student->getStudentId().'&after_edit=1');
   }
 
-  public function executeDelete()             //删除所有其他相关信息
+  public function executeDelete()             //鍒犻櫎鎵�湁鍏朵粬鐩稿叧淇℃伅
   {
     $student = StudentPeer::retrieveByPk($this->getRequestParameter('student_id'));
 
