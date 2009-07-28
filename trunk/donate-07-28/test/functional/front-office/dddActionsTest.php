@@ -7,9 +7,9 @@ $browser = new sfTestBrowser();
 $browser->initialize();
 
 $browser->
-  get('/ddd/index')->
-  isStatusCode(200)->
-  isRequestParameter('module', 'ddd')->
-  isRequestParameter('action', 'index')->
-  checkResponseElement('body', '!/This is a temporary page/')
+get('/ddd/index')->
+isStatusCode(200)->
+isRequestParameter('module', 'ddd')->
+isRequestParameter('action', 'index')->
+checkResponseElement('body', '!/This is a temporary page/')
 ;

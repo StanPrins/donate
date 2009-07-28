@@ -43,6 +43,6 @@
 
 <?php include_partial('pager',array('pager' => $pager, 'page_to_link' => 'listno' ))?>
 
-<?php echo link_to ('create', 'student/create') ?>
+
 </div>
 </div>

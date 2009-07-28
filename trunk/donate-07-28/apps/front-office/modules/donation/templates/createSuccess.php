@@ -69,8 +69,8 @@
 </fieldset>
 
 <?php echo submit_tag('提交') ?>
-&nbsp;<?php echo link_to('返回', 'donation/listmy') ?>
-
+&nbsp;
+<a href="javascript:history.go(-1)">返回</a>
 </form>
 </div>
 </div>

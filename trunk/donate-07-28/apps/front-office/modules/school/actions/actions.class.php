@@ -14,76 +14,76 @@
  */
 class schoolActions extends sfActions
 {
-  public function executeIndex()
-  {
-    return $this->forward('school', 'list');
-  }
+	public function executeIndex()
+	{
+		return $this->forward('school', 'list');
+	}
 
-  public function executeList()
-  {
-  	$c = new Criteria();
-  	if ($this->getRequestParameter('site_id'))
-  	{
-  	   $c -> add(SchoolPeer::SITE_ID, $this->getRequestParameter('site_id'));  	   
-  	}    	
-    $this->schools = SchoolPeer::doSelect($c);
-  }
+	public function executeList()
+	{
+		$c = new Criteria();
+		if ($this->getRequestParameter('site_id'))
+		{
+			$c -> add(SchoolPeer::SITE_ID, $this->getRequestParameter('site_id'));
+		}
+		$this->schools = SchoolPeer::doSelect($c);
+	}
 
-  public function executeShow()
-  {
-    $this->school = SchoolPeer::retrieveByPk($this->getRequestParameter('school_id'));
-    $this->forward404Unless($this->school);
-  }
+	public function executeShow()
+	{
+		$this->school = SchoolPeer::retrieveByPk($this->getRequestParameter('school_id'));
+		$this->forward404Unless($this->school);
+	}
 
-  public function executeCreate()
-  {
-    $this->school = new School();
+	public function executeCreate()
+	{
+		$this->school = new School();
 
-    $this->setTemplate('edit');
-  }
+		$this->setTemplate('edit');
+	}
 
-  public function executeEdit()
-  {
-    $this->school = SchoolPeer::retrieveByPk($this->getRequestParameter('school_id'));
-    $this->forward404Unless($this->school);
-  }
+	public function executeEdit()
+	{
+		$this->school = SchoolPeer::retrieveByPk($this->getRequestParameter('school_id'));
+		$this->forward404Unless($this->school);
+	}
 
-  public function executeUpdate()
-  {
-    if (!$this->getRequestParameter('school_id'))
-    {
-      $school = new School();
-    }
-    else
-    {
-      $school = SchoolPeer::retrieveByPk($this->getRequestParameter('school_id'));
-      $this->forward404Unless($school);
-    }
+	public function executeUpdate()
+	{
+		if (!$this->getRequestParameter('school_id'))
+		{
+			$school = new School();
+		}
+		else
+		{
+			$school = SchoolPeer::retrieveByPk($this->getRequestParameter('school_id'));
+			$this->forward404Unless($school);
+		}
 
-    $school->setSchoolId($this->getRequestParameter('school_id'));
-    $school->setSiteId($this->getRequestParameter('site_id') ? $this->getRequestParameter('site_id') : null);
-    $school->setSchoolName($this->getRequestParameter('school_name'));
-    $school->setType($this->getRequestParameter('type'));
-    $school->setMaster($this->getRequestParameter('master'));
-    $school->setContact($this->getRequestParameter('contact'));
-    $school->setPhone($this->getRequestParameter('phone'));
-    $school->setAddress($this->getRequestParameter('address'));
-    $school->setPostal($this->getRequestParameter('postal'));
-    $school->setDiscription($this->getRequestParameter('discription'));
+		$school->setSchoolId($this->getRequestParameter('school_id'));
+		$school->setSiteId($this->getRequestParameter('site_id') ? $this->getRequestParameter('site_id') : null);
+		$school->setSchoolName($this->getRequestParameter('school_name'));
+		$school->setType($this->getRequestParameter('type'));
+		$school->setMaster($this->getRequestParameter('master'));
+		$school->setContact($this->getRequestParameter('contact'));
+		$school->setPhone($this->getRequestParameter('phone'));
+		$school->setAddress($this->getRequestParameter('address'));
+		$school->setPostal($this->getRequestParameter('postal'));
+		$school->setDiscription($this->getRequestParameter('discription'));
 
-    $school->save();
+		$school->save();
 
-    return $this->redirect('school/show?school_id='.$school->getSchoolId());
-  }
+		return $this->redirect('school/show?school_id='.$school->getSchoolId());
+	}
 
-  public function executeDelete()
-  {
-    $school = SchoolPeer::retrieveByPk($this->getRequestParameter('school_id'));
+	public function executeDelete()
+	{
+		$school = SchoolPeer::retrieveByPk($this->getRequestParameter('school_id'));
 
-    $this->forward404Unless($school);
+		$this->forward404Unless($school);
 
-    $school->delete();
+		$school->delete();
 
-    return $this->redirect('school/list');
-  }
+		return $this->redirect('school/list');
+	}
 }

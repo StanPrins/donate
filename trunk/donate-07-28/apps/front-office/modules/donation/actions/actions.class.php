@@ -213,6 +213,8 @@ class donationActions extends sfActions
        $student->save();
     }
     
-    return $this->redirect('student/listall');
+    //return $this->redirect('student/listall');
+    return $this->redirect($this->getRequest()->getReferer());
+    //$this->a =$this->getRequest()->getReferer();
   }
 }

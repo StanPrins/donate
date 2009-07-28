@@ -101,7 +101,6 @@
       
  <?php echo link_to_function ('新建到款信息', visual_effect('BlindDown','secret_div'));?>
          
-
 <div id="secret_div" style="display:none">
 <br/>
 <?php echo link_to('通过OFS捐助','remit/create?donation_id='.$sf_params->get('donation_id').'&is_by_ofs=1');?>
@@ -112,6 +111,6 @@
      
 <?php else:?>
 <?php endif;?>         
-         
+&nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>         
 </div>
 </div>
