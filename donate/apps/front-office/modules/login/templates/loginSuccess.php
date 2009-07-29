@@ -32,13 +32,14 @@
    
 </form>
 
-  <?php echo link_to('Create New Account', '/useradmin/create')?>
+  <?php echo link_to('新建账户', '/user/create')?>
 <br/>
 
 
 <?php use_helper('Javascript') ?>
 
 
+<!-- 
 
 <?php echo link_to_function('Forget Your Password?', visual_effect('BlindDown','secret_div')) ?>
 <div id="secret_div" style="display:none">
@@ -69,7 +70,7 @@ Input your ECoreID here and system will send your password to your mailbox.<br/>
 
 <div id="content_sendPassword">
 </div>
-
+ -->
 </div>
    
 

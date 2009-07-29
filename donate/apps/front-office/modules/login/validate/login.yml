@@ -4,7 +4,7 @@ methods:
 names:
   username:
     required:     true
-    required_msg: Username is required
+    required_msg: 请输入用户名
     validators:   [usernameValidator, userValidator]
 
   password:
@@ -21,4 +21,4 @@ userValidator:
     class:         myLoginValidator
     param:
       password:    password
-      login_error: 用户不存在或用户名错误
+      login_error: 输入密码错误或帐号未批准
