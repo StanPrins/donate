@@ -1,0 +1,8 @@
+all:
+  is_secure:   off
+
+listall:
+  is_secure:   on
+  credentials: [[ manager, administrator]]
+
+  

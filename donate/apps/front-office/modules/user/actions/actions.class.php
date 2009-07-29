@@ -18,8 +18,20 @@ class userActions extends sfActions
 	{
 		return $this->forward('user', 'list');
 	}
+	
+	public function executeApprove()
+	{
+		$c = new Criteria();
+        $c->add(UserPeer::APPROVE,0);
+		$pager = new sfPropelPager('User', sfConfig::get('app_pager_homepage_max'));
+		$pager->setCriteria($c);
+		$pager->setPage($this->getRequestParameter('page', 1));
+		$pager->init();
+		$this->pager = $pager;
 
-	public function executeList()
+	}	
+
+	public function executeListall()
 	{
 		//$this->users = UserPeer::doSelect(new Criteria());
 		$c = new Criteria();
@@ -53,6 +65,8 @@ class userActions extends sfActions
 
 	public function executeUpdate()
 	{
+	  if ($this->getRequest()->getMethod() == sfRequest::POST)
+	  {
 		if (!$this->getRequestParameter('user_id'))
 		{
 			$user = new User();
@@ -78,6 +92,7 @@ class userActions extends sfActions
 		$user->setMobile($this->getRequestParameter('mobile'));
 		$user->setTel($this->getRequestParameter('tel'));
 		$user->setUsertype($this->getRequestParameter('usertype'));
+		$user->setApprove($this->getRequestParameter('approve', 0));
 		$user->setIdentity($this->getRequestParameter('identity'));
 		$user->setEmail($this->getRequestParameter('email'));
 		$user->setQq($this->getRequestParameter('qq'));
@@ -86,7 +101,8 @@ class userActions extends sfActions
 
 		$user->save();
 
-		return $this->redirect('user/show?user_id='.$user->getUserId());
+		return $this->redirect('user/show?user_id='.$user->getUserId().'&after_edit=1');
+	  }
 	}
 
 	public function executeDelete()
@@ -97,6 +113,7 @@ class userActions extends sfActions
 
 		$user->delete();
 
-		return $this->redirect('user/list');
+		//return $this->redirect('user/list');
+		return $this->redirect($this->getRequest()->getReferer());
 	}
 }

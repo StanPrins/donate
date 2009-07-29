@@ -18,6 +18,29 @@
 <div id="sf_admin_content">
 <fieldset id="sf_fieldset_none" class="">
 
+<?php if (($sf_user->getAttribute('usertype', '')=='manager') || ($sf_user->getAttribute('usertype', '')=='administrator')): ?>   
+<div class="form-row">
+  <label for="donation_block" class="required">批准：</label> 
+  <div class="content">
+  <?php echo object_checkbox_tag($donation, 'getApprove', array (
+  'checked' => true 
+  )) ?>
+  </div>
+</div> 
+
+<div class="form-row">
+  <label for="donation_end_date" class="required">激活：</label> 
+  <div class="content">
+  <?php echo object_checkbox_tag($donation, 'getIsActive', array (
+  'checked' => true
+  )) ?>
+  </div>
+</div> 
+<?php else:?>
+<?php echo object_input_hidden_tag($donation, 'getIsActive') ?>
+<?php echo object_input_hidden_tag($donation, 'getApprove') ?>
+<?php endif;?>
+
 
 <div class="form-row">
   <label for="donation_user" class="required">捐助人：</label> 
@@ -64,29 +87,6 @@
   )) ?>
   </div>
 </div> 
-
-<?php if (($sf_user->getAttribute('usertype', '')=='manager') || ($sf_user->getAttribute('usertype', '')=='administrator')): ?>   
-<div class="form-row">
-  <label for="donation_block" class="required">批准：</label> 
-  <div class="content">
-  <?php echo object_checkbox_tag($donation, 'getApprove', array (
-  'checked' => true 
-  )) ?>
-  </div>
-</div> 
-
-<div class="form-row">
-  <label for="donation_end_date" class="required">激活：</label> 
-  <div class="content">
-  <?php echo object_checkbox_tag($donation, 'getIsActive', array (
-  'checked' => true
-  )) ?>
-  </div>
-</div> 
-<?php else:?>
-<?php echo object_input_hidden_tag($donation, 'getIsActive') ?>
-<?php echo object_input_hidden_tag($donation, 'getApprove') ?>
-<?php endif;?>
 
 </fieldset>
 <?php echo submit_tag('提交') ?>

@@ -4,7 +4,13 @@
 ?>
 <div id="sf_admin_container">
 
-<h1>志愿者信息</h1>
+<?php if ($user->getUserName()):?>
+<h1>修改账户信息</h1>
+<?php else:?>
+<h1>新建账户</h1>
+<?php endif;?>
+
+
 
 <?php use_helper('Object') ?>
 
@@ -17,17 +23,47 @@
 
 <fieldset id="sf_fieldset_none" class="">
 
+<?php if ( ($sf_user->getAttribute('usertype', '')=='manager') || ($sf_user->getAttribute('usertype', '')=='administrator')):?>
+<div class="form-row">
+  <label for="user_identity" class="required">批准：</label> 
+  <div class="content">
+    <?php echo object_checkbox_tag($user, 'getApprove', array (
+    'checked' => true 
+     )) ?>    
+  </div>
+</div> 
+<?php else:?>
+    <?php echo object_input_hidden_tag($user, 'getApprove') ?> 
+<?php endif;?> 
+
+<?php if ($user->getUserName()):?>
+
 <div class="form-row">
   <label for="user_username" class="required">用户名：</label> 
   <div class="content">
-  <?php if($user->getUserName())
-          echo $user->getUserName();
-        else        
-           echo object_input_tag($user, 'getUserName', array ('size' => 20));
-  ?>
+  <?php echo $user->getUserName();
+        echo input_hidden_tag('username', $user->getUserName());  ?>
   </div>
-</div>  
+</div>
+  
+<?php else:?>
 
+<div class="form-row">
+  <label for="user_username" class="required">注意：</label> 
+  <div class="content">
+  完成提交后请耐心等待资格审核，审核成功后方可登录
+  </div>
+</div>
+<div class="form-row">
+  <label for="user_username" class="required">用户名：</label> 
+  <div class="content">
+  <?php echo input_tag('username') ?>  
+  </div>
+</div>
+
+<?php endif;?>
+
+   
 <div class="form-row">
   <label for="user_nickname" class="required">昵称：</label> 
   <div class="content">    
@@ -40,7 +76,7 @@
 <div class="form-row">
   <label for="user_password" class="required">输入新密码：</label> 
   <div class="content">    
-  <?php echo input_tag('password') ?>
+  <?php echo input_tag('password');?>
   </div>
 </div>  
 
@@ -127,13 +163,18 @@
                      'volunteer'  => '普通志愿者',
                      'surveyor'   => '调查员',
                      'manager'    => '管理员',
-                    ), 'volunteer'));
+                    ), $user->getUsertype()));
+     }
+     else if ($sf_user->getAttribute('usertype', '')=='surveyor')
+     {
+        echo '调查员';
+        echo object_input_hidden_tag($user, 'getUsertype');	
      }
      else
      {
         echo input_hidden_tag('usertype', 'volunteer');
+        echo '普通志愿者';
      }
-
   ?>
 
   </div>
@@ -188,13 +229,9 @@
   
 </fieldset>
 
-<?php echo submit_tag('save') ?>
-<?php if ($user->getUserId()): ?>
-  &nbsp;<?php echo link_to('delete', 'user/delete?user_id='.$user->getUserId(), 'post=true&confirm=Are you sure?') ?>
-  &nbsp;<?php echo link_to('cancel', 'user/show?user_id='.$user->getUserId()) ?>
-<?php else: ?>
-  &nbsp;<?php echo link_to('cancel', 'user/list') ?>
-<?php endif; ?>
+<?php echo submit_tag('提交') ?>
+
+&nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>
 </form>
 </div>
 </div>

@@ -8,7 +8,7 @@
 <?php
  use_helper('Javascript');
  echo form_tag('student/listno','id="Find"');?> 
-<table class="sf_student_list">
+<table border=0>
 <tr><td><strong>地区：</strong></td>
 <td>
 <select name="site_id">
@@ -38,7 +38,7 @@ $default_name = empty($student_name)?'':$student_name;
 $default_school_id = empty($school_id)?-1:$school_id;
 $default_site_id = empty($site_id)?-1:$site_id;
  echo input_auto_complete_tag('student_name',$default_name,
-		'student/autocomplete?donated=0&school_id='.$default_school_id.'&site_id='.$default_site_id,
+		'student/autocomplete?school_id='.$default_school_id.'&site_id='.$default_site_id,
  		array('autocomplete'=>'on'),
  		array('use_style'=>true));
  echo submit_tag('查找');
@@ -71,11 +71,19 @@ $default_site_id = empty($site_id)?-1:$site_id;
       <br/>
       &nbsp;<strong>自述：&nbsp;</strong><?php echo $student->getDiscription() ?>
       <br/>
-      <?php echo link_to ('详情', 'student/show?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <?php echo link_to ('成绩单', 'reportcard/liststu?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <?php echo link_to ('调查记录', 'survey/liststu?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
-      <br/>
       <?php echo link_to ('资助他', 'donation/create?student_id='.$student->getStudentId()) ?>
+      <br />
+      <?php echo link_to ('详细', 'student/show?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
+      <?php if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager')
+      || ($sf_user->getAttribute('usertype', '')=='surveyor'))
+      {
+      	echo link_to ('修改', 'student/edit?student_id='.$student->getStudentId());
+      	echo "&nbsp;&nbsp;&nbsp;";
+      	echo link_to ('删除', 'student/delete?student_id='.$student->getStudentId(),  'post=true&confirm=真的要删除么？\n所有该学生的其他相关信息也将全部删除!');
+      }
+      ?>      
            
 </td></tr>
 <?php endforeach; ?>
@@ -89,10 +97,10 @@ $default_site_id = empty($site_id)?-1:$site_id;
 <tr><td align="center">无相关记录</td></tr>
 </table>
 <?php endif;?>
+</div>
 <?php echo observe_form('Find',array(
  		'update'=>'sf_admin_content',
  		'url'=>'student/listno',
  		'with'=>"Form.serialize('Find')",
  		'script'=>true))?>
-</div>
 </div>

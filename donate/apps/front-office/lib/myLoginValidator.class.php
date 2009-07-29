@@ -30,48 +30,51 @@ class myLoginValidator extends sfValidator
 		// username exists?
 		if ($user)
 		{
-			// password is OK?
-			//if ($user->getPassword() == $password)
-			if (sha1($user->getSalt().$password) == $user->getSha1Password())
+			$approve = $user->getApprove();
+			if($approve)
 			{
-				$this->getContext()->getUser()->setAuthenticated(true);
-
-				$usertype = $user->getUsertype();
-
-				if($usertype == 'volunteer')
-				{
-					$this->getContext()->getUser()->addCredential('volunteer');
-					$this->getContext()->getUser()->setAttribute('name', $user->getName());
-					$this->getContext()->getUser()->setAttribute('user_id', $user->getUserId());
-					$this->getContext()->getUser()->setAttribute('usertype', 'volunteer');
+			    // password is OK?
+				if (sha1($user->getSalt().$password) == $user->getSha1Password())
+                {
+                    $this->getContext()->getUser()->setAuthenticated(true);
+	
+                    $usertype = $user->getUsertype();
+	
+                    if($usertype == 'volunteer')
+                    {
+                    	$this->getContext()->getUser()->addCredential('volunteer');
+                    	$this->getContext()->getUser()->setAttribute('name', $user->getName());
+                    	$this->getContext()->getUser()->setAttribute('user_id', $user->getUserId());
+                    	$this->getContext()->getUser()->setAttribute('usertype', 'volunteer');
+                    }
+                    else if($usertype == 'surveyor')
+                    {
+                    	$this->getContext()->getUser()->addCredential('surveyor');
+                    	$this->getContext()->getUser()->setAttribute('name', $user->getName());
+                    	$this->getContext()->getUser()->setAttribute('user_id', $user->getUserId());
+                    	$this->getContext()->getUser()->setAttribute('usertype', 'surveyor');
+                    }
+                    else if($usertype == 'manager')
+                    {
+                    	$this->getContext()->getUser()->addCredential('manager');
+                    	$this->getContext()->getUser()->setAttribute('name', $user->getName());
+                    	$this->getContext()->getUser()->setAttribute('user_id', $user->getUserId());
+                    	$this->getContext()->getUser()->setAttribute('usertype', 'manager');
+                    }
+                    else if($usertype == 'administrator')
+                    {
+                    	$this->getContext()->getUser()->addCredential('administrator');
+                    	$this->getContext()->getUser()->setAttribute('name', $user->getName());
+                    	$this->getContext()->getUser()->setAttribute('user_id', $user->getUserId());
+                    	$this->getContext()->getUser()->setAttribute('usertype', 'administrator');
+                    }
+                    else
+                    {
+	
+                    }
+	
+                    return true;
 				}
-				else if($usertype == 'surveyor')
-				{
-					$this->getContext()->getUser()->addCredential('surveyor');
-					$this->getContext()->getUser()->setAttribute('name', $user->getName());
-					$this->getContext()->getUser()->setAttribute('user_id', $user->getUserId());
-					$this->getContext()->getUser()->setAttribute('usertype', 'surveyor');
-				}
-				else if($usertype == 'manager')
-				{
-					$this->getContext()->getUser()->addCredential('manager');
-					$this->getContext()->getUser()->setAttribute('name', $user->getName());
-					$this->getContext()->getUser()->setAttribute('user_id', $user->getUserId());
-					$this->getContext()->getUser()->setAttribute('usertype', 'manager');
-				}
-				else if($usertype == 'administrator')
-				{
-					$this->getContext()->getUser()->addCredential('administrator');
-					$this->getContext()->getUser()->setAttribute('name', $user->getName());
-					$this->getContext()->getUser()->setAttribute('user_id', $user->getUserId());
-					$this->getContext()->getUser()->setAttribute('usertype', 'administrator');
-				}
-				else
-				{
-
-				}
-
-				return true;
 			}
 		}
 

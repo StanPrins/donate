@@ -17,7 +17,7 @@
   </tr>
   <tr>
     <td class="name">用户名：</td>
-    <td class="content"><?php echo $user->getUserame() ?></td>
+    <td class="content"><?php echo $user->getUsername() ?></td>
   </tr>
   <tr>
     <td class="name">昵称：</td>
@@ -25,7 +25,7 @@
   </tr>
   <tr>
     <td class="name">密码：</td>
-    <td class="content"><?php echo $user->getPassword() ?></td>
+    <td class="content"><?php //echo $user->getPassword() ?></td>
   </tr>
   <tr>
     <td class="name">姓名：</td>
@@ -86,7 +86,11 @@
   </tbody>
 </table>
 
-<?php echo link_to('edit', 'user/edit?user_id='.$user->getUserId()) ?>
-&nbsp;<?php echo link_to('list', 'user/list') ?>
+<?php echo link_to('修改', 'user/edit?user_id='.$user->getUserId()) ?>&nbsp;&nbsp;&nbsp;
+<?php if ($sf_params->has('after_edit')): ?>
+<a href="javascript:history.go(-2)">返回</a>
+<?php else:?>
+<a href="javascript:history.go(-1)">返回</a>
+<?php endif;?>     
 </div>
 </div>
