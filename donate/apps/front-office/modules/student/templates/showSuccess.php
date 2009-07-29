@@ -28,7 +28,7 @@
   </tr>
   <tr>
     <td class="name">昵称：</td>
-    <td class="content"><?php echo $student->getNickname() ?></td>
+    <td class="content"><?php echo link_to("查看照片",$student->getNickname()) ?></td>
   </tr>                
   <tr>
     <td class="name">照片：</td>
