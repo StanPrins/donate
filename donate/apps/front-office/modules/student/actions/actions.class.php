@@ -136,8 +136,10 @@ public function executeListno()
   	$str = $this->getRequestParameter('student_name');
   	$school_id = $this->getRequestParameter('school_id');
   	$site_id = $this->getRequestParameter('site_id');
+  	$donated = $this->getRequestParameter('donated');
   	$c = new Criteria();
-    $c->add(StudentPeer::IS_DONATED,0);
+  	if($donated == 0)
+      $c->add(StudentPeer::IS_DONATED,0);
     $c->addJoin(StudentPeer::SCHOOL_ID, SchoolPeer::SCHOOL_ID, Criteria::LEFT_JOIN);
     if(!empty($school_id)&&($school_id!=-1))
       $c->add(StudentPeer::SCHOOL_ID,$school_id);
