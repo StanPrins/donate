@@ -7,7 +7,7 @@
 <h1>所有学生信息</h1>
 <?php
  use_helper('Javascript');
- echo form_tag('student/listall','name="Find"');?> 
+ echo form_tag('student/listall','id="Find"');?> 
 <table border=0>
 <tr><td><strong>地区：</strong></td>
 <td>
@@ -47,6 +47,12 @@ $default_site_id = empty($site_id)?-1:$site_id;
  </tr>
  </table>
  </form>
+ <?php 
+ echo observe_form('Find',array(
+ 		'update'=>'sf_admin_content',
+ 		'url'=>'student/listall',
+ 		'with'=>"Form.serialize('Find')",
+ 		'script'=>true))?>
 <?php if(sizeof($pager->getResults())>0):?>
 <table class="sf_student_list">
 	<tbody>
@@ -94,9 +100,4 @@ $default_site_id = empty($site_id)?-1:$site_id;
 </table>
 <?php endif;?>
 </div>
-<?php echo observe_form('Find',array(
- 		'update'=>'sf_admin_content',
- 		'url'=>'student/listall',
- 		'with'=>"Form.serialize('Find')",
- 		'script'=>true))?>
 </div>
