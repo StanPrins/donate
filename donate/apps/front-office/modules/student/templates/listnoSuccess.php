@@ -94,7 +94,5 @@ $default_site_id = empty($site_id)?-1:$site_id;
  		'update'=>'sf_admin_content',
  		'url'=>'student/listno',
  		'with'=>"Form.serialize('Find')",
- 		'loading'=>"Element.show('test')",
- 		'complete'=>"Element.hide('test')",
  		'script'=>true))?>
 </div>
