@@ -26,11 +26,20 @@ class studentActions extends sfActions
   	$site_id = $this->getRequestParameter('site_id');
   	$school_id = $this->getRequestParameter('school_id');
   	$student_name = $this->getRequestParameter('student_name');
-
+	
+  	$site_school = 0;
+  	if(!empty($school_id)&& ($school_id!=-1)&&!empty($site_id)&&($site_id!=-1))
+  	{
+  		$ss = new Criteria();
+  		$ss->add(SchoolPeer::SITE_ID,$site_id);
+  		$ss->add(SchoolPeer::SCHOOL_ID,$school_id);
+  		$site_school = SchoolPeer::docount($ss);
+  	}
+  	
   	$c = new Criteria();
  	$c->addJoin(StudentPeer::SCHOOL_ID, SchoolPeer::SCHOOL_ID, Criteria::LEFT_JOIN);
     
-  	if(!empty($school_id)&& ($school_id!=-1))
+  	if(!empty($school_id)&& ($school_id!=-1)&&($site_school!=0))
   	{
       $c->add(StudentPeer::SCHOOL_ID,$school_id);
       $this->school_id = $school_id;
@@ -81,12 +90,21 @@ public function executeListno()
   	$site_id = $this->getRequestParameter('site_id');
   	$school_id = $this->getRequestParameter('school_id');
   	$student_name = $this->getRequestParameter('student_name');
+  	
+  	$site_school = 0;
+  	if(!empty($school_id)&& ($school_id!=-1)&&!empty($site_id)&&($site_id!=-1))
+  	{
+  		$ss = new Criteria();
+  		$ss->add(SchoolPeer::SITE_ID,$site_id);
+  		$ss->add(SchoolPeer::SCHOOL_ID,$school_id);
+  		$site_school = SchoolPeer::docount($ss);
+  	}
 
   	$c = new Criteria();
   	$c -> add(StudentPeer::IS_DONATED, 0); 
  	$c->addJoin(StudentPeer::SCHOOL_ID, SchoolPeer::SCHOOL_ID, Criteria::LEFT_JOIN);
     
-  	if(!empty($school_id)&& ($school_id!=-1))
+  	if(!empty($school_id)&& ($school_id!=-1)&&($site_school!=0))
   	{
       $c->add(StudentPeer::SCHOOL_ID,$school_id);
       $this->school_id = $school_id;
