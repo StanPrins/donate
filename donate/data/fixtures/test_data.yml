@@ -604,9 +604,11 @@ Remit:
     is_received:    1
     receive_date:   2009-02-03
     receive_user_id:user2
+    receive_amount: 1000$
     is_sendout:     1
     sendout_date:   2009-04-05
     sendout_user_id:user3
+    sendout_amount: 1000$
     created_at:
   rem2:
     remit_id:       2
@@ -616,9 +618,11 @@ Remit:
     is_received:    1
     receive_date:   2009-02-03
     receive_user_id:user2
+    receive_amount: 1000$
     is_sendout:     1
     sendout_date:   2009-04-05
     sendout_user_id:user3
+    sendout_amount: 1000$
     created_at:
   rem3:
     remit_id:       3
@@ -628,9 +632,11 @@ Remit:
     is_received:    1
     receive_date:   2009-02-03
     receive_user_id:user2
+    receive_amount: 1000$
     is_sendout:     1
     sendout_date:   2009-04-05
     sendout_user_id:user3
+    sendout_amount: 1000$
     created_at:
   rem4:
     remit_id:       4
@@ -645,10 +651,12 @@ Remit:
     is_by_ofs:      1
     is_received:    1
     receive_date:   2009-02-03
+    receive_amount: 1000$
     receive_user_id:user2
     is_sendout:     1
     sendout_date:   2009-04-05
     sendout_user_id:user3
+    sendout_amount: 1000$
     created_at:
   rem6:
     remit_id:       6
@@ -658,9 +666,11 @@ Remit:
     is_received:    1
     receive_date:   2009-02-03
     receive_user_id:user2
+    receive_amount: 1000$
     is_sendout:     1
     sendout_date:   2009-04-05
     sendout_user_id:user3
+    sendout_amount: 1000$
     created_at:
   rem7:
     remit_id:       7
@@ -670,9 +680,11 @@ Remit:
     is_received:    1
     receive_date:   2009-02-03
     receive_user_id:user2
+    receive_amount: 1000$
     is_sendout:     1
     sendout_date:   2009-04-05
     sendout_user_id:user3
+    sendout_amount: 1000$
     created_at:
   rem8:
     remit_id:       8
@@ -682,9 +694,11 @@ Remit:
     is_received:    1
     receive_date:   2009-02-03
     receive_user_id:user2
+    receive_amount: 1000$
     is_sendout:     1
     sendout_date:   2009-04-05
     sendout_user_id:user3
+    sendout_amount: 1000$
     created_at:
 
 ReportCard:

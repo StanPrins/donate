@@ -32,8 +32,8 @@
 <div class="form-row">
   <label for="survey_student_id" class="required">被调查学生：</label> 
   <div class="content">     
-  <?php echo object_select_tag($survey, 'getUserId', array (
-    'related_class' => 'User',
+  <?php echo object_select_tag($survey, 'getStudentId', array (
+    'related_class' => 'Student',
   )) ?>
   </div>
 </div>

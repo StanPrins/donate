@@ -50,6 +50,7 @@
 			onUpdate="cascade">
 			<reference local="receive_user_id" foreign="user_id" />
 		</foreign-key>
+		<column name="receive_amount" type="varchar" size="16" />
 		<column name="is_sendout" type="boolean" default="0" />
 		<column name="sendout_date" type="date" />
 		<column name="sendout_user_id" type="integer" size="11" />
@@ -57,6 +58,7 @@
 			onUpdate="cascade">
 			<reference local="sendout_user_id" foreign="user_id" />
 		</foreign-key>
+		<column name="sendout_amount" type="varchar" size="16" />
 		<column name="created_at" type="timestamp" />
 	</table>
 

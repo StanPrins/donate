@@ -4,231 +4,231 @@
 abstract class BaseReportCard extends BaseObject  implements Persistent {
 
 
-
+	
 	protected static $peer;
 
 
-
+	
 	protected $report_id;
 
 
-
+	
 	protected $student_id;
 
 
-
+	
 	protected $user_id;
 
 
-
+	
 	protected $term;
 
 
-
+	
 	protected $yuwen;
 
 
-
+	
 	protected $shuxue;
 
 
-
+	
 	protected $yingyu;
 
 
-
+	
 	protected $wuli;
 
 
-
+	
 	protected $huaxue;
 
 
-
+	
 	protected $lishi;
 
 
-
+	
 	protected $dili;
 
 
-
+	
 	protected $ziran;
 
 
-
+	
 	protected $shengwu;
 
 
-
+	
 	protected $tiyu;
 
 
-
+	
 	protected $zhengzhi;
 
 
-
+	
 	protected $zonghe;
 
 
-
+	
 	protected $rank;
 
 
-
+	
 	protected $teacher_remark;
 
 
-
+	
 	protected $created_at;
 
-
+	
 	protected $aStudent;
 
-
+	
 	protected $aUser;
 
-
+	
 	protected $alreadyInSave = false;
 
-
+	
 	protected $alreadyInValidation = false;
 
-
+	
 	public function getReportId()
 	{
 
 		return $this->report_id;
 	}
 
-
+	
 	public function getStudentId()
 	{
 
 		return $this->student_id;
 	}
 
-
+	
 	public function getUserId()
 	{
 
 		return $this->user_id;
 	}
 
-
+	
 	public function getTerm()
 	{
 
 		return $this->term;
 	}
 
-
+	
 	public function getYuwen()
 	{
 
 		return $this->yuwen;
 	}
 
-
+	
 	public function getShuxue()
 	{
 
 		return $this->shuxue;
 	}
 
-
+	
 	public function getYingyu()
 	{
 
 		return $this->yingyu;
 	}
 
-
+	
 	public function getWuli()
 	{
 
 		return $this->wuli;
 	}
 
-
+	
 	public function getHuaxue()
 	{
 
 		return $this->huaxue;
 	}
 
-
+	
 	public function getLishi()
 	{
 
 		return $this->lishi;
 	}
 
-
+	
 	public function getDili()
 	{
 
 		return $this->dili;
 	}
 
-
+	
 	public function getZiran()
 	{
 
 		return $this->ziran;
 	}
 
-
+	
 	public function getShengwu()
 	{
 
 		return $this->shengwu;
 	}
 
-
+	
 	public function getTiyu()
 	{
 
 		return $this->tiyu;
 	}
 
-
+	
 	public function getZhengzhi()
 	{
 
 		return $this->zhengzhi;
 	}
 
-
+	
 	public function getZonghe()
 	{
 
 		return $this->zonghe;
 	}
 
-
+	
 	public function getRank()
 	{
 
 		return $this->rank;
 	}
 
-
+	
 	public function getTeacherRemark()
 	{
 
 		return $this->teacher_remark;
 	}
 
-
+	
 	public function getCreatedAt($format = 'Y-m-d H:i:s')
 	{
 
 		if ($this->created_at === null || $this->created_at === '') {
 			return null;
 		} elseif (!is_int($this->created_at)) {
-			$ts = strtotime($this->created_at);
+						$ts = strtotime($this->created_at);
 			if ($ts === -1 || $ts === false) { 				throw new PropelException("Unable to parse value of [created_at] as date/time value: " . var_export($this->created_at, true));
 			}
 		} else {
@@ -243,12 +243,12 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 		}
 	}
 
-
+	
 	public function setReportId($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -258,13 +258,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::REPORT_ID;
 		}
 
-	}
-
+	} 
+	
 	public function setStudentId($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -278,13 +278,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->aStudent = null;
 		}
 
-	}
-
+	} 
+	
 	public function setUserId($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -298,15 +298,15 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->aUser = null;
 		}
 
-	}
-
+	} 
+	
 	public function setTerm($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_string($v)) {
-			$v = (string) $v;
+			$v = (string) $v; 
 		}
 
 		if ($this->term !== $v) {
@@ -314,13 +314,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::TERM;
 		}
 
-	}
-
+	} 
+	
 	public function setYuwen($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -330,13 +330,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::YUWEN;
 		}
 
-	}
-
+	} 
+	
 	public function setShuxue($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -346,13 +346,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::SHUXUE;
 		}
 
-	}
-
+	} 
+	
 	public function setYingyu($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -362,13 +362,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::YINGYU;
 		}
 
-	}
-
+	} 
+	
 	public function setWuli($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -378,13 +378,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::WULI;
 		}
 
-	}
-
+	} 
+	
 	public function setHuaxue($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -394,13 +394,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::HUAXUE;
 		}
 
-	}
-
+	} 
+	
 	public function setLishi($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -410,13 +410,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::LISHI;
 		}
 
-	}
-
+	} 
+	
 	public function setDili($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -426,13 +426,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::DILI;
 		}
 
-	}
-
+	} 
+	
 	public function setZiran($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -442,13 +442,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::ZIRAN;
 		}
 
-	}
-
+	} 
+	
 	public function setShengwu($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -458,13 +458,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::SHENGWU;
 		}
 
-	}
-
+	} 
+	
 	public function setTiyu($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -474,13 +474,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::TIYU;
 		}
 
-	}
-
+	} 
+	
 	public function setZhengzhi($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -490,13 +490,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::ZHENGZHI;
 		}
 
-	}
-
+	} 
+	
 	public function setZonghe($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_int($v) && is_numeric($v)) {
 			$v = (int) $v;
 		}
@@ -506,15 +506,15 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::ZONGHE;
 		}
 
-	}
-
+	} 
+	
 	public function setRank($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_string($v)) {
-			$v = (string) $v;
+			$v = (string) $v; 
 		}
 
 		if ($this->rank !== $v) {
@@ -522,15 +522,15 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::RANK;
 		}
 
-	}
-
+	} 
+	
 	public function setTeacherRemark($v)
 	{
 
-
-
+		
+		
 		if ($v !== null && !is_string($v)) {
-			$v = (string) $v;
+			$v = (string) $v; 
 		}
 
 		if ($this->teacher_remark !== $v) {
@@ -538,8 +538,8 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::TEACHER_REMARK;
 		}
 
-	}
-
+	} 
+	
 	public function setCreatedAt($v)
 	{
 
@@ -555,8 +555,8 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = ReportCardPeer::CREATED_AT;
 		}
 
-	}
-
+	} 
+	
 	public function hydrate(ResultSet $rs, $startcol = 1)
 	{
 		try {
@@ -603,13 +603,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 
 			$this->setNew(false);
 
-			return $startcol + 19;
+						return $startcol + 19; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating ReportCard object", $e);
 		}
 	}
 
-
+	
 	public function delete($con = null)
 	{
 		if ($this->isDeleted()) {
@@ -631,13 +631,13 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 		}
 	}
 
-
+	
 	public function save($con = null)
 	{
-		if ($this->isNew() && !$this->isColumnModified(ReportCardPeer::CREATED_AT))
-		{
-			$this->setCreatedAt(time());
-		}
+    if ($this->isNew() && !$this->isColumnModified(ReportCardPeer::CREATED_AT))
+    {
+      $this->setCreatedAt(time());
+    }
 
 		if ($this->isDeleted()) {
 			throw new PropelException("You cannot save an object that has been deleted.");
@@ -658,14 +658,14 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 		}
 	}
 
-
+	
 	protected function doSave($con)
 	{
 		$affectedRows = 0; 		if (!$this->alreadyInSave) {
 			$this->alreadyInSave = true;
 
 
-
+												
 			if ($this->aStudent !== null) {
 				if ($this->aStudent->isModified()) {
 					$affectedRows += $this->aStudent->save($con);
@@ -681,31 +681,31 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			}
 
 
-			if ($this->isModified()) {
+						if ($this->isModified()) {
 				if ($this->isNew()) {
 					$pk = ReportCardPeer::doInsert($this, $con);
-					$affectedRows += 1;
-					$this->setReportId($pk);
+					$affectedRows += 1; 										 										 
+					$this->setReportId($pk);  
 					$this->setNew(false);
 				} else {
 					$affectedRows += ReportCardPeer::doUpdate($this, $con);
 				}
 				$this->resetModified(); 			}
 
-				$this->alreadyInSave = false;
+			$this->alreadyInSave = false;
 		}
 		return $affectedRows;
-	}
-
+	} 
+	
 	protected $validationFailures = array();
 
-
+	
 	public function getValidationFailures()
 	{
 		return $this->validationFailures;
 	}
 
-
+	
 	public function validate($columns = null)
 	{
 		$res = $this->doValidate($columns);
@@ -718,7 +718,7 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 		}
 	}
 
-
+	
 	protected function doValidate($columns = null)
 	{
 		if (!$this->alreadyInValidation) {
@@ -728,7 +728,7 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$failureMap = array();
 
 
-
+												
 			if ($this->aStudent !== null) {
 				if (!$this->aStudent->validate($columns)) {
 					$failureMap = array_merge($failureMap, $this->aStudent->getValidationFailures());
@@ -754,14 +754,14 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 		return (!empty($failureMap) ? $failureMap : true);
 	}
 
-
+	
 	public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
 	{
 		$pos = ReportCardPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		return $this->getByPosition($pos);
 	}
 
-
+	
 	public function getByPosition($pos)
 	{
 		switch($pos) {
@@ -827,11 +827,11 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 				break;
 		} 	}
 
-
-		public function toArray($keyType = BasePeer::TYPE_PHPNAME)
-		{
-			$keys = ReportCardPeer::getFieldNames($keyType);
-			$result = array(
+	
+	public function toArray($keyType = BasePeer::TYPE_PHPNAME)
+	{
+		$keys = ReportCardPeer::getFieldNames($keyType);
+		$result = array(
 			$keys[0] => $this->getReportId(),
 			$keys[1] => $this->getStudentId(),
 			$keys[2] => $this->getUserId(),
@@ -851,276 +851,276 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			$keys[16] => $this->getRank(),
 			$keys[17] => $this->getTeacherRemark(),
 			$keys[18] => $this->getCreatedAt(),
-			);
-			return $result;
-		}
+		);
+		return $result;
+	}
+
+	
+	public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
+	{
+		$pos = ReportCardPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		return $this->setByPosition($pos, $value);
+	}
+
+	
+	public function setByPosition($pos, $value)
+	{
+		switch($pos) {
+			case 0:
+				$this->setReportId($value);
+				break;
+			case 1:
+				$this->setStudentId($value);
+				break;
+			case 2:
+				$this->setUserId($value);
+				break;
+			case 3:
+				$this->setTerm($value);
+				break;
+			case 4:
+				$this->setYuwen($value);
+				break;
+			case 5:
+				$this->setShuxue($value);
+				break;
+			case 6:
+				$this->setYingyu($value);
+				break;
+			case 7:
+				$this->setWuli($value);
+				break;
+			case 8:
+				$this->setHuaxue($value);
+				break;
+			case 9:
+				$this->setLishi($value);
+				break;
+			case 10:
+				$this->setDili($value);
+				break;
+			case 11:
+				$this->setZiran($value);
+				break;
+			case 12:
+				$this->setShengwu($value);
+				break;
+			case 13:
+				$this->setTiyu($value);
+				break;
+			case 14:
+				$this->setZhengzhi($value);
+				break;
+			case 15:
+				$this->setZonghe($value);
+				break;
+			case 16:
+				$this->setRank($value);
+				break;
+			case 17:
+				$this->setTeacherRemark($value);
+				break;
+			case 18:
+				$this->setCreatedAt($value);
+				break;
+		} 	}
+
+	
+	public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
+	{
+		$keys = ReportCardPeer::getFieldNames($keyType);
+
+		if (array_key_exists($keys[0], $arr)) $this->setReportId($arr[$keys[0]]);
+		if (array_key_exists($keys[1], $arr)) $this->setStudentId($arr[$keys[1]]);
+		if (array_key_exists($keys[2], $arr)) $this->setUserId($arr[$keys[2]]);
+		if (array_key_exists($keys[3], $arr)) $this->setTerm($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setYuwen($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setShuxue($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setYingyu($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setWuli($arr[$keys[7]]);
+		if (array_key_exists($keys[8], $arr)) $this->setHuaxue($arr[$keys[8]]);
+		if (array_key_exists($keys[9], $arr)) $this->setLishi($arr[$keys[9]]);
+		if (array_key_exists($keys[10], $arr)) $this->setDili($arr[$keys[10]]);
+		if (array_key_exists($keys[11], $arr)) $this->setZiran($arr[$keys[11]]);
+		if (array_key_exists($keys[12], $arr)) $this->setShengwu($arr[$keys[12]]);
+		if (array_key_exists($keys[13], $arr)) $this->setTiyu($arr[$keys[13]]);
+		if (array_key_exists($keys[14], $arr)) $this->setZhengzhi($arr[$keys[14]]);
+		if (array_key_exists($keys[15], $arr)) $this->setZonghe($arr[$keys[15]]);
+		if (array_key_exists($keys[16], $arr)) $this->setRank($arr[$keys[16]]);
+		if (array_key_exists($keys[17], $arr)) $this->setTeacherRemark($arr[$keys[17]]);
+		if (array_key_exists($keys[18], $arr)) $this->setCreatedAt($arr[$keys[18]]);
+	}
+
+	
+	public function buildCriteria()
+	{
+		$criteria = new Criteria(ReportCardPeer::DATABASE_NAME);
+
+		if ($this->isColumnModified(ReportCardPeer::REPORT_ID)) $criteria->add(ReportCardPeer::REPORT_ID, $this->report_id);
+		if ($this->isColumnModified(ReportCardPeer::STUDENT_ID)) $criteria->add(ReportCardPeer::STUDENT_ID, $this->student_id);
+		if ($this->isColumnModified(ReportCardPeer::USER_ID)) $criteria->add(ReportCardPeer::USER_ID, $this->user_id);
+		if ($this->isColumnModified(ReportCardPeer::TERM)) $criteria->add(ReportCardPeer::TERM, $this->term);
+		if ($this->isColumnModified(ReportCardPeer::YUWEN)) $criteria->add(ReportCardPeer::YUWEN, $this->yuwen);
+		if ($this->isColumnModified(ReportCardPeer::SHUXUE)) $criteria->add(ReportCardPeer::SHUXUE, $this->shuxue);
+		if ($this->isColumnModified(ReportCardPeer::YINGYU)) $criteria->add(ReportCardPeer::YINGYU, $this->yingyu);
+		if ($this->isColumnModified(ReportCardPeer::WULI)) $criteria->add(ReportCardPeer::WULI, $this->wuli);
+		if ($this->isColumnModified(ReportCardPeer::HUAXUE)) $criteria->add(ReportCardPeer::HUAXUE, $this->huaxue);
+		if ($this->isColumnModified(ReportCardPeer::LISHI)) $criteria->add(ReportCardPeer::LISHI, $this->lishi);
+		if ($this->isColumnModified(ReportCardPeer::DILI)) $criteria->add(ReportCardPeer::DILI, $this->dili);
+		if ($this->isColumnModified(ReportCardPeer::ZIRAN)) $criteria->add(ReportCardPeer::ZIRAN, $this->ziran);
+		if ($this->isColumnModified(ReportCardPeer::SHENGWU)) $criteria->add(ReportCardPeer::SHENGWU, $this->shengwu);
+		if ($this->isColumnModified(ReportCardPeer::TIYU)) $criteria->add(ReportCardPeer::TIYU, $this->tiyu);
+		if ($this->isColumnModified(ReportCardPeer::ZHENGZHI)) $criteria->add(ReportCardPeer::ZHENGZHI, $this->zhengzhi);
+		if ($this->isColumnModified(ReportCardPeer::ZONGHE)) $criteria->add(ReportCardPeer::ZONGHE, $this->zonghe);
+		if ($this->isColumnModified(ReportCardPeer::RANK)) $criteria->add(ReportCardPeer::RANK, $this->rank);
+		if ($this->isColumnModified(ReportCardPeer::TEACHER_REMARK)) $criteria->add(ReportCardPeer::TEACHER_REMARK, $this->teacher_remark);
+		if ($this->isColumnModified(ReportCardPeer::CREATED_AT)) $criteria->add(ReportCardPeer::CREATED_AT, $this->created_at);
+
+		return $criteria;
+	}
+
+	
+	public function buildPkeyCriteria()
+	{
+		$criteria = new Criteria(ReportCardPeer::DATABASE_NAME);
+
+		$criteria->add(ReportCardPeer::REPORT_ID, $this->report_id);
+
+		return $criteria;
+	}
+
+	
+	public function getPrimaryKey()
+	{
+		return $this->getReportId();
+	}
+
+	
+	public function setPrimaryKey($key)
+	{
+		$this->setReportId($key);
+	}
+
+	
+	public function copyInto($copyObj, $deepCopy = false)
+	{
+
+		$copyObj->setStudentId($this->student_id);
+
+		$copyObj->setUserId($this->user_id);
+
+		$copyObj->setTerm($this->term);
+
+		$copyObj->setYuwen($this->yuwen);
+
+		$copyObj->setShuxue($this->shuxue);
+
+		$copyObj->setYingyu($this->yingyu);
+
+		$copyObj->setWuli($this->wuli);
+
+		$copyObj->setHuaxue($this->huaxue);
+
+		$copyObj->setLishi($this->lishi);
+
+		$copyObj->setDili($this->dili);
+
+		$copyObj->setZiran($this->ziran);
+
+		$copyObj->setShengwu($this->shengwu);
+
+		$copyObj->setTiyu($this->tiyu);
+
+		$copyObj->setZhengzhi($this->zhengzhi);
+
+		$copyObj->setZonghe($this->zonghe);
+
+		$copyObj->setRank($this->rank);
+
+		$copyObj->setTeacherRemark($this->teacher_remark);
+
+		$copyObj->setCreatedAt($this->created_at);
 
 
-		public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
-		{
-			$pos = ReportCardPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
-			return $this->setByPosition($pos, $value);
-		}
+		$copyObj->setNew(true);
 
+		$copyObj->setReportId(NULL); 
+	}
 
-		public function setByPosition($pos, $value)
-		{
-			switch($pos) {
-				case 0:
-					$this->setReportId($value);
-					break;
-				case 1:
-					$this->setStudentId($value);
-					break;
-				case 2:
-					$this->setUserId($value);
-					break;
-				case 3:
-					$this->setTerm($value);
-					break;
-				case 4:
-					$this->setYuwen($value);
-					break;
-				case 5:
-					$this->setShuxue($value);
-					break;
-				case 6:
-					$this->setYingyu($value);
-					break;
-				case 7:
-					$this->setWuli($value);
-					break;
-				case 8:
-					$this->setHuaxue($value);
-					break;
-				case 9:
-					$this->setLishi($value);
-					break;
-				case 10:
-					$this->setDili($value);
-					break;
-				case 11:
-					$this->setZiran($value);
-					break;
-				case 12:
-					$this->setShengwu($value);
-					break;
-				case 13:
-					$this->setTiyu($value);
-					break;
-				case 14:
-					$this->setZhengzhi($value);
-					break;
-				case 15:
-					$this->setZonghe($value);
-					break;
-				case 16:
-					$this->setRank($value);
-					break;
-				case 17:
-					$this->setTeacherRemark($value);
-					break;
-				case 18:
-					$this->setCreatedAt($value);
-					break;
-			} 	}
-
-
-			public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
-			{
-				$keys = ReportCardPeer::getFieldNames($keyType);
-
-				if (array_key_exists($keys[0], $arr)) $this->setReportId($arr[$keys[0]]);
-				if (array_key_exists($keys[1], $arr)) $this->setStudentId($arr[$keys[1]]);
-				if (array_key_exists($keys[2], $arr)) $this->setUserId($arr[$keys[2]]);
-				if (array_key_exists($keys[3], $arr)) $this->setTerm($arr[$keys[3]]);
-				if (array_key_exists($keys[4], $arr)) $this->setYuwen($arr[$keys[4]]);
-				if (array_key_exists($keys[5], $arr)) $this->setShuxue($arr[$keys[5]]);
-				if (array_key_exists($keys[6], $arr)) $this->setYingyu($arr[$keys[6]]);
-				if (array_key_exists($keys[7], $arr)) $this->setWuli($arr[$keys[7]]);
-				if (array_key_exists($keys[8], $arr)) $this->setHuaxue($arr[$keys[8]]);
-				if (array_key_exists($keys[9], $arr)) $this->setLishi($arr[$keys[9]]);
-				if (array_key_exists($keys[10], $arr)) $this->setDili($arr[$keys[10]]);
-				if (array_key_exists($keys[11], $arr)) $this->setZiran($arr[$keys[11]]);
-				if (array_key_exists($keys[12], $arr)) $this->setShengwu($arr[$keys[12]]);
-				if (array_key_exists($keys[13], $arr)) $this->setTiyu($arr[$keys[13]]);
-				if (array_key_exists($keys[14], $arr)) $this->setZhengzhi($arr[$keys[14]]);
-				if (array_key_exists($keys[15], $arr)) $this->setZonghe($arr[$keys[15]]);
-				if (array_key_exists($keys[16], $arr)) $this->setRank($arr[$keys[16]]);
-				if (array_key_exists($keys[17], $arr)) $this->setTeacherRemark($arr[$keys[17]]);
-				if (array_key_exists($keys[18], $arr)) $this->setCreatedAt($arr[$keys[18]]);
-			}
-
-
-			public function buildCriteria()
-			{
-				$criteria = new Criteria(ReportCardPeer::DATABASE_NAME);
-
-				if ($this->isColumnModified(ReportCardPeer::REPORT_ID)) $criteria->add(ReportCardPeer::REPORT_ID, $this->report_id);
-				if ($this->isColumnModified(ReportCardPeer::STUDENT_ID)) $criteria->add(ReportCardPeer::STUDENT_ID, $this->student_id);
-				if ($this->isColumnModified(ReportCardPeer::USER_ID)) $criteria->add(ReportCardPeer::USER_ID, $this->user_id);
-				if ($this->isColumnModified(ReportCardPeer::TERM)) $criteria->add(ReportCardPeer::TERM, $this->term);
-				if ($this->isColumnModified(ReportCardPeer::YUWEN)) $criteria->add(ReportCardPeer::YUWEN, $this->yuwen);
-				if ($this->isColumnModified(ReportCardPeer::SHUXUE)) $criteria->add(ReportCardPeer::SHUXUE, $this->shuxue);
-				if ($this->isColumnModified(ReportCardPeer::YINGYU)) $criteria->add(ReportCardPeer::YINGYU, $this->yingyu);
-				if ($this->isColumnModified(ReportCardPeer::WULI)) $criteria->add(ReportCardPeer::WULI, $this->wuli);
-				if ($this->isColumnModified(ReportCardPeer::HUAXUE)) $criteria->add(ReportCardPeer::HUAXUE, $this->huaxue);
-				if ($this->isColumnModified(ReportCardPeer::LISHI)) $criteria->add(ReportCardPeer::LISHI, $this->lishi);
-				if ($this->isColumnModified(ReportCardPeer::DILI)) $criteria->add(ReportCardPeer::DILI, $this->dili);
-				if ($this->isColumnModified(ReportCardPeer::ZIRAN)) $criteria->add(ReportCardPeer::ZIRAN, $this->ziran);
-				if ($this->isColumnModified(ReportCardPeer::SHENGWU)) $criteria->add(ReportCardPeer::SHENGWU, $this->shengwu);
-				if ($this->isColumnModified(ReportCardPeer::TIYU)) $criteria->add(ReportCardPeer::TIYU, $this->tiyu);
-				if ($this->isColumnModified(ReportCardPeer::ZHENGZHI)) $criteria->add(ReportCardPeer::ZHENGZHI, $this->zhengzhi);
-				if ($this->isColumnModified(ReportCardPeer::ZONGHE)) $criteria->add(ReportCardPeer::ZONGHE, $this->zonghe);
-				if ($this->isColumnModified(ReportCardPeer::RANK)) $criteria->add(ReportCardPeer::RANK, $this->rank);
-				if ($this->isColumnModified(ReportCardPeer::TEACHER_REMARK)) $criteria->add(ReportCardPeer::TEACHER_REMARK, $this->teacher_remark);
-				if ($this->isColumnModified(ReportCardPeer::CREATED_AT)) $criteria->add(ReportCardPeer::CREATED_AT, $this->created_at);
-
-				return $criteria;
-			}
-
-
-			public function buildPkeyCriteria()
-			{
-				$criteria = new Criteria(ReportCardPeer::DATABASE_NAME);
-
-				$criteria->add(ReportCardPeer::REPORT_ID, $this->report_id);
-
-				return $criteria;
-			}
-
-
-			public function getPrimaryKey()
-			{
-				return $this->getReportId();
-			}
-
-
-			public function setPrimaryKey($key)
-			{
-				$this->setReportId($key);
-			}
-
-
-			public function copyInto($copyObj, $deepCopy = false)
-			{
-
-				$copyObj->setStudentId($this->student_id);
-
-				$copyObj->setUserId($this->user_id);
-
-				$copyObj->setTerm($this->term);
-
-				$copyObj->setYuwen($this->yuwen);
-
-				$copyObj->setShuxue($this->shuxue);
-
-				$copyObj->setYingyu($this->yingyu);
-
-				$copyObj->setWuli($this->wuli);
-
-				$copyObj->setHuaxue($this->huaxue);
-
-				$copyObj->setLishi($this->lishi);
-
-				$copyObj->setDili($this->dili);
-
-				$copyObj->setZiran($this->ziran);
-
-				$copyObj->setShengwu($this->shengwu);
-
-				$copyObj->setTiyu($this->tiyu);
-
-				$copyObj->setZhengzhi($this->zhengzhi);
-
-				$copyObj->setZonghe($this->zonghe);
-
-				$copyObj->setRank($this->rank);
-
-				$copyObj->setTeacherRemark($this->teacher_remark);
-
-				$copyObj->setCreatedAt($this->created_at);
-
-
-				$copyObj->setNew(true);
-
-				$copyObj->setReportId(NULL);
-			}
-
-
-			public function copy($deepCopy = false)
-			{
+	
+	public function copy($deepCopy = false)
+	{
 				$clazz = get_class($this);
-				$copyObj = new $clazz();
-				$this->copyInto($copyObj, $deepCopy);
-				return $copyObj;
-			}
+		$copyObj = new $clazz();
+		$this->copyInto($copyObj, $deepCopy);
+		return $copyObj;
+	}
+
+	
+	public function getPeer()
+	{
+		if (self::$peer === null) {
+			self::$peer = new ReportCardPeer();
+		}
+		return self::$peer;
+	}
+
+	
+	public function setStudent($v)
+	{
 
 
-			public function getPeer()
-			{
-				if (self::$peer === null) {
-					self::$peer = new ReportCardPeer();
-				}
-				return self::$peer;
-			}
+		if ($v === null) {
+			$this->setStudentId(NULL);
+		} else {
+			$this->setStudentId($v->getStudentId());
+		}
 
 
-			public function setStudent($v)
-			{
+		$this->aStudent = $v;
+	}
 
 
-				if ($v === null) {
-					$this->setStudentId(NULL);
-				} else {
-					$this->setStudentId($v->getStudentId());
-				}
+	
+	public function getStudent($con = null)
+	{
+		if ($this->aStudent === null && ($this->student_id !== null)) {
+						include_once 'lib/model/om/BaseStudentPeer.php';
+
+			$this->aStudent = StudentPeer::retrieveByPK($this->student_id, $con);
+
+			
+		}
+		return $this->aStudent;
+	}
+
+	
+	public function setUser($v)
+	{
 
 
-				$this->aStudent = $v;
-			}
+		if ($v === null) {
+			$this->setUserId(NULL);
+		} else {
+			$this->setUserId($v->getUserId());
+		}
 
 
-
-			public function getStudent($con = null)
-			{
-				if ($this->aStudent === null && ($this->student_id !== null)) {
-					include_once 'lib/model/om/BaseStudentPeer.php';
-
-					$this->aStudent = StudentPeer::retrieveByPK($this->student_id, $con);
-
-						
-				}
-				return $this->aStudent;
-			}
+		$this->aUser = $v;
+	}
 
 
-			public function setUser($v)
-			{
+	
+	public function getUser($con = null)
+	{
+		if ($this->aUser === null && ($this->user_id !== null)) {
+						include_once 'lib/model/om/BaseUserPeer.php';
 
+			$this->aUser = UserPeer::retrieveByPK($this->user_id, $con);
 
-				if ($v === null) {
-					$this->setUserId(NULL);
-				} else {
-					$this->setUserId($v->getUserId());
-				}
+			
+		}
+		return $this->aUser;
+	}
 
-
-				$this->aUser = $v;
-			}
-
-
-
-			public function getUser($con = null)
-			{
-				if ($this->aUser === null && ($this->user_id !== null)) {
-					include_once 'lib/model/om/BaseUserPeer.php';
-
-					$this->aUser = UserPeer::retrieveByPK($this->user_id, $con);
-
-						
-				}
-				return $this->aUser;
-			}
-
-}
+} 

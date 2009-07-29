@@ -92,7 +92,7 @@ class reportcardActions extends sfActions
 
 		$report_card->save();
 
-		return $this->redirect('reportcard/show?report_id='.$report_card->getReportId());
+		return $this->redirect('reportcard/show?report_id='.$report_card->getReportId().'&after_edit=1');
 	}
 
 	public function executeDelete()

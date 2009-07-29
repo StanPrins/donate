@@ -17,9 +17,11 @@
   <th>OFS收到</th>
   <th>到款日</th>
   <th>收款人</th>
+  <th>到款金额</th>
   <th>OFS送出</th>
   <th>送款日</th>
   <th>送款人</th>
+  <th>送出金额</th>
   <th>操作</th>
 </tr>
 </thead>
@@ -42,6 +44,7 @@
       </td>
       <td><?php echo $remit->getReceiveDate() ?></td>
       <td><?php if($remit->getReceiveUserId()) echo $remit->getUserRelatedByReceiveUserId()->getName();?></td>
+      <td><?php echo $remit->getReceiveAmount() ?></td>
       <td><?php 
           if($remit->getIsSendout())
 	 		 echo image_tag('admin_db/tick.png');
@@ -51,11 +54,11 @@
       </td>      
       <td><?php echo $remit->getSendoutDate() ?></td>
       <td><?php if($remit->getSendoutUserId()) echo $remit->getUserRelatedBySendoutUserId()->getName();  ?></td>      
-     
+      <td><?php echo $remit->getSendoutAmount() ?></td>
      
       <?php else:?>
       <td><?php echo image_tag('admin_db/x.png');?></td>  
-      <td>---</td><td>---</td><td>---</td>
+      <td>---</td><td>---</td><td>---</td><td>---</td>
       <td><?php 
           if($remit->getIsSendout())
 	 		 echo image_tag('admin_db/tick.png');
@@ -64,22 +67,23 @@
           ?>
       </td>
       <td><?php echo $remit->getSendoutDate() ?></td>
-      <td>---</td>               
+      <td>---</td><td>---</td>               
       <?php endif;?>
 
 
       <td><?php echo link_to('详情', 'remit/show?remit_id='.$remit->getRemitId())?>&nbsp;&nbsp;
-          <?php if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
+          <?php 
+                echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId()); echo "&nbsp;&nbsp;";
+                if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
                     || ($sf_user->getAttribute('usertype', '')=='administrator'))
-                {      
-                   echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId()); echo "&nbsp;&nbsp;";
+                {  
                    echo link_to('删除', 'remit/delete?remit_id='.$remit->getRemitId(), 'post=true&confirm=真的要删除么？'); 
                 }
-                else if (!($remit->getIsByOfs()))
+                /*else if (!($remit->getIsByOfs()))
                 {
                    echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId()); echo "&nbsp;&nbsp;";
                 }
-                else;
+                else;*/
           ?>
       </td>         
             

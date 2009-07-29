@@ -4,25 +4,25 @@
 
 class ProjectSiteMapBuilder {
 
-
+	
 	const CLASS_NAME = 'lib.model.map.ProjectSiteMapBuilder';
 
-
+	
 	private $dbMap;
 
-
+	
 	public function isBuilt()
 	{
 		return ($this->dbMap !== null);
 	}
 
-
+	
 	public function getDatabaseMap()
 	{
 		return $this->dbMap;
 	}
 
-
+	
 	public function doBuild()
 	{
 		$this->dbMap = Propel::getDatabaseMap('propel');
@@ -44,5 +44,5 @@ class ProjectSiteMapBuilder {
 
 		$tMap->addColumn('DISCRIPTION', 'Discription', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
-	}
-}
+	} 
+} 
