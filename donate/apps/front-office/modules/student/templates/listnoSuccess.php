@@ -7,8 +7,8 @@
 <h1>需要资助学生信息</h1>
 <?php
  use_helper('Javascript');
- echo form_tag('student/listno','name="Find"');?> 
-<table border=0>
+ echo form_tag('student/listno','id="Find"');?> 
+<table class="sf_student_list">
 <tr><td><strong>地区：</strong></td>
 <td>
 <select name="site_id">
@@ -89,10 +89,10 @@ $default_site_id = empty($site_id)?-1:$site_id;
 <tr><td align="center">无相关记录</td></tr>
 </table>
 <?php endif;?>
-</div>
 <?php echo observe_form('Find',array(
  		'update'=>'sf_admin_content',
  		'url'=>'student/listno',
  		'with'=>"Form.serialize('Find')",
  		'script'=>true))?>
+</div>
 </div>
