@@ -221,6 +221,7 @@
 		<column name="mobile" type="varchar" size="16" />
 		<column name="tel" type="varchar" size="16" />
 		<column name="usertype" type="varchar" size="16" required="true" />
+		<column name="approve" type="boolean" default="0" />
 		<column name="identity" type="varchar" size="16" />
 		<column name="email" type="varchar" size="32" />
 		<column name="qq" type="varchar" size="32" />
