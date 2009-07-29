@@ -12,16 +12,19 @@
 
 <?php echo object_input_hidden_tag($user, 'getUserId') ?>
 
+
 <div id="sf_admin_content">
 
 <fieldset id="sf_fieldset_none" class="">
 
 <div class="form-row">
   <label for="user_username" class="required">用户名：</label> 
-  <div class="content">    
-  <?php echo object_input_tag($user, 'getUserName', array (
-  'size' => 20,
-  )) ?>
+  <div class="content">
+  <?php if($user->getUserName())
+          echo $user->getUserName();
+        else        
+           echo object_input_tag($user, 'getUserName', array ('size' => 20));
+  ?>
   </div>
 </div>  
 
@@ -35,11 +38,9 @@
 </div>  
 
 <div class="form-row">
-  <label for="user_password" class="required">密码：</label> 
+  <label for="user_password" class="required">输入新密码：</label> 
   <div class="content">    
-  <?php echo object_input_tag($user, 'getPassword', array (
-  'size' => 80,
-  )) ?>
+  <?php echo input_tag('password') ?>
   </div>
 </div>  
 
@@ -91,7 +92,7 @@
 <div class="form-row">
   <label for="user_created_at" class="required">创建日期：</label> 
   <div class="content">    
-  <?php echo object_input_date_tag($user, 'getCreateAt', array (
+  <?php echo object_input_date_tag($user, 'getCreatedAt', array (
   'rich' => true,
   'withtime' => true,
   )) ?>
@@ -119,9 +120,22 @@
 <div class="form-row">
   <label for="user_role" class="required">权限：</label> 
   <div class="content">    
-  <?php echo object_input_tag($user, 'getUsertype', array (
-  'size' => 7,
-  )) ?>
+  <?php
+     if ( ($sf_user->getAttribute('usertype', '')=='manager') || ($sf_user->getAttribute('usertype', '')=='administrator'))
+     {
+        echo select_tag('usertype', options_for_select(array(
+                     'volunteer'  => '普通志愿者',
+                     'surveyor'   => '调查员',
+                     'manager'    => '管理员',
+                    ), 'volunteer'));
+     }
+     else
+     {
+        echo input_hidden_tag('usertype', 'volunteer');
+     }
+
+  ?>
+
   </div>
 </div>  
 

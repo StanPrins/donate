@@ -14,11 +14,6 @@
  */
 class remitActions extends sfActions
 {
-	public function executeIndex()
-	{
-		return $this->forward('remit', 'list');
-	}
-
 	public function executeListdonate()
 	{
 		$c = new Criteria();
@@ -75,6 +70,7 @@ class remitActions extends sfActions
 			$remit->setReceiveDate("$y-$m-$d");
 		}
 		$remit->setReceiveUserId($this->getRequestParameter('receive_user_id') ? $this->getRequestParameter('receive_user_id') : null);
+		$remit->setReceiveAmount($this->getRequestParameter('receive_amount'));
 		$remit->setIsSendout($this->getRequestParameter('is_sendout', 0));
 		if ($this->getRequestParameter('sendout_date'))
 		{
@@ -82,6 +78,7 @@ class remitActions extends sfActions
 			$remit->setSendoutDate("$y-$m-$d");
 		}
 		$remit->setSendoutUserId($this->getRequestParameter('sendout_user_id') ? $this->getRequestParameter('sendout_user_id') : null);
+		$remit->setSendoutAmount($this->getRequestParameter('sendout_amount'));
 
 		$remit->save();
 

@@ -3,67 +3,67 @@
 
 abstract class BaseProjectSitePeer {
 
-
+	
 	const DATABASE_NAME = 'propel';
 
-
+	
 	const TABLE_NAME = 'projectsite';
 
-
+	
 	const CLASS_DEFAULT = 'lib.model.ProjectSite';
 
-
+	
 	const NUM_COLUMNS = 6;
 
-
+	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
 
 
-
+	
 	const SITE_ID = 'projectsite.SITE_ID';
 
-
+	
 	const SITE_NAME = 'projectsite.SITE_NAME';
 
-
+	
 	const PROVINCE = 'projectsite.PROVINCE';
 
-
+	
 	const CITY = 'projectsite.CITY';
 
-
+	
 	const DISTRICT = 'projectsite.DISTRICT';
 
-
+	
 	const DISCRIPTION = 'projectsite.DISCRIPTION';
 
-
+	
 	private static $phpNameMap = null;
 
 
-
+	
 	private static $fieldNames = array (
-	BasePeer::TYPE_PHPNAME => array ('SiteId', 'SiteName', 'Province', 'City', 'District', 'Discription', ),
-	BasePeer::TYPE_COLNAME => array (ProjectSitePeer::SITE_ID, ProjectSitePeer::SITE_NAME, ProjectSitePeer::PROVINCE, ProjectSitePeer::CITY, ProjectSitePeer::DISTRICT, ProjectSitePeer::DISCRIPTION, ),
-	BasePeer::TYPE_FIELDNAME => array ('site_id', 'site_name', 'province', 'city', 'district', 'discription', ),
-	BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
+		BasePeer::TYPE_PHPNAME => array ('SiteId', 'SiteName', 'Province', 'City', 'District', 'Discription', ),
+		BasePeer::TYPE_COLNAME => array (ProjectSitePeer::SITE_ID, ProjectSitePeer::SITE_NAME, ProjectSitePeer::PROVINCE, ProjectSitePeer::CITY, ProjectSitePeer::DISTRICT, ProjectSitePeer::DISCRIPTION, ),
+		BasePeer::TYPE_FIELDNAME => array ('site_id', 'site_name', 'province', 'city', 'district', 'discription', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
 	);
 
-
+	
 	private static $fieldKeys = array (
-	BasePeer::TYPE_PHPNAME => array ('SiteId' => 0, 'SiteName' => 1, 'Province' => 2, 'City' => 3, 'District' => 4, 'Discription' => 5, ),
-	BasePeer::TYPE_COLNAME => array (ProjectSitePeer::SITE_ID => 0, ProjectSitePeer::SITE_NAME => 1, ProjectSitePeer::PROVINCE => 2, ProjectSitePeer::CITY => 3, ProjectSitePeer::DISTRICT => 4, ProjectSitePeer::DISCRIPTION => 5, ),
-	BasePeer::TYPE_FIELDNAME => array ('site_id' => 0, 'site_name' => 1, 'province' => 2, 'city' => 3, 'district' => 4, 'discription' => 5, ),
-	BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
+		BasePeer::TYPE_PHPNAME => array ('SiteId' => 0, 'SiteName' => 1, 'Province' => 2, 'City' => 3, 'District' => 4, 'Discription' => 5, ),
+		BasePeer::TYPE_COLNAME => array (ProjectSitePeer::SITE_ID => 0, ProjectSitePeer::SITE_NAME => 1, ProjectSitePeer::PROVINCE => 2, ProjectSitePeer::CITY => 3, ProjectSitePeer::DISTRICT => 4, ProjectSitePeer::DISCRIPTION => 5, ),
+		BasePeer::TYPE_FIELDNAME => array ('site_id' => 0, 'site_name' => 1, 'province' => 2, 'city' => 3, 'district' => 4, 'discription' => 5, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
 	);
 
-
+	
 	public static function getMapBuilder()
 	{
 		include_once 'lib/model/map/ProjectSiteMapBuilder.php';
 		return BasePeer::getMapBuilder('lib.model.map.ProjectSiteMapBuilder');
 	}
-
+	
 	public static function getPhpNameMap()
 	{
 		if (self::$phpNameMap === null) {
@@ -77,7 +77,7 @@ abstract class BaseProjectSitePeer {
 		}
 		return self::$phpNameMap;
 	}
-
+	
 	static public function translateFieldName($name, $fromType, $toType)
 	{
 		$toNames = self::getFieldNames($toType);
@@ -88,7 +88,7 @@ abstract class BaseProjectSitePeer {
 		return $toNames[$key];
 	}
 
-
+	
 
 	static public function getFieldNames($type = BasePeer::TYPE_PHPNAME)
 	{
@@ -98,13 +98,13 @@ abstract class BaseProjectSitePeer {
 		return self::$fieldNames[$type];
 	}
 
-
+	
 	public static function alias($alias, $column)
 	{
 		return str_replace(ProjectSitePeer::TABLE_NAME.'.', $alias.'.', $column);
 	}
 
-
+	
 	public static function addSelectColumns(Criteria $criteria)
 	{
 
@@ -125,19 +125,19 @@ abstract class BaseProjectSitePeer {
 	const COUNT = 'COUNT(projectsite.SITE_ID)';
 	const COUNT_DISTINCT = 'COUNT(DISTINCT projectsite.SITE_ID)';
 
-
+	
 	public static function doCount(Criteria $criteria, $distinct = false, $con = null)
 	{
-		$criteria = clone $criteria;
+				$criteria = clone $criteria;
 
-		$criteria->clearSelectColumns()->clearOrderByColumns();
+				$criteria->clearSelectColumns()->clearOrderByColumns();
 		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->addSelectColumn(ProjectSitePeer::COUNT_DISTINCT);
 		} else {
 			$criteria->addSelectColumn(ProjectSitePeer::COUNT);
 		}
 
-		foreach($criteria->getGroupByColumns() as $column)
+				foreach($criteria->getGroupByColumns() as $column)
 		{
 			$criteria->addSelectColumn($column);
 		}
@@ -146,10 +146,10 @@ abstract class BaseProjectSitePeer {
 		if ($rs->next()) {
 			return $rs->getInt(1);
 		} else {
-			return 0;
+						return 0;
 		}
 	}
-
+	
 	public static function doSelectOne(Criteria $criteria, $con = null)
 	{
 		$critcopy = clone $criteria;
@@ -160,12 +160,12 @@ abstract class BaseProjectSitePeer {
 		}
 		return null;
 	}
-
+	
 	public static function doSelect(Criteria $criteria, $con = null)
 	{
 		return ProjectSitePeer::populateObjects(ProjectSitePeer::doSelectRS($criteria, $con));
 	}
-
+	
 	public static function doSelectRS(Criteria $criteria, $con = null)
 	{
 		if ($con === null) {
@@ -177,39 +177,39 @@ abstract class BaseProjectSitePeer {
 			ProjectSitePeer::addSelectColumns($criteria);
 		}
 
-		$criteria->setDbName(self::DATABASE_NAME);
+				$criteria->setDbName(self::DATABASE_NAME);
 
-		return BasePeer::doSelect($criteria, $con);
+						return BasePeer::doSelect($criteria, $con);
 	}
-
+	
 	public static function populateObjects(ResultSet $rs)
 	{
 		$results = array();
-
-		$cls = ProjectSitePeer::getOMClass();
+	
+				$cls = ProjectSitePeer::getOMClass();
 		$cls = Propel::import($cls);
-		while($rs->next()) {
-
+				while($rs->next()) {
+		
 			$obj = new $cls();
 			$obj->hydrate($rs);
 			$results[] = $obj;
-				
+			
 		}
 		return $results;
 	}
-
+	
 	public static function getTableMap()
 	{
 		return Propel::getDatabaseMap(self::DATABASE_NAME)->getTable(self::TABLE_NAME);
 	}
 
-
+	
 	public static function getOMClass()
 	{
 		return ProjectSitePeer::CLASS_DEFAULT;
 	}
 
-
+	
 	public static function doInsert($values, $con = null)
 	{
 		if ($con === null) {
@@ -218,25 +218,25 @@ abstract class BaseProjectSitePeer {
 
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; 		} else {
-				$criteria = $values->buildCriteria(); 		}
+			$criteria = $values->buildCriteria(); 		}
 
-				$criteria->remove(ProjectSitePeer::SITE_ID);
+		$criteria->remove(ProjectSitePeer::SITE_ID); 
 
 				$criteria->setDbName(self::DATABASE_NAME);
 
-				try {
-					$con->begin();
-					$pk = BasePeer::doInsert($criteria, $con);
-					$con->commit();
-				} catch(PropelException $e) {
-					$con->rollback();
-					throw $e;
-				}
+		try {
+									$con->begin();
+			$pk = BasePeer::doInsert($criteria, $con);
+			$con->commit();
+		} catch(PropelException $e) {
+			$con->rollback();
+			throw $e;
+		}
 
-				return $pk;
+		return $pk;
 	}
 
-
+	
 	public static function doUpdate($values, $con = null)
 	{
 		if ($con === null) {
@@ -246,25 +246,25 @@ abstract class BaseProjectSitePeer {
 		$selectCriteria = new Criteria(self::DATABASE_NAME);
 
 		if ($values instanceof Criteria) {
-			$criteria = clone $values;
+			$criteria = clone $values; 
 			$comparison = $criteria->getComparison(ProjectSitePeer::SITE_ID);
 			$selectCriteria->add(ProjectSitePeer::SITE_ID, $criteria->remove(ProjectSitePeer::SITE_ID), $comparison);
 
 		} else { 			$criteria = $values->buildCriteria(); 			$selectCriteria = $values->buildPkeyCriteria(); 		}
 
-		$criteria->setDbName(self::DATABASE_NAME);
+				$criteria->setDbName(self::DATABASE_NAME);
 
 		return BasePeer::doUpdate($selectCriteria, $criteria, $con);
 	}
 
-
+	
 	public static function doDeleteAll($con = null)
 	{
 		if ($con === null) {
 			$con = Propel::getConnection(self::DATABASE_NAME);
 		}
 		$affectedRows = 0; 		try {
-			$con->begin();
+									$con->begin();
 			$affectedRows += BasePeer::doDeleteAll(ProjectSitePeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
@@ -274,9 +274,9 @@ abstract class BaseProjectSitePeer {
 		}
 	}
 
-
-	public static function doDelete($values, $con = null)
-	{
+	
+	 public static function doDelete($values, $con = null)
+	 {
 		if ($con === null) {
 			$con = Propel::getConnection(ProjectSitePeer::DATABASE_NAME);
 		}
@@ -284,28 +284,28 @@ abstract class BaseProjectSitePeer {
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; 		} elseif ($values instanceof ProjectSite) {
 
-				$criteria = $values->buildPkeyCriteria();
-			} else {
-				$criteria = new Criteria(self::DATABASE_NAME);
-				$criteria->add(ProjectSitePeer::SITE_ID, (array) $values, Criteria::IN);
-			}
+			$criteria = $values->buildPkeyCriteria();
+		} else {
+						$criteria = new Criteria(self::DATABASE_NAME);
+			$criteria->add(ProjectSitePeer::SITE_ID, (array) $values, Criteria::IN);
+		}
 
-			$criteria->setDbName(self::DATABASE_NAME);
+				$criteria->setDbName(self::DATABASE_NAME);
 
-			$affectedRows = 0;
-			try {
-				$con->begin();
-					
-				$affectedRows += BasePeer::doDelete($criteria, $con);
-				$con->commit();
-				return $affectedRows;
-			} catch (PropelException $e) {
-				$con->rollback();
-				throw $e;
-			}
+		$affectedRows = 0; 
+		try {
+									$con->begin();
+			
+			$affectedRows += BasePeer::doDelete($criteria, $con);
+			$con->commit();
+			return $affectedRows;
+		} catch (PropelException $e) {
+			$con->rollback();
+			throw $e;
+		}
 	}
 
-
+	
 	public static function doValidate(ProjectSite $obj, $cols = null)
 	{
 		$columns = array();
@@ -329,18 +329,18 @@ abstract class BaseProjectSitePeer {
 		}
 
 		$res =  BasePeer::doValidate(ProjectSitePeer::DATABASE_NAME, ProjectSitePeer::TABLE_NAME, $columns);
-		if ($res !== true) {
-			$request = sfContext::getInstance()->getRequest();
-			foreach ($res as $failed) {
-				$col = ProjectSitePeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
-				$request->setError($col, $failed->getMessage());
-			}
-		}
+    if ($res !== true) {
+        $request = sfContext::getInstance()->getRequest();
+        foreach ($res as $failed) {
+            $col = ProjectSitePeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
+            $request->setError($col, $failed->getMessage());
+        }
+    }
 
-		return $res;
+    return $res;
 	}
 
-
+	
 	public static function retrieveByPK($pk, $con = null)
 	{
 		if ($con === null) {
@@ -357,7 +357,7 @@ abstract class BaseProjectSitePeer {
 		return !empty($v) > 0 ? $v[0] : null;
 	}
 
-
+	
 	public static function retrieveByPKs($pks, $con = null)
 	{
 		if ($con === null) {
@@ -375,14 +375,14 @@ abstract class BaseProjectSitePeer {
 		return $objs;
 	}
 
-}
+} 
 if (Propel::isInit()) {
-	try {
+			try {
 		BaseProjectSitePeer::getMapBuilder();
 	} catch (Exception $e) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-	require_once 'lib/model/map/ProjectSiteMapBuilder.php';
+			require_once 'lib/model/map/ProjectSiteMapBuilder.php';
 	Propel::registerMapBuilder('lib.model.map.ProjectSiteMapBuilder');
 }

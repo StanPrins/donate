@@ -7,7 +7,7 @@
 <?php endforeach ?>
 <?php echo link_to(image_tag('admin_db/next.png'), 'user/list?page='.$pager->getNextPage()) ?>
 <?php echo link_to(image_tag('admin_db/last.png'), 'user/list?page='.$pager->getLastPage()) ?>
-<?php endif ?>
+
 <br />
 
 <?php echo $pager->getNbResults() ?>
@@ -25,3 +25,4 @@ Jump to Page
 <?php echo input_tag('page', 1, 'size=2' )?>
 <?php echo submit_tag('Go!')?>
 </form>
+<?php endif ?>

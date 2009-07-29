@@ -50,7 +50,12 @@
     <td class="name">收款人：</td>
     <td class="content"><?php if ($remit->getReceiveUserId()) echo $remit->getUserRelatedByReceiveUserId()->getName()?></td>
   </tr>
-  
+
+  <tr>
+    <td class="name">收款金额：</td>
+    <td class="content"><?php echo $remit->getReceiveAmount() ?></td>
+  </tr>  
+    
   <tr>
     <td class="name">OFS发送：</td>
     <td class="content"><?php
@@ -71,6 +76,11 @@
     <td class="content"><?php if ($remit->getSendoutUserId()) echo $remit->getUserRelatedBySendoutUserId()->getName()?></td>
   </tr>                                  
 
+  <tr>
+    <td class="name">发款金额：</td>
+    <td class="content"><?php echo $remit->getSendoutAmount() ?></td>
+  </tr>  
+  
   <tr>
     <td class="name">创建日期：</td>
     <td class="content"><?php echo $remit->getCreatedAt() ?></td>
@@ -94,7 +104,8 @@
   <tr>
     <td class="name">发款日期：</td>
     <td class="content"><?php echo $remit->getSendoutDate() ?></td>
-  </tr>    
+  </tr>
+      
   <?php endif;?>
   </tbody>
 </table>

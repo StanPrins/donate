@@ -24,15 +24,6 @@
   </div>
 </div>  
   
-<div class="form-row">
-  <label for="remit_amount" class="required">金额：</label> 
-  <div class="content">  
-  <?php echo object_input_tag($remit, 'getAmount', array (
-  'size' => 7,
-  )) ?>
-  </div>
-</div>   
-
 <?php 
       $flag_by_ofs = 0;
       if ($sf_params->has('is_by_ofs'))
@@ -56,6 +47,15 @@
 <?php echo input_hidden_tag('is_by_ofs', 1) ?>
 
 <div class="form-row">
+  <label for="remit_amount" class="required">金额：</label> 
+  <div class="content">  
+  <?php echo object_input_tag($remit, 'getAmount', array (
+  'size' => 7,
+  )) ?>
+  </div>
+</div>   
+
+<div class="form-row">
   <label for="remit_sendout_date" class="required">捐款方式：</label> 
   <div class="content">
    通过OFS捐款  
@@ -72,7 +72,7 @@
 </div>  
 
 <div class="form-row">
-  <label for="remit_receive_date" class="required">收款日期：</label> 
+  <label for="remit_receive_date" class="required">到款日期：</label> 
   <div class="content">   
   <?php echo object_input_date_tag($remit, 'getReceiveDate', array (
     'rich' => true,
@@ -89,6 +89,15 @@
   )) ?>
   </div>
 </div>   
+
+<div class="form-row">
+  <label for="remit_sendout_amount" class="required">到款金额：</label> 
+  <div class="content">  
+  <?php echo object_input_tag($remit, 'getReceiveAmount', array (
+  'size' => 7,
+  )) ?>
+  </div>
+</div> 
 
 <div class="form-row">
   <label for="remit_is_sendout" class="required">OFS发出：</label> 
@@ -115,6 +124,15 @@
     'include_blank' => true,
   )) ?>
   </div>
+</div> 
+
+<div class="form-row">
+  <label for="remit_amount" class="required">发款金额：</label> 
+  <div class="content">  
+  <?php echo object_input_tag($remit, 'getSendoutAmount', array (
+  'size' => 7,
+  )) ?>
+  </div>
 </div>  
 <?php else:?>
 <?php endif;?>
@@ -123,6 +141,15 @@
 <?php else:?>
 
 <?php echo input_hidden_tag('is_by_ofs', 0) ?>
+
+<div class="form-row">
+  <label for="remit_amount" class="required">金额：</label> 
+  <div class="content">  
+  <?php echo object_input_tag($remit, 'getAmount', array (
+  'size' => 7,
+  )) ?>
+  </div>
+</div>   
 
 <div class="form-row">
   <label for="remit_sendout_date" class="required">捐款方式：</label> 

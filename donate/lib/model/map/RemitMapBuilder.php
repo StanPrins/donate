@@ -4,25 +4,25 @@
 
 class RemitMapBuilder {
 
-
+	
 	const CLASS_NAME = 'lib.model.map.RemitMapBuilder';
 
-
+	
 	private $dbMap;
 
-
+	
 	public function isBuilt()
 	{
 		return ($this->dbMap !== null);
 	}
 
-
+	
 	public function getDatabaseMap()
 	{
 		return $this->dbMap;
 	}
 
-
+	
 	public function doBuild()
 	{
 		$this->dbMap = Propel::getDatabaseMap('propel');
@@ -46,13 +46,17 @@ class RemitMapBuilder {
 
 		$tMap->addForeignKey('RECEIVE_USER_ID', 'ReceiveUserId', 'int', CreoleTypes::INTEGER, 'user', 'USER_ID', false, 11);
 
+		$tMap->addColumn('RECEIVE_AMOUNT', 'ReceiveAmount', 'string', CreoleTypes::VARCHAR, false, 16);
+
 		$tMap->addColumn('IS_SENDOUT', 'IsSendout', 'boolean', CreoleTypes::BOOLEAN, false, null);
 
 		$tMap->addColumn('SENDOUT_DATE', 'SendoutDate', 'int', CreoleTypes::DATE, false, null);
 
 		$tMap->addForeignKey('SENDOUT_USER_ID', 'SendoutUserId', 'int', CreoleTypes::INTEGER, 'user', 'USER_ID', false, 11);
 
+		$tMap->addColumn('SENDOUT_AMOUNT', 'SendoutAmount', 'string', CreoleTypes::VARCHAR, false, 16);
+
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 
-	}
-}
+	} 
+} 

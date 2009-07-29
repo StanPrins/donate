@@ -66,7 +66,10 @@ class userActions extends sfActions
 		$user->setUserId($this->getRequestParameter('user_id'));
 		$user->setUserName($this->getRequestParameter('username'));
 		$user->setNickName($this->getRequestParameter('nickname'));
-		$user->setPassword($this->getRequestParameter('password'));
+	    if ($this->getRequestParameter('password'))
+        {
+           $user->setPassword($this->getRequestParameter('password'));
+        }
 		$user->setName($this->getRequestParameter('name'));
 		$user->setPhoto($this->getRequestParameter('photo'));
 		$user->setBbsId($this->getRequestParameter('bbs_id'));

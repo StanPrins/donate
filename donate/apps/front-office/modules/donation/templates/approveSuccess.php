@@ -11,8 +11,9 @@
 
 <thead>
 <tr>
-  <th>学生姓名</th>
-  <th>捐助人姓名</th>
+  <th>学生</th>
+  <th>资助状态</th>
+  <th>申请捐助人</th>
   <th>捐助金额</th>
   <th>开始资助于</th>
   <th>终止资助于</th>
@@ -28,6 +29,18 @@
 
   <?php echo "<tr class='sf_admin_row_".$count_row."' >" ?>      
       <td><?php echo $donation->getStudent()->getName() ?></td>
+      <td><?php 
+             if($donation->getStudent()->getIsDonated())
+             { 
+                echo image_tag('admin_db/x.png');
+             	echo '有人资助！<br/>不能审批';
+             } 
+             else
+             {
+             	echo image_tag('admin_db/tick.png');
+             	echo '可以审批';
+             }
+          ?></td>
       <td><?php echo $donation->getUser()->getName() ?></td>
       <td><?php echo $donation->getAmount() ?></td>      
       <td><?php echo $donation->getStartDate() ?></td>
@@ -36,7 +49,9 @@
       <td><?php if ($donation->getIsActive()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png'); ?></td>
       <td><?php echo $donation->getCreatedAt() ?></td>
       <td><?php echo link_to('查看', 'donation/show?donation_id='.$donation->getDonationId())?>&nbsp;&nbsp;&nbsp;
-          <?php echo link_to('修改', 'donation/edit?donation_id='.$donation->getDonationId())?>&nbsp;&nbsp;&nbsp;
+          <?php if (!($donation->getStudent()->getIsDonated())) 
+                     echo link_to('批复', 'donation/edit?donation_id='.$donation->getDonationId());
+          ?>&nbsp;&nbsp;&nbsp;
           <?php echo link_to('删除', 'donation/delete?donation_id='.$donation->getDonationId(), 'post=true&confirm=真的要删除么？') ?>
       </td>
   </tr>
