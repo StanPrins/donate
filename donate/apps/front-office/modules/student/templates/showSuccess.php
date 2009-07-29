@@ -32,7 +32,14 @@
   </tr>                
   <tr>
     <td class="name">照片：</td>
-    <td class="content"><?php echo $student->getPhoto() ?></td>
+    <td class="content">
+    <?php 
+    if(is_file($student->getPhoto()))
+      echo image_tag($student->getPhoto());
+    else
+      echo "暂未上传照片";
+    ?>
+    </td>
   </tr>    
   <tr>
     <td class="name">班主任：</td>
