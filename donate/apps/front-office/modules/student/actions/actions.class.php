@@ -23,18 +23,56 @@ class studentActions extends sfActions
   
   public function executeListall()
   {
-  	$c = new Criteria();
-  	//$c->add(SchoolPeer::SITE_ID, 1);
-  	//$c->addJoin(StudentPeer::SCHOOL_ID, SchoolPeer::SCHOOL_ID, Criteria::LEFT_JOIN);	
-  	$c->addAscendingOrderByColumn(StudentPeer::SCHOOL_ID);
-    $pager = new sfPropelPager('Student', sfConfig::get('app_pager_homepage_max'));    
+  	$site_id = $this->getRequestParameter('site_id');
+  	$school_id = $this->getRequestParameter('school_id');
+  	$student_name = $this->getRequestParameter('student_name');
 
+  	$c = new Criteria();
+ 	$c->addJoin(StudentPeer::SCHOOL_ID, SchoolPeer::SCHOOL_ID, Criteria::LEFT_JOIN);
+    
+  	if(!empty($school_id)&& ($school_id!=-1))
+  	{
+      $c->add(StudentPeer::SCHOOL_ID,$school_id);
+      $this->school_id = $school_id;
+  	}  	
+  	if(!empty($site_id)&&($site_id!=-1))
+    {
+      $c->add(SchoolPeer::SITE_ID,$site_id); 
+      $this->site_id = $site_id;
+    }         	
+    if(!empty($student_name))
+    {
+      $c->add(StudentPeer::NAME,$student_name.'%',Criteria::LIKE);
+      $this->student_name = $student_name;
+    }
+   	
+    $pager = new sfPropelPager('Student', sfConfig::get('app_pager_homepage_max'));    
+    $pager->setPeerMethod('doSelectJoinSchool');
+    $pager->setPeerCountMethod('doCountJoinSchool');
     $pager->setCriteria($c);
     $pager->setPage($this->getRequestParameter('page', 1));
-    $pager->setPeerMethod('doSelectJoinSchool');
-    $pager->setPeerCountMethod('doCountJoinSchool');        
     $pager->init();
-    $this->pager = $pager;    
+    $this->pager = $pager;
+    
+    $d = new Criteria();
+    $d->clearSelectColumns();  // Clear select columns
+    $d->addSelectColumn(ProjectSitePeer::SITE_ID); // Add new select columns 
+    $d->addSelectColumn(ProjectSitePeer::SITE_NAME);   
+    $d->addAscendingOrderByColumn(ProjectSitePeer::SITE_NAME);
+    $this->projectsites = ProjectSitePeer::doSelectRS($d);
+
+    $e = new Criteria();
+    $e->clearSelectColumns();  // Clear select columns
+    $e->addSelectColumn(SchoolPeer::SCHOOL_ID);// Add new select columns
+    $e->addSelectColumn(SchoolPeer::SCHOOL_NAME);
+    if(!empty($site_id)&&($site_id!=-1))
+    {
+      $e->add(SchoolPeer::SITE_ID,$site_id); 
+      $this->site_id = $site_id;
+    }  
+    $e->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
+    $this->schools = SchoolPeer::doSelectRS($e);
+    $this->school_count = SchoolPeer::doCount($e);    
     
   }  
 
