@@ -8,7 +8,7 @@
 
 <?php use_helper('Object') ?>
 
-<?php echo form_tag('student/update') ?>
+<?php echo form_tag('student/update','multipart=true') ?>
 
 <?php echo object_input_hidden_tag($student, 'getStudentId') ?>
 
@@ -45,10 +45,12 @@
 
 <div class="form-row">
   <label for="student_photo" class="required">照片：</label> 
-  <div class="content">   
-  <?php echo object_input_tag($student, 'getPhoto', array (
-  'size' => 80,
-  )) ?>
+  <div class="content">
+  <?php if(is_file($student->getPhoto())):?>
+  <?php echo image_tag($student->getPhoto())?>
+  <br>
+  <?php endif;?>   
+  <?php echo input_file_tag('photo')?>
   </div>
 </div>  
 

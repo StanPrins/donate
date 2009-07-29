@@ -204,7 +204,15 @@ public function executeListno()
     $student->setSchoolId($this->getRequestParameter('school_id') ? $this->getRequestParameter('school_id') : null);
     $student->setName($this->getRequestParameter('name'));
     $student->setNickname($this->getRequestParameter('nickname'));
-    $student->setPhoto($this->getRequestParameter('photo'));
+    if(is_file($this->getRequest()->getFilePath('photo')))
+    {
+    	$filename = $this->getRequest()->getFileName('photo');
+    	$newfilename = $this->getRequestParameter('student_id').'_'.$filename;
+    	$filepath = sfConfig::get('sf_root_dir').DIRECTORY_SEPARATOR.sfConfig::get('sf_web_dir_name').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'users'.DIRECTORY_SEPARATOR.$newfilename;
+    	$this->getRequest()->moveFile('photo',$filepath);
+    	$savename = 'users'.DIRECTORY_SEPARATOR.$newfilename;
+    	$student->setPhoto($savename);    	
+    }
     $student->setHeadTeacher($this->getRequestParameter('head_teacher'));
     $student->setGuardian($this->getRequestParameter('guardian'));
     if ($this->getRequestParameter('birthday'))
