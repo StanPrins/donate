@@ -86,7 +86,7 @@
   </tbody>
 </table>
 
-<?php echo link_to('修改', 'user/edit?user_id='.$user->getUserId()) ?>&nbsp;&nbsp;&nbsp;
+<?php echo link_to('修改', 'user/edit?user_id='.$user->getUserId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
 <?php if ($sf_params->has('after_edit')): ?>
 <a href="javascript:history.go(-2)">返回</a>
 <?php else:?>

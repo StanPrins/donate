@@ -5,4 +5,10 @@ listall:
   is_secure:   on
   credentials: [[ manager, administrator]]
 
-  
+approve:
+  is_secure:   on
+  credentials: [[ manager, administrator]]
+
+delete:
+  is_secure:   on
+  credentials: [[ manager, administrator]]  

@@ -25,7 +25,7 @@
    <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
    <li><?php echo link_to('我要资助', 'student/listno') ?></li>
    <li><?php echo link_to('待审批资助', 'donation/listpend') ?></li>
-   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', '')) ?></li>
+   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
    <?php elseif($sf_user->getAttribute('usertype', '')=='surveyor'): ?>
    <li><?php echo '调查员:'.$sf_user->getAttribute('name', '') ?></li>
    <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
@@ -35,7 +35,7 @@
    <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
    <li><?php echo link_to('添加学生', 'student/create') ?></li>
    <li><?php echo link_to('所有学生', 'student/listall') ?></li>
-   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', '')) ?></li>
+   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
    <?php elseif($sf_user->getAttribute('usertype', '')=='manager'): ?>
    <li><?php echo '管理员:'.$sf_user->getAttribute('name', '') ?></li>
    <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
@@ -47,7 +47,7 @@
    <li><?php echo link_to('添加学生', 'student/create') ?></li>
    <li><?php echo link_to('所有学生', 'student/listall') ?></li>
    <li><?php echo link_to('所有用户', 'user/listall') ?></li>
-   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', '')) ?></li>
+   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
    <?php elseif($sf_user->getAttribute('usertype', '')=='administrator'): ?>
    <li><?php echo '超级用户:'.$sf_user->getAttribute('name', '') ?></li>
    <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
@@ -60,7 +60,7 @@
    <li><?php echo link_to('所有学生', 'student/listall') ?></li>
    <li><?php echo link_to('所有用户', 'user/listall') ?></li>
    <li><?php echo link_to('数据库管理', 'student/listpend') ?></li>   
-   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', '')) ?></li>
+   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
    <?php else: ?>  	
    <?php endif ?>      
    <li><?php echo link_to('注销', 'login/logout') ?></li>

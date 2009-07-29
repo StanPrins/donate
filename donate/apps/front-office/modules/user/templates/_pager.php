@@ -12,12 +12,12 @@
 
 <?php echo $pager->getNbResults() ?>
 results found.
-<br />
-Displaying results
+&nbsp;
+Displaying results&nbsp;
 <?php echo $pager->getFirstIndice() ?>
-to
+&nbsp;to
 <?php echo $pager->getLastIndice() ?>
-.
+&nbsp;.
 <br />
 
 <?php echo form_tag('user/listall')?>

@@ -14,11 +14,6 @@
  */
 class userActions extends sfActions
 {
-	public function executeIndex()
-	{
-		return $this->forward('user', 'list');
-	}
-	
 	public function executeApprove()
 	{
 		$c = new Criteria();
@@ -33,9 +28,7 @@ class userActions extends sfActions
 
 	public function executeListall()
 	{
-		//$this->users = UserPeer::doSelect(new Criteria());
 		$c = new Criteria();
-		//$pager = new sfPropelPager('User', 2);
 		$pager = new sfPropelPager('User', sfConfig::get('app_pager_homepage_max'));
 		$pager->setCriteria($c);
 		$pager->setPage($this->getRequestParameter('page', 1));
@@ -46,8 +39,14 @@ class userActions extends sfActions
 
 	public function executeShow()
 	{
-		$this->user = UserPeer::retrieveByPk($this->getRequestParameter('user_id'));
-		$this->forward404Unless($this->user);
+	   $usertype = $this->getContext()->getUser()->getAttribute('usertype','');
+	   $user_id = $this->getContext()->getUser()->getAttribute('user_id','');
+	   if (!(($usertype == 'administrator' ) || ($usertype == 'manager') || ($user_id == $this->getRequestParameter('user_id'))))
+	   {
+	      return $this->forward404();
+	   }
+	   $this->user = UserPeer::retrieveByPk($this->getRequestParameter('user_id'));
+	   $this->forward404Unless($this->user);
 	}
 
 	public function executeCreate()
@@ -59,14 +58,22 @@ class userActions extends sfActions
 
 	public function executeEdit()
 	{
-		$this->user = UserPeer::retrieveByPk($this->getRequestParameter('user_id'));
-		$this->forward404Unless($this->user);
+       if ($this->getRequest()->getMethod() != sfRequest::POST)
+	   {	
+	     return $this->forward404();
+	   }	
+	   $this->user = UserPeer::retrieveByPk($this->getRequestParameter('user_id'));
+	   $this->forward404Unless($this->user);
+	  
 	}
 
 	public function executeUpdate()
 	{
-	  if ($this->getRequest()->getMethod() == sfRequest::POST)
-	  {
+	   if ($this->getRequest()->getMethod() != sfRequest::POST)
+	   {
+	     return $this->forward404();	   	
+	   }
+	   
 		if (!$this->getRequestParameter('user_id'))
 		{
 			$user = new User();
@@ -102,7 +109,8 @@ class userActions extends sfActions
 		$user->save();
 
 		return $this->redirect('user/show?user_id='.$user->getUserId().'&after_edit=1');
-	  }
+		
+	
 	}
 
 	public function executeDelete()
@@ -113,7 +121,6 @@ class userActions extends sfActions
 
 		$user->delete();
 
-		//return $this->redirect('user/list');
 		return $this->redirect($this->getRequest()->getReferer());
 	}
 }
