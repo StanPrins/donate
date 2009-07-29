@@ -58,6 +58,8 @@ class UserMapBuilder {
 
 		$tMap->addColumn('USERTYPE', 'Usertype', 'string', CreoleTypes::VARCHAR, true, 16);
 
+		$tMap->addColumn('APPROVE', 'Approve', 'boolean', CreoleTypes::BOOLEAN, false, null);
+
 		$tMap->addColumn('IDENTITY', 'Identity', 'string', CreoleTypes::VARCHAR, false, 16);
 
 		$tMap->addColumn('EMAIL', 'Email', 'string', CreoleTypes::VARCHAR, false, 32);

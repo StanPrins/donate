@@ -12,6 +12,7 @@ User:
     mobile:      111222333
     tel:         111222444
     user_type:   volunteer
+    approve:     1
     identity:    老大
     email:       111@ddd.com
     qq:          12345678
@@ -31,6 +32,7 @@ User:
     mobile:      111222333
     tel:         111222444
     user_type:   surveyor
+    approve:     1
     identity:    老2    
     email:       111@ddd.com
     qq:          12345678
@@ -50,6 +52,7 @@ User:
     mobile:      111222333
     tel:         111222444
     user_type:   manager
+    approve:     1
     identity:    老3    
     email:       111@ddd.com
     qq:          12345678
@@ -69,6 +72,7 @@ User:
     mobile:      111222333
     tel:         111222444
     user_type:   administrator
+    approve:     1
     identity:    老4    
     email:       111@ddd.com
     qq:          12345678

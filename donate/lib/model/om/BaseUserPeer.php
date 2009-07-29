@@ -13,7 +13,7 @@ abstract class BaseUserPeer {
 	const CLASS_DEFAULT = 'lib.model.User';
 
 	
-	const NUM_COLUMNS = 19;
+	const NUM_COLUMNS = 20;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -59,6 +59,9 @@ abstract class BaseUserPeer {
 	const USERTYPE = 'user.USERTYPE';
 
 	
+	const APPROVE = 'user.APPROVE';
+
+	
 	const IDENTITY = 'user.IDENTITY';
 
 	
@@ -82,18 +85,18 @@ abstract class BaseUserPeer {
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('UserId', 'Username', 'Nickname', 'Sha1Password', 'Salt', 'Name', 'Photo', 'BbsId', 'OfsId', 'Duty', 'Mobile', 'Tel', 'Usertype', 'Identity', 'Email', 'Qq', 'Msn', 'Address', 'CreatedAt', ),
-		BasePeer::TYPE_COLNAME => array (UserPeer::USER_ID, UserPeer::USERNAME, UserPeer::NICKNAME, UserPeer::SHA1_PASSWORD, UserPeer::SALT, UserPeer::NAME, UserPeer::PHOTO, UserPeer::BBS_ID, UserPeer::OFS_ID, UserPeer::DUTY, UserPeer::MOBILE, UserPeer::TEL, UserPeer::USERTYPE, UserPeer::IDENTITY, UserPeer::EMAIL, UserPeer::QQ, UserPeer::MSN, UserPeer::ADDRESS, UserPeer::CREATED_AT, ),
-		BasePeer::TYPE_FIELDNAME => array ('user_id', 'username', 'nickname', 'sha1_password', 'salt', 'name', 'photo', 'bbs_id', 'ofs_id', 'duty', 'mobile', 'tel', 'usertype', 'identity', 'email', 'qq', 'msn', 'address', 'created_at', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, )
+		BasePeer::TYPE_PHPNAME => array ('UserId', 'Username', 'Nickname', 'Sha1Password', 'Salt', 'Name', 'Photo', 'BbsId', 'OfsId', 'Duty', 'Mobile', 'Tel', 'Usertype', 'Approve', 'Identity', 'Email', 'Qq', 'Msn', 'Address', 'CreatedAt', ),
+		BasePeer::TYPE_COLNAME => array (UserPeer::USER_ID, UserPeer::USERNAME, UserPeer::NICKNAME, UserPeer::SHA1_PASSWORD, UserPeer::SALT, UserPeer::NAME, UserPeer::PHOTO, UserPeer::BBS_ID, UserPeer::OFS_ID, UserPeer::DUTY, UserPeer::MOBILE, UserPeer::TEL, UserPeer::USERTYPE, UserPeer::APPROVE, UserPeer::IDENTITY, UserPeer::EMAIL, UserPeer::QQ, UserPeer::MSN, UserPeer::ADDRESS, UserPeer::CREATED_AT, ),
+		BasePeer::TYPE_FIELDNAME => array ('user_id', 'username', 'nickname', 'sha1_password', 'salt', 'name', 'photo', 'bbs_id', 'ofs_id', 'duty', 'mobile', 'tel', 'usertype', 'approve', 'identity', 'email', 'qq', 'msn', 'address', 'created_at', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('UserId' => 0, 'Username' => 1, 'Nickname' => 2, 'Sha1Password' => 3, 'Salt' => 4, 'Name' => 5, 'Photo' => 6, 'BbsId' => 7, 'OfsId' => 8, 'Duty' => 9, 'Mobile' => 10, 'Tel' => 11, 'Usertype' => 12, 'Identity' => 13, 'Email' => 14, 'Qq' => 15, 'Msn' => 16, 'Address' => 17, 'CreatedAt' => 18, ),
-		BasePeer::TYPE_COLNAME => array (UserPeer::USER_ID => 0, UserPeer::USERNAME => 1, UserPeer::NICKNAME => 2, UserPeer::SHA1_PASSWORD => 3, UserPeer::SALT => 4, UserPeer::NAME => 5, UserPeer::PHOTO => 6, UserPeer::BBS_ID => 7, UserPeer::OFS_ID => 8, UserPeer::DUTY => 9, UserPeer::MOBILE => 10, UserPeer::TEL => 11, UserPeer::USERTYPE => 12, UserPeer::IDENTITY => 13, UserPeer::EMAIL => 14, UserPeer::QQ => 15, UserPeer::MSN => 16, UserPeer::ADDRESS => 17, UserPeer::CREATED_AT => 18, ),
-		BasePeer::TYPE_FIELDNAME => array ('user_id' => 0, 'username' => 1, 'nickname' => 2, 'sha1_password' => 3, 'salt' => 4, 'name' => 5, 'photo' => 6, 'bbs_id' => 7, 'ofs_id' => 8, 'duty' => 9, 'mobile' => 10, 'tel' => 11, 'usertype' => 12, 'identity' => 13, 'email' => 14, 'qq' => 15, 'msn' => 16, 'address' => 17, 'created_at' => 18, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, )
+		BasePeer::TYPE_PHPNAME => array ('UserId' => 0, 'Username' => 1, 'Nickname' => 2, 'Sha1Password' => 3, 'Salt' => 4, 'Name' => 5, 'Photo' => 6, 'BbsId' => 7, 'OfsId' => 8, 'Duty' => 9, 'Mobile' => 10, 'Tel' => 11, 'Usertype' => 12, 'Approve' => 13, 'Identity' => 14, 'Email' => 15, 'Qq' => 16, 'Msn' => 17, 'Address' => 18, 'CreatedAt' => 19, ),
+		BasePeer::TYPE_COLNAME => array (UserPeer::USER_ID => 0, UserPeer::USERNAME => 1, UserPeer::NICKNAME => 2, UserPeer::SHA1_PASSWORD => 3, UserPeer::SALT => 4, UserPeer::NAME => 5, UserPeer::PHOTO => 6, UserPeer::BBS_ID => 7, UserPeer::OFS_ID => 8, UserPeer::DUTY => 9, UserPeer::MOBILE => 10, UserPeer::TEL => 11, UserPeer::USERTYPE => 12, UserPeer::APPROVE => 13, UserPeer::IDENTITY => 14, UserPeer::EMAIL => 15, UserPeer::QQ => 16, UserPeer::MSN => 17, UserPeer::ADDRESS => 18, UserPeer::CREATED_AT => 19, ),
+		BasePeer::TYPE_FIELDNAME => array ('user_id' => 0, 'username' => 1, 'nickname' => 2, 'sha1_password' => 3, 'salt' => 4, 'name' => 5, 'photo' => 6, 'bbs_id' => 7, 'ofs_id' => 8, 'duty' => 9, 'mobile' => 10, 'tel' => 11, 'usertype' => 12, 'approve' => 13, 'identity' => 14, 'email' => 15, 'qq' => 16, 'msn' => 17, 'address' => 18, 'created_at' => 19, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, )
 	);
 
 	
@@ -172,6 +175,8 @@ abstract class BaseUserPeer {
 		$criteria->addSelectColumn(UserPeer::TEL);
 
 		$criteria->addSelectColumn(UserPeer::USERTYPE);
+
+		$criteria->addSelectColumn(UserPeer::APPROVE);
 
 		$criteria->addSelectColumn(UserPeer::IDENTITY);
 

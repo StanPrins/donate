@@ -294,6 +294,7 @@ CREATE TABLE `user`
 	`mobile` VARCHAR(16),
 	`tel` VARCHAR(16),
 	`usertype` VARCHAR(16)  NOT NULL,
+	`approve` INTEGER default 0,
 	`identity` VARCHAR(16),
 	`email` VARCHAR(32),
 	`qq` VARCHAR(32),

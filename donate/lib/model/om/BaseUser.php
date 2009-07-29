@@ -61,6 +61,10 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 
 
 	
+	protected $approve = false;
+
+
+	
 	protected $identity;
 
 
@@ -208,6 +212,13 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 	{
 
 		return $this->usertype;
+	}
+
+	
+	public function getApprove()
+	{
+
+		return $this->approve;
 	}
 
 	
@@ -476,6 +487,16 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setApprove($v)
+	{
+
+		if ($this->approve !== $v || $v === false) {
+			$this->approve = $v;
+			$this->modifiedColumns[] = UserPeer::APPROVE;
+		}
+
+	} 
+	
 	public function setIdentity($v)
 	{
 
@@ -603,23 +624,25 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 
 			$this->usertype = $rs->getString($startcol + 12);
 
-			$this->identity = $rs->getString($startcol + 13);
+			$this->approve = $rs->getBoolean($startcol + 13);
 
-			$this->email = $rs->getString($startcol + 14);
+			$this->identity = $rs->getString($startcol + 14);
 
-			$this->qq = $rs->getString($startcol + 15);
+			$this->email = $rs->getString($startcol + 15);
 
-			$this->msn = $rs->getString($startcol + 16);
+			$this->qq = $rs->getString($startcol + 16);
 
-			$this->address = $rs->getString($startcol + 17);
+			$this->msn = $rs->getString($startcol + 17);
 
-			$this->created_at = $rs->getTimestamp($startcol + 18, null);
+			$this->address = $rs->getString($startcol + 18);
+
+			$this->created_at = $rs->getTimestamp($startcol + 19, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 19; 
+						return $startcol + 20; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating User object", $e);
 		}
@@ -871,21 +894,24 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 				return $this->getUsertype();
 				break;
 			case 13:
-				return $this->getIdentity();
+				return $this->getApprove();
 				break;
 			case 14:
-				return $this->getEmail();
+				return $this->getIdentity();
 				break;
 			case 15:
-				return $this->getQq();
+				return $this->getEmail();
 				break;
 			case 16:
-				return $this->getMsn();
+				return $this->getQq();
 				break;
 			case 17:
-				return $this->getAddress();
+				return $this->getMsn();
 				break;
 			case 18:
+				return $this->getAddress();
+				break;
+			case 19:
 				return $this->getCreatedAt();
 				break;
 			default:
@@ -911,12 +937,13 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 			$keys[10] => $this->getMobile(),
 			$keys[11] => $this->getTel(),
 			$keys[12] => $this->getUsertype(),
-			$keys[13] => $this->getIdentity(),
-			$keys[14] => $this->getEmail(),
-			$keys[15] => $this->getQq(),
-			$keys[16] => $this->getMsn(),
-			$keys[17] => $this->getAddress(),
-			$keys[18] => $this->getCreatedAt(),
+			$keys[13] => $this->getApprove(),
+			$keys[14] => $this->getIdentity(),
+			$keys[15] => $this->getEmail(),
+			$keys[16] => $this->getQq(),
+			$keys[17] => $this->getMsn(),
+			$keys[18] => $this->getAddress(),
+			$keys[19] => $this->getCreatedAt(),
 		);
 		return $result;
 	}
@@ -972,21 +999,24 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 				$this->setUsertype($value);
 				break;
 			case 13:
-				$this->setIdentity($value);
+				$this->setApprove($value);
 				break;
 			case 14:
-				$this->setEmail($value);
+				$this->setIdentity($value);
 				break;
 			case 15:
-				$this->setQq($value);
+				$this->setEmail($value);
 				break;
 			case 16:
-				$this->setMsn($value);
+				$this->setQq($value);
 				break;
 			case 17:
-				$this->setAddress($value);
+				$this->setMsn($value);
 				break;
 			case 18:
+				$this->setAddress($value);
+				break;
+			case 19:
 				$this->setCreatedAt($value);
 				break;
 		} 	}
@@ -1009,12 +1039,13 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[10], $arr)) $this->setMobile($arr[$keys[10]]);
 		if (array_key_exists($keys[11], $arr)) $this->setTel($arr[$keys[11]]);
 		if (array_key_exists($keys[12], $arr)) $this->setUsertype($arr[$keys[12]]);
-		if (array_key_exists($keys[13], $arr)) $this->setIdentity($arr[$keys[13]]);
-		if (array_key_exists($keys[14], $arr)) $this->setEmail($arr[$keys[14]]);
-		if (array_key_exists($keys[15], $arr)) $this->setQq($arr[$keys[15]]);
-		if (array_key_exists($keys[16], $arr)) $this->setMsn($arr[$keys[16]]);
-		if (array_key_exists($keys[17], $arr)) $this->setAddress($arr[$keys[17]]);
-		if (array_key_exists($keys[18], $arr)) $this->setCreatedAt($arr[$keys[18]]);
+		if (array_key_exists($keys[13], $arr)) $this->setApprove($arr[$keys[13]]);
+		if (array_key_exists($keys[14], $arr)) $this->setIdentity($arr[$keys[14]]);
+		if (array_key_exists($keys[15], $arr)) $this->setEmail($arr[$keys[15]]);
+		if (array_key_exists($keys[16], $arr)) $this->setQq($arr[$keys[16]]);
+		if (array_key_exists($keys[17], $arr)) $this->setMsn($arr[$keys[17]]);
+		if (array_key_exists($keys[18], $arr)) $this->setAddress($arr[$keys[18]]);
+		if (array_key_exists($keys[19], $arr)) $this->setCreatedAt($arr[$keys[19]]);
 	}
 
 	
@@ -1035,6 +1066,7 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(UserPeer::MOBILE)) $criteria->add(UserPeer::MOBILE, $this->mobile);
 		if ($this->isColumnModified(UserPeer::TEL)) $criteria->add(UserPeer::TEL, $this->tel);
 		if ($this->isColumnModified(UserPeer::USERTYPE)) $criteria->add(UserPeer::USERTYPE, $this->usertype);
+		if ($this->isColumnModified(UserPeer::APPROVE)) $criteria->add(UserPeer::APPROVE, $this->approve);
 		if ($this->isColumnModified(UserPeer::IDENTITY)) $criteria->add(UserPeer::IDENTITY, $this->identity);
 		if ($this->isColumnModified(UserPeer::EMAIL)) $criteria->add(UserPeer::EMAIL, $this->email);
 		if ($this->isColumnModified(UserPeer::QQ)) $criteria->add(UserPeer::QQ, $this->qq);
@@ -1094,6 +1126,8 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 		$copyObj->setTel($this->tel);
 
 		$copyObj->setUsertype($this->usertype);
+
+		$copyObj->setApprove($this->approve);
 
 		$copyObj->setIdentity($this->identity);
 
