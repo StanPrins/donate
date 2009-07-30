@@ -71,10 +71,12 @@ CREATE TABLE `remit`
 	`receive_date` DATE,
 	`receive_user_id` INTEGER(11),
 	`receive_amount` VARCHAR(16),
+	`receive_submitter` INTEGER(11),
 	`is_sendout` INTEGER default 0,
 	`sendout_date` DATE,
 	`sendout_user_id` INTEGER(11),
 	`sendout_amount` VARCHAR(16),
+	`sendout_submitter` INTEGER(11),
 	`created_at` DATETIME,
 	PRIMARY KEY (`remit_id`),
 	INDEX `remit_FI_1` (`donation_id`),
@@ -89,9 +91,21 @@ CREATE TABLE `remit`
 		REFERENCES `user` (`user_id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE,
-	INDEX `remit_FI_3` (`sendout_user_id`),
+	INDEX `remit_FI_3` (`receive_submitter`),
 	CONSTRAINT `remit_FK_3`
+		FOREIGN KEY (`receive_submitter`)
+		REFERENCES `user` (`user_id`)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE,
+	INDEX `remit_FI_4` (`sendout_user_id`),
+	CONSTRAINT `remit_FK_4`
 		FOREIGN KEY (`sendout_user_id`)
+		REFERENCES `user` (`user_id`)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE,
+	INDEX `remit_FI_5` (`sendout_submitter`),
+	CONSTRAINT `remit_FK_5`
+		FOREIGN KEY (`sendout_submitter`)
 		REFERENCES `user` (`user_id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
