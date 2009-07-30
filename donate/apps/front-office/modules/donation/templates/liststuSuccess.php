@@ -38,10 +38,12 @@
       <td><?php if ($donation->getApprove()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png'); ?></td>
       <td><?php if ($donation->getIsActive()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png'); ?></td>
       <td><?php echo $donation->getCreatedAt() ?></td>
-      <td><?php echo link_to ('查看', 'remit/listdonate?donation_id='.$donation->getDonationId()) ?></td>
-      <td><?php echo link_to('详情', 'donation/show?donation_id='.$donation->getDonationId())?>&nbsp;
+      <td><?php echo link_to ('查看', 'remit/listdonate?donation_id='.$donation->getDonationId(),'post=true') ?></td>
+      <td><?php echo link_to('详情', 'donation/show?donation_id='.$donation->getDonationId(),'post=true')?>&nbsp;
           <?php if (($sf_user->getAttribute('user_id', '')==$donation->getUserId())||($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager'))
-          echo link_to('修改', 'donation/edit?donation_id='.$donation->getDonationId()); 
+                {
+                   echo link_to('修改', 'donation/edit?donation_id='.$donation->getDonationId(),'post=true');
+                } 
           ?>
           &nbsp;
           <?php if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager'))

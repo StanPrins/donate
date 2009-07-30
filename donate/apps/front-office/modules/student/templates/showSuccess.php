@@ -37,7 +37,7 @@
     if(is_file($student->getPhoto()))
       echo image_tag($student->getPhoto());
     else
-      echo "暂未上传照片";
+      echo "暂未上传照片";    
     ?>
     </td>
   </tr>    

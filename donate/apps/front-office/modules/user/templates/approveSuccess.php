@@ -53,9 +53,9 @@
       <td><?php 
                 if(($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager'))
                 {
-                   echo link_to('查看', 'user/show?user_id='.$user->getUserId());
+                   echo link_to('查看', 'user/show?user_id='.$user->getUserId(),'post=true');
                    echo "&nbsp;&nbsp;&nbsp;";
-                   echo link_to('批复', 'user/edit?user_id='.$user->getUserId());
+                   echo link_to('批复', 'user/edit?user_id='.$user->getUserId(),'post=true');
                    echo "&nbsp;&nbsp;&nbsp;";
                    echo link_to('删除', 'user/delete?user_id='.$user->getUserId(), 'post=true&confirm=真的要删除么？');
                 } ?>

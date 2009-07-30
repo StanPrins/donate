@@ -41,6 +41,10 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 
 	
+	protected $receive_submitter;
+
+
+	
 	protected $is_sendout = false;
 
 
@@ -57,6 +61,10 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 
 	
+	protected $sendout_submitter;
+
+
+	
 	protected $created_at;
 
 	
@@ -66,7 +74,13 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 	protected $aUserRelatedByReceiveUserId;
 
 	
+	protected $aUserRelatedByReceiveSubmitter;
+
+	
 	protected $aUserRelatedBySendoutUserId;
+
+	
+	protected $aUserRelatedBySendoutSubmitter;
 
 	
 	protected $alreadyInSave = false;
@@ -146,6 +160,13 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 	}
 
 	
+	public function getReceiveSubmitter()
+	{
+
+		return $this->receive_submitter;
+	}
+
+	
 	public function getIsSendout()
 	{
 
@@ -186,6 +207,13 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 	{
 
 		return $this->sendout_amount;
+	}
+
+	
+	public function getSendoutSubmitter()
+	{
+
+		return $this->sendout_submitter;
 	}
 
 	
@@ -336,6 +364,26 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setReceiveSubmitter($v)
+	{
+
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->receive_submitter !== $v) {
+			$this->receive_submitter = $v;
+			$this->modifiedColumns[] = RemitPeer::RECEIVE_SUBMITTER;
+		}
+
+		if ($this->aUserRelatedByReceiveSubmitter !== null && $this->aUserRelatedByReceiveSubmitter->getUserId() !== $v) {
+			$this->aUserRelatedByReceiveSubmitter = null;
+		}
+
+	} 
+	
 	public function setIsSendout($v)
 	{
 
@@ -399,6 +447,26 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setSendoutSubmitter($v)
+	{
+
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->sendout_submitter !== $v) {
+			$this->sendout_submitter = $v;
+			$this->modifiedColumns[] = RemitPeer::SENDOUT_SUBMITTER;
+		}
+
+		if ($this->aUserRelatedBySendoutSubmitter !== null && $this->aUserRelatedBySendoutSubmitter->getUserId() !== $v) {
+			$this->aUserRelatedBySendoutSubmitter = null;
+		}
+
+	} 
+	
 	public function setCreatedAt($v)
 	{
 
@@ -436,21 +504,25 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 			$this->receive_amount = $rs->getString($startcol + 7);
 
-			$this->is_sendout = $rs->getBoolean($startcol + 8);
+			$this->receive_submitter = $rs->getInt($startcol + 8);
 
-			$this->sendout_date = $rs->getDate($startcol + 9, null);
+			$this->is_sendout = $rs->getBoolean($startcol + 9);
 
-			$this->sendout_user_id = $rs->getInt($startcol + 10);
+			$this->sendout_date = $rs->getDate($startcol + 10, null);
 
-			$this->sendout_amount = $rs->getString($startcol + 11);
+			$this->sendout_user_id = $rs->getInt($startcol + 11);
 
-			$this->created_at = $rs->getTimestamp($startcol + 12, null);
+			$this->sendout_amount = $rs->getString($startcol + 12);
+
+			$this->sendout_submitter = $rs->getInt($startcol + 13);
+
+			$this->created_at = $rs->getTimestamp($startcol + 14, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 13; 
+						return $startcol + 15; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Remit object", $e);
 		}
@@ -527,11 +599,25 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 				$this->setUserRelatedByReceiveUserId($this->aUserRelatedByReceiveUserId);
 			}
 
+			if ($this->aUserRelatedByReceiveSubmitter !== null) {
+				if ($this->aUserRelatedByReceiveSubmitter->isModified()) {
+					$affectedRows += $this->aUserRelatedByReceiveSubmitter->save($con);
+				}
+				$this->setUserRelatedByReceiveSubmitter($this->aUserRelatedByReceiveSubmitter);
+			}
+
 			if ($this->aUserRelatedBySendoutUserId !== null) {
 				if ($this->aUserRelatedBySendoutUserId->isModified()) {
 					$affectedRows += $this->aUserRelatedBySendoutUserId->save($con);
 				}
 				$this->setUserRelatedBySendoutUserId($this->aUserRelatedBySendoutUserId);
+			}
+
+			if ($this->aUserRelatedBySendoutSubmitter !== null) {
+				if ($this->aUserRelatedBySendoutSubmitter->isModified()) {
+					$affectedRows += $this->aUserRelatedBySendoutSubmitter->save($con);
+				}
+				$this->setUserRelatedBySendoutSubmitter($this->aUserRelatedBySendoutSubmitter);
 			}
 
 
@@ -595,9 +681,21 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->aUserRelatedByReceiveSubmitter !== null) {
+				if (!$this->aUserRelatedByReceiveSubmitter->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aUserRelatedByReceiveSubmitter->getValidationFailures());
+				}
+			}
+
 			if ($this->aUserRelatedBySendoutUserId !== null) {
 				if (!$this->aUserRelatedBySendoutUserId->validate($columns)) {
 					$failureMap = array_merge($failureMap, $this->aUserRelatedBySendoutUserId->getValidationFailures());
+				}
+			}
+
+			if ($this->aUserRelatedBySendoutSubmitter !== null) {
+				if (!$this->aUserRelatedBySendoutSubmitter->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aUserRelatedBySendoutSubmitter->getValidationFailures());
 				}
 			}
 
@@ -650,18 +748,24 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 				return $this->getReceiveAmount();
 				break;
 			case 8:
-				return $this->getIsSendout();
+				return $this->getReceiveSubmitter();
 				break;
 			case 9:
-				return $this->getSendoutDate();
+				return $this->getIsSendout();
 				break;
 			case 10:
-				return $this->getSendoutUserId();
+				return $this->getSendoutDate();
 				break;
 			case 11:
-				return $this->getSendoutAmount();
+				return $this->getSendoutUserId();
 				break;
 			case 12:
+				return $this->getSendoutAmount();
+				break;
+			case 13:
+				return $this->getSendoutSubmitter();
+				break;
+			case 14:
 				return $this->getCreatedAt();
 				break;
 			default:
@@ -682,11 +786,13 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 			$keys[5] => $this->getReceiveDate(),
 			$keys[6] => $this->getReceiveUserId(),
 			$keys[7] => $this->getReceiveAmount(),
-			$keys[8] => $this->getIsSendout(),
-			$keys[9] => $this->getSendoutDate(),
-			$keys[10] => $this->getSendoutUserId(),
-			$keys[11] => $this->getSendoutAmount(),
-			$keys[12] => $this->getCreatedAt(),
+			$keys[8] => $this->getReceiveSubmitter(),
+			$keys[9] => $this->getIsSendout(),
+			$keys[10] => $this->getSendoutDate(),
+			$keys[11] => $this->getSendoutUserId(),
+			$keys[12] => $this->getSendoutAmount(),
+			$keys[13] => $this->getSendoutSubmitter(),
+			$keys[14] => $this->getCreatedAt(),
 		);
 		return $result;
 	}
@@ -727,18 +833,24 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 				$this->setReceiveAmount($value);
 				break;
 			case 8:
-				$this->setIsSendout($value);
+				$this->setReceiveSubmitter($value);
 				break;
 			case 9:
-				$this->setSendoutDate($value);
+				$this->setIsSendout($value);
 				break;
 			case 10:
-				$this->setSendoutUserId($value);
+				$this->setSendoutDate($value);
 				break;
 			case 11:
-				$this->setSendoutAmount($value);
+				$this->setSendoutUserId($value);
 				break;
 			case 12:
+				$this->setSendoutAmount($value);
+				break;
+			case 13:
+				$this->setSendoutSubmitter($value);
+				break;
+			case 14:
 				$this->setCreatedAt($value);
 				break;
 		} 	}
@@ -756,11 +868,13 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[5], $arr)) $this->setReceiveDate($arr[$keys[5]]);
 		if (array_key_exists($keys[6], $arr)) $this->setReceiveUserId($arr[$keys[6]]);
 		if (array_key_exists($keys[7], $arr)) $this->setReceiveAmount($arr[$keys[7]]);
-		if (array_key_exists($keys[8], $arr)) $this->setIsSendout($arr[$keys[8]]);
-		if (array_key_exists($keys[9], $arr)) $this->setSendoutDate($arr[$keys[9]]);
-		if (array_key_exists($keys[10], $arr)) $this->setSendoutUserId($arr[$keys[10]]);
-		if (array_key_exists($keys[11], $arr)) $this->setSendoutAmount($arr[$keys[11]]);
-		if (array_key_exists($keys[12], $arr)) $this->setCreatedAt($arr[$keys[12]]);
+		if (array_key_exists($keys[8], $arr)) $this->setReceiveSubmitter($arr[$keys[8]]);
+		if (array_key_exists($keys[9], $arr)) $this->setIsSendout($arr[$keys[9]]);
+		if (array_key_exists($keys[10], $arr)) $this->setSendoutDate($arr[$keys[10]]);
+		if (array_key_exists($keys[11], $arr)) $this->setSendoutUserId($arr[$keys[11]]);
+		if (array_key_exists($keys[12], $arr)) $this->setSendoutAmount($arr[$keys[12]]);
+		if (array_key_exists($keys[13], $arr)) $this->setSendoutSubmitter($arr[$keys[13]]);
+		if (array_key_exists($keys[14], $arr)) $this->setCreatedAt($arr[$keys[14]]);
 	}
 
 	
@@ -776,10 +890,12 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(RemitPeer::RECEIVE_DATE)) $criteria->add(RemitPeer::RECEIVE_DATE, $this->receive_date);
 		if ($this->isColumnModified(RemitPeer::RECEIVE_USER_ID)) $criteria->add(RemitPeer::RECEIVE_USER_ID, $this->receive_user_id);
 		if ($this->isColumnModified(RemitPeer::RECEIVE_AMOUNT)) $criteria->add(RemitPeer::RECEIVE_AMOUNT, $this->receive_amount);
+		if ($this->isColumnModified(RemitPeer::RECEIVE_SUBMITTER)) $criteria->add(RemitPeer::RECEIVE_SUBMITTER, $this->receive_submitter);
 		if ($this->isColumnModified(RemitPeer::IS_SENDOUT)) $criteria->add(RemitPeer::IS_SENDOUT, $this->is_sendout);
 		if ($this->isColumnModified(RemitPeer::SENDOUT_DATE)) $criteria->add(RemitPeer::SENDOUT_DATE, $this->sendout_date);
 		if ($this->isColumnModified(RemitPeer::SENDOUT_USER_ID)) $criteria->add(RemitPeer::SENDOUT_USER_ID, $this->sendout_user_id);
 		if ($this->isColumnModified(RemitPeer::SENDOUT_AMOUNT)) $criteria->add(RemitPeer::SENDOUT_AMOUNT, $this->sendout_amount);
+		if ($this->isColumnModified(RemitPeer::SENDOUT_SUBMITTER)) $criteria->add(RemitPeer::SENDOUT_SUBMITTER, $this->sendout_submitter);
 		if ($this->isColumnModified(RemitPeer::CREATED_AT)) $criteria->add(RemitPeer::CREATED_AT, $this->created_at);
 
 		return $criteria;
@@ -825,6 +941,8 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 		$copyObj->setReceiveAmount($this->receive_amount);
 
+		$copyObj->setReceiveSubmitter($this->receive_submitter);
+
 		$copyObj->setIsSendout($this->is_sendout);
 
 		$copyObj->setSendoutDate($this->sendout_date);
@@ -832,6 +950,8 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 		$copyObj->setSendoutUserId($this->sendout_user_id);
 
 		$copyObj->setSendoutAmount($this->sendout_amount);
+
+		$copyObj->setSendoutSubmitter($this->sendout_submitter);
 
 		$copyObj->setCreatedAt($this->created_at);
 
@@ -918,6 +1038,35 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 	}
 
 	
+	public function setUserRelatedByReceiveSubmitter($v)
+	{
+
+
+		if ($v === null) {
+			$this->setReceiveSubmitter(NULL);
+		} else {
+			$this->setReceiveSubmitter($v->getUserId());
+		}
+
+
+		$this->aUserRelatedByReceiveSubmitter = $v;
+	}
+
+
+	
+	public function getUserRelatedByReceiveSubmitter($con = null)
+	{
+		if ($this->aUserRelatedByReceiveSubmitter === null && ($this->receive_submitter !== null)) {
+						include_once 'lib/model/om/BaseUserPeer.php';
+
+			$this->aUserRelatedByReceiveSubmitter = UserPeer::retrieveByPK($this->receive_submitter, $con);
+
+			
+		}
+		return $this->aUserRelatedByReceiveSubmitter;
+	}
+
+	
 	public function setUserRelatedBySendoutUserId($v)
 	{
 
@@ -944,6 +1093,35 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 			
 		}
 		return $this->aUserRelatedBySendoutUserId;
+	}
+
+	
+	public function setUserRelatedBySendoutSubmitter($v)
+	{
+
+
+		if ($v === null) {
+			$this->setSendoutSubmitter(NULL);
+		} else {
+			$this->setSendoutSubmitter($v->getUserId());
+		}
+
+
+		$this->aUserRelatedBySendoutSubmitter = $v;
+	}
+
+
+	
+	public function getUserRelatedBySendoutSubmitter($con = null)
+	{
+		if ($this->aUserRelatedBySendoutSubmitter === null && ($this->sendout_submitter !== null)) {
+						include_once 'lib/model/om/BaseUserPeer.php';
+
+			$this->aUserRelatedBySendoutSubmitter = UserPeer::retrieveByPK($this->sendout_submitter, $con);
+
+			
+		}
+		return $this->aUserRelatedBySendoutSubmitter;
 	}
 
 } 

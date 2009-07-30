@@ -16,20 +16,56 @@ class remitActions extends sfActions
 {
 	public function executeListdonate()
 	{
+       $c = new Criteria();
+       $c -> add(RemitPeer::DONATION_ID, $this->getRequestParameter('donation_id'));
+
+       $pager = new sfPropelPager('Remit', sfConfig::get('app_pager_homepage_max'));
+       $pager->setCriteria($c);
+       $pager->setPage($this->getRequestParameter('page', 1));
+       $pager->init();
+       $this->pager = $pager;
+       
+       $donations = $pager->getResults();
+       
+       if (sizeof($donations)!=0)
+       {
+          $donation_user_id = $donations[0]->getDonation()->getUserId();
+          $usertype = $this->getContext()->getUser()->getAttribute('usertype','');
+          $user_id = $this->getContext()->getUser()->getAttribute('user_id','');
+          if (!(($usertype == 'administrator' ) || ($usertype == 'manager') || ($usertype == 'surveyor') || ($user_id == $doantion_user_id)))
+          {
+             return $this->forward404();
+          }
+       }
+	}
+	
+	public function executeListpend()
+	{
 		$c = new Criteria();
-		$c -> add(RemitPeer::DONATION_ID, $this->getRequestParameter('donation_id'));
+		$c -> add(RemitPeer::IS_BY_OFS, 1);
+		
+		$cton1 = $c->getNewCriterion(RemitPeer::IS_RECEIVED, 0);
+        $cton2 = $c->getNewCriterion(RemitPeer::IS_SENDOUT, 0); 
+        $cton1->addOr($cton2);
+        $c->add($cton1);		
 
 		$pager = new sfPropelPager('Remit', sfConfig::get('app_pager_homepage_max'));
 		$pager->setCriteria($c);
 		$pager->setPage($this->getRequestParameter('page', 1));
 		$pager->init();
 		$this->pager = $pager;
-	}
+	}	
 
 	public function executeShow()
 	{
-		$this->remit = RemitPeer::retrieveByPk($this->getRequestParameter('remit_id'));
-		$this->forward404Unless($this->remit);
+	   $this->remit = RemitPeer::retrieveByPk($this->getRequestParameter('remit_id'));
+	   $this->forward404Unless($this->remit);
+	   $usertype = $this->getContext()->getUser()->getAttribute('usertype','');
+	   $user_id = $this->getContext()->getUser()->getAttribute('user_id','');
+	   if (!(($usertype == 'administrator' ) || ($usertype == 'manager') || ($user_id == $this->remit->getDonation()->getUserId())))
+	   {
+	      return $this->forward404();
+	   }		
 	}
 
 	public function executeCreate()
@@ -43,12 +79,20 @@ class remitActions extends sfActions
 
 	public function executeEdit()
 	{
+	   if ($this->getRequest()->getMethod() != sfRequest::POST)
+	   {
+	     return $this->forward404();	   	
+	   }				
 		$this->remit = RemitPeer::retrieveByPk($this->getRequestParameter('remit_id'));
 		$this->forward404Unless($this->remit);
 	}
 
 	public function executeUpdate()
 	{
+	   if ($this->getRequest()->getMethod() != sfRequest::POST)
+	   {
+	     return $this->forward404();	   	
+	   }		
 		if (!$this->getRequestParameter('remit_id'))
 		{
 			$remit = new Remit();
@@ -71,6 +115,16 @@ class remitActions extends sfActions
 		}
 		$remit->setReceiveUserId($this->getRequestParameter('receive_user_id') ? $this->getRequestParameter('receive_user_id') : null);
 		$remit->setReceiveAmount($this->getRequestParameter('receive_amount'));
+		
+		if($this->getRequestParameter('is_received'))
+		{
+		   $remit->setReceiveSubmitter($this->getContext()->getUser()->getAttribute('user_id',''));
+		}
+		else
+		{
+		   $remit->setReceiveSubmitter(null);			
+		}
+		
 		$remit->setIsSendout($this->getRequestParameter('is_sendout', 0));
 		if ($this->getRequestParameter('sendout_date'))
 		{
@@ -79,6 +133,15 @@ class remitActions extends sfActions
 		}
 		$remit->setSendoutUserId($this->getRequestParameter('sendout_user_id') ? $this->getRequestParameter('sendout_user_id') : null);
 		$remit->setSendoutAmount($this->getRequestParameter('sendout_amount'));
+		
+		if($this->getRequestParameter('is_sendout') && $this->getRequestParameter('is_by_ofs'))
+		{
+		   $remit->setSendoutSubmitter($this->getContext()->getUser()->getAttribute('user_id',''));
+		}
+		else
+		{
+		   $remit->setSendoutSubmitter(null);
+		}
 
 		$remit->save();
 

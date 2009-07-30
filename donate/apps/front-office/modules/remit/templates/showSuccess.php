@@ -16,6 +16,10 @@
     <td class="content"><?php echo $remit->getRemitId() ?></td>
   </tr>
   <tr>
+    <td class="name">捐助人：</td>
+    <td class="content"><?php echo $remit->getDonation()->getUser()->getName() ?></td>
+  </tr>  
+  <tr>
     <td class="name">捐助号：</td>
     <td class="content"><?php echo $remit->getDonationId() ?></td>
   </tr>
@@ -54,7 +58,12 @@
   <tr>
     <td class="name">收款金额：</td>
     <td class="content"><?php echo $remit->getReceiveAmount() ?></td>
-  </tr>  
+  </tr>
+  
+  <tr>
+    <td class="name">收款录入人：</td>
+    <td class="content"><?php if ($remit->getReceiveSubmitter()) echo $remit->getUserRelatedByReceiveSubmitter()->getName()?></td>
+  </tr>
     
   <tr>
     <td class="name">OFS发送：</td>
@@ -84,7 +93,13 @@
   <tr>
     <td class="name">创建日期：</td>
     <td class="content"><?php echo $remit->getCreatedAt() ?></td>
-  </tr>    
+  </tr>
+  
+  <tr>
+    <td class="name">发款录入人：</td>
+    <td class="content"><?php if ($remit->getSendoutSubmitter()) echo $remit->getUserRelatedBySendoutSubmitter()->getName()?></td>
+  </tr>                                  
+        
   <?php else:?>
   <tr>
     <td class="name">通过OFS捐助：</td>

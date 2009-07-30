@@ -48,6 +48,8 @@ class RemitMapBuilder {
 
 		$tMap->addColumn('RECEIVE_AMOUNT', 'ReceiveAmount', 'string', CreoleTypes::VARCHAR, false, 16);
 
+		$tMap->addForeignKey('RECEIVE_SUBMITTER', 'ReceiveSubmitter', 'int', CreoleTypes::INTEGER, 'user', 'USER_ID', false, 11);
+
 		$tMap->addColumn('IS_SENDOUT', 'IsSendout', 'boolean', CreoleTypes::BOOLEAN, false, null);
 
 		$tMap->addColumn('SENDOUT_DATE', 'SendoutDate', 'int', CreoleTypes::DATE, false, null);
@@ -55,6 +57,8 @@ class RemitMapBuilder {
 		$tMap->addForeignKey('SENDOUT_USER_ID', 'SendoutUserId', 'int', CreoleTypes::INTEGER, 'user', 'USER_ID', false, 11);
 
 		$tMap->addColumn('SENDOUT_AMOUNT', 'SendoutAmount', 'string', CreoleTypes::VARCHAR, false, 16);
+
+		$tMap->addForeignKey('SENDOUT_SUBMITTER', 'SendoutSubmitter', 'int', CreoleTypes::INTEGER, 'user', 'USER_ID', false, 11);
 
 		$tMap->addColumn('CREATED_AT', 'CreatedAt', 'int', CreoleTypes::TIMESTAMP, false, null);
 

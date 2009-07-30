@@ -51,6 +51,11 @@
 			<reference local="receive_user_id" foreign="user_id" />
 		</foreign-key>
 		<column name="receive_amount" type="varchar" size="16" />
+		<column name="receive_submitter" type="integer" size="11" />
+		<foreign-key foreignTable="user" onDelete="cascade"
+			onUpdate="cascade">
+			<reference local="receive_submitter" foreign="user_id" />
+		</foreign-key>			
 		<column name="is_sendout" type="boolean" default="0" />
 		<column name="sendout_date" type="date" />
 		<column name="sendout_user_id" type="integer" size="11" />
@@ -59,6 +64,11 @@
 			<reference local="sendout_user_id" foreign="user_id" />
 		</foreign-key>
 		<column name="sendout_amount" type="varchar" size="16" />
+		<column name="sendout_submitter" type="integer" size="11" />
+		<foreign-key foreignTable="user" onDelete="cascade"
+			onUpdate="cascade">
+			<reference local="sendout_submitter" foreign="user_id" />
+		</foreign-key>			
 		<column name="created_at" type="timestamp" />
 	</table>
 
