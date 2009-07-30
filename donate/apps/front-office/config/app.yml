@@ -3,6 +3,8 @@
 all:
   pager:
     homepage_max: 10
+    
+    
   sfImageTransformPlugin:
     default_adapter: GD # GD or ImageMagick
     default_image: { mime_type: image/png, filename: Untitled.png }
