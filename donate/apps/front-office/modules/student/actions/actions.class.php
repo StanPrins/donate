@@ -206,12 +206,20 @@ public function executeListno()
     $student->setNickname($this->getRequestParameter('nickname'));
     if(is_file($this->getRequest()->getFilePath('photo')))
     {
-    	$filename = $this->getRequest()->getFileName('photo');
-    	$newfilename = $this->getRequestParameter('student_id').'_'.$filename;
-    	$filepath = sfConfig::get('sf_root_dir').DIRECTORY_SEPARATOR.sfConfig::get('sf_web_dir_name').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'students'.DIRECTORY_SEPARATOR.$newfilename;
-    	$this->getRequest()->moveFile('photo',$filepath);
-    	$savename = 'students'.DIRECTORY_SEPARATOR.$newfilename;
-    	$student->setPhoto($savename);    	
+    	$filename = md5(uniqid(mt_rand()));
+    	$file = $this->getRequest()->getFilePath('photo');
+    	$extension = $this->getRequest()->getFileExtension('photo');
+    	$newfilename = $filename.$extension;
+    	$img = new sfImage($file);
+    	$response = $this->getResponse();
+    	$response->setContentType($img->getMIMEType());
+    	$width = sfConfig::get('sf_image_width');
+    	$height = sfConfig::get('sf_image_height');
+    	$width = ($img->getWidth()>$width)?$width:($img->getWidth());
+    	$height = ($img->getHeight()>$height)?$height:($img->getHeight());
+    	$img->resize($width,$height);
+    	$img->saveAs(sfConfig::get('sf_web_dir').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'students'.DIRECTORY_SEPARATOR.$newfilename);
+    	$student->setPhoto($newfilename);    	
     }
     $student->setHeadTeacher($this->getRequestParameter('head_teacher'));
     $student->setGuardian($this->getRequestParameter('guardian'));
