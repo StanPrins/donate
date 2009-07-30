@@ -7,6 +7,7 @@
 <h1>学生信息</h1>
 
 <?php use_helper('Object') ?>
+<?php use_helper('Javascript')?>
 
 <?php echo form_tag('student/update','multipart=true') ?>
 
@@ -42,14 +43,35 @@
   )) ?>
   </div>
 </div>  
-
+<script type="text/javascript">
+function display()
+{
+	var photo_input = document.getElementById("photo");
+	var control_button = document.getElementById("control_button");
+	var str = control_button.value;
+	if(str == "重新上传")
+	{
+		photo_input.style.display = "inline";
+		control_button.value = "取消";
+	}
+	else
+	{
+		photo_input.style.display = "none";
+		photo_input.value = null;
+		control_button.value = "重新上传";
+	}	
+}
+</script>
 <div class="form-row">
   <label for="student_photo" class="required">照片：</label> 
   <div class="content">
   <?php if(!is_null($student->getPhoto())):?>
   <?php echo image_tag('students/'.$student->getPhoto())?>
-  <?php endif;?>   
+  <?php echo input_file_tag('photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
+  <?php echo button_to_function('重新上传','display()',array('id'=>'control_button','size'=>'2'))?>
+  <?php else:?>   
   <?php echo input_file_tag('photo',array('accept'=>'image/*','size'=>'10'))?>
+  <?php endif;?>
   </div>
 </div>  
 
