@@ -32,7 +32,7 @@ class remitActions extends sfActions
           $donation_user_id = $donations[0]->getDonation()->getUserId();
           $usertype = $this->getContext()->getUser()->getAttribute('usertype','');
           $user_id = $this->getContext()->getUser()->getAttribute('user_id','');
-          if (!(($usertype == 'administrator' ) || ($usertype == 'manager') || ($usertype == 'surveyor') || ($user_id == $doantion_user_id)))
+          if (!(($usertype == 'administrator' ) || ($usertype == 'manager') || ($usertype == 'surveyor') || ($user_id == $donation_user_id)))
           {
              return $this->forward404();
           }

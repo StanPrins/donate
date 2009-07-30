@@ -2,5 +2,9 @@ delete:
   is_secure:   on
   credentials: [[ surveyor, manager, administrator]]
 
+listpend:
+  is_secure:   on
+  credentials: [[ surveyor, manager, administrator]]
+
 
   
