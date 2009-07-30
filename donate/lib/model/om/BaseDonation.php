@@ -881,6 +881,41 @@ abstract class BaseDonation extends BaseObject  implements Persistent {
 
 
 	
+	public function getRemitsJoinUserRelatedByReceiveSubmitter($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemits === null) {
+			if ($this->isNew()) {
+				$this->collRemits = array();
+			} else {
+
+				$criteria->add(RemitPeer::DONATION_ID, $this->getDonationId());
+
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedByReceiveSubmitter($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::DONATION_ID, $this->getDonationId());
+
+			if (!isset($this->lastRemitCriteria) || !$this->lastRemitCriteria->equals($criteria)) {
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedByReceiveSubmitter($criteria, $con);
+			}
+		}
+		$this->lastRemitCriteria = $criteria;
+
+		return $this->collRemits;
+	}
+
+
+	
 	public function getRemitsJoinUserRelatedBySendoutUserId($criteria = null, $con = null)
 	{
 				include_once 'lib/model/om/BaseRemitPeer.php';
@@ -907,6 +942,41 @@ abstract class BaseDonation extends BaseObject  implements Persistent {
 
 			if (!isset($this->lastRemitCriteria) || !$this->lastRemitCriteria->equals($criteria)) {
 				$this->collRemits = RemitPeer::doSelectJoinUserRelatedBySendoutUserId($criteria, $con);
+			}
+		}
+		$this->lastRemitCriteria = $criteria;
+
+		return $this->collRemits;
+	}
+
+
+	
+	public function getRemitsJoinUserRelatedBySendoutSubmitter($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemits === null) {
+			if ($this->isNew()) {
+				$this->collRemits = array();
+			} else {
+
+				$criteria->add(RemitPeer::DONATION_ID, $this->getDonationId());
+
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedBySendoutSubmitter($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::DONATION_ID, $this->getDonationId());
+
+			if (!isset($this->lastRemitCriteria) || !$this->lastRemitCriteria->equals($criteria)) {
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedBySendoutSubmitter($criteria, $con);
 			}
 		}
 		$this->lastRemitCriteria = $criteria;

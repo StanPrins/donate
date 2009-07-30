@@ -32,6 +32,7 @@
    <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
    <li><?php echo link_to('我要资助', 'student/listno') ?></li>
    <li><?php echo link_to('待审批资助', 'donation/listpend') ?></li>
+   <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
    <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
    <li><?php echo link_to('添加学生', 'student/create') ?></li>
    <li><?php echo link_to('所有学生', 'student/listall') ?></li>

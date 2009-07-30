@@ -12,6 +12,7 @@
 <thead>
 <tr>
   <th>捐助号</th>
+  <th>捐助人</th>
   <th>金额</th>
   <th>通过OFS捐助</th>
   <th>OFS收到</th>
@@ -30,6 +31,7 @@
 <?php foreach ($pager->getResults() as $remit): ?>
   <?php echo "<tr class='sf_admin_row_".$count_row."' >" ?>
       <td><?php echo $remit->getDonationId() ?></td>
+      <td><?php echo $remit->getDonation()->getUser()->getName() ?></td>
       <td><?php echo $remit->getAmount() ?></td>
       
       
@@ -70,9 +72,9 @@
       <?php endif;?>
 
 
-      <td><?php echo link_to('详情', 'remit/show?remit_id='.$remit->getRemitId(),'post=true')?>&nbsp;&nbsp;
+      <td><?php echo link_to('详情', 'remit/show?remit_id='.$remit->getRemitId())?>&nbsp;&nbsp;
           <?php 
-                echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId(),'post=true'); echo "&nbsp;&nbsp;";
+                echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId()); echo "&nbsp;&nbsp;";
                 if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
                     || ($sf_user->getAttribute('usertype', '')=='administrator'))
                 {  
@@ -97,7 +99,7 @@
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager , 'listpend' => 0 ))?>
+<?php include_partial('pager',array('pager' => $pager , 'listpend' => 1 ))?>
 
 <?php else:?>
 无到款信息<br/>

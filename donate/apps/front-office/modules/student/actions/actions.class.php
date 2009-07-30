@@ -208,9 +208,9 @@ public function executeListno()
     {
     	$filename = $this->getRequest()->getFileName('photo');
     	$newfilename = $this->getRequestParameter('student_id').'_'.$filename;
-    	$filepath = sfConfig::get('sf_root_dir').DIRECTORY_SEPARATOR.sfConfig::get('sf_web_dir_name').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'users'.DIRECTORY_SEPARATOR.$newfilename;
+    	$filepath = sfConfig::get('sf_root_dir').DIRECTORY_SEPARATOR.sfConfig::get('sf_web_dir_name').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'students'.DIRECTORY_SEPARATOR.$newfilename;
     	$this->getRequest()->moveFile('photo',$filepath);
-    	$savename = 'users'.DIRECTORY_SEPARATOR.$newfilename;
+    	$savename = 'students'.DIRECTORY_SEPARATOR.$newfilename;
     	$student->setPhoto($savename);    	
     }
     $student->setHeadTeacher($this->getRequestParameter('head_teacher'));

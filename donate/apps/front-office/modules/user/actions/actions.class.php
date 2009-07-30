@@ -39,14 +39,14 @@ class userActions extends sfActions
 
 	public function executeShow()
 	{
+	   $this->user = UserPeer::retrieveByPk($this->getRequestParameter('user_id'));
+	   $this->forward404Unless($this->user);		
 	   $usertype = $this->getContext()->getUser()->getAttribute('usertype','');
 	   $user_id = $this->getContext()->getUser()->getAttribute('user_id','');
 	   if (!(($usertype == 'administrator' ) || ($usertype == 'manager') || ($user_id == $this->getRequestParameter('user_id'))))
 	   {
 	      return $this->forward404();
 	   }
-	   $this->user = UserPeer::retrieveByPk($this->getRequestParameter('user_id'));
-	   $this->forward404Unless($this->user);
 	}
 
 	public function executeCreate()
