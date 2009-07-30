@@ -46,11 +46,10 @@
 <div class="form-row">
   <label for="student_photo" class="required">照片：</label> 
   <div class="content">
-  <?php if(is_file($student->getPhoto())):?>
-  <?php echo image_tag($student->getPhoto())?>
-  <br>
+  <?php if(!is_null($student->getPhoto())):?>
+  <?php echo image_tag('students/'.$student->getPhoto())?>
   <?php endif;?>   
-  <?php echo input_file_tag('photo')?>
+  <?php echo input_file_tag('photo',array('accept'=>'image/*','size'=>'10'))?>
   </div>
 </div>  
 

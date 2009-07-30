@@ -34,10 +34,10 @@
     <td class="name">照片：</td>
     <td class="content">
     <?php 
-    if(is_file($student->getPhoto()))
-      echo image_tag($student->getPhoto());
+    if(!is_null($student->getPhoto()))
+      echo image_tag('students/'.$student->getPhoto());
     else
-      echo "暂未上传照片";    
+      echo "暂未上传照片";
     ?>
     </td>
   </tr>    
