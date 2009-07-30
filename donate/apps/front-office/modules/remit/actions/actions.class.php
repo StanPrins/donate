@@ -54,6 +54,26 @@ class remitActions extends sfActions
 		$pager->setPage($this->getRequestParameter('page', 1));
 		$pager->init();
 		$this->pager = $pager;
+	}
+
+	public function executeListpenduser()
+	{
+		$c = new Criteria();
+		$c -> add(RemitPeer::IS_BY_OFS, 1);
+		$c -> add(DonationPeer::USER_ID, $this->getUser()->getAttribute('user_id'));
+		
+		$cton1 = $c->getNewCriterion(RemitPeer::IS_RECEIVED, 0);
+        $cton2 = $c->getNewCriterion(RemitPeer::IS_SENDOUT, 0); 
+        $cton1->addOr($cton2);
+        $c->add($cton1);		
+
+		$pager = new sfPropelPager('Remit', sfConfig::get('app_pager_homepage_max'));
+		$pager->setCriteria($c);
+		$pager->setPeerMethod('doSelectJoinDonation');
+        $pager->setPeerCountMethod('doCountJoinDonation');
+		$pager->setPage($this->getRequestParameter('page', 1));
+		$pager->init();
+		$this->pager = $pager;
 	}	
 
 	public function executeShow()

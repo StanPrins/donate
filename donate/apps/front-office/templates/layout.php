@@ -25,6 +25,7 @@
    <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
    <li><?php echo link_to('我要资助', 'student/listno') ?></li>
    <li><?php echo link_to('待审批资助', 'donation/listpend') ?></li>
+   <li><?php echo link_to('未完成到款', 'remit/listpenduser') ?></li>
    <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
    <?php elseif($sf_user->getAttribute('usertype', '')=='surveyor'): ?>
    <li><?php echo '调查员:'.$sf_user->getAttribute('name', '') ?></li>
@@ -44,6 +45,7 @@
    <li><?php echo link_to('我要资助', 'student/listno') ?></li>
    <li><?php echo link_to('审批资助', 'donation/approve') ?></li>
    <li><?php echo link_to('审批用户', 'user/approve') ?></li>
+   <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
    <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
    <li><?php echo link_to('添加学生', 'student/create') ?></li>
    <li><?php echo link_to('所有学生', 'student/listall') ?></li>
@@ -56,6 +58,7 @@
    <li><?php echo link_to('我要资助', 'student/listno') ?></li>
    <li><?php echo link_to('审批资助', 'donation/approve') ?></li>
    <li><?php echo link_to('审批用户', 'user/approve') ?></li>
+   <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
    <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
    <li><?php echo link_to('添加学生', 'student/create') ?></li>
    <li><?php echo link_to('所有学生', 'student/listall') ?></li>

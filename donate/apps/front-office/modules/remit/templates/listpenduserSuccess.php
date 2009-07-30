@@ -72,21 +72,7 @@
       <?php endif;?>
 
 
-      <td><?php echo link_to('详情', 'remit/show?remit_id='.$remit->getRemitId())?>&nbsp;&nbsp;
-          <?php 
-                echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId()); echo "&nbsp;&nbsp;";
-                if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
-                    || ($sf_user->getAttribute('usertype', '')=='administrator'))
-                {  
-                   echo link_to('删除', 'remit/delete?remit_id='.$remit->getRemitId(), 'post=true&confirm=真的要删除么？'); 
-                }
-                /*else if (!($remit->getIsByOfs()))
-                {
-                   echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId()); echo "&nbsp;&nbsp;";
-                }
-                else;*/
-          ?>
-      </td>         
+      <td><?php echo link_to('详情', 'remit/show?remit_id='.$remit->getRemitId())?></td>         
             
   <?php
     if($count_row)
@@ -99,7 +85,7 @@
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager , 'listpend' => 1, 'page_to_link' => 'listpend' ))?>
+<?php include_partial('pager',array('pager' => $pager , 'listpend' => 1, 'page_to_link' => 'listpenduser' ))?>
 
 <?php else:?>
 无到款信息<br/>
