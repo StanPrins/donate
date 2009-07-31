@@ -38,7 +38,8 @@
       <td><?php if ($donation->getApprove()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png'); ?></td>
       <td><?php if ($donation->getIsActive()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png'); ?></td>
       <td><?php echo $donation->getCreatedAt() ?></td>
-      <td><?php if (($sf_user->getAttribute('user_id', '')==$donation->getUserId()) || ($sf_user->getAttribute('usertype', '')=='manager')
+      <td><?php echo link_to('详情', 'donation/show?donation_id='.$donation->getDonationId(),'post=true')?>&nbsp;
+          <?php if (($sf_user->getAttribute('user_id', '')==$donation->getUserId()) || ($sf_user->getAttribute('usertype', '')=='manager')
                     || ($sf_user->getAttribute('usertype', '')=='administrator'))
                 {         
                    echo link_to('修改', 'donation/edit?donation_id='.$donation->getDonationId());
