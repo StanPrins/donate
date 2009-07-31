@@ -58,8 +58,15 @@
     <td class="content"><?php echo $student->getGrade() ?></td>
   </tr>
   <tr>
-    <td class="name">男?：</td>
-    <td class="content"><?php echo $student->getMale() ?></td>
+    <td class="name">性别：</td>
+    <td class="content">
+    <?php
+       if ($student->getMale())       
+         echo '男';
+      else
+         echo '女';       
+    ?>
+    </td>
   </tr>                            
   <tr>
     <td class="name">地址：</td>
@@ -67,7 +74,7 @@
   </tr>
   <tr>
     <td class="name">邮编：</td>
-    <td class="content"><?php echo $student->getPostal() ?></td>
+    <td class="content"><?php if ($student->getPostal()) echo $student->getPostal(); ?></td>
   </tr>          
   <tr>
     <td class="name">城市：</td>
@@ -83,19 +90,25 @@
   </tr>
   <tr>
     <td class="name">上学中：</td>
-    <td class="content"><?php echo $student->getIsInStudy() ?></td>
+    <td class="content">
+    <?php if($student->getIsInStudy()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png');?>
+    </td>
   </tr>
   <tr>
     <td class="name">寄宿生：</td>
-    <td class="content"><?php echo $student->getIsBoarder() ?></td>
+    <td class="content">
+    <?php if($student->getIsBoarder()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png');?>
+    </td>
   </tr>
   <tr>
-    <td class="name">退学史：</td>
-    <td class="content"><?php echo $student->getHasDropoutHistory() ?></td>
+    <td class="name">有退学史：</td>
+    <td class="content">
+    <?php if ($student->getHasDropoutHistory()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png');?>
+    </td>
   </tr>
   <tr>
     <td class="name">学期花费：</td>
-    <td class="content"><?php echo $student->getTermExpense() ?></td>
+    <td class="content"><?php if ($student->getTermExpense()) echo $student->getTermExpense(); ?></td>
   </tr>
   <tr>
     <td class="name">个人简介：</td>
@@ -118,7 +131,7 @@
   </tr>
   <tr>
     <td class="name">年龄：</td>
-    <td class="content"><?php echo $student->getFm1Age() ?></td>
+    <td class="content"><?php if ($student->getFm1Age()) echo $student->getFm1Age(); ?></td>
   </tr>
   <tr>
     <td class="name">职业：</td>
@@ -145,7 +158,7 @@
   </tr>
   <tr>
     <td class="name">年龄：</td>
-    <td class="content"><?php echo $student->getFm2Age() ?></td>
+    <td class="content"><?php if($student->getFm2Age()) echo $student->getFm2Age(); ?></td>
   </tr>
   <tr>
     <td class="name">职业：</td>
@@ -172,7 +185,7 @@
   </tr>
   <tr>
     <td class="name">年龄：</td>
-    <td class="content"><?php echo $student->getFm3Age() ?></td>
+    <td class="content"><?php if ($student->getFm3Age()) echo $student->getFm3Age(); ?></td>
   </tr>
   <tr>
     <td class="name">职业：</td>
@@ -199,7 +212,7 @@
   </tr>
   <tr>
     <td class="name">年龄：</td>
-    <td class="content"><?php echo $student->getFm4Age() ?></td>
+    <td class="content"><?php if ($student->getFm4Age()) echo $student->getFm4Age(); ?></td>
   </tr>
   <tr>
     <td class="name">职业：</td>

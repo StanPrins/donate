@@ -17,33 +17,21 @@
 
 <fieldset id="sf_fieldset_none" class="">
 
-<?php if (!empty($student)):?>
-
-<?php echo object_input_hidden_tag($survey, 'getStudentId') ?>
 <div class="form-row">
-  <label for="survey_student_id" class="required">被调查学生：</label> 
+  <label for="survey_student_id" class="required">被调查学生：</label>
   <div class="content">     
-  <?php echo $student->getName() ?>
+  <?php if ($survey->getStudentId())
+           echo $survey->getStudent()->getName();
+        else
+           echo object_select_tag($survey, 'getStudentId', array ('related_class' => 'Student'));
+  ?>
   </div>
-</div>
-
-<?php else:?>
+</div>  
 
 <div class="form-row">
-  <label for="survey_student_id" class="required">被调查学生：</label> 
+  <label for="survey_user_id" class="required">调查人：</label> 
   <div class="content">     
-  <?php echo object_select_tag($survey, 'getStudentId', array (
-    'related_class' => 'Student',
-  )) ?>
-  </div>
-</div>
-
-<?php endif;?>
-
-<div class="form-row">
-  <label for="survey_volunteer_id" class="required">调查人：</label> 
-  <div class="content">     
-  <?php echo $user->getName() ?>
+  <?php echo $survey->getUser()->getName() ?>
   </div>
 </div>  
 
@@ -59,9 +47,7 @@
 <div class="form-row">
   <label for="survey_family_condition" class="required">家庭情况：</label> 
   <div class="content">     
-  <?php echo object_input_tag($survey, 'getFamilyCondition', array (
-  
-  )) ?>
+  <?php echo object_textarea_tag($survey,'getFamilyCondition', $options = array('size' =>  '70x4')) ?>
   </div>
 </div>  
 
@@ -76,118 +62,92 @@
 
 <div class="form-row">
   <label for="survey_other_assist" class="required">其他资助人：</label> 
-  <div class="content">     
-  <?php echo object_input_tag($survey, 'getOtherAssist', array (
-  'size' => 80,
-  )) ?>
+  <div class="content">
+  <?php echo object_textarea_tag($survey, 'getOtherAssist', $options = array('size' =>  '70x4')) ?>     
   </div>
 </div>
   
 <div class="form-row">
   <label for="survey_dropout_info" class="required">辍学记录：</label> 
   <div class="content">     
-  <?php echo object_input_tag($survey, 'getDropoutInfo', array (
-  'size' => 80,
-  )) ?>
+  <?php echo object_textarea_tag($survey, 'getDropoutInfo', $options = array('size' =>  '70x4')) ?>
   </div>
 </div>  
   
 <div class="form-row">
   <label for="survey_presentation" class="required">个人陈述：</label> 
-  <div class="content">     
-  <?php echo object_input_tag($survey, 'getPresentation', array (
-  
-  )) ?>
+  <div class="content">
+  <?php echo object_textarea_tag($survey, 'getPresentation', $options = array('size' =>  '70x4')) ?>     
   </div>
 </div>  
 
 <div class="form-row">
   <label for="survey_revenue" class="required">收入：</label> 
-  <div class="content">     
-  <?php echo object_input_tag($survey, 'getRevenue', array (
-  'size' => 80,
-  )) ?>
+  <div class="content">
+  <?php echo object_textarea_tag($survey, 'getRevenue', $options = array('size' =>  '70x3')) ?>     
   </div>
 </div>  
 
 <div class="form-row">
   <label for="survey_property" class="required">财产：</label> 
-  <div class="content">     
-  <?php echo object_input_tag($survey, 'getProperty', array (
-  'size' => 80,
-  )) ?>
+  <div class="content">
+  <?php echo object_textarea_tag($survey, 'getProperty', $options = array('size' =>  '70x3')) ?>     
   </div>
 </div>  
   
 <div class="form-row">
   <label for="survey_donation_usage" class="required">捐助使用情况：</label> 
   <div class="content">       
-  <?php echo object_input_tag($survey, 'getDonationUsage', array (
-  'size' => 80,
-  )) ?>
+  <?php echo object_textarea_tag($survey, 'getDonationUsage', $options = array('size' =>  '70x3')) ?>
   </div>
 </div>  
 
 <div class="form-row">
   <label for="survey_dornor_concerned" class="required">捐助人关心的问题：</label> 
   <div class="content">     
-  <?php echo object_input_tag($survey, 'getDonorConcerned', array (
-  'size' => 80,
-  )) ?>
+  <?php echo object_textarea_tag($survey, 'getDonorConcerned', $options = array('size' =>  '70x3')) ?>
   </div>
 </div>  
 
 <div class="form-row">
   <label for="survey_msg_to_donor" class="required">给捐助人的话：</label> 
-  <div class="content">     
-  <?php echo object_input_tag($survey, 'getMsgToDonor', array (
-  
-  )) ?>
+  <div class="content">
+  <?php echo object_textarea_tag($survey, 'getMsgToDonor', $options = array('size' =>  '70x3')) ?>       
   </div>
 </div>  
 
 <div class="form-row">
   <label for="survey_msg_to_student" class="required">给同学的话：</label> 
   <div class="content">     
-  <?php echo object_input_tag($survey, 'getMsgToStu', array (
-  
-  )) ?>
+  <?php echo object_textarea_tag($survey, 'getMsgToStu', $options = array('size' =>  '70x3')) ?>
   </div>
 </div>  
 
 <div class="form-row">
   <label for="survey_school_opinion" class="required">学校意见：</label> 
-  <div class="content">     
-  <?php echo object_input_tag($survey, 'getSchoolOpinion', array (
-  'size' => 80,
-  )) ?>
+  <div class="content">
+  <?php echo object_textarea_tag($survey, 'getSchoolOpinion', $options = array('size' =>  '70x3')) ?>     
   </div>
 </div>  
 
 <div class="form-row">
   <label for="survey_teacher_opinion" class="required">老师意见：</label> 
   <div class="content">     
-  <?php echo object_input_tag($survey, 'getTeacherOpinion', array (
-  'size' => 80,
-  )) ?>
+  <?php echo object_textarea_tag($survey, 'getTeacherOpinion', $options = array('size' =>  '70x3')) ?>  
   </div>
 </div>  
 
 <div class="form-row">
   <label for="survey_user_opinion" class="required">志愿者意见：</label> 
-  <div class="content">     
-  <?php echo object_input_tag($survey, 'getUserOpinion', array (
-  'size' => 80,
-  )) ?>
+  <div class="content">
+  <?php echo object_textarea_tag($survey, 'getUserOpinion', $options = array('size' =>  '70x3')) ?>     
   </div>
 </div>  
 
 <div class="form-row">
   <label for="survey_discription" class="required">描述：</label> 
-  <div class="content">     
-  <?php echo object_input_tag($survey, 'getDiscription', array (
-  
-  )) ?>
+  <div class="content">
+    <?php echo object_textarea_tag($survey, 'getDiscription', $options = array('size' =>  '70x3')) ?>     
   </div>
 </div>
   
