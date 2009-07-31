@@ -47,8 +47,7 @@
 </BODY>　　
 </HTML>　　
  
- 
- //基于scriptX插件的打印
+//基于scriptX插件的打印
 <html>　　
 <object　id=factory　style="display:none"　　
 　　classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814"　　
