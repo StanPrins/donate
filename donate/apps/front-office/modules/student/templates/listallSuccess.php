@@ -64,7 +64,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
 			&nbsp;<strong>性别：&nbsp;</strong><?php if( $student->getMale()) echo "男"; else echo "女" ?>
 			&nbsp;<strong>学校：&nbsp;</strong><?php echo $student->getSchool()->getSchoolName() ?>
 			&nbsp;<strong>昵称：&nbsp;</strong><?php echo $student->getNickname() ?>
-			&nbsp;<strong>照片：&nbsp;</strong><?php echo $student->getPhoto() ?> <br />
+			<br />
 			&nbsp;<strong>所在地：&nbsp;</strong><?php echo $student->getProvince() ?>省<?php echo $student->getCity() ?>市
 			&nbsp;<strong>在学中：&nbsp;</strong><?php if($student->getIsInstudy())	 echo "是";?>
 			&nbsp;<strong>有退学史：&nbsp;</strong><?php if($student->getHasDropoutHistory()) echo "是";?>

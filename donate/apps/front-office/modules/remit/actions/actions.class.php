@@ -92,7 +92,10 @@ class remitActions extends sfActions
 	{
 		$this->remit = new Remit();
 
-		$this->remit->setDonationId($this->getRequestParameter('donation_id'));
+		if($this->getRequestParameter('donation_id'))
+		{
+			$this->remit->setDonationId($this->getRequestParameter('donation_id'));
+		}
 
 		$this->setTemplate('edit');
 	}

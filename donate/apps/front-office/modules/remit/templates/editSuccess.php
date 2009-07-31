@@ -20,7 +20,11 @@
 <div class="form-row">
   <label for="remit_donation_id" class="required">捐助号：</label> 
   <div class="content">
-  <?php echo $remit->getDonationID()?>
+  <?php if ($remit->getDonationID())
+           echo $remit->getDonationID();
+        else
+           echo object_select_tag($remit, 'getDonationId', array ('related_class' => 'Donation'));
+  ?>
   </div>
 </div>  
   

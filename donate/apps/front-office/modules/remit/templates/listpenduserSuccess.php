@@ -99,10 +99,19 @@
 &nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>           
 <div id="secret_div" style="display:none">
 <br/>
+<?php if ($sf_params->has('donation_id')):?>
+
 <?php echo link_to('通过OFS捐助','remit/create?donation_id='.$sf_params->get('donation_id').'&is_by_ofs=1');?>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <?php echo link_to('个人自己捐助','remit/create?donation_id='.$sf_params->get('donation_id').'&is_by_ofs=0');?>
 
+<?php else:?>
+
+<?php echo link_to('通过OFS捐助','remit/create?is_by_ofs=1');?>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<?php echo link_to('个人自己捐助','remit/create?is_by_ofs=0');?>
+
+<?php endif;?>
 </div>    
 <?php //if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager') || ($sf_user->getAttribute('usertype', '')=='administrator')):?>       
 </div>

@@ -17,7 +17,6 @@
       &nbsp;<strong>性别：&nbsp;</strong><?php if( $student->getMale()) echo "男"; else echo "女" ?>
       &nbsp;<strong>学校：&nbsp;</strong><?php echo $student->getSchool()->getSchoolName() ?>      
       &nbsp;<strong>昵称：&nbsp;</strong><?php echo $student->getNickname() ?>
-      &nbsp;<strong>照片：&nbsp;</strong><?php echo $student->getPhoto() ?>
       <br/>
       &nbsp;<strong>所在地：&nbsp;</strong><?php echo $student->getProvince() ?>省<?php echo $student->getCity() ?>市      
       &nbsp;<strong>正受资助：&nbsp;</strong><?php if( $student->getIsDonated()) echo "是"; else echo"否"; ?>
