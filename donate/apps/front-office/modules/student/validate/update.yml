@@ -1,0 +1,50 @@
+fillin:
+  enabled:  true
+  
+validators:
+  nameStringValidator:
+    class:  sfStringValidator
+    param:
+      min:  2
+      min_error:  至少两个字符
+      max:  16
+      max_error:  至多16个字符
+
+fields:
+  name:
+    required:
+      msg:  "名字不能为空"
+    nameStringValidator:
+  nickname:
+    required:
+      msg:  昵称不能为空
+    nameStringValidator:
+  photo:
+    file:  True
+    sfFileValidator:
+      mime_types:
+        - 'image/jpeg'
+        - 'image/png'
+        - 'image/gif'
+      mime_types_error: 只能上传JPEG、PNG和GIF图像
+      max_size:  512000
+      max_size_error:  文件大小不能超过512kb
+  head_teacher:
+    required:
+      msg:  班主任不能为空
+    nameStringValidator:
+  guardian:
+    required:
+      msg:  监护人不能为空
+    nameStringValidator:
+  grade:
+    required:
+      msg:  班级不能为空
+  address:
+    required:
+      msg:  地址不能为空
+    sfStringValidator:
+      min:  10
+      min_error:  至少10个字符
+      max:  256
+      max_error:  至多256个字符
