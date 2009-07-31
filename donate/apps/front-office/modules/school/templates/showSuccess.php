@@ -4,7 +4,7 @@
 ?>
 <div id="sf_admin_container">
 
-<h1>学校信息</h1>
+<h1>学校详细信息</h1>
 
 <?php use_helper('Object') ?>
 
@@ -50,7 +50,10 @@
   </tr>                 
   </tbody>
 </table>
-<?php echo link_to('edit', 'school/edit?school_id='.$school->getSchoolId()) ?>
-&nbsp;<?php echo link_to('list', 'school/list') ?>
+<?php if ($sf_params->has('after_edit')): ?>
+<a href="javascript:history.go(-2)">返回</a>
+<?php else:?>
+<a href="javascript:history.go(-1)">返回</a>
+<?php endif;?>     
 </div>
 </div>

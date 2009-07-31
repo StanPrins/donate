@@ -4,7 +4,7 @@
 ?>
 <div id="sf_admin_container">
 
-<h1>资助点</h1>
+<h1>资助点管理</h1>
 
 <?php use_helper('Object') ?>
 
@@ -17,7 +17,7 @@
 <fieldset id="sf_fieldset_none" class="">
 
 <div class="form-row">
-  <label for="project_site_site_name" class="required">站点:</label> 
+  <label for="project_site_site_name" class="required">名称:</label> 
   <div class="content">
   <?php echo object_input_tag($project_site, 'getSiteName', array (
   'size' => 20
@@ -53,32 +53,14 @@
 <div class="form-row">
   <label for="project_site_discription" class="required">简介:</label> 
   <div class="content">
-  <?php echo object_textarea_tag($project_site, 'getDiscription', array ('rich'=>true, 'id'=>'contentField',
-  'size' => '80x30',
-  'tinymce_options' =>
-  'language : "zh",'.
-  'theme_advanced_buttons1_add : "styleselect,fontselect,fontsizeselect",'.
-  'theme_advanced_buttons2_add : "separator,preview,forecolor,backcolor",'.
-   'theme_advanced_fonts:"宋体=宋体;黑体=黑体;仿宋=仿宋;楷体=楷体;Arial=arial,helvetica,sans-serif;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Tahoma=tahoma,arial,helvetica,sans-serif;Times New Roman=times new roman,times;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats"'
-  )) ?>
+  <?php echo object_textarea_tag($project_site, 'getDiscription', array (  'size' => '70x20'  )) ?>
   </div>
 </div>
 </fieldset>
 
-<ul class="sf_admin_actions">
-  <li>
-    <?php echo submit_image_tag('admin_db/save_button.png')?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <?php echo link_to(image_tag('admin_db/list_button.png','alt=list'), 'projectsite/list','post=true') ?></li>
-</ul>
-<?php if ($project_site->getSiteId()): ?>
+<?php echo submit_tag('提交') ?>
+&nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>
 
-<ul class="sf_admin_actions">
-  <li class="float-left">
-    <?php echo link_to(image_tag('admin_db/delete_button.png','alt=delete'), 'projectsite/delete?site_id='.$project_site->getSiteId(), 'post=true&confirm=Are you sure?') ?>
-  </li>
-</ul>
-<?php else: ?>
-<?php endif; ?>
 </div>
 </form>
 

@@ -14,14 +14,15 @@
  */
 class projectsiteActions extends sfActions
 {
-	public function executeIndex()
-	{
-		return $this->forward('projectsite', 'list');
-	}
-
 	public function executeList()
 	{
-		$this->project_sites = ProjectSitePeer::doSelect(new Criteria());
+		//$this->project_sites = ProjectSitePeer::doSelect(new Criteria());
+		$c = new Criteria();
+	    $pager = new sfPropelPager('ProjectSite', sfConfig::get('app_pager_homepage_max'));
+		$pager->setCriteria($c);
+		$pager->setPage($this->getRequestParameter('page', 1));
+		$pager->init();
+		$this->pager = $pager;
 	}
 
 	public function executeShow()
@@ -64,7 +65,7 @@ class projectsiteActions extends sfActions
 
 		$project_site->save();
 
-		return $this->redirect('projectsite/show?site_id='.$project_site->getSiteId());
+		return $this->redirect('projectsite/show?site_id='.$project_site->getSiteId().'&after_edit=1');
 	}
 
 	public function executeDelete()

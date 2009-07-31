@@ -16,14 +16,30 @@
 
 <fieldset id="sf_fieldset_none" class="">
 
+<?php if ($sf_params->has('site_id')):?>
+
 <div class="form-row">
-  <label for="school_site_id" class="required">项目号：</label> 
+  <label for="school_site_id" class="required">捐助点：</label> 
+  <div class="content">   
+  <?php
+     echo $projectsite->getSiteName();
+     echo input_hidden_tag('site_id',$sf_params->get('site_id'));  
+   ?>
+  </div>
+</div>  
+
+<?php else:?>
+
+<div class="form-row">
+  <label for="school_site_id" class="required">捐助点：</label> 
   <div class="content">   
   <?php echo object_select_tag($school, 'getSiteId', array (
   'related_class' => 'ProjectSite',
   )) ?>
   </div>
-</div>  
+</div>
+  
+<?php endif?>
 
 <div class="form-row">
   <label for="school_school_name" class="required">学校名：</label> 
