@@ -267,7 +267,7 @@ public function executeListno()
     return $this->redirect('student/show?student_id='.$student->getStudentId().'&after_edit=1');
   }
 
-  public function executeDelete()             //鍒犻櫎鎵�湁鍏朵粬鐩稿叧淇℃伅
+  public function executeDelete()             
   {
     $student = StudentPeer::retrieveByPk($this->getRequestParameter('student_id'));
 
@@ -321,5 +321,9 @@ public function executeListno()
 
     //return $this->redirect('student/listall');
     return $this->redirect($this->getRequest()->getReferer());
+  }
+  public function handleErrorUpdate()
+  {
+  	return $this->redirect($this->getRequest()->getReferer());
   }
 }
