@@ -1,122 +1,133 @@
- <HTML><HEAD><TITLE>web打印去掉页眉页脚，以及不想打印出的页面元素</TITLE>  
- <META http-equiv=Content-Type content="text/html; charset=gb2312">  
- <SCRIPT language=javascript>  
- function printpr() //预览函数  
- {  
- document.all("qingkongyema").click();//打印之前去掉页眉，页脚  
- document.all("dayinDiv").style.display="none"; //打印之前先隐藏不想打印输出的元素（此例中隐藏“打印”和“打印预览”两个按钮）  
- var OLECMDID = 7;  
- var PROMPT = 1;  
- var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';  
- document.body.insertAdjacentHTML('beforeEnd', WebBrowser);  
- WebBrowser1.ExecWB(OLECMDID, PROMPT);  
- WebBrowser1.outerHTML = "";  
- document.all("dayinDiv").style.display="";//打印之后将该元素显示出来（显示出“打印”和“打印预览”两个按钮，方便别人下次打印）  
- }  
-   
- function printTure() //打印函数  
- {  
-  document.all('qingkongyema').click();//同上  
-  document.all("dayinDiv").style.display="none";//同上  
-  window.print();  
-  document.all("dayinDiv").style.display="";  
- }  
- function doPage()  
- {  
-  layLoading.style.display = "none";//同上  
- }  
-   
- </SCRIPT>  
-   
- <script language="VBScript">  
- dim hkey_root,hkey_path,hkey_key  
- hkey_root="HKEY_CURRENT_USER"  
- hkey_path="\Software\Microsoft\Internet Explorer\PageSetup"  
- '//设置网页打印的页眉页脚为空  
- function pagesetup_null()  
- on error resume next  
- Set RegWsh = CreateObject("WScript.Shell")  
- hkey_key="\header"  
- RegWsh.RegWrite hkey_root+hkey_path+hkey_key,""  
- hkey_key="\footer"  
- RegWsh.RegWrite hkey_root+hkey_path+hkey_key,""  
- end function  
- '//设置网页打印的页眉页脚为默认值  
- function pagesetup_default()  
- on error resume next  
- Set RegWsh = CreateObject("WScript.Shell")  
- hkey_key="\header"  
- RegWsh.RegWrite hkey_root+hkey_path+hkey_key,"&w&b页码，&p/&P"  
- hkey_key="\footer"  
- RegWsh.RegWrite hkey_root+hkey_path+hkey_key,"&u&b&d"  
- end function  
- </script>  
-   
- </HEAD>  
- <BODY background="images/background_01.gif" leftMargin=0  
- topMargin=0 rightMargin=0 bottomMargin=0 style="BACKGROUND-POSITION: center 50%">  
-   
- <DIV align=center>  
-    
-  你希望打印的内容..........  
-  </DIV>  
-   
- <DIV align="center" id="dayinDiv" name="dayinDiv"><input type="button" class="tab" value="打印" onclick="printTure();">&nbsp;&nbsp;  
- <input type="button" class="tab" value="打印预览" onclick="printpr();">  
- <input type="hidden" name="qingkongyema" id="qingkongyema" class="tab" value="清空页码" onclick="pagesetup_null()">&nbsp;&nbsp;  
- <input type="hidden" class="tab" value="恢复页码" onclick="pagesetup_default()">  
- </DIV>  
-   
- </BODY>  
- </HTML>
- function SetPrintSettings() { 
+ //IE集成控件打印
+ <HTML>　　
 
-　// -- advanced features 
+　<HEAD>　　
 
-　factory.printing.SetMarginMeasure(2) // measure margins in inches 
+　　<TITLE>　AJava.org书城订单明细</TITLE>　　
 
-　factory.SetPageRange(false, 1, 3) // need pages from 1 to 3 
+　　<style>　　
 
-　factory.printing.printer = "HP DeskJet 870C" 
+　　@media　print{ 　　
 
-　factory.printing.copies = 2 
+　　.toolbar{display:none;} 　　
 
-　factory.printing.collate = true 
+　　} 　　
 
-　factory.printing.paperSize = "A4" 
+　　.toolbar{border:1px　solid　#6A9BFA;background:#E8F7E8;} 　　
 
-　factory.printing.paperSource = "Manual feed" 
+　　.paging{page-break-after　:always} 　　
 
-　// -- basic features 
+　　td{font-size:12px;color:#000000;} 　　
 
-　factory.printing.header = "This is MeadCo" 
+　　</style>　　
 
-　factory.printing.footer = "Advanced Printing by ScriptX" 
+　</HEAD>　　
 
-　factory.printing.portrait = false 
+　　
 
-　factory.printing.leftMargin = 1.0 
+<BODY>　　
 
-　factory.printing.topMargin = 1.0 
+　<div　class='toolbar'>　　
 
-　factory.printing.rightMargin = 1.0 
+　<OBJECT　id=WebBrowser　classid=CLSID:8856F961-340A-11D0-A96B-00C04FD705A2　height=0　width=0>　　
 
-　factory.printing.bottomMargin = 1.0 
+</OBJECT>　　
 
-} 
+<input　type=button　value=打印　onclick=document.all.WebBrowser.ExecWB(6,1)>　　
 
-</script>
+<input　type=button　value=直接打印　onclick=document.all.WebBrowser.ExecWB(6,6)>　　
+
+<input　type=button　value=页面设置　onclick=document.all.WebBrowser.ExecWB(8,1)>　　
+
+<input　type=button　value=打印预览　onclick=document.all.WebBrowser.ExecWB(7,1)>　　
+
+</div>　　
+
+　<TABLE　width="100%"　border="0"><THEAD　style="display:table-header-group;font-weight:bold">　　
+
+<TR><TD　colspan="5"　　align="center"　>AJava.org书城订单明细</TD>　　
+
+　　</TR>　　
+
+　　<TR>　　
+
+　　　　　　<TD>书名</TD>　　
+
+　　　　　　<TD>价格</TD>　　
+
+　　　　　　<TD>送货地址</TD>　　
+
+ <TD>送货时间</TD>　　
+
+　　　　　　<TD>状态</TD>　　
+
+　　　　</TR>　　
+
+</THEAD>　　
+
+　　　<TR>　　
+
+　　　　<TD>《Java　编程思想》</TD>　　
+
+　　　　<TD>￥60.00</TD>　　
+
+　　　　<TD>伊拉克巴格达总统府9栋8单元7门654室</TD>　　
+
+　　　　<TD>2009-8-8</TD>　　
+
+　　　　<TD>已送达</TD>　　
+
+　　　</TR>
+　　<TFOOT　style="display:table-footer-group;font-weight:bold">　　
+
+<TR>　　
+
+<TD　colspan="5"　　align="left"　>以上内容纯属虚构</TD>　　
+
+</TR>　　
+
+</TFOOT>　　
+
+　</TABLE>　　
+
+</BODY>　　
+
+</HTML>　　
+ 
+ 
+ //基于scriptX插件的打印
+ <html>　　
+<object　id=factory　style="display:none"　　
+　　classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814"　　
+　　codebase="http://ajava.org/study/smsx.cab#Version=6,4,438,06">　　
+</object>　　
+<script>　　
+function　printWindow()　{ 　　
+factory.printing.header　=　"使用ScriptX进行打印设置"; 　　
+factory.printing.footer　=　"AJava.org出品"; 　　
+factory.printing.portrait　=　false;//设为true就是横向 　　
+factory.printing.leftMargin　=　1.0; 　　
+factory.printing.topMargin　=　1.0; 　　
+factory.printing.rightMargin　=　1.0; 　　
+factory.printing.bottomMargin　=　1.0; 　　
+} 　　
+printWindow(); 　　
+</script>　
+<input　　type="button"　value="打印本页"　　onclick="factory.printing.Print(true)">　　
+　<input　　type="button"　value="打印目标框架页"　　onclick="factory.printing.Print(true,　idFrame)">
+　<input　　type="button"　value="打印设置..."　　onclick="factory.printing.PageSetup()">
+　<input　　　type="button"　value="打印预览..."　　onclick="factory.printing.Preview()">　
+　<iframe　name="idFrame"　width="100%"　height="60%"　src="http://www.baidu.com">　
+　</html>　　 
+
+//activeX 打印不需要第三发插件
 <script　language="JavaScript"　type="text/javascript">　　　 　　
 
 //定义注册表位置 　　
 
 var　HKEY_Path="HKEY_CURRENT_USER\Software\Microsoft\Internet　Explorer\PageSetup\";　 　　
 
-　　
-
 //name的值可为header（页眉），footer（页脚），margin_bottom（下边距），margin_left（左边距），margin_right（右边距），margin_top（上边距）。 　　
-
-// 　　
 
 function　PageSetup(name,value)　{　 　　
 
