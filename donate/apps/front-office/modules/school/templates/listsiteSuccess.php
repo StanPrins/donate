@@ -3,7 +3,7 @@
 // date: 2009/07/19 21:33:53
 ?>
 <div id="sf_admin_container">
-<h1>所有学校信息</h1>
+<h1>资助点<?php echo $projectsite->getSiteName() ?>的学校信息</h1>
 
 <?php if(sizeof($pager->getResults()) != 0):?>
 <div id="sf_admin_content">
@@ -49,13 +49,13 @@
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager, 'has_site' =>  0 ))?>
+<?php include_partial('pager',array('pager' => $pager, 'has_site' =>  1 ))?>
 
 <?php else:?>
 无相关记录<br/>
 <?php endif;?>
 
-<?php echo link_to ('新建学校', 'school/create') ?>
+<?php echo link_to ('在'.$projectsite->getSiteName().'增加学校', 'school/create?site_id='.$sf_params->get('site_id')) ?>
 &nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>
 </div>
 </div>

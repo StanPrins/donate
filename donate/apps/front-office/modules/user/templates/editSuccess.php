@@ -93,7 +93,7 @@
   <label for="user_photo" class="required">照片：</label> 
   <div class="content">    
   <?php echo object_input_tag($user, 'getPhoto', array (
-  'size' => 80,
+  'size' => 70,
   )) ?>
   </div>
 </div>  
@@ -120,7 +120,7 @@
   <label for="user_duty" class="required">职务：</label> 
   <div class="content">    
   <?php echo object_input_tag($user, 'getDuty', array (
-  'size' => 80,
+  'size' => 70,
   )) ?>
   </div>
 </div>  
@@ -220,7 +220,7 @@
   <label for="user_address" class="required">地址：</label> 
   <div class="content">    
   <?php echo object_input_tag($user, 'getAddress', array (
-  'size' => 80,
+  'size' => 70,
   )) ?>
   </div>
 </div>  

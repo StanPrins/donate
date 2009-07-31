@@ -14,20 +14,32 @@
  */
 class schoolActions extends sfActions
 {
-	public function executeIndex()
-	{
-		return $this->forward('school', 'list');
-	}
-
 	public function executeList()
 	{
+		//$this->schools = SchoolPeer::doSelect($c);
 		$c = new Criteria();
-		if ($this->getRequestParameter('site_id'))
-		{
-			$c -> add(SchoolPeer::SITE_ID, $this->getRequestParameter('site_id'));
-		}
-		$this->schools = SchoolPeer::doSelect($c);
+	    $pager = new sfPropelPager('School', sfConfig::get('app_pager_homepage_max'));
+		$pager->setCriteria($c);
+		$pager->setPage($this->getRequestParameter('page', 1));
+		$pager->init();
+		$this->pager = $pager;
 	}
+	
+	public function executeListsite()
+	{
+		$c = new Criteria();
+        $c -> add(SchoolPeer::SITE_ID, $this->getRequestParameter('site_id'));
+	    $pager = new sfPropelPager('School', sfConfig::get('app_pager_homepage_max'));
+		$pager->setCriteria($c);
+		$pager->setPage($this->getRequestParameter('page', 1));
+		$pager->init();
+		$this->pager = $pager;
+		
+		$d = new Criteria();
+		$d -> add(ProjectSitePeer::SITE_ID, $this->getRequestParameter('site_id'));
+		$this->projectsite = ProjectSitePeer::doSelectOne($d);
+	}
+	
 
 	public function executeShow()
 	{
@@ -38,8 +50,9 @@ class schoolActions extends sfActions
 	public function executeCreate()
 	{
 		$this->school = new School();
+		
+		$this->projectsite = ProjectSitePeer::retrieveByPk($this->getRequestParameter('site_id')); 
 
-		$this->setTemplate('edit');
 	}
 
 	public function executeEdit()
@@ -73,7 +86,7 @@ class schoolActions extends sfActions
 
 		$school->save();
 
-		return $this->redirect('school/show?school_id='.$school->getSchoolId());
+		return $this->redirect('school/show?school_id='.$school->getSchoolId().'&after_edit=1');
 	}
 
 	public function executeDelete()
