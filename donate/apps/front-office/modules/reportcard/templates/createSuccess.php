@@ -161,7 +161,7 @@
 <div class="form-row">
   <label for="report_card_teacher_remark" class="required">老师评语：</label> 
   <div class="content">     
-  <?php echo object_textarea_tag($report_card,'getTeacherRemark', $options = array('size' =>  '80x7')) ?>
+  <?php echo object_textarea_tag($report_card,'getTeacherRemark', $options = array('size' =>  '70x7')) ?>
   </div>
 </div>  
 
