@@ -82,7 +82,7 @@ class remitActions extends sfActions
 	   $this->forward404Unless($this->remit);
 	   $usertype = $this->getContext()->getUser()->getAttribute('usertype','');
 	   $user_id = $this->getContext()->getUser()->getAttribute('user_id','');
-	   if (!(($usertype == 'administrator' ) || ($usertype == 'manager') || ($user_id == $this->remit->getDonation()->getUserId())))
+	   if (!( ($usertype == 'surveyor' ) ||($usertype == 'administrator' ) || ($usertype == 'manager') || ($user_id == $this->remit->getDonation()->getUserId())))
 	   {
 	      return $this->forward404();
 	   }		

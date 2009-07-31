@@ -108,7 +108,15 @@ class userActions extends sfActions
 
 		$user->save();
 
-		return $this->redirect('user/show?user_id='.$user->getUserId().'&after_edit=1');
+		if ($this->getRequestParameter('approve'))
+		{
+		   return $this->redirect('user/show?user_id='.$user->getUserId().'&after_edit=1');
+		}
+		else
+		{
+		   return $this->redirect('login/login');
+		}
+		
 		
 	
 	}
