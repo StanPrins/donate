@@ -18,6 +18,16 @@ test:
     no_script_name:         off
     etag:                   off
 
+all:    
+  .actions:
+    login_module:           login
+    login_action:           login
+
+    secure_module:          login
+    secure_action:          login
+  .settings:
+    charset:                utf-8
+
 #all:
 #  .actions:
 #    default_module:         default   # Default module and action to be called when

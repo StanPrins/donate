@@ -323,8 +323,4 @@ public function executeListno()
     return $this->redirect($this->getRequest()->getReferer());
   }
   
-	public function handleErrorUpdate()
-	{
-		$this->forward('student','edit'); 
-	}  
 }
