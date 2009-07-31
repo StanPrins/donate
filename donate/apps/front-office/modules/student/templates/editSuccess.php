@@ -67,7 +67,6 @@ function display()
 </script>
 <?php echo form_error('photo')?>
 <div class="form-row">
-  <?php echo form_error('photo') ?>
   <label for="student_photo" class="required">照片：</label> 
   <div class="content">
   <?php if(!is_null($student->getPhoto())):?>
