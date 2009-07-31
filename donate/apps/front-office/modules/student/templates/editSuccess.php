@@ -38,6 +38,7 @@
 </div>  
   
 <div class="form-row">
+  <?php echo form_error('nickname')?>
   <label for="student_nick_name" class="required">昵称：</label> 
   <div class="content">     
   <?php echo object_input_tag($student, 'getNickname', array (
@@ -64,6 +65,7 @@ function display()
 	}	
 }
 </script>
+<?php echo form_error('photo')?>
 <div class="form-row">
   <?php echo form_error('photo') ?>
   <label for="student_photo" class="required">照片：</label> 
@@ -77,7 +79,7 @@ function display()
   <?php endif;?>
   </div>
 </div>  
-
+<?php echo form_error('head_teacher')?>
 <div class="form-row">
   <label for="student_head_teacher" class="required">班主任：</label> 
   <div class="content">   
@@ -86,7 +88,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('guardian')?>
 <div class="form-row">
   <label for="student_guardian" class="required">监护人：</label> 
   <div class="content">   
@@ -95,7 +97,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('birthday')?>
 <div class="form-row">
   <label for="student_birthday" class="required">生日：</label> 
   <div class="content">   
@@ -104,7 +106,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('grade')?>
 <div class="form-row">
   <label for="student_grade" class="required">年级：</label> 
   <div class="content">   
@@ -130,7 +132,7 @@ function display()
   )) ?>
   </div>
 </div>  
-  
+<?php echo form_error('postal')?>  
 <div class="form-row">
   <label for="student_address" class="required">邮编：</label> 
   <div class="content">   
@@ -139,7 +141,7 @@ function display()
   )) ?>
   </div>
 </div>
-  
+<?php echo form_error('city')?>  
 <div class="form-row">
   <label for="student_city" class="required">城市：</label> 
   <div class="content">   
@@ -148,7 +150,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('province')?>
 <div class="form-row">
   <label for="student_province" class="required">省：</label> 
   <div class="content">   
@@ -157,7 +159,7 @@ function display()
   )) ?>
   </div>
 </div>
-
+<?php echo form_error('assit_history')?>
 <div class="form-row">
   <label for="student_assist_history" class="required">资助史：</label> 
   <div class="content">   
@@ -166,15 +168,13 @@ function display()
   )) ?>
   </div>
 </div>  
-
 <div class="form-row">
   <label for="student_is_in_study" class="required">在学：</label> 
   <div class="content">   
   <?php echo object_checkbox_tag($student, 'getIsInstudy', array (
   )) ?>
   </div>
-</div>  
-
+</div> 
 <div class="form-row">
   <label for="student_is_boarder" class="required">寄宿生：</label> 
   <div class="content">   
@@ -182,7 +182,6 @@ function display()
   )) ?>
   </div>
 </div>  
-
 <div class="form-row">
   <label for="student_dropout_history" class="required">有无退学史：</label> 
   <div class="content">   
@@ -190,7 +189,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('term_expense')?>
 <div class="form-row">
   <label for="student_term_expense" class="required">学期花费：</label> 
   <div class="content">   
@@ -199,17 +198,16 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('discription')?>
 <div class="form-row">
   <label for="student_discription" class="required">自述：</label> 
   <div class="content">   
   <?php echo object_textarea_tag($student,'getDiscription', $options = array('size' => '70x4')) ?>
   </div>
 </div>  
-
 <br/>
 <h2>亲属1</h2> 
-
+<?php echo form_error('fm1_relation')?>
 <div class="form-row">
   <label for="student_fm1_relation" class="required">关系：</label> 
   <div class="content">   
@@ -218,7 +216,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm1_name')?>
 <div class="form-row">
   <label for="student_fm1_name" class="required">姓名：</label> 
   <div class="content">   
@@ -227,7 +225,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm1_age')?>
 <div class="form-row">
   <label for="student_fm1_age" class="required">年龄：</label> 
   <div class="content">   
@@ -236,7 +234,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm1_occupation')?>
 <div class="form-row">
   <label for="student_fm1_occupation" class="required">职业：</label> 
   <div class="content">   
@@ -245,16 +243,15 @@ function display()
   )) ?>
   </div>
 </div>  
-
 <div class="form-row">
   <label for="student_fm1_discription" class="required">简介</label> 
   <div class="content">     
   <?php echo object_textarea_tag($student,'getFm1Discription', $options = array('size' => '70x4')) ?>  
   </div>
 </div>  
-
 <br/>
-<h2>亲属2</h2> 
+<h2>亲属2</h2>
+<?php echo form_error('fm2_relation')?> 
 <div class="form-row">
   <label for="student_fm2_relation" class="required">关系：</label> 
   <div class="content">   
@@ -263,7 +260,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm2_name')?>
 <div class="form-row">
   <label for="student_fm2_name" class="required">姓名：</label> 
   <div class="content">   
@@ -272,7 +269,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm2_age')?>
 <div class="form-row">
   <label for="student_fm2_age" class="required">年龄：</label> 
   <div class="content">   
@@ -281,7 +278,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm2_occupation')?>
 <div class="form-row">
   <label for="student_fm2_occupation" class="required">职业：</label> 
   <div class="content">   
@@ -300,7 +297,7 @@ function display()
 
 <br/>
 <h2>亲属3</h2> 
-
+<?php echo form_error('fm3_relation')?> 
 <div class="form-row">
   <label for="student_fm3_relation" class="required">关系：</label> 
   <div class="content">   
@@ -309,7 +306,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm3_name')?>
 <div class="form-row">
   <label for="student_fm3_name" class="required">姓名：</label> 
   <div class="content">   
@@ -318,7 +315,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm3_age')?>
 <div class="form-row">
   <label for="student_fm3_age" class="required">年龄：</label> 
   <div class="content">   
@@ -327,7 +324,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm3_occupation')?>
 <div class="form-row">
   <label for="student_fm3_occupation" class="required">职业：</label> 
   <div class="content">   
@@ -336,17 +333,15 @@ function display()
   )) ?>
   </div>
 </div>  
-  
 <div class="form-row">
   <label for="student_fm3_discription" class="required">简介</label> 
   <div class="content">     
   <?php echo object_textarea_tag($student,'getFm3Discription', $options = array('size' => '70x4')) ?>
   </div>
 </div>  
-
 <br/>
 <h2>亲属4</h2> 
-
+<?php echo form_error('fm4_relation')?> 
 <div class="form-row">
   <label for="student_fm4_relation" class="required">关系：</label> 
   <div class="content">   
@@ -355,7 +350,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm4_name')?>
 <div class="form-row">
   <label for="student_fm4_name" class="required">姓名：</label> 
   <div class="content">   
@@ -364,7 +359,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm4_age')?>
 <div class="form-row">
   <label for="student_fm4_age" class="required">年龄：</label> 
   <div class="content">   
@@ -373,7 +368,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('fm4_occupation')?>
 <div class="form-row">
   <label for="student_fm4_occupation" class="required">职业：</label> 
   <div class="content">   
@@ -382,14 +377,12 @@ function display()
   )) ?>
   </div>
 </div>  
-  
 <div class="form-row">
   <label for="student_fm4_discription" class="required">简介</label> 
   <div class="content">
   <?php echo object_textarea_tag($student,'getFm4Discription', $options = array('size' => '70x4')) ?>       
   </div>
 </div>
-  
 </fieldset>
 <?php echo submit_tag('提交') ?>
 

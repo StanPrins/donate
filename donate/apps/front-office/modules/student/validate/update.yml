@@ -1,0 +1,138 @@
+fillin:
+  enabled:  true
+  
+validators:
+  nameStringValidator:
+    class:  sfStringValidator
+    param:
+      min:  2
+      min_error:  至少两个字符
+      max:  16
+      max_error:  至多16个字符
+
+fields:
+  name:
+    required:
+      msg:  "名字不能为空"
+    nameStringValidator:
+  nickname:
+    required:
+      msg:  昵称不能为空
+    nameStringValidator:
+  photo:
+    file:  True
+    sfFileValidator:
+      mime_types:
+        - 'image/jpeg'
+        - 'image/png'
+        - 'image/gif'
+      mime_types_error: 只能上传JPEG、PNG和GIF图像
+      max_size:  512000
+      max_size_error:  文件大小不能超过512kb
+  head_teacher:
+    required:
+      msg:  班主任不能为空
+    nameStringValidator:
+  guardian:
+    required:
+      msg:  监护人不能为空
+    nameStringValidator:
+  birthday:
+    required:
+      msg:  生日不能为空
+    sfDateValidator:
+      date_error:  日期无效
+      compare:  "1990-01-01"
+      operator: ">="
+      compare_error:  "对不起，只接受1990年1月1日出生的人"
+  grade:
+    required:
+      msg:  班级不能为空
+    nameStringValidator:
+  address:
+    required:
+      msg:  地址不能为空
+    sfStringValidator:
+      min:  10
+      min_error:  至少10个字符
+      max:  256
+      max_error:  至多256个字符
+  postal:
+    required:
+      msg:  邮编不能为空
+    sfStringValidator:
+      min:  2
+      min_error:  至少2个字符
+      max:  7
+      max_error:  至多7个字符
+  city:
+    required:
+      msg:  城市不能为空
+    nameStringValidator:
+  province:
+    required:
+      msg:  省份不能为空
+    nameStringValidator:
+  term_expense:
+    required:
+      msg:  学期学费不能为空
+    sfNumberValidator:
+      nan_error:  请输入一个整数
+      min:  0
+      min_error:  学费不能小于0
+      max:  10000
+      max_error: 学费不能大于10000
+  fm1_relation:
+    nameStringValidator:
+  fm1_name:
+    nameStringValidator:
+  fm1_age:
+    sfNumberValidator:
+      nan_error:  请输入一个整数
+      min:  0
+      min_error:  年龄不能小于0
+      max:  10000
+      max_error: 年龄不能大于200
+  fm2_occupation:
+    nameStringValidator:
+  fm2_relation:
+    nameStringValidator:
+  fm2_name:
+    nameStringValidator:
+  fm2_age:
+    sfNumberValidator:
+      nan_error:  请输入一个整数
+      min:  0
+      min_error:  年龄不能小于0
+      max:  10000
+      max_error: 年龄不能大于200
+  fm2_occupation:
+    nameStringValidator:        
+  fm3_relation:
+    nameStringValidator:
+  fm3_name:
+    nameStringValidator:
+  fm3_age:
+    sfNumberValidator:
+      nan_error:  请输入一个整数
+      min:  0
+      min_error:  年龄不能小于0
+      max:  10000
+      max_error: 年龄不能大于200
+  fm3_occupation:
+    nameStringValidator:        
+  fm4_relation:
+    nameStringValidator:
+  fm4_name:
+    nameStringValidator:
+  fm4_age:
+    sfNumberValidator:
+      nan_error:  请输入一个整数
+      min:  0
+      min_error:  年龄不能小于0
+      max:  10000
+      max_error: 年龄不能大于200
+  fm4_occupation:
+    nameStringValidator:        
+    
+  
