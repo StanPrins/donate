@@ -17,7 +17,7 @@
       &nbsp;<strong>性别：&nbsp;</strong><?php if( $donation->getStudent()->getMale()) echo "男"; else echo "女" ?>
       &nbsp;<strong>学校：&nbsp;</strong><?php echo $donation->getStudent()->getSchool()->getSchoolName() ?>      
       &nbsp;<strong>昵称：&nbsp;</strong><?php echo $donation->getStudent()->getNickname() ?>
-      &nbsp;<strong>照片：&nbsp;</strong><?php echo $donation->getStudent()->getPhoto() ?>
+      
       <br/>
       &nbsp;<strong>正受资助：&nbsp;</strong><?php if( $donation->getStudent()->getIsDonated()) echo "是"; else echo"否"; ?>
       &nbsp;<strong>在学中：&nbsp;</strong><?php if($donation->getStudent()->getIsInstudy())	 echo "是";?> 
