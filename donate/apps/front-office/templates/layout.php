@@ -17,56 +17,120 @@
 </div>	
 
 <div id="header" >
-<ul>
+<ul id="navmenu-h">
 <?php if ($sf_user->isAuthenticated()): ?>	  	
+
    <?php if ($sf_user->getAttribute('usertype', '')=='volunteer'): ?>   
-   <li><?php echo '志愿者:'.$sf_user->getAttribute('name', '') ?></li>
-   <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
-   <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
-   <li><?php echo link_to('我要资助', 'student/listno') ?></li>
-   <li><?php echo link_to('待审批资助', 'donation/listpend') ?></li>
-   <li><?php echo link_to('未完成到款', 'remit/listpenduser') ?></li>
+   <li><p><?php echo '志愿者:'.$sf_user->getAttribute('name', '') ?></p></li>
+   <li><?php echo link_to('资助', '#') ?>
+     <ul>
+       <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
+       <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
+       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
+     </ul>
+   </li>
+   <li><?php echo link_to('审批项', '#') ?>
+     <ul>
+       <li><?php echo link_to('待审批资助', 'donation/listpend') ?></li>
+       <li><?php echo link_to('未完成到款', 'remit/listpenduser') ?></li>     
+     </ul>   
+   </li>
    <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
+   
+   
    <?php elseif($sf_user->getAttribute('usertype', '')=='surveyor'): ?>
-   <li><?php echo '调查员:'.$sf_user->getAttribute('name', '') ?></li>
-   <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
-   <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
-   <li><?php echo link_to('我要资助', 'student/listno') ?></li>
-   <li><?php echo link_to('待审批资助', 'donation/listpend') ?></li>
-   <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
+   
+   <li><p><?php echo '调查员:'.$sf_user->getAttribute('name', '') ?></p></li>
+   <li><?php echo link_to('资助', '#') ?>
+     <ul>
+       <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
+       <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
+       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
+     </ul>
+   </li>
+   <li><?php echo link_to('审批项', '#') ?>
+     <ul>
+       <li><?php echo link_to('待审批资助', 'donation/listpend') ?></li>
+       <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
+     </ul>
+   </li>
    <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
-   <li><?php echo link_to('添加学生', 'student/create') ?></li>
-   <li><?php echo link_to('所有学生', 'student/listall') ?></li>
+   <li><?php echo link_to('学生', '#') ?>
+     <ul>
+       <li><?php echo link_to('添加学生', 'student/create') ?></li>
+       <li><?php echo link_to('所有学生', 'student/listall') ?></li>
+     </ul>
+   </li>  
    <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
+   
+   
    <?php elseif($sf_user->getAttribute('usertype', '')=='manager'): ?>
-   <li><?php echo '管理员:'.$sf_user->getAttribute('name', '') ?></li>
-   <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
-   <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
-   <li><?php echo link_to('我要资助', 'student/listno') ?></li>
-   <li><?php echo link_to('审批资助', 'donation/approve') ?></li>
-   <li><?php echo link_to('审批用户', 'user/approve') ?></li>
-   <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
-   <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
-   <li><?php echo link_to('添加学生', 'student/create') ?></li>
-   <li><?php echo link_to('所有学生', 'student/listall') ?></li>
-   <li><?php echo link_to('所有用户', 'user/listall') ?></li>
-   <li><?php echo link_to('资助点管理', 'projectsite/list') ?></li>
-   <li><?php echo link_to('资助学校管理', 'school/list') ?></li>
+   
+   <li><p><?php echo '管理员:'.$sf_user->getAttribute('name', '') ?></p></li>
+   <li><?php echo link_to('资助', '#') ?>
+     <ul>
+       <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
+       <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
+       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
+     </ul>
+   </li>
+   <li><?php echo link_to('审批项', '#') ?>
+     <ul>
+       <li><?php echo link_to('审批资助', 'donation/approve') ?></li>
+       <li><?php echo link_to('审批用户', 'user/approve') ?></li>
+       <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
+     </ul>
+   </li>
+   <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>   
+   <li><?php echo link_to('学生', '#') ?>
+     <ul>
+       <li><?php echo link_to('添加学生', 'student/create') ?></li>
+       <li><?php echo link_to('所有学生', 'student/listall') ?></li>
+     </ul>
+   </li> 
+   <li><?php echo link_to('用户管理', 'user/listall') ?></li>
+   <li><?php echo link_to('资助项目管理', '#') ?>
+     <ul>
+       <li><?php echo link_to('资助点管理', 'projectsite/list') ?></li>
+       <li><?php echo link_to('学校管理', 'school/list') ?></li>     
+     </ul>
+   </li>
    <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
+   
+   
    <?php elseif($sf_user->getAttribute('usertype', '')=='administrator'): ?>
-   <li><?php echo '超级用户:'.$sf_user->getAttribute('name', '') ?></li>
-   <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
-   <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
-   <li><?php echo link_to('我要资助', 'student/listno') ?></li>
-   <li><?php echo link_to('审批资助', 'donation/approve') ?></li>
-   <li><?php echo link_to('审批用户', 'user/approve') ?></li>
-   <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
-   <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
-   <li><?php echo link_to('添加学生', 'student/create') ?></li>
-   <li><?php echo link_to('所有学生', 'student/listall') ?></li>
-   <li><?php echo link_to('所有用户', 'user/listall') ?></li>
-   <li><?php echo link_to('数据库管理', 'student/listpend') ?></li>   
+   
+   <li><p><?php echo '超级用户:'.$sf_user->getAttribute('name', '') ?></p></li>
+   <li><?php echo link_to('资助', '#') ?>
+     <ul>
+       <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
+       <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
+       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
+     </ul>
+   </li>
+   <li><?php echo link_to('审批项', '#') ?>
+     <ul>
+       <li><?php echo link_to('审批资助', 'donation/approve') ?></li>
+       <li><?php echo link_to('审批用户', 'user/approve') ?></li>
+       <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
+     </ul>
+   </li>
+   <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>   
+   <li><?php echo link_to('学生', '#') ?>
+     <ul>
+       <li><?php echo link_to('添加学生', 'student/create') ?></li>
+       <li><?php echo link_to('所有学生', 'student/listall') ?></li>
+     </ul>
+   </li> 
+   <li><?php echo link_to('用户管理', 'user/listall') ?></li>
+   <li><?php echo link_to('资助项目管理', '#') ?>
+     <ul>
+       <li><?php echo link_to('资助点管理', 'projectsite/list') ?></li>
+       <li><?php echo link_to('学校管理', 'school/list') ?></li>     
+     </ul>
+   </li>
    <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
+   
    <?php else: ?>  	
    <?php endif ?>      
    <li><?php echo link_to('注销', 'login/logout') ?></li>
@@ -83,10 +147,4 @@
 
 </body>
 </html>
-     <!-- 
-     <li><?php echo link_to('我资助的', 'student/mylist') ?></li>
-     <li><?php echo link_to('未资助的', 'student/list') ?></li>
-     <li><?php echo link_to('待审核资助', '../index.php') ?></li>
-     <li><?php echo link_to('曾资助过的同学', '../index.php') ?></li>  
-     <li><?php echo link_to('我的账户管理', '../index.php') ?></li>        
-      -->
+

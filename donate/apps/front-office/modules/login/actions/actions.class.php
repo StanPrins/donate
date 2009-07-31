@@ -24,7 +24,7 @@ class loginActions extends sfActions
 		{
 			// handle the form submission
 			// redirect to last page
-			return $this->redirect('donation/listmy');
+			return $this->redirect('donation/list');
 		}
 	}
 

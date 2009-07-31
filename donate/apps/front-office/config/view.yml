@@ -9,7 +9,7 @@ default:
     keywords:     symfony, project
     language:     zh
 
-  stylesheets:    [main, admin_db]
+  stylesheets:    [main, admin_db, cssMenus]
 
   javascripts:    []
 
