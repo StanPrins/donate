@@ -123,7 +123,7 @@ function display()
   <label for="student_address" class="required">住址：</label> 
   <div class="content">   
   <?php echo object_input_tag($student, 'getAddress', array (
-  'size' => 80,
+  'size' => 70,
   )) ?>
   </div>
 </div>  
@@ -159,7 +159,7 @@ function display()
   <label for="student_assist_history" class="required">资助史：</label> 
   <div class="content">   
   <?php echo object_textarea_tag($student, 'getAssistHistory', array (
-  'size' => '30x3',
+  'size' => '70x3',
   )) ?>
   </div>
 </div>  
@@ -200,9 +200,7 @@ function display()
 <div class="form-row">
   <label for="student_discription" class="required">自述：</label> 
   <div class="content">   
-  <?php echo object_input_tag($student, 'getDiscription', array (
-   
-  )) ?>
+  <?php echo object_textarea_tag($student,'getDiscription', $options = array('size' => '70x4')) ?>
   </div>
 </div>  
 
@@ -248,9 +246,7 @@ function display()
 <div class="form-row">
   <label for="student_fm1_discription" class="required">简介</label> 
   <div class="content">     
-  <?php echo object_input_tag($student, 'getFm1Discription', array (
-   
-  )) ?>
+  <?php echo object_textarea_tag($student,'getFm1Discription', $options = array('size' => '70x4')) ?>  
   </div>
 </div>  
 
@@ -294,10 +290,8 @@ function display()
   
 <div class="form-row">
   <label for="student_fm2_discription" class="required">简介</label> 
-  <div class="content">     
-  <?php echo object_input_tag($student, 'getFm2Discription', array (
-   
-  )) ?>
+  <div class="content">
+  <?php echo object_textarea_tag($student,'getFm2Discription', $options = array('size' => '70x4')) ?>       
   </div>
 </div>  
 
@@ -343,9 +337,7 @@ function display()
 <div class="form-row">
   <label for="student_fm3_discription" class="required">简介</label> 
   <div class="content">     
-  <?php echo object_input_tag($student, 'getFm3Discription', array (
-   
-  )) ?>
+  <?php echo object_textarea_tag($student,'getFm3Discription', $options = array('size' => '70x4')) ?>
   </div>
 </div>  
 
@@ -390,10 +382,8 @@ function display()
   
 <div class="form-row">
   <label for="student_fm4_discription" class="required">简介</label> 
-  <div class="content">     
-  <?php echo object_input_tag($student, 'getFm4Discription', array (
-   
-  )) ?>
+  <div class="content">
+  <?php echo object_textarea_tag($student,'getFm4Discription', $options = array('size' => '70x4')) ?>       
   </div>
 </div>
   

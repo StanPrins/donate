@@ -134,50 +134,45 @@
 		<column name="photo" type="varchar" size="256" />
 		<column name="head_teacher" type="varchar" size="16" required="true" />
 		<column name="guardian" type="varchar" size="16" required="true" />
-		<column name="birthday" type="date" />
-		<column name="grade" type="tinyint" />
-		<column name="male" type="boolean" />
+		<column name="birthday" type="date" required="true" />
+		<column name="grade" type="varchar" size="16" required="true" />
+		<column name="male" type="boolean" required="true" />
 		<column name="address" type="varchar" size="256" required="true" />
 		<column name="postal" type="varchar" size="7" required="true" />
 		<column name="city" type="varchar" size="16" required="true" />
 		<column name="province" type="varchar" size="16" required="true" />
 		<column name="assist_history" type="longvarchar" required="true" />
-		<column name="is_instudy" type="boolean" />
-		<column name="is_boarder" type="boolean" />
-		<column name="is_donated" type="boolean" />
-		<column name="has_dropout_history" type="boolean" />
+		<column name="is_instudy" type="boolean" required="true" />
+		<column name="is_boarder" type="boolean" required="true" />
+		<column name="is_donated" type="boolean" required="true" />
+		<column name="has_dropout_history" type="boolean" required="true" />
 		<column name="term_expense" type="integer" size="11" required="true" />
 		<column name="discription" type="longvarchar" />
 		<column name="created_at" type="timestamp" />
 
-		<column name="fm1_relation" type="varchar" size="16" required="true" />
-		<column name="fm1_name" type="varchar" size="16" required="true" />
-		<column name="fm1_age" type="tinyint" required="true" />
-		<column name="fm1_occupation" type="varchar" size="16"
-			required="true" />
+		<column name="fm1_relation" type="varchar" size="16" />
+		<column name="fm1_name" type="varchar" size="16" />
+		<column name="fm1_age" type="tinyint" />
+		<column name="fm1_occupation" type="varchar" size="16" />
 		<column name="fm1_discription" type="longvarchar" />
-
-		<column name="fm2_relation" type="varchar" size="16" required="true" />
-		<column name="fm2_name" type="varchar" size="16" required="true" />
-		<column name="fm2_age" type="tinyint" required="true" />
-		<column name="fm2_occupation" type="varchar" size="16"
-			required="true" />
+		
+		<column name="fm2_relation" type="varchar" size="16" />
+		<column name="fm2_name" type="varchar" size="16" />
+		<column name="fm2_age" type="tinyint" />
+		<column name="fm2_occupation" type="varchar" size="16" />
 		<column name="fm2_discription" type="longvarchar" />
-
-		<column name="fm3_relation" type="varchar" size="16" required="true" />
-		<column name="fm3_name" type="varchar" size="16" required="true" />
-		<column name="fm3_age" type="tinyint" required="true" />
-		<column name="fm3_occupation" type="varchar" size="16"
-			required="true" />
+		
+		<column name="fm3_relation" type="varchar" size="16" />
+		<column name="fm3_name" type="varchar" size="16" />
+		<column name="fm3_age" type="tinyint" />
+		<column name="fm3_occupation" type="varchar" size="16" />
 		<column name="fm3_discription" type="longvarchar" />
 
-		<column name="fm4_relation" type="varchar" size="16" required="true" />
-		<column name="fm4_name" type="varchar" size="16" required="true" />
-		<column name="fm4_age" type="tinyint" required="true" />
-		<column name="fm4_occupation" type="varchar" size="16"
-			required="true" />
+		<column name="fm4_relation" type="varchar" size="16" />
+		<column name="fm4_name" type="varchar" size="16" />
+		<column name="fm4_age" type="tinyint" />
+		<column name="fm4_occupation" type="varchar" size="16" />
 		<column name="fm4_discription" type="longvarchar" />
-
 	</table>
 
 	<table name="survey" phpName="Survey">
@@ -195,7 +190,7 @@
 		</foreign-key>
 		<column name="survey_date" type="date" />
 		<column name="family_condition" type="longvarchar" />
-		<column name="grade" type="integer" size="11" required="true" />
+		<column name="grade" type="varchar" size="16" required="true"/>
 		<column name="other_assist" type="varchar" size="256" required="true" />
 		<column name="dropout_info" type="varchar" size="256" required="true" />
 		<column name="presentation" type="longvarchar" />
