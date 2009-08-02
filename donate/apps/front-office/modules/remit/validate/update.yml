@@ -1,0 +1,30 @@
+fillin:
+  enabled:  true
+  
+validators:
+  nameStringValidator:
+    class:  sfStringValidator
+    param:
+      max:  16
+      max_error:  至多16个字符
+  dateValidator:
+    class:  sfDateValidator
+    param:
+      date_error:  日期无效
+      compare:  "2009-08-08"
+      operator:  ">="
+      compare_error:  "对不起，日期不能早于2009年8月8日“
+
+fields:
+  amount:
+    nameStringValidator:
+  receive_date:
+    dateValidator:
+  receive_amount:
+    nameStringValidator:
+  sendout_date:
+    dateValidator:
+  sendout_amount:
+    nameStringValidator:
+    
+  

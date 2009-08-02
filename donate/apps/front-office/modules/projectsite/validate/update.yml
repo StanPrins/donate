@@ -1,0 +1,30 @@
+fillin:
+  enabled:  true
+  
+validators:
+  nameStringValidator:
+    class:  sfStringValidator
+    param:
+      min:  2
+      min_error:  至少2个字符
+      max:  16
+      max_error:  至多16个字符
+
+fields:
+  site_name:
+    required:
+      msg:  捐助点不能为空
+    nameStringValidator:
+  province:
+    required:
+      msg:  省份不能为空
+    nameStringValidator:
+  city:
+    required:
+      msg:  城市不能为空
+    nameStringValidator:
+  district:
+    required:
+      msg:  区域不能为空
+    nameStringValidator:   
+  

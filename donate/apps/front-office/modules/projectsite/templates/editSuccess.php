@@ -7,6 +7,7 @@
 <h1>资助点管理</h1>
 
 <?php use_helper('Object') ?>
+<?php use_helper('Validation')?>
 
 <?php echo form_tag('projectsite/update') ?>
 
@@ -15,7 +16,7 @@
 <div id="sf_admin_content">
 
 <fieldset id="sf_fieldset_none" class="">
-
+<?php echo form_error('site_name')?>
 <div class="form-row">
   <label for="project_site_site_name" class="required">名称:</label> 
   <div class="content">
@@ -24,6 +25,7 @@
   )) ?>
   </div>
 </div>
+<?php echo form_error('province')?>
 <div class="form-row">
   <label for="project_site_province" class="required">省:</label> 
   <div class="content">
@@ -32,7 +34,7 @@
   )) ?>
   </div>
 </div>
-  
+<?php echo form_error('city')?>  
 <div class="form-row">
   <label for="project_site_city" class="required">城市:</label> 
   <div class="content">
@@ -41,6 +43,7 @@
   )) ?>
   </div>
 </div>
+<?php echo form_error('district')?>
 <div class="form-row">
   <label for="project_site_district" class="required">区:</label> 
   <div class="content">
