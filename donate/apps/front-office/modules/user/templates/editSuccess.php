@@ -10,9 +10,9 @@
 <h1>新建账户</h1>
 <?php endif;?>
 
-
-
 <?php use_helper('Object') ?>
+<?php use_helper('Javascript')?>
+<?php use_helper('Validation')?>
 
 <?php echo form_tag('user/update') ?>
 
@@ -37,7 +37,6 @@
 <?php endif;?> 
 
 <?php if ($user->getUserName()):?>
-
 <div class="form-row">
   <label for="user_username" class="required">用户名：</label> 
   <div class="content">
@@ -54,16 +53,15 @@
   完成提交后请耐心等待资格审核，审核成功后方可登录
   </div>
 </div>
+<?php echo form_error('username')?>
 <div class="form-row">
   <label for="user_username" class="required">用户名：</label> 
   <div class="content">
   <?php echo input_tag('username') ?>  
   </div>
 </div>
-
 <?php endif;?>
-
-   
+<?php echo form_error('nickname')?>   
 <div class="form-row">
   <label for="user_nickname" class="required">昵称：</label> 
   <div class="content">    
@@ -72,14 +70,14 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('sha1_password')?>
 <div class="form-row">
   <label for="user_password" class="required">输入新密码：</label> 
   <div class="content">    
   <?php echo input_tag('password');?>
   </div>
 </div>  
-
+<?php echo form_error('name')?>
 <div class="form-row">
   <label for="user_name" class="required">姓名：</label> 
   <div class="content">    
@@ -88,16 +86,39 @@
   )) ?>
   </div>
 </div>  
-
+<script type="text/javascript">
+function display()
+{
+	var photo_input = document.getElementById("photo");
+	var control_button = document.getElementById("control_button");
+	var str = control_button.value;
+	if(str == "重新上传")
+	{
+		photo_input.style.display = "inline";
+		control_button.value = "取消";
+	}
+	else
+	{
+		photo_input.style.display = "none";
+		photo_input.value = null;
+		control_button.value = "重新上传";
+	}	
+}
+</script>
+<?php echo form_error('photo')?>
 <div class="form-row">
   <label for="user_photo" class="required">照片：</label> 
-  <div class="content">    
-  <?php echo object_input_tag($user, 'getPhoto', array (
-  'size' => 70,
-  )) ?>
+  <div class="content">
+  <?php if(!is_null($user->getPhoto())):?>
+  <?php echo image_tag('users/'.$user->getPhoto())?>
+  <?php echo input_file_tag('photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
+  <?php echo button_to_function('重新上传','display()',array('id'=>'control_button','size'=>'2'))?>
+  <?php else:?>   
+  <?php echo input_file_tag('photo',array('accept'=>'image/*','size'=>'10'))?>
+  <?php endif;?>
   </div>
-</div>  
-  
+</div>
+<?php echo form_error('bbs_id')?>   
 <div class="form-row">
   <label for="user_bbs_id" class="required">BBS 帐号：</label> 
   <div class="content">      
@@ -106,7 +127,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('ofs_id')?>
 <div class="form-row">
   <label for="user_ofs_id" class="required">OFS 帐号：</label> 
   <div class="content">    
@@ -115,7 +136,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('duty')?>
 <div class="form-row">
   <label for="user_duty" class="required">职务：</label> 
   <div class="content">    
@@ -124,7 +145,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('create_at')?>
 <div class="form-row">
   <label for="user_created_at" class="required">创建日期：</label> 
   <div class="content">    
@@ -134,7 +155,7 @@
   )) ?>
   </div>
 </div> 
-
+<?php echo form_error('mobile')?>
 <div class="form-row">
   <label for="user_mobile" class="required">移动电话：</label> 
   <div class="content">    
@@ -143,7 +164,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('tel')?>
 <div class="form-row">
   <label for="user_tel" class="required">固定电话：</label> 
   <div class="content">    
@@ -152,7 +173,6 @@
   )) ?>
   </div>
 </div>  
-
 <div class="form-row">
   <label for="user_role" class="required">权限：</label> 
   <div class="content">    
@@ -179,7 +199,7 @@
 
   </div>
 </div>  
-
+<?php echo form_error('identity')?>
 <div class="form-row">
   <label for="user_identity" class="required">身份：</label> 
   <div class="content">    
@@ -188,7 +208,7 @@
   )) ?>
   </div>
 </div>  
-  
+<?php echo form_error('email')?>  
 <div class="form-row">
   <label for="user_email" class="required">Email：</label> 
   <div class="content">      
@@ -197,7 +217,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('qq')?>
 <div class="form-row">
   <label for="user_qq" class="required">QQ：</label> 
   <div class="content">    
@@ -206,7 +226,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('msn')?>
 <div class="form-row">
   <label for="user_msn" class="required">Msn：</label> 
   <div class="content">    
@@ -215,7 +235,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('address')?>
 <div class="form-row">
   <label for="user_address" class="required">地址：</label> 
   <div class="content">    
@@ -224,9 +244,6 @@
   )) ?>
   </div>
 </div>  
-
- 
-  
 </fieldset>
 
 <?php echo submit_tag('提交') ?>

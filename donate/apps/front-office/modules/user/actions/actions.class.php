@@ -92,7 +92,23 @@ class userActions extends sfActions
            $user->setPassword($this->getRequestParameter('password'));
         }
 		$user->setName($this->getRequestParameter('name'));
-		$user->setPhoto($this->getRequestParameter('photo'));
+		if(is_file($this->getRequest()->getFilePath('photo')))
+	    {
+	    	$filename = md5(uniqid(mt_rand()));
+	    	$file = $this->getRequest()->getFilePath('photo');
+	    	$extension = $this->getRequest()->getFileExtension('photo');
+	    	$newfilename = $filename.$extension;
+	    	$img = new sfImage($file);
+	    	$response = $this->getResponse();
+	    	$response->setContentType($img->getMIMEType());
+	    	$width = sfConfig::get('sf_image_width');
+	    	$height = sfConfig::get('sf_image_height');
+	    	$width = ($img->getWidth()>$width)?$width:($img->getWidth());
+	    	$height = ($img->getHeight()>$height)?$height:($img->getHeight());
+	    	$img->resize($width,$height);
+	    	$img->saveAs(sfConfig::get('sf_web_dir').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'users'.DIRECTORY_SEPARATOR.$newfilename);
+	    	$user->setPhoto($newfilename);    	
+	    }
 		$user->setBbsId($this->getRequestParameter('bbs_id'));
 		$user->setOfsId($this->getRequestParameter('ofs_id'));
 		$user->setDuty($this->getRequestParameter('duty'));
@@ -108,15 +124,7 @@ class userActions extends sfActions
 
 		$user->save();
 
-		if ($this->getRequestParameter('approve'))
-		{
-		   return $this->redirect('user/show?user_id='.$user->getUserId().'&after_edit=1');
-		}
-		else
-		{
-		   return $this->redirect('login/login');
-		}
-		
+		return $this->redirect('user/show?user_id='.$user->getUserId().'&after_edit=1');
 		
 	
 	}
@@ -130,5 +138,9 @@ class userActions extends sfActions
 		$user->delete();
 
 		return $this->redirect($this->getRequest()->getReferer());
+	}
+	public function handleErrorUpdate()
+	{
+		return $this->forward('user','edit');
 	}
 }

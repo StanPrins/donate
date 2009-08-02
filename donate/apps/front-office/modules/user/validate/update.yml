@@ -1,0 +1,81 @@
+fillin:
+  enabled:  true
+  
+validators:
+  nameStringValidator:
+    class:  sfStringValidator
+    param:
+      min:  6
+      min_error:  至少6个字符
+      max:  16
+      max_error:  至多16个字符
+
+fields:
+  username:
+    required:
+      msg:  "用户名不能为空"
+    nameStringValidator:
+  nickname:
+    required:
+      msg:  昵称不能为空
+    nameStringValidator:
+  sha1_password:
+    sfStringValidator:
+      min:  6
+      min_error: 至少6个字符
+      max:  40
+      max_error: 至多40个字符 
+  name:
+    sfStringValidator:
+      min:  2
+      min_error: 至少2个字符
+      max:  40
+      max_error: 至多40个字符
+  photo:
+    file:  True
+    sfFileValidator:
+      mime_types:
+        - 'image/jpeg'
+        - 'image/png'
+        - 'image/gif'
+      mime_types_error: 只能上传JPEG、PNG和GIF图像
+      max_size:  512000
+      max_size_error:  文件大小不能超过512kb
+  bbs_id:
+    nameStringValidator:
+  ofs_id:
+    nameStringValidator:
+  duty:
+    sfStringValidator:
+      max:  256
+      max_error:  至多256字符 
+  create_at:
+    sfDateValidator:
+      date_error:  日期无效
+      compare:  "2009-08-08"
+      operator: ">="
+      compare_error:  "对不起，创建日期 不能早于2009年8月8日"
+  mobile:
+    nameStringValidator:
+  identity:
+    nameStringValidator:
+  email:
+    sfEmailValidator:
+      strict:  true
+      email_error:  email地址无效
+  qq:
+    sfStringValidator:
+      max:  32
+      max_error:  不能多于32个字符
+  msn:
+    sfStringValidator:
+      max:  32
+      max_error:  不能多于32个字符
+  address:
+    sfStringValidator:
+      min:  10
+      min_error:  至少10个字符
+      max:  256
+      max_error:  至多256个字符     
+    
+  
