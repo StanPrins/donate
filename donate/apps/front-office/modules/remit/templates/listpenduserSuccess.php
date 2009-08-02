@@ -72,10 +72,7 @@
       <?php endif;?>
 
 
-      <td>
-        <?php echo link_to('详情', 'remit/show?remit_id='.$remit->getRemitId())?>
-        <?php echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId(),'post=true')?>
-      </td>         
+      <td><?php echo link_to('详情', 'remit/show?remit_id='.$remit->getRemitId())?></td>         
             
   <?php
     if($count_row)

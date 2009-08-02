@@ -78,4 +78,8 @@ class projectsiteActions extends sfActions
 
 		return $this->redirect('projectsite/list');
 	}
+	public function handleErrorUpdate()
+	{
+		return $this->forward('projectsite','edit');
+	}
 }

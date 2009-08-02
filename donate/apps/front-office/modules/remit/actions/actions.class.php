@@ -82,7 +82,7 @@ class remitActions extends sfActions
 	   $this->forward404Unless($this->remit);
 	   $usertype = $this->getContext()->getUser()->getAttribute('usertype','');
 	   $user_id = $this->getContext()->getUser()->getAttribute('user_id','');
-	   if (!( ($usertype == 'surveyor' ) ||($usertype == 'administrator' ) || ($usertype == 'manager') || ($user_id == $this->remit->getDonation()->getUserId())))
+	   if (!(($usertype == 'administrator' ) || ($usertype == 'manager') || ($user_id == $this->remit->getDonation()->getUserId())))
 	   {
 	      return $this->forward404();
 	   }		
@@ -180,5 +180,10 @@ class remitActions extends sfActions
 
 		//return $this->redirect('remit/list');
 		return $this->redirect($this->getRequest()->getReferer());
+	}
+	public function handleErrorUpdate()
+	{
+		$is_by_ofs = $this->getRequestParameter('is_by_ofs');
+		return $this->redirect('remit/create?is_by_ofs='.$is_by_ofs);
 	}
 }

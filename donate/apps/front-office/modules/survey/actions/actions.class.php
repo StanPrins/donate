@@ -132,4 +132,9 @@ class surveyActions extends sfActions
 		//return $this->redirect('survey/list');
 		return $this->redirect($this->getRequest()->getReferer());
 	}
+	public function handleErrorUpdate()
+	{
+		
+		return $this->forward('survey','');
+	}
 }
