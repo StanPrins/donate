@@ -107,4 +107,17 @@ class reportcardActions extends sfActions
         return $this->redirect($this->getRequest()->getReferer());
 		
 	}
+	public function handleErrorUpdate()
+	{
+		$report_id = $this->getRequestParameter('report_id');
+		if(empty($report_id))
+		{
+			return $this->forward('reportcard','create');
+		}
+		else
+		{
+			$this->getRequest()->setParameter('report_id',$report_id);
+	    	return $this->forward('reportcard','edit');
+		}
+	}
 }

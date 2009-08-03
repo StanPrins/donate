@@ -7,6 +7,7 @@
 <h1>成绩单</h1>
 
 <?php use_helper('Object') ?>
+<?php use_helper('Validation')?>
 
 <?php echo form_tag('reportcard/update') ?>
 
@@ -31,7 +32,7 @@
   <?php echo $user->getName() ?>
   </div>
 </div> 
-
+<?php echo form_error('term')?>
 <div class="form-row">
   <label for="report_card_term" class="required">学期：</label> 
   <div class="content">   
@@ -40,7 +41,7 @@
   )) ?>
   </div>
 </div>
-  
+<?php echo form_error('yuwen')?>  
 <div class="form-row">
   <label for="report_card_yuwen" class="required">语文：</label> 
   <div class="content">   
@@ -49,7 +50,7 @@
   )) ?>
   </div>
 </div>
-
+<?php echo form_error('shuxue')?>
 <div class="form-row">
   <label for="report_card_shuxue" class="required">数学：</label> 
   <div class="content">   
@@ -58,7 +59,7 @@
    )) ?>
    </div>
 </div>   
-
+<?php echo form_error('yingyu')?>
 <div class="form-row">
   <label for="report_card_yingyu" class="required">英语：</label> 
   <div class="content">      
@@ -67,7 +68,7 @@
   )) ?>
   </div>
 </div>  
-  
+<?php echo form_error('wuli')?>  
 <div class="form-row">
   <label for="report_card_wuli" class="required">物理：</label> 
   <div class="content">     
@@ -76,7 +77,7 @@
   )) ?>
   </div>
 </div>  
-  
+<?php echo form_error('huaxue')?>  
 <div class="form-row">
   <label for="report_card_huaxue" class="required">化学：</label> 
   <div class="content">     
@@ -85,7 +86,7 @@
   )) ?>
   </div>
 </div>  
-  
+<?php echo form_error('lishi')?>  
 <div class="form-row">
   <label for="report_card_lishi" class="required">历史：</label> 
   <div class="content">     
@@ -94,7 +95,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('dili')?>
 <div class="form-row">
   <label for="report_card_dili" class="required">地理：</label> 
   <div class="content">   
@@ -103,7 +104,7 @@
   )) ?>
   </div>
 </div>  
-  
+<?php echo form_error('ziran')?>  
 <div class="form-row">
   <label for="report_card_ziran" class="required">自然：</label> 
   <div class="content">     
@@ -112,7 +113,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('shengwu')?>
 <div class="form-row">
   <label for="report_card_shengwu" class="required">生物：</label> 
   <div class="content">   
@@ -121,7 +122,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('tiyu')?>
 <div class="form-row">
   <label for="report_card_tiyu" class="required">体育：</label> 
   <div class="content">     
@@ -130,7 +131,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('zhengzhi')?>
 <div class="form-row">
   <label for="report_card_zhengzhi" class="required">政治：</label> 
   <div class="content">   
@@ -139,7 +140,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('zonghe')?>
 <div class="form-row">
   <label for="report_card_zonghe" class="required">综合：</label> 
   <div class="content">   
@@ -148,7 +149,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('rank')?>
 <div class="form-row">
   <label for="report_card_rank" class="required">排名：</label> 
   <div class="content">   
