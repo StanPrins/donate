@@ -183,14 +183,15 @@ class remitActions extends sfActions
 	}
 	public function handleErrorUpdate()
 	{
-		$str_url = $this->getRequest()->getReferer();
-		if(stristr($str_url,"create"))
-			return $this->forward('remit','create');
-		if(stristr($str_url,"edit"))
+		$remit_id = $this->getRequestParameter('remit_id');
+		if(empty($remit_id))
 		{
-			$remit_id = $this->getRequestParameter('remit_id');
-			$this->getRequest()->setParameter('remit_id',$remit_id); 
-			return $this->forward('remit','edit');
+			return $this->forward('remit','create');
+		}
+		else
+		{
+			$this->getRequest()->setParameter('remit_id',$remit_id);
+	    	return $this->forward('remit','edit');
 		}
 	}
 }

@@ -134,14 +134,15 @@ class surveyActions extends sfActions
 	}
 	public function handleErrorUpdate()
 	{
-		$str_url = $this->getRequest()->getReferer();
-	  	if(stristr($str_url,'create'))
-	  		return $this->forward('survey','create');
-	    if(stristr($str_url,'edit'))
-	    {
-	    	$survey_id = $this->getRequestParameter('survey_id');
-	    	$this->getRequest()->setParameter('survey_id',$survey_id);
+		$survey_id = $this->getRequestParameter('survey_id');
+		if(empty($survey_id))
+		{
+			return $this->forward('survey','create');
+		}
+		else
+		{
+			$this->getRequest()->setParameter('survey_id',$survey_id);
 	    	return $this->forward('survey','edit');
-	    }
+		}
 	}
 }
