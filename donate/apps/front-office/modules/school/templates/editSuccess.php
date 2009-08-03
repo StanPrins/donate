@@ -7,6 +7,7 @@
 <h1>学校信息</h1>
 
 <?php use_helper('Object') ?>
+<?php use_helper('Validation')?>
 
 <?php echo form_tag('school/update') ?>
 
@@ -24,7 +25,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('school_name')?>
 <div class="form-row">
   <label for="school_school_name" class="required">学校名：</label> 
   <div class="content">   
@@ -33,7 +34,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('type')?>
 <div class="form-row">
   <label for="school_type" class="required">类型：</label> 
   <div class="content">   
@@ -42,7 +43,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('master')?>
 <div class="form-row">
   <label for="school_master" class="required">校长：</label> 
   <div class="content">   
@@ -60,7 +61,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('phone')?>
 <div class="form-row">
   <label for="school_phone" class="required">电话：</label> 
   <div class="content">   
@@ -69,7 +70,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('address')?>
 <div class="form-row">
   <label for="school_address" class="required">地址：</label> 
   <div class="content">   
@@ -78,7 +79,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('postal')?>
 <div class="form-row">
   <label for="school_postal" class="required">邮政编码：</label> 
   <div class="content">   
