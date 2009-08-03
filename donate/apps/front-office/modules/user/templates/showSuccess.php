@@ -33,7 +33,14 @@
   </tr>          
   <tr>
     <td class="name">照片：</td>
-    <td class="content"><?php echo $user->getPhoto() ?></td>
+    <td class="content">
+    <?php 
+    if(!is_null($user->getPhoto()))
+      echo image_tag('users/'.$user->getPhoto());
+    else
+      echo "暂未上传照片";
+    ?>
+    </td>
   </tr>
   <tr>
     <td class="name">BBS 帐号：</td>

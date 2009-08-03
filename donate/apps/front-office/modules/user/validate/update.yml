@@ -5,8 +5,8 @@ validators:
   nameStringValidator:
     class:  sfStringValidator
     param:
-      min:  6
-      min_error:  至少6个字符
+      min:  2
+      min_error:  至少2个字符
       max:  16
       max_error:  至多16个字符
 
@@ -37,8 +37,11 @@ fields:
       mime_types:
         - 'image/jpeg'
         - 'image/png'
-        - 'image/gif'
-      mime_types_error: 只能上传JPEG、PNG和GIF图像
+        - 'image/x-png'
+        - 'image/pjpeg'
+        - 'image/bmp'
+        - 'image/gif'        
+      mime_types_error: 只能上传BMP、JPEG、PNG和GIF图像
       max_size:  512000
       max_size_error:  文件大小不能超过512kb
   bbs_id:
