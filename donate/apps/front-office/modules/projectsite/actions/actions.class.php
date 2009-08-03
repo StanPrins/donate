@@ -80,6 +80,15 @@ class projectsiteActions extends sfActions
 	}
 	public function handleErrorUpdate()
 	{
-		return $this->forward('projectsite','edit');
+		$site_id = $this->getRequestParameter('site_id');
+		if(empty($site_id))
+		{
+			return $this->forward('projectsite','create');
+		}
+		else
+		{
+			$this->getRequest()->setParameter('site_id',$site_id);
+	    	return $this->forward('projectsite','edit');
+		}
 	}
 }
