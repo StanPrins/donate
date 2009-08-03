@@ -141,14 +141,15 @@ class userActions extends sfActions
 	}
 	public function handleErrorUpdate()
 	{
-		$str_url = $this->getRequest()->getReferer();
-	  	if(stristr($str_url,'create'))
-	  		return $this->forward('user','create');
-	    if(stristr($str_url,'edit'))
-	    {
-	    	$user_id = $this->getRequestParameter('user_id');
-	    	$this->getRequest()->setParameter('user_id',$user_id);
+		$user_id = $this->getRequestParameter('user_id');
+		if(empty($user_id))
+		{
+			return $this->forward('user','create');
+		}
+		else
+		{
+			$this->getRequest()->setParameter('user_id',$user_id);
 	    	return $this->forward('user','edit');
-	    }
+		}
 	}
 }

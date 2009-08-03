@@ -324,14 +324,15 @@ public function executeListno()
   }
   function handleErrorUpdate()
   {
-  	$str_url = $this->getRequest()->getReferer();
-  	if(stristr($str_url,'create'))
-  		return $this->forward('student','create');
-    if(stristr($str_url,'edit'))
-    {
-    	$student_id = $this->getRequestParameter('student_id');
-    	$this->getRequest()->setParameter('student_id',$student_id);
+  	$student_id = $this->getRequestParameter('student_id');
+	if(empty($student_id))
+	{
+		return $this->forward('student','create');
+	}
+	else
+	{
+		$this->getRequest()->setParameter('student_id',$student_id);
     	return $this->forward('student','edit');
-    }
+	}
   }
 }
