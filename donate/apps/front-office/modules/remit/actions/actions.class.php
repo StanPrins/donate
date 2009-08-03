@@ -102,10 +102,10 @@ class remitActions extends sfActions
 
 	public function executeEdit()
 	{
-	   if ($this->getRequest()->getMethod() != sfRequest::POST)
+/*	   if ($this->getRequest()->getMethod() != sfRequest::POST)
 	   {
 	     return $this->forward404();	   	
-	   }				
+	   }*/				
 		$this->remit = RemitPeer::retrieveByPk($this->getRequestParameter('remit_id'));
 		$this->forward404Unless($this->remit);
 	}
@@ -183,7 +183,14 @@ class remitActions extends sfActions
 	}
 	public function handleErrorUpdate()
 	{
-		$is_by_ofs = $this->getRequestParameter('is_by_ofs');
-		return $this->redirect('remit/create?is_by_ofs='.$is_by_ofs);
+		$str_url = $this->getRequest()->getReferer();
+		if(stristr($str_url,"create"))
+			return $this->forward('remit','create');
+		if(stristr($str_url,"edit"))
+		{
+			$remit_id = $this->getRequestParameter('remit_id');
+			$this->getRequest()->setParameter('remit_id',$remit_id); 
+			return $this->forward('remit','edit');
+		}
 	}
 }
