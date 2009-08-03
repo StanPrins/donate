@@ -114,7 +114,6 @@ function display()
   )) ?>
   </div>
 </div>  
-
 <div class="form-row">
   <label for="student_male" class="required">男？：</label> 
   <div class="content">   
@@ -122,7 +121,7 @@ function display()
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('address')?>
 <div class="form-row">
   <label for="student_address" class="required">住址：</label> 
   <div class="content">   
