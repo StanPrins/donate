@@ -7,6 +7,7 @@
 <h1>调查信息</h1>
 
 <?php use_helper('Object') ?>
+<?php use_helper('Validation')?>
 
 <?php echo form_tag('survey/update') ?>
 
@@ -34,7 +35,7 @@
   <?php echo $survey->getUser()->getName() ?>
   </div>
 </div>  
-
+<?php echo form_error('survey_date')?>
 <div class="form-row">
   <label for="survey_survey_date" class="required">调查日期：</label> 
   <div class="content">     
@@ -42,15 +43,14 @@
   'rich' => true,
   )) ?>
   </div>
-</div>  
-
+</div>
 <div class="form-row">
   <label for="survey_family_condition" class="required">家庭情况：</label> 
   <div class="content">     
   <?php echo object_textarea_tag($survey,'getFamilyCondition', $options = array('size' =>  '70x4')) ?>
   </div>
 </div>  
-
+<?php echo form_error('grade')?>
 <div class="form-row">
   <label for="survey_grade" class="required">年级：</label> 
   <div class="content">     
@@ -59,14 +59,14 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('other_assist')?>
 <div class="form-row">
   <label for="survey_other_assist" class="required">其他资助人：</label> 
   <div class="content">
   <?php echo object_textarea_tag($survey, 'getOtherAssist', $options = array('size' =>  '70x4')) ?>     
   </div>
 </div>
-  
+<?php echo form_error('dropout_info')?>  
 <div class="form-row">
   <label for="survey_dropout_info" class="required">辍学记录：</label> 
   <div class="content">     
@@ -80,28 +80,28 @@
   <?php echo object_textarea_tag($survey, 'getPresentation', $options = array('size' =>  '70x4')) ?>     
   </div>
 </div>  
-
+<?php echo form_error('revenue')?>
 <div class="form-row">
   <label for="survey_revenue" class="required">收入：</label> 
   <div class="content">
   <?php echo object_textarea_tag($survey, 'getRevenue', $options = array('size' =>  '70x3')) ?>     
   </div>
 </div>  
-
+<?php echo form_error('property')?>
 <div class="form-row">
   <label for="survey_property" class="required">财产：</label> 
   <div class="content">
   <?php echo object_textarea_tag($survey, 'getProperty', $options = array('size' =>  '70x3')) ?>     
   </div>
 </div>  
-  
+<?php echo form_error('donation_usage')?>  
 <div class="form-row">
   <label for="survey_donation_usage" class="required">捐助使用情况：</label> 
   <div class="content">       
   <?php echo object_textarea_tag($survey, 'getDonationUsage', $options = array('size' =>  '70x3')) ?>
   </div>
 </div>  
-
+<?php echo form_error('dornor_concerned')?>
 <div class="form-row">
   <label for="survey_dornor_concerned" class="required">捐助人关心的问题：</label> 
   <div class="content">     
@@ -122,21 +122,21 @@
   <?php echo object_textarea_tag($survey, 'getMsgToStu', $options = array('size' =>  '70x3')) ?>
   </div>
 </div>  
-
+<?php echo form_error('school_opinion')?>
 <div class="form-row">
   <label for="survey_school_opinion" class="required">学校意见：</label> 
   <div class="content">
   <?php echo object_textarea_tag($survey, 'getSchoolOpinion', $options = array('size' =>  '70x3')) ?>     
   </div>
 </div>  
-
+<?php echo form_error('teacher_opinion')?>
 <div class="form-row">
   <label for="survey_teacher_opinion" class="required">老师意见：</label> 
   <div class="content">     
   <?php echo object_textarea_tag($survey, 'getTeacherOpinion', $options = array('size' =>  '70x3')) ?>  
   </div>
 </div>  
-
+<?php echo form_error('user_opinion')?>
 <div class="form-row">
   <label for="survey_user_opinion" class="required">志愿者意见：</label> 
   <div class="content">
