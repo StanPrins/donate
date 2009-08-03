@@ -26,7 +26,8 @@ fields:
         - 'image/jpeg'
         - 'image/png'
         - 'image/gif'
-      mime_types_error: 只能上传JPEG、PNG和GIF图像
+        - 'image/jpg'
+      mime_types_error: 只能上传JPEG、、JPG、PNG和GIF图像
       max_size:  512000
       max_size_error:  文件大小不能超过512kb
   head_teacher:
