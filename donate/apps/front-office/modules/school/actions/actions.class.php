@@ -99,4 +99,17 @@ class schoolActions extends sfActions
 
 		return $this->redirect('school/list');
 	}
+	public function handleErrorUpdate()
+	{
+		$school_id = $this->getRequestParameter('school_id');
+		if(empty($school_id))
+		{
+			return $this->forward('school','create');
+		}
+		else
+		{
+			$this->getRequest()->setParameter('school_id',$school_id);
+	    	return $this->forward('school','edit');
+		}
+	}
 }
