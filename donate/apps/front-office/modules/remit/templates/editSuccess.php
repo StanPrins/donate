@@ -7,6 +7,7 @@
 <h1>到款信息编辑</h1>
 
 <?php use_helper('Object') ?>
+<?php use_helper('Validation')?>
 
 <?php echo form_tag('remit/update') ?>
 
@@ -49,7 +50,7 @@
 <?php if ($flag_by_ofs):?>
  
 <?php echo input_hidden_tag('is_by_ofs', 1) ?>
-
+<?php echo form_error('amount')?>
 <div class="form-row">
   <label for="remit_amount" class="required">金额：</label> 
   <div class="content">  
@@ -74,7 +75,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('receive_date')?>
 <div class="form-row">
   <label for="remit_receive_date" class="required">到款日期：</label> 
   <div class="content">   
@@ -93,9 +94,9 @@
   )) ?>
   </div>
 </div>   
-
+<?php echo form_error('receive_amount')?>
 <div class="form-row">
-  <label for="remit_sendout_amount" class="required">到款金额：</label> 
+  <label for="remit_receive_amount" class="required">到款金额：</label> 
   <div class="content">  
   <?php echo object_input_tag($remit, 'getReceiveAmount', array (
   'size' => 7,
@@ -110,7 +111,7 @@
   )) ?>
   </div>
 </div>  
-  
+<?php echo form_error('sendout_date')?>  
 <div class="form-row">
   <label for="remit_sendout_date" class="required">发款日期：</label> 
   <div class="content">   
@@ -129,9 +130,9 @@
   )) ?>
   </div>
 </div> 
-
+<?php echo form_error('sendout_amount')?>
 <div class="form-row">
-  <label for="remit_amount" class="required">发款金额：</label> 
+  <label for="remit_sendout_amount" class="required">发款金额：</label> 
   <div class="content">  
   <?php echo object_input_tag($remit, 'getSendoutAmount', array (
   'size' => 7,
@@ -145,7 +146,7 @@
 <?php else:?>
 
 <?php echo input_hidden_tag('is_by_ofs', 0) ?>
-
+<?php echo form_error('amount')?>
 <div class="form-row">
   <label for="remit_amount" class="required">金额：</label> 
   <div class="content">  
@@ -169,7 +170,7 @@
   )) ?>
   </div>
 </div>  
-  
+<?php echo form_error('sendout_date')?>  
 <div class="form-row">
   <label for="remit_sendout_date" class="required">发款日期：</label> 
   <div class="content">   
