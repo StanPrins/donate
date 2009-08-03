@@ -6,6 +6,7 @@
 
 <h1>新建资助</h1>
 <?php use_helper('Object') ?>
+<?php use_helper('Validation')?>
 
 <?php echo form_tag('donation/update') ?>
 
@@ -30,7 +31,7 @@
   <?php echo $user->getName() ?>
   </div>
 </div>  
-
+<?php echo form_error('amount')?>
 <div class="form-row">
   <label for="donation_amount" class="required">金额：</label> 
   <div class="content">
@@ -39,7 +40,7 @@
   )) ?>
   </div>
 </div>  
-
+<?php echo form_error('start_date')?>
 <div class="form-row">
   <label for="donation_start_date" class="required">开始日期：</label> 
   <div class="content">
@@ -48,7 +49,7 @@
   )) ?>
   </div>
 </div>     
-
+<?php echo form_error('end_date')?>
 <div class="form-row">
   <label for="donation_end_date" class="required">结束日期：</label> 
   <div class="content">

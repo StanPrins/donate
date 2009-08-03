@@ -1,0 +1,27 @@
+fillin:
+  enabled:  true
+  
+validators:
+  strValidator:
+    class:  sfStringValidator
+    param:
+      min:  1
+      min_error:  至少1个字符
+      max:  16
+      max_error:  至多16个字符
+  dateValidator:
+    class:  sfDateValidator
+    param:
+      date_error:  日期无效
+      compare:  "1990-01-01"
+      operator: ">="
+      compare_error:  "时间过早"
+
+fields:
+  amount:
+    strValidator:
+  start_date:
+    dateValidator:
+  end_date:
+    dateValidator:
+  

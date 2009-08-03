@@ -216,4 +216,17 @@ class donationActions extends sfActions
     //return $this->redirect('student/listall');
     return $this->redirect($this->getRequest()->getReferer());
   }
+  public function handleErrorUpdate()
+  {
+  	$donation_id = $this->getRequestParameter('donation_id');
+	if(empty($donation_id))
+	{
+		return $this->forward('donation','create');
+	}
+	else
+	{
+		$this->getRequest()->setParameter('donation_id',$donation_id);
+    	return $this->forward('donation','edit');
+	}
+  }
 }
