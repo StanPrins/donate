@@ -51,7 +51,7 @@ class studentActions extends sfActions
     }         	
     if(!empty($student_name))
     {
-      $c->add(StudentPeer::NAME,$student_name.'%',Criteria::LIKE);
+      $c->add(StudentPeer::NAME,'%'.$student_name.'%',Criteria::LIKE);
       $this->student_name = $student_name;
     }
    	
@@ -116,7 +116,7 @@ public function executeListno()
     }         	
     if(!empty($student_name))
     {
-      $c->add(StudentPeer::NAME,$student_name.'%',Criteria::LIKE);
+      $c->add(StudentPeer::NAME,'%'.$student_name.'%',Criteria::LIKE);
       $this->student_name = $student_name;
     }
    	
@@ -163,7 +163,7 @@ public function executeListno()
       $c->add(StudentPeer::SCHOOL_ID,$school_id);
     if(!empty($site_id)&&($site_id!=-1))
       $c->add(SchoolPeer::SITE_ID,$site_id);
-  	$c->add(StudentPeer::NAME,$str.'%',Criteria::LIKE);
+  	$c->add(StudentPeer::NAME,'%'.$str.'%',Criteria::LIKE);
   	$c->addAscendingOrderByColumn(StudentPeer::NAME);
   	$students = StudentPeer::doSelectJoinSchool($c);
   	$this->students = $students;
