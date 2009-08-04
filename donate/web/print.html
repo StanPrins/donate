@@ -48,19 +48,17 @@
  hkey_key="\footer"  
  RegWsh.RegWrite hkey_root+hkey_path+hkey_key,"&u&b&d"  
  end function  
- </script>  
-   
+ </script> 
  </HEAD>  
- <BODY background="images/background_01.gif" leftMargin=0  
- topMargin=0 rightMargin=0 bottomMargin=0 style="BACKGROUND-POSITION: center 50%">  
+ <BODY leftMargin=0 topMargin=0 rightMargin=0 bottomMargin=0 style="BACKGROUND-POSITION: center 50%">  
    
- <div id="print" align="center" class="content"></div>
+ <div id="print" class="content"></div>
 <script type="text/javascript">
 var print_div = document.getElementById('print');
-var print_content = window.opener.document.getElementById('sf_admin_content').innerHTML;
+var print_content = window.opener.document.getElementById('print').innerHTML;
 print_div.innerHTML = print_content;
 </script>
- <DIV align="center" id="dayinDiv" name="dayinDiv"><input type="button" class="tab" value="´òÓ¡" onclick="printTure();">&nbsp;&nbsp;  
+ <DIV id="dayinDiv" name="dayinDiv"><input type="button" class="tab" value="´òÓ¡" onclick="printTure();">&nbsp;&nbsp;  
  <input type="button" class="tab" value="´òÓ¡Ô¤ÀÀ" onclick="printpr();">  
  <input type="hidden" name="qingkongyema" id="qingkongyema" class="tab" value="Çå¿ÕÒ³Âë" onclick="pagesetup_null()">&nbsp;&nbsp;  
  <input type="hidden" class="tab" value="»Ö¸´Ò³Âë" onclick="pagesetup_default()">  
