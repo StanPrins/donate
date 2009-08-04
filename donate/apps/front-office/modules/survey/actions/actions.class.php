@@ -28,8 +28,60 @@ class surveyActions extends sfActions
 
 	public function executeListmy()
 	{
+		$site_id = $this->getRequestParameter('site_id');
+	  	$school_id = $this->getRequestParameter('school_id');
+	  	$student_name = $this->getRequestParameter('student_name');
+	  	
+	  	$site_school = 0;
+	  	if(!empty($school_id)&& ($school_id!=-1)&&!empty($site_id)&&($site_id!=-1))
+	  	{
+	  		$ss = new Criteria();
+	  		$ss->add(SchoolPeer::SITE_ID,$site_id);
+	  		$ss->add(SchoolPeer::SCHOOL_ID,$school_id);
+	  		$site_school = SchoolPeer::docount($ss);
+	  	}
+	  	
+	  	$d = new Criteria();
+	    $d->clearSelectColumns();  // Clear select columns
+	    $d->addSelectColumn(ProjectSitePeer::SITE_ID); // Add new select columns 
+	    $d->addSelectColumn(ProjectSitePeer::SITE_NAME);   
+	    $d->addAscendingOrderByColumn(ProjectSitePeer::SITE_NAME);
+	    $this->projectsites = ProjectSitePeer::doSelectRS($d);
+	
+	    $e = new Criteria();
+	    $e->clearSelectColumns();  // Clear select columns
+	    $e->addSelectColumn(SchoolPeer::SCHOOL_ID);// Add new select columns
+	    $e->addSelectColumn(SchoolPeer::SCHOOL_NAME);
+	    if(!empty($site_id)&&($site_id!=-1))
+	    {
+	      $e->add(SchoolPeer::SITE_ID,$site_id); 
+	      $this->site_id = $site_id;
+	    }  
+	    $e->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
+	    $this->schools = SchoolPeer::doSelectRS($e);
+	    $this->school_count = SchoolPeer::doCount($e);
+		
 		$c = new Criteria();
+		$c->addJoin(SurveyPeer::STUDENT_ID, StudentPeer::STUDENT_ID, Criteria::LEFT_JOIN);
+  		$c->addJoin(StudentPeer::SCHOOL_ID, SchoolPeer::SCHOOL_ID, Criteria::LEFT_JOIN);
 		$c -> add(SurveyPeer::USER_ID, $this->getUser()->getAttribute('user_id'));
+		
+		if(!empty($school_id)&& ($school_id!=-1)&&($site_school!=0))
+	  	{
+	      $c->add(StudentPeer::SCHOOL_ID,$school_id);
+	      $this->school_id = $school_id;
+	  	}  	
+	  	if(!empty($site_id)&&($site_id!=-1))
+	    {
+	      $c->add(SchoolPeer::SITE_ID,$site_id); 
+	      $this->site_id = $site_id;
+	    }         	
+	    if(!empty($student_name))
+	    {
+	      $c->add(StudentPeer::NAME,'%'.$student_name.'%',Criteria::LIKE);
+	      $this->student_name = $student_name;
+	    }
+		
 		$pager = new sfPropelPager('Survey', sfConfig::get('app_pager_homepage_max'));
 		$pager->setPeerMethod('doSelectJoinAll');
 		$pager->setCriteria($c);
@@ -37,7 +89,26 @@ class surveyActions extends sfActions
 		$pager->init();
 		$this->pager = $pager;
 	}
-
+	
+	public function executeAutocomplete()
+	{
+		$str = $this->getRequestParameter('student_name');
+  		$school_id = $this->getRequestParameter('school_id');
+  		$site_id = $this->getRequestParameter('site_id');
+  		$c = new Criteria();
+  		$c->addJoin(StudentPeer::STUDENT_ID, SurveyPeer::STUDENT_ID, Criteria::LEFT_JOIN);
+  		$c->addJoin(StudentPeer::SCHOOL_ID, SchoolPeer::SCHOOL_ID, Criteria::LEFT_JOIN);
+  		$c->add(SurveyPeer::USER_ID, $this->getUser()->getAttribute('user_id')); 		  		
+  		if(!empty($school_id)&&($school_id!=-1))
+      		$c->add(StudentPeer::SCHOOL_ID,$school_id);
+	    if(!empty($site_id)&&($site_id!=-1))
+	    	$c->add(SchoolPeer::SITE_ID,$site_id);
+	    $c->add(StudentPeer::NAME,'%'.$str.'%',Criteria::LIKE);
+	    $c->addAscendingOrderByColumn(StudentPeer::NAME);
+	    $students = StudentPeer::doSelect($c);
+	    $this->students = $students;
+	}
+	
 	public function executeListall()
 	{
 		$c = new Criteria();
