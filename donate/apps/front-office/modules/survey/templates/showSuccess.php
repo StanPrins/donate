@@ -92,11 +92,11 @@
   </tr>
   </tbody>
 </table>
+</div>
 <?php if ($sf_params->has('after_edit')): ?>
 <a href="javascript:history.go(-2)">返回</a>
 <?php else:?>
 <a href="javascript:history.go(-1)">返回</a>
 <?php endif;?>
-
-</div>
+<a href="#" onclick="javascript:window.open('http://localhost/donate_svn/web/print.html','打印预览','height=600,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=no,location=no,status=no');">打印预览</a>
 </div>
