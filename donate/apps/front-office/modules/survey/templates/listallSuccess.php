@@ -55,8 +55,7 @@
       <td><?php echo $survey->getUserOpinion() ?></td>
       <td><?php echo $survey->getDiscription() ?></td>
       <td><?php echo link_to('详情', 'survey/show?survey_id='.$survey->getSurveyId())?>&nbsp;&nbsp;&nbsp;
-          <?php echo link_to('修改', 'survey/edit?survey_id='.$survey->getSurveyId())?>&nbsp;&nbsp;&nbsp;
-          <?php echo link_to('删除', 'survey/delete?survey_id='.$survey->getSurveyId(), 'post=true&confirm=真的要删除么？') ?>
+          <?php echo link_to('修改', 'survey/edit?survey_id='.$survey->getSurveyId())?>          
       </td>      
   <?php
     if($count_row)

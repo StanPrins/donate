@@ -39,7 +39,6 @@
 			{
 				echo link_to ('修改', 'student/edit?student_id='.$donation->getStudent()->getStudentId());
 				echo "&nbsp;&nbsp;&nbsp;";
-				echo link_to ('删除', 'student/delete?student_id='.$donation->getStudent()->getStudentId(),  'post=true&confirm=真的要删除么？\n所有该学生的其他相关信息也将全部删除!');
 			}
 	   ?>
 </td>

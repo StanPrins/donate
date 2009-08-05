@@ -104,7 +104,6 @@ $default_site_id = empty($site_id)?-1:$site_id;
       <td><?php echo $survey->getDiscription() ?></td>
       <td><?php echo link_to('查看', 'survey/show?survey_id='.$survey->getSurveyId())?>
           <?php echo link_to('修改', 'survey/edit?survey_id='.$survey->getSurveyId())?>
-          <?php echo link_to('删除', 'survey/delete?survey_id='.$survey->getSurveyId(), 'post=true&confirm=真的要删除么？') ?>
       </td>
       
   <?php

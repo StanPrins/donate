@@ -79,8 +79,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
       || ($sf_user->getAttribute('usertype', '')=='surveyor'))
       {
       	echo link_to ('修改', 'student/edit?student_id='.$student->getStudentId());
-      	echo "&nbsp;&nbsp;&nbsp;";
-      	echo link_to ('删除', 'student/delete?student_id='.$student->getStudentId(),  'post=true&confirm=真的要删除么？\n所有该学生的其他相关信息也将全部删除!');
+      	echo "&nbsp;&nbsp;&nbsp;";      	
       }
       ?>      
            
