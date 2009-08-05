@@ -157,8 +157,10 @@ Student:
   stu1:
     student_id:     1
     school_id:      sch1
-    name:   周杰伦
-    nickname:      Jay
+    ofs_id:         ofs-guangxi-111222
+    name:           周杰伦
+    nickname:       Jay
+    race:           高山族
     photo:          1
     head_teacher:   吴宗宪
     guardian:       叶惠美
@@ -169,11 +171,14 @@ Student:
     postal:         101100
     city:           台北
     province:       台湾
+    consignee:      叶惠美
+    consignee_address:  这是收款人的地址
+    consignee_postal:   123456
     assist_history: 这个就有很多了
     is_instudy:     1
     is_boarder:     1
     is_donated:     1
-    has_dropout_history: 1
+    dropout_history: 无
     term_expense:   1100$
     discription:    有很多描述
     created_at:
@@ -201,8 +206,10 @@ Student:
   stu2:
     student_id:     2
     school_id:      sch1
+    ofs_id:         ofs-guangxi-111222    
     name:   学生二
     nickname:      Jay
+    race:           高山族    
     photo:          1
     head_teacher:   吴宗宪
     guardian:       叶惠美
@@ -213,11 +220,14 @@ Student:
     postal:         101100
     city:           台北
     province:       台湾
+    consignee:      叶惠美
+    consignee_address:  这是收款人的地址
+    consignee_postal:   123456    
     assist_history: 这个就有很多了
     is_instudy:     1
     is_boarder:     1
     is_donated:     1
-    has_dropout_history: 1
+    dropout_history:       上次退学了
     term_expense:   1100$
     discription:    有很多描述
     created_at:
@@ -226,8 +236,10 @@ Student:
   stu3:
     student_id:     3
     school_id:      sch1
+    ofs_id:         ofs-guangxi-111222    
     name:   学生三
     nickname:      Jay
+    race:           高山族    
     photo:          1
     head_teacher:   吴宗宪
     guardian:       叶惠美
@@ -238,11 +250,14 @@ Student:
     postal:         101100
     city:           台北
     province:       台湾
+    consignee:      叶惠美
+    consignee_address:  这是收款人的地址
+    consignee_postal:   123456    
     assist_history: 这个就有很多了
     is_instudy:     1
     is_boarder:     1
     is_donated:     1
-    has_dropout_history: 1
+    dropout_history:       上次退学了
     term_expense:   1100$
     discription:    有很多描述
     created_at:
@@ -270,8 +285,10 @@ Student:
   stu4:
     student_id:     4
     school_id:      sch2
+    ofs_id:         ofs-guangxi-111222    
     name:   学生四
     nickname:      Jay
+    race:           高山族    
     photo:          1
     head_teacher:   吴宗宪
     guardian:       叶惠美
@@ -282,11 +299,14 @@ Student:
     postal:         101100
     city:           台北
     province:       台湾
+    consignee:      叶惠美
+    consignee_address:  这是收款人的地址
+    consignee_postal:   123456    
     assist_history: 这个就有很多了
     is_instudy:     1
     is_boarder:     1
     is_donated:     1
-    has_dropout_history: 1
+    dropout_history:       上次退学了
     term_expense:   1100$
     discription:    有很多描述
     created_at:
@@ -310,8 +330,10 @@ Student:
   stu5:
     student_id:     5
     school_id:      sch3
+    ofs_id:         ofs-guangxi-111222    
     name:   学生五
     nickname:      Jay
+    race:           高山族    
     photo:          1
     head_teacher:   吴宗宪
     guardian:       叶惠美
@@ -322,11 +344,14 @@ Student:
     postal:         101100
     city:           台北
     province:       台湾
+    consignee:      叶惠美
+    consignee_address:  这是收款人的地址
+    consignee_postal:   123456    
     assist_history: 这个就有很多了
     is_instudy:     1
     is_boarder:     1
     is_donated:     1
-    has_dropout_history: 1
+    dropout_history:       上次退学了
     term_expense:   1100$
     discription:    有很多描述
     created_at:
@@ -339,8 +364,10 @@ Student:
   stu6:
     student_id:     6
     school_id:      sch4
+    ofs_id:         ofs-guangxi-111222    
     name:   学生六
     nickname:      Jay
+    race:           高山族    
     photo:          1
     head_teacher:   吴宗宪
     guardian:       叶惠美
@@ -351,11 +378,14 @@ Student:
     postal:         101100
     city:           台北
     province:       台湾
+    consignee:      叶惠美
+    consignee_address:  这是收款人的地址
+    consignee_postal:   123456    
     assist_history: 这个就有很多了
     is_instudy:     1
     is_boarder:     1
     is_donated:     0
-    has_dropout_history: 1
+    dropout_history:       上次退学了
     term_expense:   1100$
     discription:    有很多描述
     created_at:
@@ -383,8 +413,10 @@ Student:
   stu7:
     student_id:     7
     school_id:      sch4
+    ofs_id:         ofs-guangxi-111222    
     name:   学生七
     nickname:      Jay
+    race:           高山族    
     photo:          1
     head_teacher:   吴宗宪
     guardian:       叶惠美
@@ -395,11 +427,14 @@ Student:
     postal:         101100
     city:           台北
     province:       台湾
+    consignee:      叶惠美
+    consignee_address:  这是收款人的地址
+    consignee_postal:   123456    
     assist_history: 这个就有很多了
     is_instudy:     1
     is_boarder:     1
     is_donated:     0
-    has_dropout_history: 1
+    dropout_history:       上次退学了
     term_expense:   1100$
     discription:    有很多描述
     created_at:
@@ -423,8 +458,10 @@ Student:
   stu8:
     student_id:     8
     school_id:      sch5
+    ofs_id:         ofs-guangxi-111222    
     name:   学生八
     nickname:      Jay
+    race:           高山族    
     photo:          1
     head_teacher:   吴宗宪
     guardian:       叶惠美
@@ -435,11 +472,14 @@ Student:
     postal:         101100
     city:           台北
     province:       台湾
+    consignee:      叶惠美
+    consignee_address:  这是收款人的地址
+    consignee_postal:   123456    
     assist_history: 这个就有很多了
     is_instudy:     1
     is_boarder:     1
     is_donated:     0
-    has_dropout_history: 1
+    dropout_history:       上次退学了
     term_expense:   1100$
     discription:    有很多描述
     created_at:
@@ -457,8 +497,10 @@ Student:
   stu9:
     student_id:     9
     school_id:      sch5
+    ofs_id:         ofs-guangxi-111222    
     name:           学生九
     nickname:       Jay
+    race:           高山族    
     photo:          1
     head_teacher:   吴宗宪
     guardian:       叶惠美
@@ -469,11 +511,14 @@ Student:
     postal:         101100
     city:           台北
     province:       台湾
+    consignee:      叶惠美
+    consignee_address:  这是收款人的地址
+    consignee_postal:   123456    
     assist_history: 这个就有很多了
     is_instudy:     1
     is_boarder:     1
     is_donated:     0
-    has_dropout_history: 1
+    dropout_history:       上次退学了
     term_expense:   1100$
     discription:    有很多描述
     created_at:
@@ -493,7 +538,7 @@ Donation:
     donation_id:    1
     student_id:     stu1
     user_id:        user1
-    amount:         1000￥
+    amount:         1000
     start_date:     2009-01-01
     end_date:       2010-01-01
     approve:        1
@@ -503,7 +548,7 @@ Donation:
     donation_id:    2
     student_id:     stu2
     user_id:        user1
-    amount:         1300￥    
+    amount:         1300    
     start_date:     2009-01-01
     end_date:       2010-01-01
     approve:        1
@@ -513,7 +558,7 @@ Donation:
     donation_id:    3
     student_id:     stu3
     user_id:        user1
-    amount:         1022200￥    
+    amount:         1022200    
     start_date:     2009-01-01
     end_date:       2010-01-01
     approve:        1
@@ -523,7 +568,7 @@ Donation:
     donation_id:    4
     student_id:     stu4
     user_id:        user2
-    amount:         1000$    
+    amount:         1000    
     start_date:     2009-01-01
     end_date:       2010-01-01
     approve:        1
@@ -533,7 +578,7 @@ Donation:
     donation_id:    5
     student_id:     stu5
     user_id:        user2
-    amount:         10￥    
+    amount:         10    
     start_date:     2009-01-01
     end_date:       2010-01-01
     approve:        1
@@ -543,7 +588,7 @@ Donation:
     donation_id:    6
     student_id:     stu6
     user_id:        user3
-    amount:         88767$       
+    amount:         88767       
     start_date:     2009-01-01
     end_date:       2010-01-01
     approve:        0
@@ -553,7 +598,7 @@ Donation:
     donation_id:    7
     student_id:     stu1
     user_id:        user1
-    amount:         1000￥
+    amount:         1000
     start_date:     2008-01-01
     end_date:       2009-01-01
     approve:        1
@@ -563,7 +608,7 @@ Donation:
     donation_id:    8
     student_id:     stu1
     user_id:        user1
-    amount:         1000￥
+    amount:         1000
     start_date:     2007-01-01
     end_date:       2008-01-01
     approve:        1
@@ -573,7 +618,7 @@ Donation:
     donation_id:    9
     student_id:     stu7
     user_id:        user1
-    amount:         12300￥
+    amount:         12300
     start_date:     2009-01-01
     end_date:       2010-01-01
     approve:        0
@@ -583,7 +628,7 @@ Donation:
     donation_id:    10
     student_id:     stu8
     user_id:        user1
-    amount:         10320￥
+    amount:         10320
     start_date:     2009-01-01
     end_date:       2010-01-01
     approve:        0
@@ -603,55 +648,55 @@ Remit:
   rem1:
     remit_id:       1
     donation_id:    don1
-    amount:         1000$
+    amount:         1000
     is_by_ofs:      1
     is_received:    1
     receive_date:   2009-02-03
     receive_user_id:   user2
-    receive_amount: 1000$
+    receive_amount: 1000
     receive_submitter: user2
     is_sendout:     1
     sendout_date:   2009-04-05
     sendout_user_id:   user3
-    sendout_amount: 1000$
+    sendout_amount: 1000
     sendout_submitter: user3    
     created_at:
   rem2:
     remit_id:       2
     donation_id:    don1
-    amount:         100$
+    amount:         100
     is_by_ofs:      1
     is_received:    1
     receive_date:   2009-02-03
     receive_user_id:user2
-    receive_amount: 1000$
+    receive_amount: 1000
     receive_submitter: user2    
     is_sendout:     1
     sendout_date:   2009-04-05
     sendout_user_id:user3
-    sendout_amount: 1000$
+    sendout_amount: 1000
     sendout_submitter: user3
     created_at:
   rem3:
     remit_id:       3
     donation_id:    don2
-    amount:         1000￥
+    amount:         1000
     is_by_ofs:      1
     is_received:    1
     receive_date:   2009-02-03
     receive_user_id:user2
-    receive_amount: 1000$
+    receive_amount: 1000
     receive_submitter: user2
     is_sendout:     1
     sendout_date:   2009-04-05
     sendout_user_id:user3
-    sendout_amount: 1000$
+    sendout_amount: 1000
     sendout_submitter: user3
     created_at:
   rem4:
     remit_id:       4
     donation_id:    don3
-    amount:         166$
+    amount:         166
     is_by_ofs:      0
     created_at:
   rem5:
