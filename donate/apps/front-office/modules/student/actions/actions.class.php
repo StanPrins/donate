@@ -202,8 +202,10 @@ public function executeListno()
 
     $student->setStudentId($this->getRequestParameter('student_id'));
     $student->setSchoolId($this->getRequestParameter('school_id') ? $this->getRequestParameter('school_id') : null);
+    $student->setOfsId($this->getRequestParameter('ofs_id'));    
     $student->setName($this->getRequestParameter('name'));
     $student->setNickname($this->getRequestParameter('nickname'));
+    $student->setRace($this->getRequestParameter('race'));    
     if(is_file($this->getRequest()->getFilePath('photo')))
     {
     	$filename = md5(uniqid(mt_rand()));
@@ -234,11 +236,14 @@ public function executeListno()
     $student->setPostal($this->getRequestParameter('postal'));
     $student->setCity($this->getRequestParameter('city'));
     $student->setProvince($this->getRequestParameter('province'));
+    $student->setConsignee($this->getRequestParameter('consignee'));
+    $student->setConsigneeAddress($this->getRequestParameter('consignee_address'));
+    $student->setConsigneePostal($this->getRequestParameter('consignee_postal'));    
     $student->setAssistHistory($this->getRequestParameter('assist_history'));
     $student->setIsInstudy($this->getRequestParameter('is_instudy', 0));
     $student->setIsBoarder($this->getRequestParameter('is_boarder', 0));
     $student->setIsDonated($this->getRequestParameter('is_donated', 0));
-    $student->setHasDropoutHistory($this->getRequestParameter('has_dropout_history', 0));
+    $student->setDropoutHistory($this->getRequestParameter('dropout_history'));
     $student->setTermExpense($this->getRequestParameter('term_expense'));
     $student->setDiscription($this->getRequestParameter('discription'));
     $student->setFm1Relation($this->getRequestParameter('fm1_relation'));

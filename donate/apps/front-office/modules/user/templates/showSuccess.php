@@ -30,7 +30,11 @@
   <tr>
     <td class="name">姓名：</td>
     <td class="content"><?php echo $user->getName() ?></td>
-  </tr>          
+  </tr>
+  <tr>
+    <td class="name">身份证号：</td>
+    <td class="content"><?php echo $user->getIdCard() ?></td>
+  </tr>             
   <tr>
     <td class="name">照片：</td>
     <td class="content">

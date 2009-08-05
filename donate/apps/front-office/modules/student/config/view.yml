@@ -1,3 +1,5 @@
-#all:
-#  stylesheets: [main, admin_db]
-#  javascripts: [qTip]
+all:
+  has_layout:       on
+
+printSuccess:
+  has_layout:       off

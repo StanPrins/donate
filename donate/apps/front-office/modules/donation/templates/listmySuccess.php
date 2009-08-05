@@ -22,7 +22,7 @@
       &nbsp;<strong>正受资助：&nbsp;</strong><?php if( $donation->getStudent()->getIsDonated()) echo "是"; else echo"否"; ?>
       &nbsp;<strong>在学中：&nbsp;</strong><?php if($donation->getStudent()->getIsInstudy())	 echo "是";?> 
       &nbsp;<strong>住宿生：&nbsp;</strong><?php if($donation->getStudent()->getIsBoarder()) echo "是";?>
-      &nbsp;<strong>有退学史：&nbsp;</strong><?php if($donation->getStudent()->getHasDropoutHistory()) echo "是";?>                 
+      &nbsp;<strong>有退学史：&nbsp;</strong><?php echo $donation->getStudent()->getDropoutHistory()?>                 
       &nbsp;<strong>学期花费：&nbsp;</strong><?php echo $donation->getStudent()->getTermExpense() ?>
       <br/>
       &nbsp;<strong>资助史：&nbsp;</strong><?php echo $donation->getStudent()->getAssistHistory() ?>

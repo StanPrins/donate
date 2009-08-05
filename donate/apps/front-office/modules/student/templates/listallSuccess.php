@@ -67,7 +67,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
 			<br />
 			&nbsp;<strong>所在地：&nbsp;</strong><?php echo $student->getProvince() ?>省<?php echo $student->getCity() ?>市
 			&nbsp;<strong>在学中：&nbsp;</strong><?php if($student->getIsInstudy())	 echo "是";?>
-			&nbsp;<strong>有退学史：&nbsp;</strong><?php if($student->getHasDropoutHistory()) echo "是";?>
+			&nbsp;<strong>有退学史：&nbsp;</strong><?php echo $student->getDropoutHistory()?>
 			&nbsp;<strong>学期花费：&nbsp;</strong><?php echo $student->getTermExpense() ?>
 			<br />
 			&nbsp;<strong>受资助史：&nbsp;</strong><?php echo $student->getAssistHistory() ?>

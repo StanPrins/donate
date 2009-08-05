@@ -85,7 +85,16 @@
   'size' => 20,
   )) ?>
   </div>
-</div>  
+</div>
+<?php echo form_error('id_card')?>
+<div class="form-row">
+  <label for="user_name" class="required">身份证号：</label> 
+  <div class="content">    
+  <?php echo object_input_tag($user, 'getIdCard', array (
+  'size' => 20,
+  )) ?>
+  </div>
+</div>   
 <script type="text/javascript">
 function display()
 {

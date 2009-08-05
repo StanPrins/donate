@@ -92,6 +92,7 @@ class userActions extends sfActions
            $user->setPassword($this->getRequestParameter('password'));
         }
 		$user->setName($this->getRequestParameter('name'));
+		$user->setIdCard($this->getRequestParameter('id_card'));
 		if(is_file($this->getRequest()->getFilePath('photo')))
 	    {
 	    	$filename = md5(uniqid(mt_rand()));
