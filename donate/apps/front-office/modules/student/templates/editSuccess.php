@@ -38,6 +38,16 @@
 </div>  
   
 <div class="form-row">
+  <?php echo form_error('ofs_id') ?>
+  <label for="student_ofs_id" class="required">OFS ID：</label> 
+  <div class="content">     
+  <?php echo object_input_tag($student, 'getOfsId', array (
+  'size' => 20,
+  )) ?>
+  </div>
+</div>  
+  
+<div class="form-row">
   <?php echo form_error('nickname')?>
   <label for="student_nick_name" class="required">昵称：</label> 
   <div class="content">     
@@ -46,6 +56,17 @@
   )) ?>
   </div>
 </div>  
+
+<div class="form-row">
+  <?php echo form_error('race')?>
+  <label for="student_race" class="required">民族：</label> 
+  <div class="content">     
+  <?php echo object_input_tag($student, 'getRace', array (
+  'size' => 20,
+  )) ?>
+  </div>
+</div> 
+
 <script type="text/javascript">
 function display()
 {
@@ -132,7 +153,7 @@ function display()
 </div>  
 <?php echo form_error('postal')?>  
 <div class="form-row">
-  <label for="student_address" class="required">邮编：</label> 
+  <label for="student_postal" class="required">邮编：</label> 
   <div class="content">   
   <?php echo object_input_tag($student, 'getPostal', array (
   'size' => 20,
@@ -157,6 +178,37 @@ function display()
   )) ?>
   </div>
 </div>
+
+<?php echo form_error('consignee')?>
+<div class="form-row">
+  <label for="student_consignee" class="required">收件人：</label> 
+  <div class="content">   
+  <?php echo object_input_tag($student, 'getConsignee', array (
+  'size' => 20,
+  )) ?>
+  </div>
+</div>
+
+<?php echo form_error('consignee_address')?>
+<div class="form-row">
+  <label for="student_consignee_address" class="required">收件人地址：</label> 
+  <div class="content">   
+  <?php echo object_input_tag($student, 'getConsigneeAddress', array (
+  'size' => 70,
+  )) ?>
+  </div>
+</div>
+  
+<?php echo form_error('consignee_postal')?>  
+<div class="form-row">
+  <label for="student_consignee_postal" class="required">收件人邮编：</label> 
+  <div class="content">   
+  <?php echo object_input_tag($student, 'getConsigneePostal', array (
+  'size' => 20,
+  )) ?>
+  </div>
+</div>
+
 <?php echo form_error('assit_history')?>
 <div class="form-row">
   <label for="student_assist_history" class="required">资助史：</label> 
@@ -183,10 +235,26 @@ function display()
 <div class="form-row">
   <label for="student_dropout_history" class="required">有无退学史：</label> 
   <div class="content">   
-  <?php echo object_checkbox_tag($student, 'getHasDropoutHistory', array (
-  )) ?>
+  <?php echo object_textarea_tag($student,'getDropoutHistory', $options = array('size' => '70x4')) ?>
   </div>
 </div>  
+
+<?php echo form_error('techang')?>
+<div class="form-row">
+  <label for="student_techang" class="required">特长：</label> 
+  <div class="content">   
+  <?php echo object_textarea_tag($student,'getTechang', $options = array('size' => '70x2')) ?>
+  </div>
+</div>  
+
+<?php echo form_error('reward')?>
+<div class="form-row">
+  <label for="student_reward" class="required">所获奖项：</label> 
+  <div class="content">   
+  <?php echo object_textarea_tag($student,'getReward', $options = array('size' => '70x4')) ?>
+  </div>
+</div>  
+
 <?php echo form_error('term_expense')?>
 <div class="form-row">
   <label for="student_term_expense" class="required">学期花费：</label> 
@@ -202,7 +270,22 @@ function display()
   <div class="content">   
   <?php echo object_textarea_tag($student,'getDiscription', $options = array('size' => '70x4')) ?>
   </div>
-</div>  
+</div>
+
+<div class="form-row">
+  <label for="student_discription" class="required">全家照片：</label> 
+  <div class="content">   
+  
+  </div>
+</div> 
+
+<div class="form-row">
+  <label for="student_discription" class="required">房屋照片：</label> 
+  <div class="content">   
+  
+  </div>
+</div> 
+  
 <br/>
 <h2>亲属1</h2> 
 <?php echo form_error('fm1_relation')?>
