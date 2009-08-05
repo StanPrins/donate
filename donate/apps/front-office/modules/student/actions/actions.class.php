@@ -335,4 +335,20 @@ public function executeListno()
     	return $this->forward('student','edit');
 	}
   }
+  
+  public function executePrint()
+  {
+    $this->student = StudentPeer::retrieveByPk($this->getRequestParameter('student_id'));
+    $this->forward404Unless($this->student);
+    
+    $c = new Criteria();
+    $c->add(DonationPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
+    $this->donations = DonationPeer::doSelect($c);
+
+    $d = new Criteria();
+    $d->add(SurveyPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
+    $d->addDescendingOrderByColumn(SurveyPeer::SURVEY_DATE);
+    $this->survey = SurveyPeer::doSelectOne($d);
+    
+  }  
 }

@@ -4,7 +4,7 @@
 
 <div id="content_login">
 <br/>
-<h2>管理员登录</h2>
+<h2>用户登录</h2>
 <br/>
 
 <?php echo form_tag('login/login') ?>

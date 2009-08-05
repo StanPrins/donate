@@ -230,7 +230,8 @@
 <?php else:?>
 <a href="javascript:history.go(-1)">返回</a>
 <?php endif;?>
-<a href="#" onclick="javascript:window.open('http://localhost/donate_svn/web/print.html','打印预览','height=600,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=no,location=no,status=no');">打印预览</a>
+<?php echo link_to('新打印','student/print?student_id='.$student->getStudentId());?>
+<a href="#" onclick="javascript:window.open('http://localhost/print.html','打印预览','height=600,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=no,location=no,status=no');">打印预览</a>
 <div id="print" style="display: none">
 <table>
 <tbody>
