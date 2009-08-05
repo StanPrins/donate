@@ -141,7 +141,11 @@
   <tr>
     <td class="name">房屋照片：</td>
     <td class="content"></td>
-  </tr>    
+  </tr>
+  <tr>
+    <td class="name">备注：</td>
+    <td class="content"><?php echo $student->getRemark() ?></td>
+  </tr>      
   <tbody>
 </table>
 

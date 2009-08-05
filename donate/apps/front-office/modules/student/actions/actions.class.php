@@ -244,8 +244,11 @@ public function executeListno()
     $student->setIsBoarder($this->getRequestParameter('is_boarder', 0));
     $student->setIsDonated($this->getRequestParameter('is_donated', 0));
     $student->setDropoutHistory($this->getRequestParameter('dropout_history'));
+    $student->setTechang($this->getRequestParameter('techang'));
+    $student->setReward($this->getRequestParameter('reward'));
     $student->setTermExpense($this->getRequestParameter('term_expense'));
     $student->setDiscription($this->getRequestParameter('discription'));
+    $student->setRemark($this->getRequestParameter('remark'));
     $student->setFm1Relation($this->getRequestParameter('fm1_relation'));
     $student->setFm1Name($this->getRequestParameter('fm1_name'));
     $student->setFm1Age($this->getRequestParameter('fm1_age'));
@@ -326,7 +329,7 @@ public function executeListno()
 
     //return $this->redirect('student/listall');
     return $this->redirect($this->getRequest()->getReferer());
-  }
+  }*/
   function handleErrorUpdate()
   {
   	$student_id = $this->getRequestParameter('student_id');
@@ -339,7 +342,7 @@ public function executeListno()
 		$this->getRequest()->setParameter('student_id',$student_id);
     	return $this->forward('student','edit');
 	}
-  }*/
+  }
   
   public function executePrint()
   {
