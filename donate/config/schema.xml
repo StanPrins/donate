@@ -155,6 +155,7 @@
 		<column name="term_expense" type="varchar" size="32" />
 		<column name="discription" type="longvarchar" />
 		<column name="created_at" type="timestamp" />
+		<column name="remark" type="longvarchar" />
 		<column name="photo" type="varchar" size="256" />
 		<column name="member_photo" type="varchar" size="256" />
 		<column name="house_photo" type="varchar" size="256" />						
