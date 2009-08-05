@@ -61,7 +61,6 @@
                      || ($sf_user->getAttribute('usertype', '')=='administrator'))
                 {          
                    echo link_to('修改', 'survey/edit?survey_id='.$survey->getSurveyId());
-                   echo link_to('删除', 'survey/delete?survey_id='.$survey->getSurveyId(), 'post=true&confirm=真的要删除么？');
                 } 
           ?>
                    
