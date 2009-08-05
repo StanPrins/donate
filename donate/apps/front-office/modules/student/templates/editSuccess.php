@@ -266,7 +266,7 @@ function display()
 </div>  
 <?php echo form_error('discription')?>
 <div class="form-row">
-  <label for="student_discription" class="required">自述：</label> 
+  <label for="student_discription" class="required">自人简介：</label> 
   <div class="content">   
   <?php echo object_textarea_tag($student,'getDiscription', $options = array('size' => '70x4')) ?>
   </div>
@@ -285,6 +285,15 @@ function display()
   
   </div>
 </div> 
+
+<?php echo form_error('remark')?>
+<div class="form-row">
+  <label for="student_remark" class="required">备注：</label> 
+  <div class="content">   
+  <?php echo object_textarea_tag($student,'getRemark', $options = array('size' => '70x4')) ?>
+  </div>
+</div>
+
   
 <br/>
 <h2>亲属1</h2> 
