@@ -70,6 +70,13 @@
 			<reference local="sendout_submitter" foreign="user_id" />
 		</foreign-key>			
 		<column name="created_at" type="timestamp" />
+		<column name="report_id" type="integer" size="11"/>
+		<foreign-key foreignTable="reportcard" onDelete="cascade"
+			onUpdate="cascade">
+			<reference local="report_id" foreign="report_id" />
+		</foreign-key>
+		<column name="discription" type="longvarchar" />
+		<column name="remark" type="longvarchar" />
 	</table>
 
 	<table name="reportcard" phpName="ReportCard">
