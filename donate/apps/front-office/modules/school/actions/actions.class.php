@@ -50,7 +50,9 @@ class schoolActions extends sfActions
 	public function executeCreate()
 	{
 		$this->school = new School();
-		
+		$c = new Criteria();
+		$c->addAscendingOrderByColumn(ProjectSitePeer::SITE_NAME);
+		$this->site = ProjectSitePeer::doSelect($c);
 		$this->projectsite = ProjectSitePeer::retrieveByPk($this->getRequestParameter('site_id')); 
 
 	}
@@ -58,6 +60,9 @@ class schoolActions extends sfActions
 	public function executeEdit()
 	{
 		$this->school = SchoolPeer::retrieveByPk($this->getRequestParameter('school_id'));
+		$c = new Criteria();
+		$c->addAscendingOrderByColumn(ProjectSitePeer::SITE_NAME);
+		$this->site = ProjectSitePeer::doSelect($c);		
 		$this->forward404Unless($this->school);
 	}
 

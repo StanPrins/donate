@@ -33,9 +33,7 @@
 <div class="form-row">
   <label for="school_site_id" class="required">捐助点：</label> 
   <div class="content">   
-  <?php echo object_select_tag($school, 'getSiteId', array (
-  'related_class' => 'ProjectSite',
-  )) ?>
+  <?php echo select_tag('site_id',objects_for_select($site,'getSiteId','getSiteName',$sf_params->get('site_id')))?>
   </div>
 </div>
   
