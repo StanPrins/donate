@@ -54,7 +54,12 @@
        <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
      </ul>
    </li>
-   <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
+   <li><?php echo link_to('走访', '#') ?>
+     <ul>
+       <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
+       <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
+     </ul>
+   </li>   
    <li><?php echo link_to('学生', '#') ?>
      <ul>
        <li><?php echo link_to('添加学生', 'student/create') ?></li>
@@ -81,7 +86,14 @@
        <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
      </ul>
    </li>
-   <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>   
+   <li><?php echo link_to('走访', '#') ?>
+     <ul>
+       <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
+       <li><?php echo link_to('所有调查', 'survey/listall') ?></li>
+       <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
+       <li><?php echo link_to('所有成绩单', 'reportcard/listall') ?></li>
+     </ul>
+   </li>     
    <li><?php echo link_to('学生', '#') ?>
      <ul>
        <li><?php echo link_to('添加学生', 'student/create') ?></li>
@@ -115,7 +127,14 @@
        <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
      </ul>
    </li>
-   <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>   
+   <li><?php echo link_to('走访', '#') ?>
+     <ul>
+       <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
+       <li><?php echo link_to('所有调查', 'survey/listall') ?></li>
+       <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
+       <li><?php echo link_to('所有成绩单', 'reportcard/listall') ?></li>
+     </ul>
+   </li>     
    <li><?php echo link_to('学生', '#') ?>
      <ul>
        <li><?php echo link_to('添加学生', 'student/create') ?></li>
