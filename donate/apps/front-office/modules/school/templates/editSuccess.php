@@ -19,10 +19,8 @@
 
 <div class="form-row">
   <label for="school_site_id" class="required">项目号：</label> 
-  <div class="content">   
-  <?php echo object_select_tag($school, 'getSiteId', array (
-  'related_class' => 'ProjectSite',
-  )) ?>
+  <div class="content"> 
+  <?php echo select_tag('site_id',objects_for_select($site,'getSiteId','getSiteName',$school->getSiteId()))?>  
   </div>
 </div>  
 <?php echo form_error('school_name')?>
