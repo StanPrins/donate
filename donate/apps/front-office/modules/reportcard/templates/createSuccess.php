@@ -25,7 +25,7 @@
   <?php if ($report_card->getStudentId())
            echo $report_card->getStudent()->getName();
         else
-           echo object_select_tag($report_card, 'getStudentId', array ('related_class' => 'Student'));
+           echo select_tag('student_id',objects_for_select($student,'getStudentId','getName'));
   ?>
   </div>
 </div>  

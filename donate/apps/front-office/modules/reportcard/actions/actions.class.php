@@ -75,7 +75,10 @@ class reportcardActions extends sfActions
 		   $c = new Criteria();
 		   $c -> add(StudentPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
 		   $this->student = StudentPeer::doSelectOne($c);
-		}		
+		}
+		$e = new Criteria();
+		$e->addAscendingOrderByColumn(StudentPeer::NAME);		
+		$this->student = StudentPeer::doSelect($e);
 	}
 
 	public function executeEdit()
