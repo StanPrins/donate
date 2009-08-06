@@ -262,4 +262,4 @@
 <?php else:?>
 <a href="javascript:history.go(-1)">返回</a>
 <?php endif;?>
-<?php echo link_to('新打印','student/print?student_id='.$student->getStudentId());?>
+
