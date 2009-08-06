@@ -4,364 +4,723 @@
 ?>
 <div id="sf_admin_container">
 
-<h1>学生信息</h1>
-
-
-
-
-<table>
-<tbody>
-<tr>
-<td colspan=2>
-<table>
-  <tbody>
-
-  <tr>
-    <td class="name">学校：</td>
-    <td class="content"><?php echo $student->getSchool()->getSchoolName() ?></td>
-  </tr>
-  <tr>
-    <td class="name">姓名：</td>
-    <td class="content"><?php echo $student->getName() ?></td>
-  </tr>
-  <tr>
-    <td class="name">昵称：</td>
-    <td class="content"><?php echo $student->getNickname() ?></td>
-  </tr>                
-  <tr>
-    <td class="name">照片：</td>
-    <td class="content">
-    <?php 
-    if(!is_null($student->getPhoto()))
-      echo image_tag('students/'.$student->getPhoto());
-    else
-      echo "暂未上传照片";
-    ?>
-    </td>
-  </tr>    
-  <tr>
-    <td class="name">班主任：</td>
-    <td class="content"><?php echo $student->getHeadTeacher() ?></td>
-  </tr>
-  <tr>
-    <td class="name">监护人：</td>
-    <td class="content"><?php echo $student->getGuardian() ?></td>
-  </tr>
-  <tr>
-    <td class="name">生日：</td>
-    <td class="content"><?php echo $student->getBirthday() ?></td>
-  </tr>
-  <tr>
-    <td class="name">年级：</td>
-    <td class="content"><?php echo $student->getGrade() ?></td>
-  </tr>
-  <tr>
-    <td class="name">性别：</td>
-    <td class="content">
-    <?php
-       if ($student->getMale())       
-         echo '男';
-      else
-         echo '女';       
-    ?>
-    </td>
-  </tr>                            
-  <tr>
-    <td class="name">地址：</td>
-    <td class="content"><?php echo $student->getAddress() ?></td>
-  </tr>
-  <tr>
-    <td class="name">邮编：</td>
-    <td class="content"><?php if ($student->getPostal()) echo $student->getPostal(); ?></td>
-  </tr>          
-  <tr>
-    <td class="name">城市：</td>
-    <td class="content"><?php echo $student->getCity() ?></td>
-  </tr>    
-  <tr>
-    <td class="name">省：</td>
-    <td class="content"><?php echo $student->getProvince() ?></td>
-  </tr>
-  <tr>
-    <td class="name">资助历史：</td>
-    <td class="content"><?php echo $student->getAssistHistory() ?></td>
-  </tr>
-  <tr>
-    <td class="name">上学中：</td>
-    <td class="content">
-    <?php if($student->getIsInStudy()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png');?>
-    </td>
-  </tr>
-  <tr>
-    <td class="name">寄宿生：</td>
-    <td class="content">
-    <?php if($student->getIsBoarder()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png');?>
-    </td>
-  </tr>
-  <tr>
-    <td class="name">有退学史：</td>
-    <td class="content">
-    <?php  echo $student->getDropoutHistory()?>
-    </td>
-  </tr>
-  <tr>
-    <td class="name">学期花费：</td>
-    <td class="content"><?php if ($student->getTermExpense()) echo $student->getTermExpense(); ?></td>
-  </tr>
-  <tr>
-    <td class="name">个人简介：</td>
-    <td class="content"><?php echo $student->getDiscription() ?></td>
-  </tr>
-  <tbody>
+<div style='tab-interval:21.0pt;text-justify-trim:punctuation'> 
+<div class=Section1 style='layout-grid:15.6pt'>
+<div align=center>
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:-30.6pt;border-collapse:collapse;mso-table-layout-alt:fixed;
+ border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:480;
+ mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:.5pt solid windowtext;
+ mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=650 colspan=15 valign=top style='width:487.7pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;background:#E1DAFE;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='line-height:150%'><span lang=ZH-CN
+  style='font-size:12.0pt;line-height:150%;font-family:SimSun;mso-ascii-font-family:
+  "Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#32534;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%'> </span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#21495;&#65306;</span><span
+  style='font-size:12.0pt;line-height:150%'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><b style='mso-bidi-font-weight:normal'><span lang=ZH-CN
+  style='font-size:16.0pt;line-height:150%;font-family:SimHei;mso-ascii-font-family:
+  "Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#25105;&#20204;&#30340;&#33258;&#30001;&#22825;&#31354;</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='font-size:16.0pt;line-height:
+  150%;mso-fareast-font-family:SimHei'> (OFS)</span></b><b style='mso-bidi-font-weight:
+  normal'><span lang=ZH-CN style='font-size:16.0pt;line-height:150%;font-family:
+  SimHei;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#21463;&#21161;&#23398;&#29983;&#22238;&#35775;&#35843;&#26597;&#34920;</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='font-size:16.0pt;line-height:
+  150%;mso-fareast-font-family:SimHei'><o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;height:21.0pt'>
+  <td width=61 style='width:45.45pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#22995;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%'> </span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#21517;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=98 colspan=4 style='width:73.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p><?php echo $student->getName() ?></o:p></span></p>
+  </td>
+  <td width=84 colspan=2 style='width:63.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#27665;&#26063;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=87 colspan=2 style='width:65.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=81 colspan=2 style='width:61.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#24615;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%'> </span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#21035;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=48 colspan=2 style='width:.5in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p><?php if ($student->getMale()) echo '男';else echo '女'; ?></o:p></span></p>
+  </td>
+  <td width=72 style='width:.75in;border-top:none;border-left:none;border-bottom:
+  solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
+  solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#23478;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%'> </span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#38271;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=120 style='width:1.25in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p><?php echo $student->getGuardian() ?></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;height:23.65pt'>
+  <td width=61 style='width:45.45pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:23.65pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#37038;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%'> </span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#32534;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=98 colspan=4 style='width:73.25pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:23.65pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p><?php if ($student->getPostal()) echo $student->getPostal(); ?></o:p></span></p>
+  </td>
+  <td width=84 colspan=2 style='width:63.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:23.65pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#23478;&#24237;&#22320;&#22336;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=408 colspan=8 style='width:4.25in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:23.65pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p><?php echo $student->getAddress() ?></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;height:23.25pt'>
+  <td width=650 colspan=15 valign=top style='width:487.7pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  background:#F3F3F3;padding:0in 5.4pt 0in 5.4pt;height:23.25pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><b
+  style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+  150%;mso-fareast-font-family:SimHei'>OFS</span></b><b style='mso-bidi-font-weight:
+  normal'><span lang=ZH-CN style='font-size:14.0pt;line-height:150%;font-family:
+  SimHei;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#36164;&#21161;&#24773;&#20917;</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+  150%;mso-fareast-font-family:SimHei'><o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;height:21.0pt'>
+  <td width=88 colspan=3 style='width:65.8pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#36164;&#21161;&#20154;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=143 colspan=3 style='width:106.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=72 colspan=2 style='width:.75in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'>OFS ID<o:p></o:p></span></p>
+  </td>
+  <td width=348 colspan=7 style='width:261.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;height:22.6pt'>
+  <td width=134 colspan=4 style='width:100.7pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><b
+  style='mso-bidi-font-weight:normal'><span lang=ZH-CN style='font-size:12.0pt;
+  line-height:150%;font-family:SimSun;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>&#25910;&#27454;&#24773;&#20917;</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;line-height:
+  150%'><o:p></o:p></span></b></p>
+  </td>
+  <td width=96 colspan=2 style='width:1.0in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#25910;&#27454;&#26085;&#26399;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=72 colspan=2 style='width:.75in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=72 colspan=2 style='width:.75in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#37329;&#39069;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=72 colspan=2 style='width:.75in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=204 colspan=3 style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
+  <p class=MsoNormal style='line-height:150%'><span lang=ZH-CN
+  style='font-size:12.0pt;line-height:150%;font-family:SimSun'>&#23478;&#38271;&#65288;&#25910;&#27454;&#20154;&#65289;&#65306;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;height:40.3pt'>
+  <td width=88 colspan=3 style='width:65.8pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:40.3pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#21161;&#23398;&#27454;&#20351;&#29992;&#24773;&#20917;&#65288;&#21547;&#21435;&#24180;&#20197;&#21450;&#20170;&#24180;&#25311;&#29992;&#65289;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=563 colspan=12 valign=top style='width:421.9pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:40.3pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td width=650 colspan=15 valign=top style='width:487.7pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  background:#E6E6E6;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><b
+  style='mso-bidi-font-weight:normal'><span lang=ZH-CN style='font-size:14.0pt;
+  line-height:150%;font-family:SimHei;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>&#23478;</span></b><b
+  style='mso-bidi-font-weight:normal'><span lang=ZH-CN style='font-size:14.0pt;
+  line-height:150%;mso-fareast-font-family:SimHei'> </span></b><b
+  style='mso-bidi-font-weight:normal'><span lang=ZH-CN style='font-size:14.0pt;
+  line-height:150%;font-family:SimHei;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>&#24237;</span></b><b
+  style='mso-bidi-font-weight:normal'><span lang=ZH-CN style='font-size:14.0pt;
+  line-height:150%;mso-fareast-font-family:SimHei'> </span></b><b
+  style='mso-bidi-font-weight:normal'><span lang=ZH-CN style='font-size:14.0pt;
+  line-height:150%;font-family:SimHei;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>&#29366;</span></b><b
+  style='mso-bidi-font-weight:normal'><span lang=ZH-CN style='font-size:14.0pt;
+  line-height:150%;mso-fareast-font-family:SimHei'> </span></b><b
+  style='mso-bidi-font-weight:normal'><span lang=ZH-CN style='font-size:14.0pt;
+  line-height:150%;font-family:SimHei;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>&#20917;</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+  150%;mso-fareast-font-family:SimHei'><o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8;height:31.4pt'>
+  <td width=74 colspan=2 valign=top style='width:55.7pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:31.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#23478;&#24237;&#25104;&#21592;&#22522;&#26412;&#24773;&#20917;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=576 colspan=13 valign=top style='width:6.0in;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:31.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p>&nbsp;</o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9;height:45.9pt'>
+  <td width=74 colspan=2 valign=top style='width:55.7pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:45.9pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#23478;&#24237;&#24180;&#24635;&#25910;&#20837;&#21450;&#20027;&#35201;&#26469;&#28304;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=576 colspan=13 valign=top style='width:6.0in;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:45.9pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p><?php echo $survey->getRevenue() ?></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:10;height:71.75pt'>
+  <td width=74 colspan=2 valign=top style='width:55.7pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:71.75pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#36130;&#20135;&#27010;&#20917;&#65288;&#20303;&#25151;&#12289;&#32789;&#22320;&#12289;&#29298;&#21475;&#12289;&#30005;&#22120;&#31561;&#65289;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=576 colspan=13 valign=top style='width:6.0in;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:71.75pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p><?php echo $survey->getProperty() ?></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:11;mso-yfti-lastrow:yes;height:71.75pt'>
+  <td width=650 colspan=15 valign=top style='width:487.7pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:71.75pt'>
+  <p class=MsoNormal style='line-height:150%'><span style='font-size:12.0pt;
+  line-height:150%'><span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span></span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#25105;&#20445;&#35777;&#19978;&#36848;&#20449;&#24687;&#30340;&#30495;&#23454;&#20934;&#30830;&#24615;&#65292;&#25105;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";color:black;mso-font-kerning:0pt;
+  mso-ansi-language:ZH-CN'>&#20445;&#35777;&#26410;&#26469;&#25105;&#23376;&#22899;&#30340;&#21161;&#23398;&#27454;&#39033;&#21482;&#29992;&#20110;&#23398;&#29983;&#23398;&#20064;&#31561;&#30456;&#20851;&#29992;&#36884;&#12290;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;color:black;mso-font-kerning:
+  0pt;mso-ansi-language:ZH-CN'><o:p></o:p></span></p>
+  <p class=MsoNormal style='line-height:150%'><span lang=ZH-CN
+  style='font-size:12.0pt;line-height:150%;mso-hansi-font-family:SimSun;
+  color:black;mso-font-kerning:0pt;mso-ansi-language:ZH-CN'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span></span><span lang=ZH-CN
+  style='font-size:12.0pt;line-height:150%;font-family:SimSun;mso-ascii-font-family:
+  "Times New Roman";color:black;mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>&#25105;&#23376;&#22899;&#33509;&#26377;&#36749;&#23398;&#25110;&#21457;&#29983;&#20219;&#20309;&#23548;&#33268;&#19981;&#33021;&#32487;&#32493;&#23398;&#19994;&#30340;&#24847;&#22806;&#20107;&#20214;&#26102;&#21363;&#21578;&#30693;&#36164;&#21161;&#20154;&#25110;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;color:black;mso-font-kerning:
+  0pt;mso-ansi-language:ZH-CN'>OFS</span><span lang=ZH-CN style='font-size:
+  12.0pt;line-height:150%;font-family:SimSun;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman";color:black;mso-font-kerning:0pt;
+  mso-ansi-language:ZH-CN'>&#24110;&#22256;</span><span lang=ZH-CN
+  style='font-size:12.0pt;line-height:150%;font-family:SimSun;mso-ascii-font-family:
+  "Times New Roman";color:black;mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>&#21161;&#23398;&#37096;&#38376;&#30456;&#20851;&#36127;&#36131;&#20154;&#21592;&#12290;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;color:black;mso-font-kerning:
+  0pt;mso-ansi-language:ZH-CN'><o:p></o:p></span></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;mso-hansi-font-family:
+  SimSun;color:black;mso-font-kerning:0pt;mso-ansi-language:ZH-CN'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=ZH-CN style='font-size:12.0pt;line-height:150%;
+  font-family:SimSun;mso-ascii-font-family:"Times New Roman";color:black;
+  mso-font-kerning:0pt;mso-ansi-language:ZH-CN'>&#23478;&#38271;&#65288;&#31614;&#31456;&#65289;&#65306;</span></p>
+  </td>
+ </tr>
+ <![if !supportMisalignedColumns]>
+ <tr height=0>
+  <td width=61 style='border:none'></td>
+  <td width=14 style='border:none'></td>
+  <td width=13 style='border:none'></td>
+  <td width=47 style='border:none'></td>
+  <td width=24 style='border:none'></td>
+  <td width=72 style='border:none'></td>
+  <td width=12 style='border:none'></td>
+  <td width=60 style='border:none'></td>
+  <td width=27 style='border:none'></td>
+  <td width=45 style='border:none'></td>
+  <td width=36 style='border:none'></td>
+  <td width=36 style='border:none'></td>
+  <td width=12 style='border:none'></td>
+  <td width=72 style='border:none'></td>
+  <td width=120 style='border:none'></td>
+ </tr>
+ <![endif]>
 </table>
-</td>
-</tr>
-<tr>
-<td>
-<h2>亲属1</h2>                                           
-<table>
-  <tbody>
-  <tr>
-    <td class="name">关系：</td>
-    <td class="content"><?php echo $student->getFm1Relation() ?></td>
-  </tr>
-  <tr>
-    <td class="name">姓名：</td>
-    <td class="content"><?php echo $student->getFm1Name() ?></td>
-  </tr>
-  <tr>
-    <td class="name">年龄：</td>
-    <td class="content"><?php if ($student->getFm1Age()) echo $student->getFm1Age(); ?></td>
-  </tr>
-  <tr>
-    <td class="name">职业：</td>
-    <td class="content"><?php echo $student->getFm1Occupation() ?></td>
-  </tr>
-  <tr>
-    <td class="name">简介：</td>
-    <td class="content"><?php echo $student->getFm1Discription() ?></td>
-  </tr>
-  </tbody>
+
+</div>
+
+</div>
+
+<span style='font-size:10.5pt;mso-bidi-font-size:12.0pt;line-height:150%;
+font-family:"Times New Roman";mso-fareast-font-family:SimSun;mso-font-kerning:
+1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:
+AR-SA'><br clear=all style='page-break-before:always;mso-break-type:section-break'>
+</span>
+
+<div class=Section2 style='layout-grid:15.6pt'>
+
+<div align=center>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:-30.6pt;border-collapse:collapse;mso-table-layout-alt:fixed;
+ border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:480;
+ mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:.5pt solid windowtext;
+ mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=676 colspan=8 valign=top style='width:506.8pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;background:#E6E6E6;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal style='line-height:150%'><span lang=ZH-CN
+  style='font-size:12.0pt;line-height:150%;font-family:SimSun;mso-ascii-font-family:
+  "Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#23398;&#29983;&#22995;&#21517;&#21450;&#32534;&#21495;&#65306;</span><span
+  style='font-size:12.0pt;line-height:150%'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><b style='mso-bidi-font-weight:normal'><span lang=ZH-CN
+  style='font-size:14.0pt;line-height:150%;font-family:SimHei;mso-ascii-font-family:
+  "Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#22312;&#26657;&#21450;&#23398;&#20064;&#24773;&#20917;</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+  150%;mso-fareast-font-family:SimHei'><o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;height:.25in'>
+  <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:.25in'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#23398;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%'> </span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#26657;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=355 colspan=5 style='width:266.5pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:.25in'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=94 style='width:70.85pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:.25in'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#24180;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%'> </span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#32423;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=130 style='width:97.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:.25in'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;height:27.15pt'>
+  <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#26657;</span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%'> </span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#38271;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=119 style='width:89.3pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=85 colspan=2 style='width:63.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#32852;&#31995;&#26041;&#24335;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=151 colspan=2 style='width:113.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=94 style='width:70.85pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#37038;&#32534;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=130 style='width:97.45pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;height:63.8pt'>
+  <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  color:black'>&#23398;&#29983;&#22312;&#26657;&#34920;&#29616;&#65288;&#25104;&#32489;&#12289;&#22870;&#21169;&#31561;&#65289;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  <p class=MsoNormal style='line-height:150%'><span style='font-size:12.0pt;
+  line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;height:1.4in'>
+  <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:1.4in'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#29677;&#20027;&#20219;&#35780;&#35821;&#21450;&#23398;&#26657;&#24847;&#35265;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=580 colspan=7 valign=bottom style='width:434.8pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:1.4in'>
+  <p class=MsoNormal align=right style='text-align:right;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal align=right style='margin-right:42.0pt;mso-para-margin-right:
+  4.0gd;text-align:right;line-height:150%'><span lang=ZH-CN style='font-size:
+  12.0pt;line-height:150%;font-family:SimSun;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>&#29677;&#20027;&#20219;&#25110;&#32769;&#24072;&#31614;&#21517;&#65306;</span><span
+  style='font-size:12.0pt;line-height:150%'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=ZH-CN style='font-size:12.0pt;line-height:150%;
+  font-family:SimSun;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>&#23398;&#26657;&#65306;</span><span style='font-size:
+  12.0pt;line-height:150%'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span></span><span lang=ZH-CN style='font-size:12.0pt;line-height:150%;
+  font-family:SimSun;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>&#65288;&#31456;&#65289;</span><span style='font-size:
+  12.0pt;line-height:150%'><o:p></o:p></span></p>
+  <p class=MsoNormal align=right style='margin-right:42.0pt;mso-para-margin-right:
+  4.0gd;text-align:right;line-height:150%'><span lang=ZH-CN style='font-size:
+  12.0pt;line-height:150%;font-family:SimSun;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>&#24180;</span><span
+  style='font-size:12.0pt;line-height:150%'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span></span><span lang=ZH-CN
+  style='font-size:12.0pt;line-height:150%;font-family:SimSun;mso-ascii-font-family:
+  "Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#26376;</span><span
+  style='font-size:12.0pt;line-height:150%'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp; </span></span><span lang=ZH-CN
+  style='font-size:12.0pt;line-height:150%;font-family:SimSun;mso-ascii-font-family:
+  "Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#26085;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td width=676 colspan=8 style='width:506.8pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  background:#E6E6E6;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><b
+  style='mso-bidi-font-weight:normal'><span lang=ZH-CN style='font-size:14.0pt;
+  line-height:150%;font-family:SimHei;mso-ascii-font-family:"Times New Roman";
+  mso-hansi-font-family:"Times New Roman"'>&#22238;&#35775;&#21453;&#39304;&#20449;&#24687;</span></b><b
+  style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+  150%;mso-fareast-font-family:SimHei'><o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;height:19.45pt'>
+  <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:19.45pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#24535;&#24895;&#32773;</span><span
+  style='font-size:12.0pt;line-height:150%'>ID<o:p></o:p></span></p>
+  </td>
+  <td width=192 colspan=2 style='width:2.0in;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:19.45pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td width=88 colspan=2 style='width:65.8pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:19.45pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#22238;&#35775;&#26102;&#38388;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=300 colspan=3 style='width:225.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:19.45pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7;height:103.8pt'>
+  <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:103.8pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  color:black'>&#23398;&#29983;&#20010;&#20154;&#24773;&#20917;&#65288;&#21547;&#23398;&#29983;&#33258;&#36848;&#31561;&#65289;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:103.8pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8;height:40.2pt'>
+  <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:40.2pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#22238;&#35775;&#24847;&#35265;&#65288;&#23398;&#29983;&#35266;&#24863;&#12289;&#23478;&#22659;&#25551;&#36848;&#12289;&#26159;&#21542;&#24314;&#35758;&#32487;&#32493;&#36164;&#21161;&#31561;&#65289;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  </td>
+  <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:40.2pt'>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9;mso-yfti-lastrow:yes;height:91.2pt'>
+  <td width=676 colspan=8 style='width:506.8pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt;height:91.2pt'>
+  <p class=MsoNormal style='line-height:150%'><span style='font-size:12.0pt;
+  line-height:150%'><span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;
+  </span><o:p></o:p></span></p>
+  <p class=MsoNormal style='line-height:150%'><span style='font-size:12.0pt;
+  line-height:150%'><span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span
+  style='mso-spacerun:yes'>&nbsp;</span></span><span lang=ZH-CN
+  style='font-size:12.0pt;line-height:150%;font-family:SimSun;mso-ascii-font-family:
+  "Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#25105;&#24535;&#24895;&#21442;&#21152;&#8220;&#25105;&#20204;&#30340;&#33258;&#30001;&#22825;&#31354;&#65288;</span><span
+  style='font-size:12.0pt;line-height:150%'>OFS</span><span lang=ZH-CN
+  style='font-size:12.0pt;line-height:150%;font-family:SimSun;mso-ascii-font-family:
+  "Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#65289;&#8221;&#32452;&#32455;&#30340;&#30340;&#20844;&#30410;&#36208;&#35775;&#27963;&#21160;&#65292;&#25215;&#35834;&#22312;&#27963;&#21160;&#36807;&#31243;&#20013;&#35843;&#26597;&#25152;&#24471;&#30340;&#36164;&#26009;&#21644;&#29031;&#29255;&#19981;&#29992;&#20110;&#20219;&#20309;&#21830;&#19994;&#27963;&#21160;&#25110;&#20026;&#33258;&#24049;&#29279;&#21033;&#12290;</span><span
+  style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
+  style='font-size:12.0pt;line-height:150%'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
+  lang=ZH-CN style='font-size:12.0pt;line-height:150%;font-family:SimSun;
+  mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#36208;&#35775;&#24535;&#24895;&#32773;&#65306;</span><span
+  style='font-size:12.0pt;line-height:150%'><span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>(</span><span lang=ZH-CN style='font-size:12.0pt;line-height:150%;
+  font-family:SimSun;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+  "Times New Roman"'>&#31614;&#31456;</span><span style='font-size:12.0pt;
+  line-height:150%'>)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <![if !supportMisalignedColumns]>
+ <tr height=0>
+  <td width=96 style='border:none'></td>
+  <td width=119 style='border:none'></td>
+  <td width=73 style='border:none'></td>
+  <td width=12 style='border:none'></td>
+  <td width=76 style='border:none'></td>
+  <td width=76 style='border:none'></td>
+  <td width=94 style='border:none'></td>
+  <td width=130 style='border:none'></td>
+ </tr>
+ <![endif]>
 </table>
-</td>
-<td>
-<h2>亲属2</h2>                                           
-<table>
-  <tbody>
-  <tr>
-    <td class="name">关系：</td>
-    <td class="content"><?php echo $student->getFm2Relation() ?></td>
-  </tr>
-  <tr>
-    <td class="name">姓名：</td>
-    <td class="content"><?php echo $student->getFm2Name() ?></td>
-  </tr>
-  <tr>
-    <td class="name">年龄：</td>
-    <td class="content"><?php if($student->getFm2Age()) echo $student->getFm2Age(); ?></td>
-  </tr>
-  <tr>
-    <td class="name">职业：</td>
-    <td class="content"><?php echo $student->getFm2Occupation() ?></td>
-  </tr>
-  <tr>
-    <td class="name">简介：</td>
-    <td class="content"><?php echo $student->getFm2Discription() ?></td>
-  </tr>
-  </tbody>
-</table>
-</td>
-</tr>
-<tr>
-<td>
-<h2>亲属3</h2>                                           
-<table>
-  <tbody>
-  <tr>
-    <td class="name">关系：</td>
-    <td class="content"><?php echo $student->getFm3Relation() ?></td>
-  </tr>
-  <tr>
-    <td class="name">姓名：</td>
-    <td class="content"><?php echo $student->getFm3Name() ?></td>
-  </tr>
-  <tr>
-    <td class="name">年龄：</td>
-    <td class="content"><?php if ($student->getFm3Age()) echo $student->getFm3Age(); ?></td>
-  </tr>
-  <tr>
-    <td class="name">职业：</td>
-    <td class="content"><?php echo $student->getFm3Occupation() ?></td>
-  </tr>
-  <tr>
-    <td class="name">简介：</td>
-    <td class="content"><?php echo $student->getFm3Discription() ?></td>
-  </tr>
-  </tbody>
-</table>
-</td>
-<td>
-<h2>亲属4</h2>                                           
-<table>
-  <tbody>
-  <tr>
-    <td class="name">关系：</td>
-    <td class="content"><?php echo $student->getFm4Relation() ?></td>
-  </tr>
-  <tr>
-    <td class="name">姓名：</td>
-    <td class="content"><?php echo $student->getFm4Name() ?></td>
-  </tr>
-  <tr>
-    <td class="name">年龄：</td>
-    <td class="content"><?php if ($student->getFm4Age()) echo $student->getFm4Age(); ?></td>
-  </tr>
-  <tr>
-    <td class="name">职业：</td>
-    <td class="content"><?php echo $student->getFm4Occupation() ?></td>
-  </tr>
-  <tr>
-    <td class="name">简介：</td>
-    <td class="content"><?php echo $student->getFm4Discription() ?></td>
-  </tr>
-  </tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
 
-<?php if(sizeof($donations) != 0 ): ?>
-<table>
-<thead>
-<tr>
-  <th>Donation</th>
-  <th>Student</th>
-  <th>User</th>
-  <th>Amount</th>
-  <th>Start date</th>
-  <th>End date</th>
-  <th>Approve</th>
-  <th>Is active</th>
-  <th>Created at</th>
-</tr>
-</thead>
-<tbody>
-<?php foreach ($donations as $donation): ?>
-<tr>
-    <td><?php echo link_to($donation->getDonationId(), 'aaa/show?donation_id='.$donation->getDonationId()) ?></td>
-      <td><?php echo $donation->getStudentId() ?></td>
-      <td><?php echo $donation->getUserId() ?></td>
-      <td><?php echo $donation->getAmount() ?></td>
-      <td><?php echo $donation->getStartDate() ?></td>
-      <td><?php echo $donation->getEndDate() ?></td>
-      <td><?php echo $donation->getApprove() ?></td>
-      <td><?php echo $donation->getIsActive() ?></td>
-      <td><?php echo $donation->getCreatedAt() ?></td>
-  </tr>
-<?php endforeach; ?>
-</tbody>
-</table>
-<?php else:?>
-无资助记录<br/>
-<?php endif;?>
+</div>
 
-<?php if($survey == null): ?>
-无调查记录<br/>
-<?php else:?>
-<table>
-<tbody>
-<tr>
-<th>Survey: </th>
-<td><?php echo $survey->getSurveyId() ?></td>
-</tr>
-<tr>
-<th>Student: </th>
-<td><?php echo $survey->getStudentId() ?></td>
-</tr>
-<tr>
-<th>User: </th>
-<td><?php echo $survey->getUserId() ?></td>
-</tr>
-<tr>
-<th>Survey date: </th>
-<td><?php echo $survey->getSurveyDate() ?></td>
-</tr>
-<tr>
-<th>Family condition: </th>
-<td><?php echo $survey->getFamilyCondition() ?></td>
-</tr>
-<tr>
-<th>Grade: </th>
-<td><?php echo $survey->getGrade() ?></td>
-</tr>
-<tr>
-<th>Other assist: </th>
-<td><?php echo $survey->getOtherAssist() ?></td>
-</tr>
-<tr>
-<th>Dropout info: </th>
-<td><?php echo $survey->getDropoutInfo() ?></td>
-</tr>
-<tr>
-<th>Presentation: </th>
-<td><?php echo $survey->getPresentation() ?></td>
-</tr>
-<tr>
-<th>Revenue: </th>
-<td><?php echo $survey->getRevenue() ?></td>
-</tr>
-<tr>
-<th>Property: </th>
-<td><?php echo $survey->getProperty() ?></td>
-</tr>
-<tr>
-<th>Donation usage: </th>
-<td><?php echo $survey->getDonationUsage() ?></td>
-</tr>
-<tr>
-<th>Donor concerned: </th>
-<td><?php echo $survey->getDonorConcerned() ?></td>
-</tr>
-<tr>
-<th>Msg to donor: </th>
-<td><?php echo $survey->getMsgToDonor() ?></td>
-</tr>
-<tr>
-<th>Msg to stu: </th>
-<td><?php echo $survey->getMsgToStu() ?></td>
-</tr>
-<tr>
-<th>School opinion: </th>
-<td><?php echo $survey->getSchoolOpinion() ?></td>
-</tr>
-<tr>
-<th>Teacher opinion: </th>
-<td><?php echo $survey->getTeacherOpinion() ?></td>
-</tr>
-<tr>
-<th>User opinion: </th>
-<td><?php echo $survey->getUserOpinion() ?></td>
-</tr>
-<tr>
-<th>Discription: </th>
-<td><?php echo $survey->getDiscription() ?></td>
-</tr>
-<tr>
-<th>Created at: </th>
-<td><?php echo $survey->getCreatedAt() ?></td>
-</tr>
-</tbody>
-</table>
-<?php endif;?>
-
-
-
-
-
-
-
-
+<p class=MsoNormal align=center style='text-align:center;line-height:150%'><b
+style='mso-bidi-font-weight:normal'><span lang=ZH-CN style='font-size:14.0pt;
+line-height:150%;font-family:SimSun;mso-ascii-font-family:"Times New Roman";
+mso-hansi-font-family:"Times New Roman"'>&#65288;&#27880;&#65306;&#26412;&#34920;&#26684;&#20165;&#38480;&#29992;&#20110;</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+150%'>&#8220;</span></b><b style='mso-bidi-font-weight:normal'><span
+lang=ZH-CN style='font-size:14.0pt;line-height:150%;font-family:SimSun;
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#25105;&#20204;&#30340;&#33258;&#30001;&#22825;&#31354;</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+150%'>&#8221;</span></b><b style='mso-bidi-font-weight:normal'><span
+lang=ZH-CN style='font-size:14.0pt;line-height:150%;font-family:SimSun;
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#24110;&#22256;&#21161;&#23398;&#27963;&#21160;&#65289;</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+150%'><o:p></o:p></span></b></p>
+</div>
+</div>
 </div>
 
 
