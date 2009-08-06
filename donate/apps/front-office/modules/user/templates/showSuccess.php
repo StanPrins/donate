@@ -68,7 +68,21 @@
   </tr>
   <tr>
     <td class="name">权限：</td>
-    <td class="content"><?php echo $user->getUsertype() ?></td>
+    <td class="content">
+    <?php 
+    if ($user->getUsertype() == 'administrator')
+       echo "超级用户"; 
+    else if($user->getUsertype() == 'manager')
+       echo "管理员";
+    else if($user->getUsertype() == 'surveyor')
+       echo "调查员";
+    else if($user->getUsertype() == 'volunteer')
+       echo "志愿者";
+    else
+       echo "身份错误";
+
+    ?>
+    </td>
   </tr>
   <tr>
     <td class="name">身份：</td>

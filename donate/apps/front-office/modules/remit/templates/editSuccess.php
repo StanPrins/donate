@@ -54,9 +54,15 @@
 <div class="form-row">
   <label for="remit_amount" class="required">金额：</label> 
   <div class="content">  
-  <?php echo object_input_tag($remit, 'getAmount', array (
-  'size' => 7,
-  )) ?>
+  <?php
+  if (($remit->getAmount() == null) || ($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager') || ($sf_user->getAttribute('usertype', '')=='administrator'))
+     echo object_input_tag($remit, 'getAmount', array ('size' => 7));
+  else 
+     echo $remit->getAmount();
+     
+  if (($remit->getAmount() == null) && ($sf_user->getAttribute('usertype', '')=='volunteer'))
+     echo "（注意：一经输入，不得修改，请慎重！）" 
+  ?>
   </div>
 </div>   
 
