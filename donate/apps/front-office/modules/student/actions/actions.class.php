@@ -185,6 +185,9 @@ public function executeListno()
   public function executeEdit()
   {
     $this->student = StudentPeer::retrieveByPk($this->getRequestParameter('student_id'));
+    $c = new Criteria();
+    $c->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
+    $this->school = SchoolPeer::doSelect($c);
     $this->forward404Unless($this->student);
   }
 
