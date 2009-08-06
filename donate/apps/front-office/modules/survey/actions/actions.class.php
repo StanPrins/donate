@@ -98,7 +98,7 @@ class surveyActions extends sfActions
   		$site_id = $this->getRequestParameter('site_id');
   		$my = $this->getRequestParameter('my');
   		$c = new Criteria();
-  		$c->addJoin(StudentPeer::STUDENT_ID, SurveyPeer::STUDENT_ID, Criteria::LEFT_JOIN);
+  		$c->addJoin(StudentPeer::STUDENT_ID, SurveyPeer::STUDENT_ID, Criteria::RIGHT_JOIN);
   		$c->addJoin(StudentPeer::SCHOOL_ID, SchoolPeer::SCHOOL_ID, Criteria::LEFT_JOIN);
   		if( 1==$my )
   			$c->add(SurveyPeer::USER_ID, $this->getUser()->getAttribute('user_id')); 		  		
@@ -108,6 +108,7 @@ class surveyActions extends sfActions
 	    	$c->add(SchoolPeer::SITE_ID,$site_id);
 	    $c->add(StudentPeer::NAME,'%'.$str.'%',Criteria::LIKE);
 	    $c->addAscendingOrderByColumn(StudentPeer::NAME);
+	    $c->setDistinct();
 	    $students = StudentPeer::doSelect($c);
 	    $this->students = $students;
 	}

@@ -165,6 +165,7 @@ public function executeListno()
       $c->add(SchoolPeer::SITE_ID,$site_id);
   	$c->add(StudentPeer::NAME,'%'.$str.'%',Criteria::LIKE);
   	$c->addAscendingOrderByColumn(StudentPeer::NAME);
+  	$c->setDistinct();
   	$students = StudentPeer::doSelectJoinSchool($c);
   	$this->students = $students;
   }
