@@ -145,15 +145,6 @@ function display()
   )) ?>
   </div>
 </div>  
-<?php echo form_error('duty')?>
-<div class="form-row">
-  <label for="user_duty" class="required">职务：</label> 
-  <div class="content">    
-  <?php echo object_input_tag($user, 'getDuty', array (
-  'size' => 70,
-  )) ?>
-  </div>
-</div>  
 <?php echo form_error('create_at')?>
 <div class="form-row">
   <label for="user_created_at" class="required">创建日期：</label> 
@@ -208,6 +199,8 @@ function display()
 
   </div>
 </div>  
+<?php if ( ($sf_user->getAttribute('usertype', '')=='manager') || ($sf_user->getAttribute('usertype', '')=='administrator')):?>
+
 <?php echo form_error('identity')?>
 <div class="form-row">
   <label for="user_identity" class="required">身份：</label> 
@@ -216,7 +209,19 @@ function display()
   'size' => 7,
   )) ?>
   </div>
-</div>  
+</div>
+<?php echo form_error('duty')?>
+<div class="form-row">
+  <label for="user_duty" class="required">职务：</label> 
+  <div class="content">    
+  <?php echo object_input_tag($user, 'getDuty', array (
+  'size' => 70,
+  )) ?>
+  </div>
+</div>
+
+<?php else:?>
+<?php endif;?>    
 <?php echo form_error('email')?>  
 <div class="form-row">
   <label for="user_email" class="required">Email：</label> 
