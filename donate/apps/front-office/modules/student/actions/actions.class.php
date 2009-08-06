@@ -238,6 +238,7 @@ public function executeListno()
     }
     $student->setGrade($this->getRequestParameter('grade'));
     $student->setMale($this->getRequestParameter('male', 0));
+    $student->setTel($this->getRequestParameter('tel'));
     $student->setAddress($this->getRequestParameter('address'));
     $student->setPostal($this->getRequestParameter('postal'));
     $student->setCity($this->getRequestParameter('city'));

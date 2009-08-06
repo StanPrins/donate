@@ -1,1 +1,1 @@
-1111<br/><?php echo $student_id?><br/>222
+<h1>成功！</h1>
