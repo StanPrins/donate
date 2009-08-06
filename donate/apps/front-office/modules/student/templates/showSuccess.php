@@ -75,7 +75,11 @@
          echo '女';       
     ?>
     </td>
-  </tr>                            
+  </tr>
+  <tr>
+    <td class="name">电话：</td>
+    <td class="content"><?php echo $student->getTel() ?></td>
+  </tr>                              
   <tr>
     <td class="name">地址：</td>
     <td class="content"><?php echo $student->getAddress() ?></td>

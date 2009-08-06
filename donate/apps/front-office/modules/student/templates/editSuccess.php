@@ -140,6 +140,15 @@ function display()
   )) ?>
   </div>
 </div>  
+<?php echo form_error('tel')?>
+<div class="form-row">
+  <label for="student_tel" class="required">电话：</label> 
+  <div class="content">   
+  <?php echo object_input_tag($student, 'getTel', array (
+  'size' => 70,
+  )) ?>
+  </div>
+</div>  
 <?php echo form_error('address')?>
 <div class="form-row">
   <label for="student_address" class="required">住址：</label> 
