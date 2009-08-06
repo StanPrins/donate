@@ -8,7 +8,7 @@
 <?php
  use_helper('Javascript');
  echo form_tag('survey/listmy','id="Find"');?> 
-<table border=0>
+<table cellspacing="0" class="sf_admin_list">
 <tr><td><strong>地区：</strong></td>
 <td>
 <select name="site_id">
