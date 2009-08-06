@@ -24,7 +24,7 @@
   <?php if ($survey->getStudentId())
            echo $survey->getStudent()->getName();
         else
-           echo object_select_tag($survey, 'getStudentId', array ('related_class' => 'Student'));
+          echo select_tag('student_id',objects_for_select($student,'getStudentId','getName'));
   ?>
   </div>
 </div>  
