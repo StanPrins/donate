@@ -3,7 +3,7 @@
 // date: 2009/07/19 21:33:07
 ?>
 <div id="sf_admin_container">
-<h1>到款信息列表</h1>
+<h1>待审批到款信息列表</h1>
 
 <?php if(sizeof($pager->getResults()) != 0):?>
 <div id="sf_admin_content">

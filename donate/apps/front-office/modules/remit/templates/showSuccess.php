@@ -98,7 +98,33 @@
   <tr>
     <td class="name">发款录入人：</td>
     <td class="content"><?php if ($remit->getSendoutSubmitter()) echo $remit->getUserRelatedBySendoutSubmitter()->getName()?></td>
-  </tr>                                  
+  </tr>
+  
+  <tr>
+    <td class="name">创建时间：</td>
+    <td class="content"><?php echo $remit->getCreatedAt() ?></td>
+  </tr>
+  
+  <tr>
+    <td class="name">走访报告：</td>
+    <td class="content">
+    <?php 
+      if($remit->getReportId()) 
+         echo link_to('点击访问','reportcard/show?report_id='.$remit->getReportId());
+      else
+         echo "无";
+    ?></td>
+  </tr>
+  
+  <tr>
+    <td class="name">发放详情：</td>
+    <td class="content"><?php echo $remit->getDiscription() ?></td>
+  </tr>
+  
+  <tr>
+    <td class="name">备注：</td>
+    <td class="content"><?php echo $remit->getRemark() ?></td>
+  </tr>                                       
         
   <?php else:?>
   <tr>
