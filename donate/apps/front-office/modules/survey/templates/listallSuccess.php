@@ -75,5 +75,6 @@
 
 <?php endif;?>
 
+<?php echo link_to('新增调查','survey/create')?>
 </div>
 </div>
