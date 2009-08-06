@@ -143,7 +143,7 @@
 </div>  
 
 <div class="form-row">
-  <label for="survey_discription" class="required">描述：</label> 
+  <label for="survey_discription" class="required">备注：</label> 
   <div class="content">
     <?php echo object_textarea_tag($survey, 'getDiscription', $options = array('size' =>  '70x3')) ?>     
   </div>

@@ -175,7 +175,7 @@
     <td class="content"><?php echo $survey->getUserOpinion() ?></td>
   </tr>
   <tr>
-    <td class="name">小结：</td>
+    <td class="name">备注：</td>
     <td class="content"><?php echo $survey->getDiscription() ?></td>
   </tr>
   </tbody>
