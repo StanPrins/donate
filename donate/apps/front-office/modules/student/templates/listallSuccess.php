@@ -8,7 +8,7 @@
 <?php
  use_helper('Javascript');
  echo form_tag('student/listall','id="Find"');?> 
-<table border=0>
+<table class="sf_student_list">
 <tr><td><strong>地区：</strong></td>
 <td>
 <select name="site_id">
