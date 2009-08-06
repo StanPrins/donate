@@ -178,7 +178,9 @@ public function executeListno()
   public function executeCreate()
   {
     $this->student = new Student();
-
+	$c = new Criteria();
+    $c->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
+    $this->school = SchoolPeer::doSelect($c);
     $this->setTemplate('edit');
   }
 
