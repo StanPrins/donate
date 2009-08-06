@@ -19,11 +19,9 @@
 <fieldset id="sf_fieldset_none" class="">
 
 <div class="form-row">
-  <label for="student_school_id" class="required">学校号：</label> 
+  <label for="student_school_id" class="required">学校：</label> 
   <div class="content">   
-  <?php echo object_select_tag($student, 'getSchoolId', array (
-  'related_class' => 'School',
-  )) ?>
+  <?php echo select_tag('school_id', objects_for_select($school,'getSchoolId','getSchoolName',$student->getSchoolId())) ?>
   </div>
 </div> 
 
