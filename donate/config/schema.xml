@@ -145,6 +145,7 @@
 		<column name="birthday" type="date" required="true" />
 		<column name="grade" type="varchar" size="16" required="true" />
 		<column name="male" type="boolean" required="true" />		
+		<column name="tel" type="varchar" size="16" />
 		<column name="address" type="varchar" size="256" required="true" />
 		<column name="postal" type="integer" size="7" required="true" />
 		<column name="city" type="varchar" size="16" required="true" />
@@ -159,7 +160,7 @@
 		<column name="dropout_history" type="longvarchar" />
 		<column name="techang" type="varchar" size="256" />
 		<column name="reward" type="longvarchar" />
-		<column name="term_expense" type="varchar" size="32" />
+		<column name="term_expense" type="longvarchar" />
 		<column name="discription" type="longvarchar" />
 		<column name="created_at" type="timestamp" />
 		<column name="remark" type="longvarchar" />
