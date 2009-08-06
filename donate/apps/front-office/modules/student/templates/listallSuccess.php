@@ -84,6 +84,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
 			{
 				echo link_to ('修改', 'student/edit?student_id='.$student->getStudentId());
 				echo "&nbsp;&nbsp;&nbsp;";
+				echo link_to('打印回访表','student/print?student_id='.$student->getStudentId());
 			}
 			?></td>
 		</tr>
