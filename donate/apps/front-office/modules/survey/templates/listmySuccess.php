@@ -38,7 +38,7 @@ $default_name = empty($student_name)?'':$student_name;
 $default_school_id = empty($school_id)?-1:$school_id;
 $default_site_id = empty($site_id)?-1:$site_id;
  echo input_auto_complete_tag('student_name',$default_name,
-		'survey/autocomplete?school_id='.$default_school_id.'&site_id='.$default_site_id,
+		'survey/autocomplete?my=1&school_id='.$default_school_id.'&site_id='.$default_site_id,
  		array('autocomplete'=>'on'),
  		array('use_style'=>true));
  echo submit_tag('查找');
