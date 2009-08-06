@@ -3,10 +3,57 @@
 // date: 2009/07/19 21:33:39
 ?>
 <div id="sf_admin_container">
-<h1>成绩单</h1>
-
-<?php if(sizeof($pager->getResults()) != 0):?>
 <div id="sf_admin_content">
+<h1>成绩单</h1>
+<?php
+ use_helper('Javascript');
+ echo form_tag('reportcard/listall','id="Find"');?> 
+<table cellspacing="0" class="sf_admin_list">
+<tr><td><strong>地区：</strong></td>
+<td>
+<select name="site_id">
+  <option value="-1">--请选择--</option>
+  <?php foreach($projectsites as $projectsite):?>
+  <option value=<?php echo $projectsite[0]?> <?php if(!empty($site_id) && $site_id==$projectsite[0]) echo "selected"; ?>>
+  <?php echo $projectsite[1]?>
+  </option>
+  <?php endforeach;?>
+</select>
+</td>
+<td><strong>学校：</strong></td>
+<td>
+<select name="school_id" <?php if($school_count < 1) echo "disabled"; ?>>
+<option value="-1">--请选择--</option>
+<?php foreach($schools as $school):?>
+<option value=<?php echo $school[0]?> <?php if(!empty($school_id) && ($school_id==$school[0])) echo "selected"; ?>>
+<?php echo $school[1]?>
+</option>
+<?php endforeach;?>
+</select>
+</td>
+<td><strong>姓名：</strong></td>
+<td>
+<?php 
+$default_name = empty($student_name)?'':$student_name;
+$default_school_id = empty($school_id)?-1:$school_id;
+$default_site_id = empty($site_id)?-1:$site_id;
+ echo input_auto_complete_tag('student_name',$default_name,
+		'reportcard/autocomplete?my=0&school_id='.$default_school_id.'&site_id='.$default_site_id,
+ 		array('autocomplete'=>'on'),
+ 		array('use_style'=>true));
+ echo submit_tag('查找');
+ ?>
+ </td>
+ </tr>
+ </table>
+ </form>
+ <?php 
+ echo observe_form('Find',array(
+ 		'update'=>'sf_admin_content',
+ 		'url'=>'survey/listall',
+ 		'with'=>"Form.serialize('Find')",
+ 		'script'=>true))?>
+<?php if(sizeof($pager->getResults()) != 0):?>
 <table cellspacing="0" class="sf_admin_list">
 
 <thead>
@@ -77,7 +124,9 @@
 <?php include_partial('pager',array('pager' => $pager , 'page_to_link' => 'listall' , 'flag_no_all' => 0))?>
 
 <?php else:?>
-无相关记录<br/>
+<table class="sf_student_list">
+<tr><td align="center">无相关记录</td></tr>
+</table>
 <?php endif;?>
 
 <?php if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
