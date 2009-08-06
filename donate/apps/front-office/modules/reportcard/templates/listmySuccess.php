@@ -74,7 +74,7 @@
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager , 'page_to_link' => 'liststu' , 'flag_no_all' => 1 ))?>
+<?php include_partial('pager',array('pager' => $pager , 'page_to_link' => 'listmy' , 'flag_no_all' => 0 ))?>
 
 <?php else:?>
 无相关记录<br/>

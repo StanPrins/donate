@@ -20,9 +20,13 @@
 <fieldset id="sf_fieldset_none" class="">
 
 <div class="form-row">
-  <label for="report_card_student_id" class="required">学生：</label> 
-  <div class="content">   
-  <?php echo $student->getName()?>
+  <label for="report_card_student_id" class="required">学生：</label>
+  <div class="content">     
+  <?php if ($report_card->getStudentId())
+           echo $report_card->getStudent()->getName();
+        else
+           echo object_select_tag($report_card, 'getStudentId', array ('related_class' => 'Student'));
+  ?>
   </div>
 </div>  
 

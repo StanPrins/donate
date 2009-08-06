@@ -59,18 +59,18 @@
 
 <?php $donations = $pager->getResults()?>
 <?php if ($pager->haveToPaginate()): ?>
-  <?php echo link_to(image_tag('admin_db/first.png'), 'donation/list?page='.$pager->getFirstPage().'&student_id='.$donations[0]->getStudentId()) ?>
-  <?php echo link_to(image_tag('admin_db/previous.png'), 'donation/list?page='.$pager->getPreviousPage().'&student_id='.$donations[0]->getStudentId()) ?>
+  <?php echo link_to(image_tag('admin_db/first.png'), 'donation/liststu?page='.$pager->getFirstPage().'&student_id='.$donations[0]->getStudentId()) ?>
+  <?php echo link_to(image_tag('admin_db/previous.png'), 'donation/liststu?page='.$pager->getPreviousPage().'&student_id='.$donations[0]->getStudentId()) ?>
   <?php $links = $pager->getLinks(); foreach ($links as $page): ?>
-    <?php echo ($page == $pager->getPage()) ? $page : link_to($page, 'donation/list?page='.$page.'&student_id='.$donations[0]->getStudentId()) ?>
+    <?php echo ($page == $pager->getPage()) ? $page : link_to($page, 'donation/liststu?page='.$page.'&student_id='.$donations[0]->getStudentId()) ?>
     <?php if ($page != $pager->getCurrentMaxLink()): ?><?php endif ?>
   <?php endforeach ?>
-  <?php echo link_to(image_tag('admin_db/next.png'), 'donation/list?page='.$pager->getNextPage().'&student_id='.$donations[0]->getStudentId()) ?>
-  <?php echo link_to(image_tag('admin_db/last.png'), 'donation/list?page='.$pager->getLastPage().'&student_id='.$donations[0]->getStudentId()) ?>
+  <?php echo link_to(image_tag('admin_db/next.png'), 'donation/liststu?page='.$pager->getNextPage().'&student_id='.$donations[0]->getStudentId()) ?>
+  <?php echo link_to(image_tag('admin_db/last.png'), 'donation/liststu?page='.$pager->getLastPage().'&student_id='.$donations[0]->getStudentId()) ?>
   <?php echo $pager->getNbResults() ?> results found.<br />
   Displaying results <?php echo $pager->getFirstIndice() ?> to  <?php echo $pager->getLastIndice() ?>.<br/>
 
-  <?php echo form_tag('donation/list')?>
+  <?php echo form_tag('donation/liststu')?>
   Jump to Page <?php echo input_tag('page', 1, 'size=2' )?>
   <?php echo input_hidden_tag('student_id', $donations[0]->getStudentId()) ?>
   <?php echo submit_tag('Go!')?>

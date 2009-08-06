@@ -30,6 +30,29 @@ class reportcardActions extends sfActions
 		$pager->init();
 		$this->pager = $pager;
 	}
+	
+	public function executeListmy()
+	{
+		$c = new Criteria();
+		$c -> add(ReportCardPeer::USER_ID, $this->getUser()->getAttribute('user_id'));
+		$pager = new sfPropelPager('ReportCard', sfConfig::get('app_pager_homepage_max'));
+		$pager->setPeerMethod('doSelectJoinAll');
+		$pager->setCriteria($c);
+		$pager->setPage($this->getRequestParameter('page', 1));
+		$pager->init();
+		$this->pager = $pager;
+	}	
+	
+	public function executeListall()
+	{
+		$c = new Criteria();
+		$pager = new sfPropelPager('ReportCard', sfConfig::get('app_pager_homepage_max'));
+		$pager->setPeerMethod('doSelectJoinAll');
+		$pager->setCriteria($c);
+		$pager->setPage($this->getRequestParameter('page', 1));
+		$pager->init();
+		$this->pager = $pager;
+	}	
 
 	public function executeShow()
 	{
@@ -41,16 +64,18 @@ class reportcardActions extends sfActions
 	{
 		$this->report_card = new ReportCard();
 
-		$this->report_card->setStudentId($this->getRequestParameter('student_id'));
 		$this->report_card->setUserId($this->getUser()->getAttribute('user_id'));
-
-		$c = new Criteria();
-		$c -> add(StudentPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
-		$this->student = StudentPeer::doSelectOne($c);
-
 		$d = new Criteria();
 		$d -> add(UserPeer::USER_ID, $this->getUser()->getAttribute('user_id'));
 		$this->user = UserPeer::doSelectOne($d);
+		
+		if($this->getRequestParameter('student_id'))
+		{
+		   $this->report_card->setStudentId($this->getRequestParameter('student_id'));
+		   $c = new Criteria();
+		   $c -> add(StudentPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
+		   $this->student = StudentPeer::doSelectOne($c);
+		}		
 	}
 
 	public function executeEdit()
@@ -95,7 +120,7 @@ class reportcardActions extends sfActions
 		return $this->redirect('reportcard/show?report_id='.$report_card->getReportId().'&after_edit=1');
 	}
 
-	public function executeDelete()
+	/*public function executeDelete()
 	{
 		$report_card = ReportCardPeer::retrieveByPk($this->getRequestParameter('report_id'));
 
@@ -106,7 +131,7 @@ class reportcardActions extends sfActions
 		//return $this->redirect('reportcard/list');
         return $this->redirect($this->getRequest()->getReferer());
 		
-	}
+	}*/
 	public function handleErrorUpdate()
 	{
 		$report_id = $this->getRequestParameter('report_id');
