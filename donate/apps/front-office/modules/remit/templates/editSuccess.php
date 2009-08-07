@@ -94,10 +94,7 @@
 <div class="form-row">
   <label for="remit_receive_user_id" class="required">OFS收款人：</label> 
   <div class="content">   
-  <?php echo object_select_tag($remit, 'getReceiveUserId', array (
-    'related_class' => 'User',
-    'include_blank' => true,
-  )) ?>
+	<?php echo select_tag('receive_user_id',objects_for_select($user,'getUserId','getNickname'))?>
   </div>
 </div>   
 <?php echo form_error('receive_amount')?>
@@ -129,11 +126,8 @@
 
 <div class="form-row">
   <label for="remit_sendout_user_id" class="required">OFS发款人：</label> 
-  <div class="content">   
-  <?php echo object_select_tag($remit, 'getSendoutUserId', array (
-    'related_class' => 'User',
-    'include_blank' => true,
-  )) ?>
+  <div class="content">  
+  <?php echo select_tag('sendout_user_id',objects_for_select($user,'getUserId','getNickname'))?> 
   </div>
 </div> 
 <?php echo form_error('sendout_amount')?>

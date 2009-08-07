@@ -96,7 +96,9 @@ class remitActions extends sfActions
 		{
 			$this->remit->setDonationId($this->getRequestParameter('donation_id'));
 		}
-
+		$c = new Criteria();
+		$c->addAscendingOrderByColumn(UserPeer::NICKNAME);
+		$this->user = UserPeer::doSelect($c);
 		$this->setTemplate('edit');
 	}
 
