@@ -125,7 +125,7 @@
   <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
   style='font-size:12.0pt;line-height:150%'><o:p><?php if ($student->getPostal()) echo $student->getPostal(); ?></o:p></span></p>
   </td>
-  <td width=84 colspan=2 style='width:63.0pt;border-top:none;border-left:none;
+  <td width=84 colspan=2 style='width:70.0pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:23.65pt'>
@@ -134,7 +134,7 @@
   mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#23478;&#24237;&#22320;&#22336;</span><span
   style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
   </td>
-  <td width=408 colspan=8 style='width:4.25in;border-top:none;border-left:none;
+  <td width=408 colspan=8 style='width:4.0in;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:23.65pt'>
@@ -192,7 +192,7 @@
  <?php $remits = $a[$i] ?>
  <?php foreach ($remits as $remit): ?>
  <tr style='mso-yfti-irow:5;height:22.6pt'>
-  <td width=134 colspan=4 style='width:100.7pt;border:solid windowtext 1.0pt;
+  <td width=134 colspan=4 style='width:80.7pt;border:solid windowtext 1.0pt;
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:150%'><b
@@ -211,7 +211,7 @@
   mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#25910;&#27454;&#26085;&#26399;</span><span
   style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
   </td>
-  <td width=106 colspan=2 style='width:1in;border-top:none;border-left:none;
+  <td width=106 colspan=2 style='width:1.5in;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
@@ -234,17 +234,23 @@
   <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
   style='font-size:12.0pt;line-height:150%'><o:p><?php echo $remit->getAmount()?></o:p></span></p>
   </td>
-  <td width=204 colspan=3 style='width:153.0pt;border-top:none;border-left:
+  <td width=102 colspan=2 style='width:70.0pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
-  <p class=MsoNormal style='line-height:150%'><span lang=ZH-CN
-  style='font-size:12.0pt;line-height:150%;font-family:SimSun'>&#23478;&#38271;&#65288;&#25910;&#27454;&#20154;&#65289;&#65306;</span><span
+  <p class=MsoNormal align=center style='line-height:150%'><span lang=ZH-CN
+  style='font-size:12.0pt;line-height:150%;font-family:SimSun'>收款人</span></p>
+  </td>
+   <td width=102 colspan=3 style='width:83.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
+  <p><span
   style='font-size:12.0pt;line-height:150%'><o:p><?php echo $remit->getSendoutReceiver()?></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:6;height:40.3pt'>
-  <td width=88 colspan=3 style='width:65.8pt;border:solid windowtext 1.0pt;
+  <td width=88 colspan=3 style='width:85.8pt;border:solid windowtext 1.0pt;
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:40.3pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
@@ -252,7 +258,7 @@
   mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#21161;&#23398;&#27454;&#20351;&#29992;&#24773;&#20917;&#65288;&#21547;&#21435;&#24180;&#20197;&#21450;&#20170;&#24180;&#25311;&#29992;&#65289;</span><span
   style='font-size:12.0pt;line-height:150%'><o:p></o:p></span></p>
   </td>
-  <td width=563 colspan=12 valign=top style='width:421.9pt;border-top:none;
+  <td width=563 colspan=12 valign=top style='width:401.9pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:40.3pt'>
