@@ -331,7 +331,7 @@
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:45.9pt'>
-  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p><?php if($survey != null) echo $survey->getRevenue() ?></o:p></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p></o:p></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:10;height:71.75pt'>
@@ -347,7 +347,7 @@
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:71.75pt'>
-  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p><?php if($survey != null) echo $survey->getProperty() ?></o:p></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p></o:p></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:11;mso-yfti-lastrow:yes;height:71.75pt'>
@@ -761,7 +761,7 @@ style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
   <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
   style='font-size:12.0pt;line-height:150%'><o:p>被调查学生</o:p></span></p>
   </td>
-  <td width=119 style='width:89.3pt;border-top:none;border-left:none;
+  <td width=119 style='width:64.3pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
@@ -775,26 +775,26 @@ style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
   <p class=MsoNormal align=center style='text-align:center;line-height:150%'>
   <span style='font-size:12.0pt;line-height:150%'><o:p>调查人</o:p></span></p>
   </td>
-  <td width=151 colspan=2 style='width:113.4pt;border-top:none;border-left:
+  <td width=151 colspan=2 style='width:68.4pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
   style='font-size:12.0pt;line-height:150%'><o:p><?php echo $survey->getUser()->getName() ?></o:p></span></p>
   </td>
-  <td width=94 style='width:70.85pt;border-top:none;border-left:none;
+  <td width=94 style='width:100.85pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:150%'>
-  <span style='font-size:12.0pt;line-height:150%'><o:p>调查日期</o:p></span></p>
+  <span style='font-size:12.0pt;line-height:150%'><o:p>调查日期（年级）</o:p></span></p>
   </td>
-  <td width=130 style='width:97.45pt;border-top:none;border-left:none;
+  <td width=130 style='width:137.45pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:150%'><span
-  style='font-size:12.0pt;line-height:150%'><o:p><?php echo $survey->getSurveyDate() ?></o:p></span></p>
+  style='font-size:12.0pt;line-height:150%'><o:p><?php echo $survey->getSurveyDate() ?>（<?php echo $survey->getGrade() ?>）</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:3;height:63.8pt'>
