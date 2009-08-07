@@ -359,6 +359,18 @@ public function executeListno()
     $c = new Criteria();
     $c->add(DonationPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
     $this->donations = DonationPeer::doSelect($c);
+    
+    $i = 0;
+    $this->a = array();
+    foreach($this->donations as $donation)
+    {
+       $e = new Criteria();
+       $e->add(RemitPeer::DONATION_ID, $donation->getDonationId());
+       $remits = RemitPeer::doSelect($e);
+       
+       $this->a[$i] = $remits;
+       $i ++ ;
+    }
 
     $d = new Criteria();
     $d->add(SurveyPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
