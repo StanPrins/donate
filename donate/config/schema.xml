@@ -68,7 +68,8 @@
 		<foreign-key foreignTable="user" onDelete="cascade"
 			onUpdate="cascade">
 			<reference local="sendout_submitter" foreign="user_id" />
-		</foreign-key>			
+		</foreign-key>
+		<column name="sendout_receiver" type="varchar" size="16" />			
 		<column name="created_at" type="timestamp" />
 		<column name="report_id" type="integer" size="11"/>
 		<foreign-key foreignTable="reportcard" onDelete="cascade"

@@ -8,7 +8,7 @@
 <div class=Section1 style='layout-grid:15.6pt'>
 <div align=center>
 <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
- style='margin-left:-30.6pt;border-collapse:collapse;mso-table-layout-alt:fixed;
+ style='margin-left:0pt;border-collapse:collapse;mso-table-layout-alt:fixed;
  border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:480;
  mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:.5pt solid windowtext;
  mso-border-insidev:.5pt solid windowtext'>
@@ -315,7 +315,7 @@
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:45.9pt'>
-  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p><?php echo $survey->getRevenue() ?></o:p></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p><?php if($survey != null) echo $survey->getRevenue() ?></o:p></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:10;height:71.75pt'>
@@ -331,7 +331,7 @@
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:71.75pt'>
-  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p><?php echo $survey->getProperty() ?></o:p></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:150%'><o:p><?php if($survey != null) echo $survey->getProperty() ?></o:p></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:11;mso-yfti-lastrow:yes;height:71.75pt'>
@@ -407,7 +407,7 @@ AR-SA'><br clear=all style='page-break-before:always;mso-break-type:section-brea
 <div align=center>
 
 <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
- style='margin-left:-30.6pt;border-collapse:collapse;mso-table-layout-alt:fixed;
+ style='margin-left:0pt;border-collapse:collapse;mso-table-layout-alt:fixed;
  border:none;mso-border-alt:solid windowtext .5pt;mso-yfti-tbllook:480;
  mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:.5pt solid windowtext;
  mso-border-insidev:.5pt solid windowtext'>

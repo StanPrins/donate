@@ -92,7 +92,7 @@
 </div>   
 
 <div class="form-row">
-  <label for="remit_receive_user_id" class="required">收款人：</label> 
+  <label for="remit_receive_user_id" class="required">OFS收款人：</label> 
   <div class="content">   
   <?php echo object_select_tag($remit, 'getReceiveUserId', array (
     'related_class' => 'User',
@@ -128,7 +128,7 @@
 </div>   
 
 <div class="form-row">
-  <label for="remit_sendout_user_id" class="required">发款人：</label> 
+  <label for="remit_sendout_user_id" class="required">OFS发款人：</label> 
   <div class="content">   
   <?php echo object_select_tag($remit, 'getSendoutUserId', array (
     'related_class' => 'User',
@@ -141,6 +141,15 @@
   <label for="remit_sendout_amount" class="required">发款金额：</label> 
   <div class="content">  
   <?php echo object_input_tag($remit, 'getSendoutAmount', array (
+  'size' => 7,
+  )) ?>
+  </div>
+</div>  
+<?php echo form_error('sendout_receiver')?>  
+<div class="form-row">
+  <label for="remit_sendout_receiver" class="required">受援助收款人：</label> 
+  <div class="content">   
+  <?php echo object_input_tag($remit, 'getSendoutReceiver', array (
   'size' => 7,
   )) ?>
   </div>
@@ -209,7 +218,15 @@
   )) ?>
   </div>
 </div>   
-
+<?php echo form_error('sendout_receiver')?>  
+<div class="form-row">
+  <label for="remit_sendout_receiver" class="required">受援助收款人：</label> 
+  <div class="content">   
+  <?php echo object_input_tag($remit, 'getSendoutReceiver', array (
+  'size' => 7,
+  )) ?>
+  </div>
+</div>  
 <?php endif;?>
 </fieldset>
 

@@ -91,18 +91,13 @@
   </tr>  
   
   <tr>
-    <td class="name">创建日期：</td>
-    <td class="content"><?php echo $remit->getCreatedAt() ?></td>
+    <td class="name">受援助收款人：</td>
+    <td class="content"><?php echo $remit->getSendoutReceiver() ?></td>
   </tr>
   
   <tr>
     <td class="name">发款录入人：</td>
     <td class="content"><?php if ($remit->getSendoutSubmitter()) echo $remit->getUserRelatedBySendoutSubmitter()->getName()?></td>
-  </tr>
-  
-  <tr>
-    <td class="name">创建时间：</td>
-    <td class="content"><?php echo $remit->getCreatedAt() ?></td>
   </tr>
   
   <tr>
@@ -146,8 +141,18 @@
     <td class="name">发款日期：</td>
     <td class="content"><?php echo $remit->getSendoutDate() ?></td>
   </tr>
+
+  <tr>
+    <td class="name">受援助收款人：</td>
+    <td class="content"><?php echo $remit->getSendoutReceiver() ?></td>
+  </tr>
       
   <?php endif;?>
+  <tr>
+    <td class="name">创建时间：</td>
+    <td class="content"><?php echo $remit->getCreatedAt() ?></td>
+  </tr>
+  
   </tbody>
 </table>
 
