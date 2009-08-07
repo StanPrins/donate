@@ -58,6 +58,7 @@
      <ul>
        <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
        <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
+       <li><?php echo link_to('录入走访表', 'investigation/insert') ?></li>
      </ul>
    </li>   
    <li><?php echo link_to('学生', '#') ?>
@@ -92,6 +93,7 @@
        <li><?php echo link_to('所有调查', 'survey/listall') ?></li>
        <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
        <li><?php echo link_to('所有成绩单', 'reportcard/listall') ?></li>
+       <li><?php echo link_to('录入走访表', 'investigation/insert') ?></li>
      </ul>
    </li>     
    <li><?php echo link_to('学生', '#') ?>
@@ -133,6 +135,7 @@
        <li><?php echo link_to('所有调查', 'survey/listall') ?></li>
        <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
        <li><?php echo link_to('所有成绩单', 'reportcard/listall') ?></li>
+       <li><?php echo link_to('录入走访表', 'investigation/insert') ?></li>
      </ul>
    </li>     
    <li><?php echo link_to('学生', '#') ?>

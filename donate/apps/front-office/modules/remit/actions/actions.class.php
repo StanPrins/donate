@@ -166,6 +166,7 @@ class remitActions extends sfActions
 		   $remit->setSendoutSubmitter(null);
 		}
 		
+		$remit->setSendoutReceiver($this->getRequestParameter('sendout_receiver'));
 		$remit->setReportId($this->getRequestParameter('report_id') ? $this->getRequestParameter('report_id') : null);
 		$remit->setDiscription($this->getRequestParameter('discription'));
 		$remit->setRemark($this->getRequestParameter('remark'));

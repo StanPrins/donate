@@ -1,3 +1,4 @@
+<br/>
 
 <?php use_helper('Object') ?>
 <?php use_helper('Javascript')?>
@@ -164,5 +165,5 @@
 
 <?php echo submit_tag('提交') ?>
 
-&nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>
+
 </form>
