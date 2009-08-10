@@ -65,6 +65,30 @@ site_show:
   url:   /site_show/:site_id/*
   param: { module: projectsite, action: show }
 
+#remit
+remit_edit:
+  url:  /remit_edit/:remit_id
+  param: { module: remit, action: edit }  
+
+remit_by_donation:
+  url:  /remit_by_donation/:donation_id/*
+  param: { module: remit, action: listdonate }  
+  
+remit_pending:
+  url:  /remit_pending
+  param: { module: remit, action: listpend }  
+
+user_remit_pending:
+  url:  /user_remit_pending
+  param: { module: remit, action: listpenduser }  
+
+remit_show:
+  url:  /remit_show/:remit_id/*
+  param: { module: remit, action: show }  
+
+remit_update:
+  url:  /remit_update
+  param: { module: remit, action: update }  
 
 # default rules
 homepage:
