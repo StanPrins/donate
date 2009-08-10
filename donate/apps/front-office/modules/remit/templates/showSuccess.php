@@ -156,7 +156,7 @@
   </tbody>
 </table>
 
-<?php //echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId()) ?>
+<?php //echo link_to('修改', '@remit_edit?remit_id='.$remit->getRemitId()) ?>
 <?php if ($sf_params->has('after_edit')): ?>
 <a href="javascript:history.go(-2)">返回</a>
 <?php else:?>

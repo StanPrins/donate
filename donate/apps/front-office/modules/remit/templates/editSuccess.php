@@ -9,7 +9,7 @@
 <?php use_helper('Object') ?>
 <?php use_helper('Validation')?>
 
-<?php echo form_tag('remit/update') ?>
+<?php echo form_tag('@remit_update') ?>
 
 <?php echo object_input_hidden_tag($remit, 'getRemitId') ?>
 <?php echo object_input_hidden_tag($remit, 'getDonationId') ?>

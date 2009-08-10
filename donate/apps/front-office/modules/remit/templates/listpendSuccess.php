@@ -72,9 +72,9 @@
       <?php endif;?>
 
 
-      <td><?php echo link_to('详情', 'remit/show?remit_id='.$remit->getRemitId())?>&nbsp;&nbsp;
+      <td><?php echo link_to('详情', '@remit_show?remit_id='.$remit->getRemitId())?>&nbsp;&nbsp;
           <?php 
-                echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId()); echo "&nbsp;&nbsp;";
+                echo link_to('修改', '@remit_edit?remit_id='.$remit->getRemitId()); echo "&nbsp;&nbsp;";
                 if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
                     || ($sf_user->getAttribute('usertype', '')=='administrator'))
                 {  
@@ -82,7 +82,7 @@
                 }
                 /*else if (!($remit->getIsByOfs()))
                 {
-                   echo link_to('修改', 'remit/edit?remit_id='.$remit->getRemitId()); echo "&nbsp;&nbsp;";
+                   echo link_to('修改', '@remit_edit?remit_id='.$remit->getRemitId()); echo "&nbsp;&nbsp;";
                 }
                 else;*/
           ?>

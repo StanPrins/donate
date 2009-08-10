@@ -32,7 +32,7 @@
    <li><?php echo link_to('审批项', '#') ?>
      <ul>
        <li><?php echo link_to('待审批资助', '@donation_pending') ?></li>
-       <li><?php echo link_to('未完成到款', 'remit/listpenduser') ?></li>     
+       <li><?php echo link_to('未完成到款', '@user_remit_pending') ?></li>     
      </ul>   
    </li>
    <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
@@ -51,7 +51,7 @@
    <li><?php echo link_to('审批项', '#') ?>
      <ul>
        <li><?php echo link_to('待审批资助', '@donation_pending') ?></li>
-       <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
+       <li><?php echo link_to('审批到款', '@remit_pending') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('走访', '#') ?>
@@ -84,7 +84,7 @@
      <ul>
        <li><?php echo link_to('审批资助', '@donation_approve') ?></li>
        <li><?php echo link_to('审批用户', 'user/approve') ?></li>
-       <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
+       <li><?php echo link_to('审批到款', '@remit_pending') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('走访', '#') ?>
@@ -126,7 +126,7 @@
      <ul>
        <li><?php echo link_to('审批资助', '@donation_approve') ?></li>
        <li><?php echo link_to('审批用户', 'user/approve') ?></li>
-       <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
+       <li><?php echo link_to('审批到款', '@remit_pending') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('走访', '#') ?>

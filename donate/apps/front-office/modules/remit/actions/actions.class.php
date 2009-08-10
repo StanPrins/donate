@@ -176,7 +176,7 @@ class remitActions extends sfActions
 
 		$remit->save();
 
-		return $this->redirect('remit/show?remit_id='.$remit->getRemitId().'&after_edit=1');
+		return $this->redirect('@remit_show?remit_id='.$remit->getRemitId().'&after_edit=1');
 	}
 	public function executeDelete()
 	{
