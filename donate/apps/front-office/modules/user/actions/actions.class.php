@@ -49,10 +49,17 @@ class userActions extends sfActions
 	   }
 	}
 
+	public function executeLicense()
+	{
+	}
+	
 	public function executeCreate()
 	{
+       if ($this->getRequest()->getMethod() != sfRequest::POST)
+       {
+          return $this->forward404();	   	
+       }  			
 		$this->user = new User();
-
 		$this->setTemplate('edit');
 	}
 
