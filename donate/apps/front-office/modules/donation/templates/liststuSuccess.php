@@ -29,7 +29,7 @@
 <?php foreach ($pager->getResults() as $donation): ?>
 
   <?php echo "<tr class='sf_admin_row_".$count_row."' >" ?>
-      <td><?php echo link_to($donation->getDonationId(), 'donation/show?donation_id='.$donation->getDonationId()) ?></td>
+      <td><?php echo link_to($donation->getDonationId(), '@donation_show?donation_id='.$donation->getDonationId()) ?></td>
       <td><?php echo $donation->getStudent()->getName() ?></td>
       <td><?php echo $donation->getUser()->getName() ?></td>
       <td><?php echo $donation->getAmount() ?></td>      
@@ -39,10 +39,10 @@
       <td><?php if ($donation->getIsActive()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png'); ?></td>
       <td><?php echo $donation->getCreatedAt() ?></td>
       <td><?php if ($donation->getApprove() || $donation->getIsActive())echo link_to ('查看', 'remit/listdonate?donation_id='.$donation->getDonationId(),'post=true') ?></td>
-      <td><?php echo link_to('详情', 'donation/show?donation_id='.$donation->getDonationId(),'post=true')?>&nbsp;
+      <td><?php echo link_to('详情', '@donation_show?donation_id='.$donation->getDonationId(),'post=true')?>&nbsp;
           <?php if (($sf_user->getAttribute('user_id', '')==$donation->getUserId())||($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager'))
                 {
-                   echo link_to('修改', 'donation/edit?donation_id='.$donation->getDonationId(),'post=true');
+                   echo link_to('修改', '@donation_edit?donation_id='.$donation->getDonationId(),'post=true');
                 } 
           ?>
           &nbsp;
@@ -59,20 +59,20 @@
 
 <?php $donations = $pager->getResults()?>
 <?php if ($pager->haveToPaginate()): ?>
-  <?php echo link_to(image_tag('admin_db/first.png'), 'donation/liststu?page='.$pager->getFirstPage().'&student_id='.$donations[0]->getStudentId()) ?>
-  <?php echo link_to(image_tag('admin_db/previous.png'), 'donation/liststu?page='.$pager->getPreviousPage().'&student_id='.$donations[0]->getStudentId()) ?>
+  <?php echo link_to(image_tag('admin_db/first.png'), '@donation_student?page='.$pager->getFirstPage().'&student_id='.$donations[0]->getStudentId()) ?>
+  <?php echo link_to(image_tag('admin_db/previous.png'), '@donation_student?page='.$pager->getPreviousPage().'&student_id='.$donations[0]->getStudentId()) ?>
   <?php $links = $pager->getLinks(); foreach ($links as $page): ?>
-    <?php echo ($page == $pager->getPage()) ? $page : link_to($page, 'donation/liststu?page='.$page.'&student_id='.$donations[0]->getStudentId()) ?>
+    <?php echo ($page == $pager->getPage()) ? $page : link_to($page, '@donation_student?page='.$page.'&student_id='.$donations[0]->getStudentId()) ?>
     <?php if ($page != $pager->getCurrentMaxLink()): ?><?php endif ?>
   <?php endforeach ?>
-  <?php echo link_to(image_tag('admin_db/next.png'), 'donation/liststu?page='.$pager->getNextPage().'&student_id='.$donations[0]->getStudentId()) ?>
-  <?php echo link_to(image_tag('admin_db/last.png'), 'donation/liststu?page='.$pager->getLastPage().'&student_id='.$donations[0]->getStudentId()) ?>
+  <?php echo link_to(image_tag('admin_db/next.png'), '@donation_student?page='.$pager->getNextPage().'&student_id='.$donations[0]->getStudentId()) ?>
+  <?php echo link_to(image_tag('admin_db/last.png'), '@donation_student?page='.$pager->getLastPage().'&student_id='.$donations[0]->getStudentId()) ?>
   <?php echo $pager->getNbResults() ?> results found.<br />
   Displaying results <?php echo $pager->getFirstIndice() ?> to  <?php echo $pager->getLastIndice() ?>.<br/>
 
-  <?php echo form_tag('donation/liststu')?>
+  <?php echo form_tag('@donation_student?student_id='.$donations[0]->getStudentId())?>
   Jump to Page <?php echo input_tag('page', 1, 'size=2' )?>
-  <?php echo input_hidden_tag('student_id', $donations[0]->getStudentId()) ?>
+  
   <?php echo submit_tag('Go!')?>
   </form>
 <?php endif ?><br/>
@@ -81,7 +81,7 @@
 无相关记录<br/>
 <?php endif;?>
 
-<?php echo link_to('新建资助','donation/create?student_id='.$sf_params->get('student_id').'&user_id='.$sf_user->getAttribute('user_id', ''));?>
+<?php echo link_to('新建资助','@donation_create?student_id='.$sf_params->get('student_id'));?>
 &nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>
 </div>
 </div>

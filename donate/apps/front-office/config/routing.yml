@@ -1,3 +1,36 @@
+#donation
+donation_approve:
+  url:   /donation_approve
+  param: { module: donation, action: approve }
+
+donation_create:
+  url:   /donation_create/:student_id
+  param: { module: donation, action: create }
+  
+donation_edit:
+  url:   /donation_edit/:donation_id
+  param: { module: donation, action: edit }
+  
+donation_my:
+  url:   /donation_my
+  param: { module: donation, action: listmy }
+
+donation_overdue:
+  url:   /donation_overdue
+  param: { module: donation, action: listold }  
+
+donation_pending:
+  url:   /donation_pending
+  param: { module: donation, action: listpend }  
+
+donation_student:
+  url:   /donation_student/:student_id/*
+  param: { module: donation, action: liststu }
+  
+donation_show:
+  url:   /donation_show/:donation_id/*
+  param: { module: donation, action: show }      
+
 # default rules
 homepage:
   url:   /

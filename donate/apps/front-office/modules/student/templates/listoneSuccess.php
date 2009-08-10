@@ -32,7 +32,7 @@
       <?php echo link_to ('成绩单', 'reportcard/liststu?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <?php echo link_to ('调查记录', 'survey/liststu?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <br/>
-      <?php echo link_to ('资助记录', 'donation/liststu?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
+      <?php echo link_to ('资助记录', '@donation_student?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
            
 </td></tr>
 

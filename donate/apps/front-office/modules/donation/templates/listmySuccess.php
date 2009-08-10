@@ -31,7 +31,7 @@
       <br/>
       <?php echo link_to ('成绩单', 'reportcard/liststu?student_id='.$donation->getStudent()->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <?php echo link_to ('调查记录', 'survey/liststu?student_id='.$donation->getStudent()->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
-      <?php echo link_to ('资助记录', 'donation/liststu?student_id='.$donation->getStudent()->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
+      <?php echo link_to ('资助记录', '@donation_student?student_id='.$donation->getStudent()->getStudentId().'&page=1') ?>&nbsp;&nbsp;&nbsp;
       <br/>
       <?php echo link_to ('详情', 'student/show?student_id='.$donation->getStudent()->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <?php if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager')
