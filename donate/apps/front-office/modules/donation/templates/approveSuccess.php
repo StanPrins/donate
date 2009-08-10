@@ -48,9 +48,9 @@
       <td><?php if ($donation->getApprove()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png'); ?></td>
       <td><?php if ($donation->getIsActive()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png'); ?></td>
       <td><?php echo $donation->getCreatedAt() ?></td>
-      <td><?php echo link_to('查看', 'donation/show?donation_id='.$donation->getDonationId())?>&nbsp;&nbsp;&nbsp;
+      <td><?php echo link_to('查看', '@donation_show?donation_id='.$donation->getDonationId())?>&nbsp;&nbsp;&nbsp;
           <?php if (!($donation->getStudent()->getIsDonated())) 
-                     echo link_to('批复', 'donation/edit?donation_id='.$donation->getDonationId());
+                     echo link_to('批复', '@donation_edit?donation_id='.$donation->getDonationId());
           ?>&nbsp;&nbsp;&nbsp;
           <?php echo link_to('删除', 'donation/delete?donation_id='.$donation->getDonationId(), 'post=true&confirm=真的要删除么？') ?>
       </td>

@@ -24,14 +24,14 @@
    <li><p><?php echo '志愿者:'.$sf_user->getAttribute('name', '') ?></p></li>
    <li><?php echo link_to('资助', '#') ?>
      <ul>
-       <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
-       <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
+       <li><?php echo link_to('当前资助', '@donation_my') ?></li>
+       <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
        <li><?php echo link_to('我要资助', 'student/listno') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
      <ul>
-       <li><?php echo link_to('待审批资助', 'donation/listpend') ?></li>
+       <li><?php echo link_to('待审批资助', '@donation_pending') ?></li>
        <li><?php echo link_to('未完成到款', 'remit/listpenduser') ?></li>     
      </ul>   
    </li>
@@ -43,14 +43,14 @@
    <li><p><?php echo '调查员:'.$sf_user->getAttribute('name', '') ?></p></li>
    <li><?php echo link_to('资助', '#') ?>
      <ul>
-       <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
-       <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
+       <li><?php echo link_to('当前资助', '@donation_my') ?></li>
+       <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
        <li><?php echo link_to('我要资助', 'student/listno') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
      <ul>
-       <li><?php echo link_to('待审批资助', 'donation/listpend') ?></li>
+       <li><?php echo link_to('待审批资助', '@donation_pending') ?></li>
        <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
      </ul>
    </li>
@@ -75,14 +75,14 @@
    <li><p><?php echo '管理员:'.$sf_user->getAttribute('name', '') ?></p></li>
    <li><?php echo link_to('资助', '#') ?>
      <ul>
-       <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
-       <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
+       <li><?php echo link_to('当前资助', '@donation_my') ?></li>
+       <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
        <li><?php echo link_to('我要资助', 'student/listno') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
      <ul>
-       <li><?php echo link_to('审批资助', 'donation/approve') ?></li>
+       <li><?php echo link_to('审批资助', '@donation_approve') ?></li>
        <li><?php echo link_to('审批用户', 'user/approve') ?></li>
        <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
      </ul>
@@ -117,14 +117,14 @@
    <li><p><?php echo '超级用户:'.$sf_user->getAttribute('name', '') ?></p></li>
    <li><?php echo link_to('资助', '#') ?>
      <ul>
-       <li><?php echo link_to('当前资助', 'donation/listmy') ?></li>
-       <li><?php echo link_to('过期资助', 'donation/listold') ?></li>
+       <li><?php echo link_to('当前资助', '@donation_my') ?></li>
+       <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
        <li><?php echo link_to('我要资助', 'student/listno') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
      <ul>
-       <li><?php echo link_to('审批资助', 'donation/approve') ?></li>
+       <li><?php echo link_to('审批资助', '@donation_approve') ?></li>
        <li><?php echo link_to('审批用户', 'user/approve') ?></li>
        <li><?php echo link_to('审批到款', 'remit/listpend') ?></li>
      </ul>

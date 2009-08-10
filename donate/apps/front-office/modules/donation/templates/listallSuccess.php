@@ -28,7 +28,7 @@
 <?php foreach ($pager->getResults() as $donation): ?>
 
   <?php echo "<tr class='sf_admin_row_".$count_row."' >" ?>
-      <td><?php echo link_to($donation->getDonationId(), 'donation/show?donation_id='.$donation->getDonationId()) ?></td>
+      <td><?php echo link_to($donation->getDonationId(), '@donation_show?donation_id='.$donation->getDonationId()) ?></td>
       <td><?php echo $donation->getStudent()->getName() ?></td>
       <td><?php echo $donation->getUser()->getName() ?></td>
       <td><?php echo $donation->getAmount() ?></td>      

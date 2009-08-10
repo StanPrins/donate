@@ -101,12 +101,11 @@ class donationActions extends sfActions
     $this->donation = new Donation();
     
     $this->donation->setStudentId($this->getRequestParameter('student_id'));
-    $this->donation->setUserId($this->getUser()->getAttribute('user_id'));
-    
     $c = new Criteria();
   	$c -> add(StudentPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
   	$this->student = StudentPeer::doSelectOne($c);
 
+  	$this->donation->setUserId($this->getUser()->getAttribute('user_id'));
     $d = new Criteria();
   	$d -> add(UserPeer::USER_ID, $this->getUser()->getAttribute('user_id'));
   	$this->user = UserPeer::doSelectOne($d);  	
@@ -178,7 +177,7 @@ class donationActions extends sfActions
        $student->save();  
     }
 
-    return $this->redirect('donation/show?donation_id='.$donation->getDonationId().'&after_edit=1');
+    return $this->redirect('@donation_show?donation_id='.$donation->getDonationId().'&after_edit=1');
   }
 
   public function executeDelete()
