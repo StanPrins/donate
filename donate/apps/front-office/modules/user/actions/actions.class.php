@@ -132,7 +132,7 @@ class userActions extends sfActions
 
 		$user->save();
 
-		return $this->redirect('user/show?user_id='.$user->getUserId().'&after_edit=1');
+		return $this->redirect('@user_show?user_id='.$user->getUserId().'&after_edit=1');
 		
 	
 	}
