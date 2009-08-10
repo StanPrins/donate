@@ -75,7 +75,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
       <br/>
       <?php echo link_to ('成绩单', 'reportcard/liststu?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <?php echo link_to ('调查记录', 'survey/liststu?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
-      <?php echo link_to ('资助他', 'donation/create?student_id='.$student->getStudentId()) ?>
+      <?php echo link_to ('资助他', '@donation_create?student_id='.$student->getStudentId()) ?>
       <br />
       <?php echo link_to ('详细', 'student/show?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <?php if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager')
