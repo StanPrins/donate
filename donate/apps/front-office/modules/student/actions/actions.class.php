@@ -182,6 +182,10 @@ public function executeListno()
 	$c = new Criteria();
     $c->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
     $this->school = SchoolPeer::doSelect($c);
+    
+    $d =new Criteria();
+    $d->addAscendingOrderByColumn(ProjectSitePeer::SITE_NAME);
+    $this->site = ProjectSitePeer::doSelect($d);
     $this->setTemplate('edit');
   }
 
@@ -191,7 +195,22 @@ public function executeListno()
     $c = new Criteria();
     $c->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
     $this->school = SchoolPeer::doSelect($c);
+    
+    $d =new Criteria();
+    $d->addAscendingOrderByColumn(ProjectSitePeer::SITE_NAME);
+    $this->site = ProjectSitePeer::doSelect($d);
+    
     $this->forward404Unless($this->student);
+  }
+  
+  public function executeCascade()
+  {
+  	$site_id = $this->getRequestParameter('site_id');
+  	$c = new Criteria();
+  	$c->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
+  	if(!empty($site_id))
+  		$c->add(SchoolPeer::SITE_ID,$site_id);
+  	$this->school = SchoolPeer::doSelect($c);
   }
 
   public function executeUpdate()
@@ -228,6 +247,40 @@ public function executeListno()
     	$img->resize($width,$height);
     	$img->saveAs(sfConfig::get('sf_web_dir').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'students'.DIRECTORY_SEPARATOR.$newfilename);
     	$student->setPhoto($newfilename);    	
+    }
+    if(is_file($this->getRequest()->getFilePath('member_photo')))
+    {
+    	$filename = md5(uniqid(mt_rand()));
+    	$file = $this->getRequest()->getFilePath('member_photo');
+    	$extension = $this->getRequest()->getFileExtension('member_photo');
+    	$newfilename = $filename.$extension;
+    	$img = new sfImage($file);
+    	$response = $this->getResponse();
+    	$response->setContentType($img->getMIMEType());
+    	$width = sfConfig::get('sf_image_width');
+    	$height = sfConfig::get('sf_image_height');
+    	$width = ($img->getWidth()>$width)?$width:($img->getWidth());
+    	$height = ($img->getHeight()>$height)?$height:($img->getHeight());
+    	$img->resize($width,$height);
+    	$img->saveAs(sfConfig::get('sf_web_dir').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'students'.DIRECTORY_SEPARATOR.$newfilename);
+    	$student->setMemberPhoto($newfilename);    	
+    }
+    if(is_file($this->getRequest()->getFilePath('house_photo')))
+    {
+    	$filename = md5(uniqid(mt_rand()));
+    	$file = $this->getRequest()->getFilePath('photo');
+    	$extension = $this->getRequest()->getFileExtension('house_photo');
+    	$newfilename = $filename.$extension;
+    	$img = new sfImage($file);
+    	$response = $this->getResponse();
+    	$response->setContentType($img->getMIMEType());
+    	$width = sfConfig::get('sf_image_width');
+    	$height = sfConfig::get('sf_image_height');
+    	$width = ($img->getWidth()>$width)?$width:($img->getWidth());
+    	$height = ($img->getHeight()>$height)?$height:($img->getHeight());
+    	$img->resize($width,$height);
+    	$img->saveAs(sfConfig::get('sf_web_dir').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'students'.DIRECTORY_SEPARATOR.$newfilename);
+    	$student->setHousePhoto($newfilename);    	
     }
     $student->setHeadTeacher($this->getRequestParameter('head_teacher'));
     $student->setGuardian($this->getRequestParameter('guardian'));

@@ -140,11 +140,25 @@
   </tr>
   <tr>
     <td class="name">全家照片：</td>
-    <td class="content"></td>
+    <td class="content">
+    <?php 
+    if(!is_null($student->getMemberPhoto()))
+      echo image_tag('students/'.$student->getMemberPhoto());
+    else
+      echo "暂未上传照片";
+    ?>
+    </td>
   </tr>
   <tr>
     <td class="name">房屋照片：</td>
-    <td class="content"></td>
+    <td class="content">
+    <?php 
+    if(!is_null($student->getHousePhoto()))
+      echo image_tag('students/'.$student->getHousePhoto());
+    else
+      echo "暂未上传照片";
+    ?>
+    </td>
   </tr>
   <tr>
     <td class="name">备注：</td>

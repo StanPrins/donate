@@ -19,11 +19,27 @@
 <fieldset id="sf_fieldset_none" class="">
 
 <div class="form-row">
-  <label for="student_school_id" class="required">学校：</label> 
+  <label for="student_site_id" class="required">捐助点：</label> 
   <div class="content">   
-  <?php echo select_tag('school_id', objects_for_select($school,'getSchoolId','getSchoolName',$student->getSchoolId())) ?>
+  <?php 
+//  if($student->getSchoolId())
+//  echo select_tag('site_id', objects_for_select($site,'getSiteId','getSiteName',$student->getSchool()->getSiteId(),array('include_custom' => '--请选择--')));
+//  else
+  echo select_tag('site_id', objects_for_select($site,'getSiteId','getSiteName',$selected = null,array('include_custom' => '--请选择--')));?>
   </div>
 </div> 
+
+<div class="form-row">
+  <label for="student_school_id" class="required">学校：</label> 
+  <div id="school_select" class="content">   
+  <?php echo select_tag('school_id', objects_for_select($school,'getSchoolId','getSchoolName',$student->getSchoolId())) ?>
+  </div>
+</div>
+<?php echo observe_field('site_id',array('update'=>"school_select",
+'url'=>"student/cascade",
+'with'=>"'site_id='+$('site_id').value",
+'script'=>true))
+?>
 
 <div class="form-row">
   <?php echo form_error('name') ?>
@@ -66,10 +82,10 @@
 </div> 
 
 <script type="text/javascript">
-function display()
+function display(obj,ctl)
 {
-	var photo_input = document.getElementById("photo");
-	var control_button = document.getElementById("control_button");
+	var photo_input = document.getElementById(obj);
+	var control_button = document.getElementById(ctl);
 	var str = control_button.value;
 	if(str == "重新上传")
 	{
@@ -91,7 +107,7 @@ function display()
   <?php if(!is_null($student->getPhoto())):?>
   <?php echo image_tag('students/'.$student->getPhoto())?>
   <?php echo input_file_tag('photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
-  <?php echo button_to_function('重新上传','display()',array('id'=>'control_button','size'=>'2'))?>
+  <?php echo button_to_function('重新上传','display("photo","control_button")',array('id'=>'control_button','size'=>'2'))?>
   <?php else:?>   
   <?php echo input_file_tag('photo',array('accept'=>'image/*','size'=>'10'))?>
   <?php endif;?>
@@ -282,14 +298,26 @@ function display()
 <div class="form-row">
   <label for="student_discription" class="required">全家照片：</label> 
   <div class="content">   
-  
+  <?php if(!is_null($student->getMemberPhoto())):?>
+  <?php echo image_tag('students/'.$student->getMemberPhoto())?>
+  <?php echo input_file_tag('member_photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
+  <?php echo button_to_function('重新上传','display("member_photo","member_control")',array('id'=>'member_control','size'=>'2'))?>
+  <?php else:?>   
+  <?php echo input_file_tag('member_photo',array('accept'=>'image/*','size'=>'10'))?>
+  <?php endif;?>
   </div>
 </div> 
 
 <div class="form-row">
   <label for="student_discription" class="required">房屋照片：</label> 
   <div class="content">   
-  
+  <?php if(!is_null($student->getHousePhoto())):?>
+  <?php echo image_tag('students/'.$student->getHousePhoto())?>
+  <?php echo input_file_tag('house_photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
+  <?php echo button_to_function('重新上传','display("house_photo","house_control")',array('id'=>'house_control','size'=>'2'))?>
+  <?php else:?>   
+  <?php echo input_file_tag('house_photo',array('accept'=>'image/*','size'=>'10'))?>
+  <?php endif;?>
   </div>
 </div> 
 
