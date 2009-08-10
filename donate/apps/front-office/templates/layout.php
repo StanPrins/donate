@@ -35,7 +35,7 @@
        <li><?php echo link_to('未完成到款', '@user_remit_pending') ?></li>     
      </ul>   
    </li>
-   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
+   <li><?php echo link_to('个人信息', '@user_edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
    
    
    <?php elseif($sf_user->getAttribute('usertype', '')=='surveyor'): ?>
@@ -67,7 +67,7 @@
        <li><?php echo link_to('所有学生', 'student/listall') ?></li>
      </ul>
    </li>  
-   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
+   <li><?php echo link_to('个人信息', '@user_edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
    
    
    <?php elseif($sf_user->getAttribute('usertype', '')=='manager'): ?>
@@ -83,7 +83,7 @@
    <li><?php echo link_to('审批项', '#') ?>
      <ul>
        <li><?php echo link_to('审批资助', '@donation_approve') ?></li>
-       <li><?php echo link_to('审批用户', 'user/approve') ?></li>
+       <li><?php echo link_to('审批用户', '@user_approve') ?></li>
        <li><?php echo link_to('审批到款', '@remit_pending') ?></li>
      </ul>
    </li>
@@ -102,14 +102,14 @@
        <li><?php echo link_to('所有学生', 'student/listall') ?></li>
      </ul>
    </li> 
-   <li><?php echo link_to('用户管理', 'user/listall') ?></li>
+   <li><?php echo link_to('用户管理', '@all_user') ?></li>
    <li><?php echo link_to('资助项目管理', '#') ?>
      <ul>
        <li><?php echo link_to('资助点管理', '@site_list') ?></li>
        <li><?php echo link_to('学校管理', 'school/list') ?></li>     
      </ul>
    </li>
-   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
+   <li><?php echo link_to('个人信息', '@user_edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
    
    
    <?php elseif($sf_user->getAttribute('usertype', '')=='administrator'): ?>
@@ -125,7 +125,7 @@
    <li><?php echo link_to('审批项', '#') ?>
      <ul>
        <li><?php echo link_to('审批资助', '@donation_approve') ?></li>
-       <li><?php echo link_to('审批用户', 'user/approve') ?></li>
+       <li><?php echo link_to('审批用户', '@user_approve') ?></li>
        <li><?php echo link_to('审批到款', '@remit_pending') ?></li>
      </ul>
    </li>
@@ -144,14 +144,14 @@
        <li><?php echo link_to('所有学生', 'student/listall') ?></li>
      </ul>
    </li> 
-   <li><?php echo link_to('用户管理', 'user/listall') ?></li>
+   <li><?php echo link_to('用户管理', '@all_user') ?></li>
    <li><?php echo link_to('资助项目管理', '#') ?>
      <ul>
        <li><?php echo link_to('资助点管理', '@site_list') ?></li>
        <li><?php echo link_to('学校管理', 'school/list') ?></li>     
      </ul>
    </li>
-   <li><?php echo link_to('个人信息', 'user/edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
+   <li><?php echo link_to('个人信息', '@user_edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
    
    <?php else: ?>  	
    <?php endif ?>      
