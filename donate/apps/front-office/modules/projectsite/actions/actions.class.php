@@ -65,7 +65,7 @@ class projectsiteActions extends sfActions
 
 		$project_site->save();
 
-		return $this->redirect('projectsite/show?site_id='.$project_site->getSiteId().'&after_edit=1');
+		return $this->redirect('@site_show?site_id='.$project_site->getSiteId().'&after_edit=1');
 	}
 
 	public function executeDelete()
@@ -76,7 +76,7 @@ class projectsiteActions extends sfActions
 
 		$project_site->delete();
 
-		return $this->redirect('projectsite/list');
+		return $this->redirect('@site_list');
 	}
 	public function handleErrorUpdate()
 	{

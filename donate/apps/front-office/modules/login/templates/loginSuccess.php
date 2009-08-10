@@ -7,7 +7,7 @@
 <h2>用户登录</h2>
 <br/>
 
-<?php echo form_tag('login/login') ?>
+<?php echo form_tag('@login') ?>
  
   <fieldset>
   

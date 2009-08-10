@@ -120,5 +120,5 @@ mso-hansi-font-family:"Times New Roman"'>&#21512;&#20316;&#20249;&#20276;&#21327
 <table align='center'>
 <tr>
 <td><?php echo button_to('我同意','user/create','post=true')?></td>
-<td><?php echo button_to('不同意','login/login')?></td></tr>
+<td><?php echo button_to('不同意','@login')?></td></tr>
 </table>

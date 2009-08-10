@@ -4,7 +4,7 @@
 <?php use_helper('Javascript')?>
 <?php use_helper('Validation') ?>
 
-<?php echo form_tag('investigation/update') ?>
+<?php echo form_tag('@investigation_refresh') ?>
 
 <?php echo object_input_hidden_tag($student, 'getStudentId') ?>
 

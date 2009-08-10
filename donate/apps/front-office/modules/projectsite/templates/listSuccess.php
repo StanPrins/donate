@@ -32,9 +32,9 @@
     <td class="discription"><?php echo truncate_text(strip_tags($project_site->getDiscription()), 200) ?></td>
     <td>
     <?php 
-      echo link_to('详情', 'projectsite/show?site_id='.$project_site->getSiteId());
+      echo link_to('详情', '@site_show?site_id='.$project_site->getSiteId());
       echo "&nbsp;&nbsp;&nbsp;";
-      echo link_to('修改', 'projectsite/edit?site_id='.$project_site->getSiteId());
+      echo link_to('修改', '@site_edit?site_id='.$project_site->getSiteId());
     ?></td>
     <td width="15%"><?php echo link_to('查看该地区学校', 'school/listsite?site_id='.$project_site->getSiteId()) ?></td> 
   <?php

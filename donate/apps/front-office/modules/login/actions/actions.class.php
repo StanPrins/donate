@@ -36,7 +36,7 @@ class loginActions extends sfActions
 
 		$this->getUser()->getAttributeHolder()->removeNamespace('');
 
-		$this->redirect('login/login');
+		$this->redirect('@login');
 	}
 		
 	//Error actioin of login
