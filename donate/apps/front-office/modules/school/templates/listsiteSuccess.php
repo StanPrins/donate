@@ -26,7 +26,7 @@
 
   <?php echo "<tr class='sf_admin_row_".$count_row."' >" ?>
       <td><?php echo $school->getSchoolName() ?></td>  
-      <td><?php echo link_to ($school->getProjectSite()->getSiteName(), 'projectsite/show?site_id='.$school->getSiteId()) ?></td>
+      <td><?php echo link_to ($school->getProjectSite()->getSiteName(), '@site_show?site_id='.$school->getSiteId()) ?></td>
       <td><?php echo $school->getType() ?></td>
       <td><?php echo $school->getMaster() ?></td>
       <td><?php echo $school->getContact() ?></td>

@@ -29,7 +29,42 @@ donation_student:
   
 donation_show:
   url:   /donation_show/:donation_id/*
-  param: { module: donation, action: show }      
+  param: { module: donation, action: show }
+  
+donation_update:
+  url:   /donation_update
+  param: { module: donation, action: update }        
+
+#investigation
+investigation_add:
+  url:   /investigation_add
+  param: { module: investigation, action: insert }      
+investigation_refresh:
+  url:   /investigation_refresh
+  param: { module: investigation, action: update }      
+
+#login
+login:
+  url:   /login
+  param: { module: login, action: login }      
+
+#project site
+site_edit:
+  url:   /site_edit/:site_id
+  param: { module: projectsite, action: edit }
+
+site_list:
+  url:   /site_list/*
+  param: { module: projectsite, action: list }
+  
+site_update:
+  url:   /site_update
+  param: { module: projectsite, action: update }
+
+site_show:
+  url:   /site_show/:site_id/*
+  param: { module: projectsite, action: show }
+
 
 # default rules
 homepage:
