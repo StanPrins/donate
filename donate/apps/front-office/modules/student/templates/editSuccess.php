@@ -22,9 +22,9 @@
   <label for="student_site_id" class="required">捐助点：</label> 
   <div class="content">   
   <?php 
-//  if($student->getSchoolId())
-//  echo select_tag('site_id', objects_for_select($site,'getSiteId','getSiteName',$student->getSchool()->getSiteId(),array('include_custom' => '--请选择--')));
-//  else
+  if($student->getSchoolId())
+  echo select_tag('site_id', objects_for_select($site,'getSiteId','getSiteName',$student->getSchool()->getSiteId(),array('include_custom' => '--请选择--')));
+  else
   echo select_tag('site_id', objects_for_select($site,'getSiteId','getSiteName',$selected = null,array('include_custom' => '--请选择--')));?>
   </div>
 </div> 
