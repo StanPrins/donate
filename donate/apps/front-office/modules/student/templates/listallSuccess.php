@@ -74,9 +74,9 @@ $default_site_id = empty($site_id)?-1:$site_id;
 			<br />
 			&nbsp;<strong>自述：&nbsp;</strong><?php echo $student->getDiscription() ?>
 			<br />
-			<?php echo link_to ('成绩单', '@score_by_student?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
-			<?php echo link_to ('调查记录', '@survey_by_student?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
-			<?php echo link_to ('资助记录', '@donation_student?student_id='.$student->getStudentId()) ?>
+			<?php echo link_to ('成绩单', '@score_by_student?student_id='.$student->getStudentId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
+			<?php echo link_to ('调查记录', '@survey_by_student?student_id='.$student->getStudentId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
+			<?php echo link_to ('资助记录', '@donation_student?student_id='.$student->getStudentId(),'post=true') ?>
 			<br />
 			<?php echo link_to ('详细', '@student_show?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
 			<?php if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager')

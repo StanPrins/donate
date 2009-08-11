@@ -16,6 +16,10 @@ class surveyActions extends sfActions
 {
 	public function executeListstu()
 	{
+	   if ($this->getRequest()->getMethod() != sfRequest::POST)
+	   {
+	     return $this->forward404();	   	
+	   }	
 		$c = new Criteria();
 		$c -> add(SurveyPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
 		$pager = new sfPropelPager('Survey', sfConfig::get('app_pager_homepage_max'));
@@ -181,6 +185,29 @@ class surveyActions extends sfActions
 	{
 		$this->survey = SurveyPeer::retrieveByPk($this->getRequestParameter('survey_id'));
 		$this->forward404Unless($this->survey);
+		
+		$c = new Criteria();
+		$c->add(DonationPeer::STUDENT_ID, $this->survey->getStudentId());
+		$donations = DonationPeer::doSelect($c);
+		
+	    $usertype = $this->getContext()->getUser()->getAttribute('usertype','');
+    	$user_id = $this->getContext()->getUser()->getAttribute('user_id','');
+    	
+    	if ($usertype == 'volunteer' )
+    	{
+    	   $flag_no = 1;
+    	   foreach($donations as $donation)
+    	   {
+    	      if ( $user_id == $donation->getUserId() )
+    	      {
+                 $flag_no = 0;
+    	      }
+    	   }
+    	   if ($flag_no)
+    	   {
+    		  return $this->forward404();
+    	   }
+    	}
 	}
 
 	public function executeCreate()
@@ -219,6 +246,10 @@ class surveyActions extends sfActions
 
 	public function executeUpdate()
 	{
+	   if ($this->getRequest()->getMethod() != sfRequest::POST)
+	   {
+	     return $this->forward404();	   	
+	   }	
 		if (!$this->getRequestParameter('survey_id'))
 		{
 			$survey = new Survey();
