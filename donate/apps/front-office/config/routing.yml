@@ -96,7 +96,7 @@ score_autocomplete:
   param: { module: reportcard, action: autocomplete}
 
 score_create:
-  url:  /score_create/:student_id
+  url:  /score_create/*
   param: { module: reportcard, action: create}
 
 score_edit:
@@ -212,7 +212,7 @@ survey_by_student:
   param: { module: survey, action: liststu }
   
 survey_show:
-  url:  /survey_show/:student_id/*
+  url:  /survey_show/:survey_id/*
   param: { module: survey, action: show }
 
 survey_update:

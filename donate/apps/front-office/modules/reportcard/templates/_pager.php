@@ -20,7 +20,7 @@ to
 .
 <br />
 
-<?php echo form_tag($page_to_link)?>
+<?php echo form_tag($page_to_link.'?student_id='.$report_cards[0]->getStudentId())?>
 Jump to Page
 <?php echo input_tag('page', 1, 'size=2' )?>
 <?php echo input_hidden_tag('student_id', $report_cards[0]->getStudentId()) ?>
