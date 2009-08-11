@@ -14,13 +14,13 @@
  */
 class reportcardActions extends sfActions
 {
-	public function executeIndex()
-	{
-		return $this->forward('reportcard', 'list');
-	}
 
 	public function executeListstu()
 	{
+	   if ($this->getRequest()->getMethod() != sfRequest::POST)
+	   {
+	     return $this->forward404();	   	
+	   }		
 		$c = new Criteria();
 		$c -> add(ReportCardPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
 		$pager = new sfPropelPager('ReportCard', sfConfig::get('app_pager_homepage_max'));
@@ -184,6 +184,30 @@ class reportcardActions extends sfActions
 	{
 		$this->report_card = ReportCardPeer::retrieveByPk($this->getRequestParameter('report_id'));
 		$this->forward404Unless($this->report_card);
+		
+		$c =new Criteria();
+		$c->add(DonationPeer::STUDENT_ID, $this->report_card->getStudentId());
+		$donations = DonationPeer::doSelect($c);
+		
+	    $usertype = $this->getContext()->getUser()->getAttribute('usertype','');
+    	$user_id = $this->getContext()->getUser()->getAttribute('user_id','');
+    	
+    	if ($usertype == 'volunteer' )
+    	{
+    	   $flag_no = 1;
+    	   foreach($donations as $donation)
+    	   {
+    	      if ( $user_id == $donation->getUserId() )
+    	      {
+                 $flag_no = 0;
+    	      }
+    	   }
+    	   if ($flag_no)
+    	   {
+    		  return $this->forward404();
+    	   }
+    	}
+    	
 	}
 
 	public function executeCreate()
@@ -222,6 +246,11 @@ class reportcardActions extends sfActions
 
 	public function executeUpdate()
 	{
+	   if ($this->getRequest()->getMethod() != sfRequest::POST)
+	   {
+	     return $this->forward404();	   	
+	   }
+	   
 		if (!$this->getRequestParameter('report_id'))
 		{
 			$report_card = new ReportCard();
@@ -253,7 +282,7 @@ class reportcardActions extends sfActions
 
 		$report_card->save();
 
-		return $this->redirect('reportcard/show?report_id='.$report_card->getReportId().'&after_edit=1');
+		return $this->redirect('@score_show?report_id='.$report_card->getReportId().'&after_edit=1');
 	}
 
 	/*public function executeDelete()

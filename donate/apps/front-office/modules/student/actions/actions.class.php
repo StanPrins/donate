@@ -14,13 +14,6 @@
  */
 class studentActions extends sfActions
 {
-  public function executeListone()
-  {
-    $c = new Criteria();
-    $c->add(StudentPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
-    $this->student = StudentPeer::doSelectOne($c);
-  }
-  
   public function executeListall()
   {
   	$site_id = $this->getRequestParameter('site_id');
@@ -174,6 +167,30 @@ public function executeListno()
   {
     $this->student = StudentPeer::retrieveByPk($this->getRequestParameter('student_id'));
     $this->forward404Unless($this->student);
+    
+  	$c =new Criteria();
+	$c->add(DonationPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
+	$donations = DonationPeer::doSelect($c);
+	
+    $usertype = $this->getContext()->getUser()->getAttribute('usertype','');
+    $user_id = $this->getContext()->getUser()->getAttribute('user_id','');
+    
+    if ($usertype == 'volunteer' )
+    {
+       $flag_no = 1;
+       foreach($donations as $donation)
+       {
+          if ( $user_id == $donation->getUserId() )
+          {
+                 $flag_no = 0;
+          }
+       }
+       if ($flag_no)
+       {
+    	  return $this->forward404();
+       }
+    }
+        
   }
 
   public function executeCreate()

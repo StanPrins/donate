@@ -102,7 +102,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
       <td><?php echo $report_card->getRank() ?></td>
       <td><?php echo $report_card->getTeacherRemark() ?></td>
       <td><?php echo $report_card->getCreatedAt() ?></td>  
-      <td><?php echo link_to('详情 ', 'reportcard/show?report_id='.$report_card->getReportId())?>
+      <td><?php echo link_to('详情 ', '@score_show?report_id='.$report_card->getReportId())?>
           <?php if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
                      || ($sf_user->getAttribute('usertype', '')=='administrator'))
                 {      

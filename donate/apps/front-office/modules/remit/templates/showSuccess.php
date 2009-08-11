@@ -105,7 +105,7 @@
     <td class="content">
     <?php 
       if($remit->getReportId()) 
-         echo link_to('点击访问','reportcard/show?report_id='.$remit->getReportId());
+         echo link_to('点击访问','@score_show?report_id='.$remit->getReportId());
       else
          echo "无";
     ?></td>

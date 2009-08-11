@@ -114,7 +114,11 @@ score_i_fill:
 score_by_student:
   url:  /score_by_student/:student_id/*
   param: { module: reportcard, action: liststu}
-  
+
+score_show:
+  url:  /score_show/:report_id
+  param: { module: reportcard, action: show}
+
 score_update:
   url:  /score_update
   param: { module: reportcard, action: update}
@@ -161,10 +165,6 @@ student_list_all:
 student_need_donate:
   url:  /student_need_donate/*
   param: { module: student, action: listno }
-
-student_overdue:
-  url:  /student_overdue/:student_id
-  param: { module: student, action: listone }
 
 print_table:
   url:  /print_table/:student_id
