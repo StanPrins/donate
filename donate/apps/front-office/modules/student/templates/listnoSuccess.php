@@ -73,8 +73,8 @@ $default_site_id = empty($site_id)?-1:$site_id;
       <br/>
       &nbsp;<strong>自述：&nbsp;</strong><?php echo $student->getDiscription() ?>
       <br/>
-      <?php echo link_to ('成绩单', 'reportcard/liststu?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
-      <?php echo link_to ('调查记录', 'survey/liststu?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
+      <?php echo link_to ('成绩单', '@score_by_student?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
+      <?php echo link_to ('调查记录', '@survey_by_student?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <?php echo link_to ('资助他', '@donation_create?student_id='.$student->getStudentId()) ?>
       <br />
       <?php echo link_to ('详细', '@student_show?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
@@ -92,7 +92,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
 </tbody>
 </table>
 
-<?php include_partial('listpager',array('pager' => $pager, 'page_to_link' => 'listno', 'school_id'=>$default_school_id, 'site_id'=>$default_site_id ))?>
+<?php include_partial('listpager',array('pager' => $pager, 'page_to_link' => '@student_need_donate', 'school_id'=>$default_school_id, 'site_id'=>$default_site_id ))?>
 <?php else:?>
 <table class="sf_student_list">
 <tr><td align="center">无相关记录</td></tr>

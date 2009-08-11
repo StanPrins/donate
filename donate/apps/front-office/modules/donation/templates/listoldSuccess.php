@@ -47,7 +47,7 @@
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager, 'page_to_link' => 'listold' ))?>
+<?php include_partial('pager',array('pager' => $pager, 'page_to_link' => '@donation_overdue' ))?>
 
 <?php else:?>
 无相关记录<br/>
