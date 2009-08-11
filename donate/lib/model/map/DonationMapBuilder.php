@@ -38,7 +38,7 @@ class DonationMapBuilder {
 
 		$tMap->addForeignKey('USER_ID', 'UserId', 'int', CreoleTypes::INTEGER, 'user', 'USER_ID', true, 11);
 
-		$tMap->addColumn('AMOUNT', 'Amount', 'string', CreoleTypes::VARCHAR, false, 16);
+		$tMap->addColumn('AMOUNT', 'Amount', 'int', CreoleTypes::INTEGER, false, 16);
 
 		$tMap->addColumn('START_DATE', 'StartDate', 'int', CreoleTypes::DATE, false, null);
 

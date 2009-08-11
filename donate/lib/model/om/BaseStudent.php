@@ -17,6 +17,10 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 
 	
+	protected $ofs_id;
+
+
+	
 	protected $name;
 
 
@@ -25,7 +29,7 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 
 	
-	protected $photo;
+	protected $race;
 
 
 	
@@ -49,6 +53,10 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 
 	
+	protected $tel;
+
+
+	
 	protected $address;
 
 
@@ -62,6 +70,18 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 	
 	protected $province;
+
+
+	
+	protected $consignee;
+
+
+	
+	protected $consignee_address;
+
+
+	
+	protected $consignee_postal;
 
 
 	
@@ -81,7 +101,15 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 
 	
-	protected $has_dropout_history;
+	protected $dropout_history;
+
+
+	
+	protected $techang;
+
+
+	
+	protected $reward;
 
 
 	
@@ -94,6 +122,22 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 	
 	protected $created_at;
+
+
+	
+	protected $remark;
+
+
+	
+	protected $photo;
+
+
+	
+	protected $member_photo;
+
+
+	
+	protected $house_photo;
 
 
 	
@@ -217,6 +261,13 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 	}
 
 	
+	public function getOfsId()
+	{
+
+		return $this->ofs_id;
+	}
+
+	
 	public function getName()
 	{
 
@@ -231,10 +282,10 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getPhoto()
+	public function getRace()
 	{
 
-		return $this->photo;
+		return $this->race;
 	}
 
 	
@@ -288,6 +339,13 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 	}
 
 	
+	public function getTel()
+	{
+
+		return $this->tel;
+	}
+
+	
 	public function getAddress()
 	{
 
@@ -313,6 +371,27 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 	{
 
 		return $this->province;
+	}
+
+	
+	public function getConsignee()
+	{
+
+		return $this->consignee;
+	}
+
+	
+	public function getConsigneeAddress()
+	{
+
+		return $this->consignee_address;
+	}
+
+	
+	public function getConsigneePostal()
+	{
+
+		return $this->consignee_postal;
 	}
 
 	
@@ -344,10 +423,24 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getHasDropoutHistory()
+	public function getDropoutHistory()
 	{
 
-		return $this->has_dropout_history;
+		return $this->dropout_history;
+	}
+
+	
+	public function getTechang()
+	{
+
+		return $this->techang;
+	}
+
+	
+	public function getReward()
+	{
+
+		return $this->reward;
 	}
 
 	
@@ -384,6 +477,34 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 		} else {
 			return date($format, $ts);
 		}
+	}
+
+	
+	public function getRemark()
+	{
+
+		return $this->remark;
+	}
+
+	
+	public function getPhoto()
+	{
+
+		return $this->photo;
+	}
+
+	
+	public function getMemberPhoto()
+	{
+
+		return $this->member_photo;
+	}
+
+	
+	public function getHousePhoto()
+	{
+
+		return $this->house_photo;
 	}
 
 	
@@ -563,6 +684,22 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setOfsId($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->ofs_id !== $v) {
+			$this->ofs_id = $v;
+			$this->modifiedColumns[] = StudentPeer::OFS_ID;
+		}
+
+	} 
+	
 	public function setName($v)
 	{
 
@@ -595,7 +732,7 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 	} 
 	
-	public function setPhoto($v)
+	public function setRace($v)
 	{
 
 		
@@ -604,9 +741,9 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 			$v = (string) $v; 
 		}
 
-		if ($this->photo !== $v) {
-			$this->photo = $v;
-			$this->modifiedColumns[] = StudentPeer::PHOTO;
+		if ($this->race !== $v) {
+			$this->race = $v;
+			$this->modifiedColumns[] = StudentPeer::RACE;
 		}
 
 	} 
@@ -665,8 +802,8 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 		
 		
-		if ($v !== null && !is_int($v) && is_numeric($v)) {
-			$v = (int) $v;
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
 		}
 
 		if ($this->grade !== $v) {
@@ -682,6 +819,22 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 		if ($this->male !== $v) {
 			$this->male = $v;
 			$this->modifiedColumns[] = StudentPeer::MALE;
+		}
+
+	} 
+	
+	public function setTel($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->tel !== $v) {
+			$this->tel = $v;
+			$this->modifiedColumns[] = StudentPeer::TEL;
 		}
 
 	} 
@@ -707,8 +860,8 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 		
 		
-		if ($v !== null && !is_string($v)) {
-			$v = (string) $v; 
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
 		}
 
 		if ($this->postal !== $v) {
@@ -746,6 +899,54 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 		if ($this->province !== $v) {
 			$this->province = $v;
 			$this->modifiedColumns[] = StudentPeer::PROVINCE;
+		}
+
+	} 
+	
+	public function setConsignee($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->consignee !== $v) {
+			$this->consignee = $v;
+			$this->modifiedColumns[] = StudentPeer::CONSIGNEE;
+		}
+
+	} 
+	
+	public function setConsigneeAddress($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->consignee_address !== $v) {
+			$this->consignee_address = $v;
+			$this->modifiedColumns[] = StudentPeer::CONSIGNEE_ADDRESS;
+		}
+
+	} 
+	
+	public function setConsigneePostal($v)
+	{
+
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->consignee_postal !== $v) {
+			$this->consignee_postal = $v;
+			$this->modifiedColumns[] = StudentPeer::CONSIGNEE_POSTAL;
 		}
 
 	} 
@@ -796,12 +997,50 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 	} 
 	
-	public function setHasDropoutHistory($v)
+	public function setDropoutHistory($v)
 	{
 
-		if ($this->has_dropout_history !== $v) {
-			$this->has_dropout_history = $v;
-			$this->modifiedColumns[] = StudentPeer::HAS_DROPOUT_HISTORY;
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->dropout_history !== $v) {
+			$this->dropout_history = $v;
+			$this->modifiedColumns[] = StudentPeer::DROPOUT_HISTORY;
+		}
+
+	} 
+	
+	public function setTechang($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->techang !== $v) {
+			$this->techang = $v;
+			$this->modifiedColumns[] = StudentPeer::TECHANG;
+		}
+
+	} 
+	
+	public function setReward($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->reward !== $v) {
+			$this->reward = $v;
+			$this->modifiedColumns[] = StudentPeer::REWARD;
 		}
 
 	} 
@@ -811,8 +1050,8 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 		
 		
-		if ($v !== null && !is_int($v) && is_numeric($v)) {
-			$v = (int) $v;
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
 		}
 
 		if ($this->term_expense !== $v) {
@@ -851,6 +1090,70 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 		if ($this->created_at !== $ts) {
 			$this->created_at = $ts;
 			$this->modifiedColumns[] = StudentPeer::CREATED_AT;
+		}
+
+	} 
+	
+	public function setRemark($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->remark !== $v) {
+			$this->remark = $v;
+			$this->modifiedColumns[] = StudentPeer::REMARK;
+		}
+
+	} 
+	
+	public function setPhoto($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->photo !== $v) {
+			$this->photo = $v;
+			$this->modifiedColumns[] = StudentPeer::PHOTO;
+		}
+
+	} 
+	
+	public function setMemberPhoto($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->member_photo !== $v) {
+			$this->member_photo = $v;
+			$this->modifiedColumns[] = StudentPeer::MEMBER_PHOTO;
+		}
+
+	} 
+	
+	public function setHousePhoto($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->house_photo !== $v) {
+			$this->house_photo = $v;
+			$this->modifiedColumns[] = StudentPeer::HOUSE_PHOTO;
 		}
 
 	} 
@@ -1183,91 +1486,113 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 			$this->school_id = $rs->getInt($startcol + 1);
 
-			$this->name = $rs->getString($startcol + 2);
+			$this->ofs_id = $rs->getString($startcol + 2);
 
-			$this->nickname = $rs->getString($startcol + 3);
+			$this->name = $rs->getString($startcol + 3);
 
-			$this->photo = $rs->getString($startcol + 4);
+			$this->nickname = $rs->getString($startcol + 4);
 
-			$this->head_teacher = $rs->getString($startcol + 5);
+			$this->race = $rs->getString($startcol + 5);
 
-			$this->guardian = $rs->getString($startcol + 6);
+			$this->head_teacher = $rs->getString($startcol + 6);
 
-			$this->birthday = $rs->getDate($startcol + 7, null);
+			$this->guardian = $rs->getString($startcol + 7);
 
-			$this->grade = $rs->getInt($startcol + 8);
+			$this->birthday = $rs->getDate($startcol + 8, null);
 
-			$this->male = $rs->getBoolean($startcol + 9);
+			$this->grade = $rs->getString($startcol + 9);
 
-			$this->address = $rs->getString($startcol + 10);
+			$this->male = $rs->getBoolean($startcol + 10);
 
-			$this->postal = $rs->getString($startcol + 11);
+			$this->tel = $rs->getString($startcol + 11);
 
-			$this->city = $rs->getString($startcol + 12);
+			$this->address = $rs->getString($startcol + 12);
 
-			$this->province = $rs->getString($startcol + 13);
+			$this->postal = $rs->getInt($startcol + 13);
 
-			$this->assist_history = $rs->getString($startcol + 14);
+			$this->city = $rs->getString($startcol + 14);
 
-			$this->is_instudy = $rs->getBoolean($startcol + 15);
+			$this->province = $rs->getString($startcol + 15);
 
-			$this->is_boarder = $rs->getBoolean($startcol + 16);
+			$this->consignee = $rs->getString($startcol + 16);
 
-			$this->is_donated = $rs->getBoolean($startcol + 17);
+			$this->consignee_address = $rs->getString($startcol + 17);
 
-			$this->has_dropout_history = $rs->getBoolean($startcol + 18);
+			$this->consignee_postal = $rs->getInt($startcol + 18);
 
-			$this->term_expense = $rs->getInt($startcol + 19);
+			$this->assist_history = $rs->getString($startcol + 19);
 
-			$this->discription = $rs->getString($startcol + 20);
+			$this->is_instudy = $rs->getBoolean($startcol + 20);
 
-			$this->created_at = $rs->getTimestamp($startcol + 21, null);
+			$this->is_boarder = $rs->getBoolean($startcol + 21);
 
-			$this->fm1_relation = $rs->getString($startcol + 22);
+			$this->is_donated = $rs->getBoolean($startcol + 22);
 
-			$this->fm1_name = $rs->getString($startcol + 23);
+			$this->dropout_history = $rs->getString($startcol + 23);
 
-			$this->fm1_age = $rs->getInt($startcol + 24);
+			$this->techang = $rs->getString($startcol + 24);
 
-			$this->fm1_occupation = $rs->getString($startcol + 25);
+			$this->reward = $rs->getString($startcol + 25);
 
-			$this->fm1_discription = $rs->getString($startcol + 26);
+			$this->term_expense = $rs->getString($startcol + 26);
 
-			$this->fm2_relation = $rs->getString($startcol + 27);
+			$this->discription = $rs->getString($startcol + 27);
 
-			$this->fm2_name = $rs->getString($startcol + 28);
+			$this->created_at = $rs->getTimestamp($startcol + 28, null);
 
-			$this->fm2_age = $rs->getInt($startcol + 29);
+			$this->remark = $rs->getString($startcol + 29);
 
-			$this->fm2_occupation = $rs->getString($startcol + 30);
+			$this->photo = $rs->getString($startcol + 30);
 
-			$this->fm2_discription = $rs->getString($startcol + 31);
+			$this->member_photo = $rs->getString($startcol + 31);
 
-			$this->fm3_relation = $rs->getString($startcol + 32);
+			$this->house_photo = $rs->getString($startcol + 32);
 
-			$this->fm3_name = $rs->getString($startcol + 33);
+			$this->fm1_relation = $rs->getString($startcol + 33);
 
-			$this->fm3_age = $rs->getInt($startcol + 34);
+			$this->fm1_name = $rs->getString($startcol + 34);
 
-			$this->fm3_occupation = $rs->getString($startcol + 35);
+			$this->fm1_age = $rs->getInt($startcol + 35);
 
-			$this->fm3_discription = $rs->getString($startcol + 36);
+			$this->fm1_occupation = $rs->getString($startcol + 36);
 
-			$this->fm4_relation = $rs->getString($startcol + 37);
+			$this->fm1_discription = $rs->getString($startcol + 37);
 
-			$this->fm4_name = $rs->getString($startcol + 38);
+			$this->fm2_relation = $rs->getString($startcol + 38);
 
-			$this->fm4_age = $rs->getInt($startcol + 39);
+			$this->fm2_name = $rs->getString($startcol + 39);
 
-			$this->fm4_occupation = $rs->getString($startcol + 40);
+			$this->fm2_age = $rs->getInt($startcol + 40);
 
-			$this->fm4_discription = $rs->getString($startcol + 41);
+			$this->fm2_occupation = $rs->getString($startcol + 41);
+
+			$this->fm2_discription = $rs->getString($startcol + 42);
+
+			$this->fm3_relation = $rs->getString($startcol + 43);
+
+			$this->fm3_name = $rs->getString($startcol + 44);
+
+			$this->fm3_age = $rs->getInt($startcol + 45);
+
+			$this->fm3_occupation = $rs->getString($startcol + 46);
+
+			$this->fm3_discription = $rs->getString($startcol + 47);
+
+			$this->fm4_relation = $rs->getString($startcol + 48);
+
+			$this->fm4_name = $rs->getString($startcol + 49);
+
+			$this->fm4_age = $rs->getInt($startcol + 50);
+
+			$this->fm4_occupation = $rs->getString($startcol + 51);
+
+			$this->fm4_discription = $rs->getString($startcol + 52);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 42; 
+						return $startcol + 53; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Student object", $e);
 		}
@@ -1471,123 +1796,156 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 				return $this->getSchoolId();
 				break;
 			case 2:
-				return $this->getName();
+				return $this->getOfsId();
 				break;
 			case 3:
-				return $this->getNickname();
+				return $this->getName();
 				break;
 			case 4:
-				return $this->getPhoto();
+				return $this->getNickname();
 				break;
 			case 5:
-				return $this->getHeadTeacher();
+				return $this->getRace();
 				break;
 			case 6:
-				return $this->getGuardian();
+				return $this->getHeadTeacher();
 				break;
 			case 7:
-				return $this->getBirthday();
+				return $this->getGuardian();
 				break;
 			case 8:
-				return $this->getGrade();
+				return $this->getBirthday();
 				break;
 			case 9:
-				return $this->getMale();
+				return $this->getGrade();
 				break;
 			case 10:
-				return $this->getAddress();
+				return $this->getMale();
 				break;
 			case 11:
-				return $this->getPostal();
+				return $this->getTel();
 				break;
 			case 12:
-				return $this->getCity();
+				return $this->getAddress();
 				break;
 			case 13:
-				return $this->getProvince();
+				return $this->getPostal();
 				break;
 			case 14:
-				return $this->getAssistHistory();
+				return $this->getCity();
 				break;
 			case 15:
-				return $this->getIsInstudy();
+				return $this->getProvince();
 				break;
 			case 16:
-				return $this->getIsBoarder();
+				return $this->getConsignee();
 				break;
 			case 17:
-				return $this->getIsDonated();
+				return $this->getConsigneeAddress();
 				break;
 			case 18:
-				return $this->getHasDropoutHistory();
+				return $this->getConsigneePostal();
 				break;
 			case 19:
-				return $this->getTermExpense();
+				return $this->getAssistHistory();
 				break;
 			case 20:
-				return $this->getDiscription();
+				return $this->getIsInstudy();
 				break;
 			case 21:
-				return $this->getCreatedAt();
+				return $this->getIsBoarder();
 				break;
 			case 22:
-				return $this->getFm1Relation();
+				return $this->getIsDonated();
 				break;
 			case 23:
-				return $this->getFm1Name();
+				return $this->getDropoutHistory();
 				break;
 			case 24:
-				return $this->getFm1Age();
+				return $this->getTechang();
 				break;
 			case 25:
-				return $this->getFm1Occupation();
+				return $this->getReward();
 				break;
 			case 26:
-				return $this->getFm1Discription();
+				return $this->getTermExpense();
 				break;
 			case 27:
-				return $this->getFm2Relation();
+				return $this->getDiscription();
 				break;
 			case 28:
-				return $this->getFm2Name();
+				return $this->getCreatedAt();
 				break;
 			case 29:
-				return $this->getFm2Age();
+				return $this->getRemark();
 				break;
 			case 30:
-				return $this->getFm2Occupation();
+				return $this->getPhoto();
 				break;
 			case 31:
-				return $this->getFm2Discription();
+				return $this->getMemberPhoto();
 				break;
 			case 32:
-				return $this->getFm3Relation();
+				return $this->getHousePhoto();
 				break;
 			case 33:
-				return $this->getFm3Name();
+				return $this->getFm1Relation();
 				break;
 			case 34:
-				return $this->getFm3Age();
+				return $this->getFm1Name();
 				break;
 			case 35:
-				return $this->getFm3Occupation();
+				return $this->getFm1Age();
 				break;
 			case 36:
-				return $this->getFm3Discription();
+				return $this->getFm1Occupation();
 				break;
 			case 37:
-				return $this->getFm4Relation();
+				return $this->getFm1Discription();
 				break;
 			case 38:
-				return $this->getFm4Name();
+				return $this->getFm2Relation();
 				break;
 			case 39:
-				return $this->getFm4Age();
+				return $this->getFm2Name();
 				break;
 			case 40:
-				return $this->getFm4Occupation();
+				return $this->getFm2Age();
 				break;
 			case 41:
+				return $this->getFm2Occupation();
+				break;
+			case 42:
+				return $this->getFm2Discription();
+				break;
+			case 43:
+				return $this->getFm3Relation();
+				break;
+			case 44:
+				return $this->getFm3Name();
+				break;
+			case 45:
+				return $this->getFm3Age();
+				break;
+			case 46:
+				return $this->getFm3Occupation();
+				break;
+			case 47:
+				return $this->getFm3Discription();
+				break;
+			case 48:
+				return $this->getFm4Relation();
+				break;
+			case 49:
+				return $this->getFm4Name();
+				break;
+			case 50:
+				return $this->getFm4Age();
+				break;
+			case 51:
+				return $this->getFm4Occupation();
+				break;
+			case 52:
 				return $this->getFm4Discription();
 				break;
 			default:
@@ -1602,46 +1960,57 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 		$result = array(
 			$keys[0] => $this->getStudentId(),
 			$keys[1] => $this->getSchoolId(),
-			$keys[2] => $this->getName(),
-			$keys[3] => $this->getNickname(),
-			$keys[4] => $this->getPhoto(),
-			$keys[5] => $this->getHeadTeacher(),
-			$keys[6] => $this->getGuardian(),
-			$keys[7] => $this->getBirthday(),
-			$keys[8] => $this->getGrade(),
-			$keys[9] => $this->getMale(),
-			$keys[10] => $this->getAddress(),
-			$keys[11] => $this->getPostal(),
-			$keys[12] => $this->getCity(),
-			$keys[13] => $this->getProvince(),
-			$keys[14] => $this->getAssistHistory(),
-			$keys[15] => $this->getIsInstudy(),
-			$keys[16] => $this->getIsBoarder(),
-			$keys[17] => $this->getIsDonated(),
-			$keys[18] => $this->getHasDropoutHistory(),
-			$keys[19] => $this->getTermExpense(),
-			$keys[20] => $this->getDiscription(),
-			$keys[21] => $this->getCreatedAt(),
-			$keys[22] => $this->getFm1Relation(),
-			$keys[23] => $this->getFm1Name(),
-			$keys[24] => $this->getFm1Age(),
-			$keys[25] => $this->getFm1Occupation(),
-			$keys[26] => $this->getFm1Discription(),
-			$keys[27] => $this->getFm2Relation(),
-			$keys[28] => $this->getFm2Name(),
-			$keys[29] => $this->getFm2Age(),
-			$keys[30] => $this->getFm2Occupation(),
-			$keys[31] => $this->getFm2Discription(),
-			$keys[32] => $this->getFm3Relation(),
-			$keys[33] => $this->getFm3Name(),
-			$keys[34] => $this->getFm3Age(),
-			$keys[35] => $this->getFm3Occupation(),
-			$keys[36] => $this->getFm3Discription(),
-			$keys[37] => $this->getFm4Relation(),
-			$keys[38] => $this->getFm4Name(),
-			$keys[39] => $this->getFm4Age(),
-			$keys[40] => $this->getFm4Occupation(),
-			$keys[41] => $this->getFm4Discription(),
+			$keys[2] => $this->getOfsId(),
+			$keys[3] => $this->getName(),
+			$keys[4] => $this->getNickname(),
+			$keys[5] => $this->getRace(),
+			$keys[6] => $this->getHeadTeacher(),
+			$keys[7] => $this->getGuardian(),
+			$keys[8] => $this->getBirthday(),
+			$keys[9] => $this->getGrade(),
+			$keys[10] => $this->getMale(),
+			$keys[11] => $this->getTel(),
+			$keys[12] => $this->getAddress(),
+			$keys[13] => $this->getPostal(),
+			$keys[14] => $this->getCity(),
+			$keys[15] => $this->getProvince(),
+			$keys[16] => $this->getConsignee(),
+			$keys[17] => $this->getConsigneeAddress(),
+			$keys[18] => $this->getConsigneePostal(),
+			$keys[19] => $this->getAssistHistory(),
+			$keys[20] => $this->getIsInstudy(),
+			$keys[21] => $this->getIsBoarder(),
+			$keys[22] => $this->getIsDonated(),
+			$keys[23] => $this->getDropoutHistory(),
+			$keys[24] => $this->getTechang(),
+			$keys[25] => $this->getReward(),
+			$keys[26] => $this->getTermExpense(),
+			$keys[27] => $this->getDiscription(),
+			$keys[28] => $this->getCreatedAt(),
+			$keys[29] => $this->getRemark(),
+			$keys[30] => $this->getPhoto(),
+			$keys[31] => $this->getMemberPhoto(),
+			$keys[32] => $this->getHousePhoto(),
+			$keys[33] => $this->getFm1Relation(),
+			$keys[34] => $this->getFm1Name(),
+			$keys[35] => $this->getFm1Age(),
+			$keys[36] => $this->getFm1Occupation(),
+			$keys[37] => $this->getFm1Discription(),
+			$keys[38] => $this->getFm2Relation(),
+			$keys[39] => $this->getFm2Name(),
+			$keys[40] => $this->getFm2Age(),
+			$keys[41] => $this->getFm2Occupation(),
+			$keys[42] => $this->getFm2Discription(),
+			$keys[43] => $this->getFm3Relation(),
+			$keys[44] => $this->getFm3Name(),
+			$keys[45] => $this->getFm3Age(),
+			$keys[46] => $this->getFm3Occupation(),
+			$keys[47] => $this->getFm3Discription(),
+			$keys[48] => $this->getFm4Relation(),
+			$keys[49] => $this->getFm4Name(),
+			$keys[50] => $this->getFm4Age(),
+			$keys[51] => $this->getFm4Occupation(),
+			$keys[52] => $this->getFm4Discription(),
 		);
 		return $result;
 	}
@@ -1664,123 +2033,156 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 				$this->setSchoolId($value);
 				break;
 			case 2:
-				$this->setName($value);
+				$this->setOfsId($value);
 				break;
 			case 3:
-				$this->setNickname($value);
+				$this->setName($value);
 				break;
 			case 4:
-				$this->setPhoto($value);
+				$this->setNickname($value);
 				break;
 			case 5:
-				$this->setHeadTeacher($value);
+				$this->setRace($value);
 				break;
 			case 6:
-				$this->setGuardian($value);
+				$this->setHeadTeacher($value);
 				break;
 			case 7:
-				$this->setBirthday($value);
+				$this->setGuardian($value);
 				break;
 			case 8:
-				$this->setGrade($value);
+				$this->setBirthday($value);
 				break;
 			case 9:
-				$this->setMale($value);
+				$this->setGrade($value);
 				break;
 			case 10:
-				$this->setAddress($value);
+				$this->setMale($value);
 				break;
 			case 11:
-				$this->setPostal($value);
+				$this->setTel($value);
 				break;
 			case 12:
-				$this->setCity($value);
+				$this->setAddress($value);
 				break;
 			case 13:
-				$this->setProvince($value);
+				$this->setPostal($value);
 				break;
 			case 14:
-				$this->setAssistHistory($value);
+				$this->setCity($value);
 				break;
 			case 15:
-				$this->setIsInstudy($value);
+				$this->setProvince($value);
 				break;
 			case 16:
-				$this->setIsBoarder($value);
+				$this->setConsignee($value);
 				break;
 			case 17:
-				$this->setIsDonated($value);
+				$this->setConsigneeAddress($value);
 				break;
 			case 18:
-				$this->setHasDropoutHistory($value);
+				$this->setConsigneePostal($value);
 				break;
 			case 19:
-				$this->setTermExpense($value);
+				$this->setAssistHistory($value);
 				break;
 			case 20:
-				$this->setDiscription($value);
+				$this->setIsInstudy($value);
 				break;
 			case 21:
-				$this->setCreatedAt($value);
+				$this->setIsBoarder($value);
 				break;
 			case 22:
-				$this->setFm1Relation($value);
+				$this->setIsDonated($value);
 				break;
 			case 23:
-				$this->setFm1Name($value);
+				$this->setDropoutHistory($value);
 				break;
 			case 24:
-				$this->setFm1Age($value);
+				$this->setTechang($value);
 				break;
 			case 25:
-				$this->setFm1Occupation($value);
+				$this->setReward($value);
 				break;
 			case 26:
-				$this->setFm1Discription($value);
+				$this->setTermExpense($value);
 				break;
 			case 27:
-				$this->setFm2Relation($value);
+				$this->setDiscription($value);
 				break;
 			case 28:
-				$this->setFm2Name($value);
+				$this->setCreatedAt($value);
 				break;
 			case 29:
-				$this->setFm2Age($value);
+				$this->setRemark($value);
 				break;
 			case 30:
-				$this->setFm2Occupation($value);
+				$this->setPhoto($value);
 				break;
 			case 31:
-				$this->setFm2Discription($value);
+				$this->setMemberPhoto($value);
 				break;
 			case 32:
-				$this->setFm3Relation($value);
+				$this->setHousePhoto($value);
 				break;
 			case 33:
-				$this->setFm3Name($value);
+				$this->setFm1Relation($value);
 				break;
 			case 34:
-				$this->setFm3Age($value);
+				$this->setFm1Name($value);
 				break;
 			case 35:
-				$this->setFm3Occupation($value);
+				$this->setFm1Age($value);
 				break;
 			case 36:
-				$this->setFm3Discription($value);
+				$this->setFm1Occupation($value);
 				break;
 			case 37:
-				$this->setFm4Relation($value);
+				$this->setFm1Discription($value);
 				break;
 			case 38:
-				$this->setFm4Name($value);
+				$this->setFm2Relation($value);
 				break;
 			case 39:
-				$this->setFm4Age($value);
+				$this->setFm2Name($value);
 				break;
 			case 40:
-				$this->setFm4Occupation($value);
+				$this->setFm2Age($value);
 				break;
 			case 41:
+				$this->setFm2Occupation($value);
+				break;
+			case 42:
+				$this->setFm2Discription($value);
+				break;
+			case 43:
+				$this->setFm3Relation($value);
+				break;
+			case 44:
+				$this->setFm3Name($value);
+				break;
+			case 45:
+				$this->setFm3Age($value);
+				break;
+			case 46:
+				$this->setFm3Occupation($value);
+				break;
+			case 47:
+				$this->setFm3Discription($value);
+				break;
+			case 48:
+				$this->setFm4Relation($value);
+				break;
+			case 49:
+				$this->setFm4Name($value);
+				break;
+			case 50:
+				$this->setFm4Age($value);
+				break;
+			case 51:
+				$this->setFm4Occupation($value);
+				break;
+			case 52:
 				$this->setFm4Discription($value);
 				break;
 		} 	}
@@ -1792,46 +2194,57 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 		if (array_key_exists($keys[0], $arr)) $this->setStudentId($arr[$keys[0]]);
 		if (array_key_exists($keys[1], $arr)) $this->setSchoolId($arr[$keys[1]]);
-		if (array_key_exists($keys[2], $arr)) $this->setName($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setNickname($arr[$keys[3]]);
-		if (array_key_exists($keys[4], $arr)) $this->setPhoto($arr[$keys[4]]);
-		if (array_key_exists($keys[5], $arr)) $this->setHeadTeacher($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setGuardian($arr[$keys[6]]);
-		if (array_key_exists($keys[7], $arr)) $this->setBirthday($arr[$keys[7]]);
-		if (array_key_exists($keys[8], $arr)) $this->setGrade($arr[$keys[8]]);
-		if (array_key_exists($keys[9], $arr)) $this->setMale($arr[$keys[9]]);
-		if (array_key_exists($keys[10], $arr)) $this->setAddress($arr[$keys[10]]);
-		if (array_key_exists($keys[11], $arr)) $this->setPostal($arr[$keys[11]]);
-		if (array_key_exists($keys[12], $arr)) $this->setCity($arr[$keys[12]]);
-		if (array_key_exists($keys[13], $arr)) $this->setProvince($arr[$keys[13]]);
-		if (array_key_exists($keys[14], $arr)) $this->setAssistHistory($arr[$keys[14]]);
-		if (array_key_exists($keys[15], $arr)) $this->setIsInstudy($arr[$keys[15]]);
-		if (array_key_exists($keys[16], $arr)) $this->setIsBoarder($arr[$keys[16]]);
-		if (array_key_exists($keys[17], $arr)) $this->setIsDonated($arr[$keys[17]]);
-		if (array_key_exists($keys[18], $arr)) $this->setHasDropoutHistory($arr[$keys[18]]);
-		if (array_key_exists($keys[19], $arr)) $this->setTermExpense($arr[$keys[19]]);
-		if (array_key_exists($keys[20], $arr)) $this->setDiscription($arr[$keys[20]]);
-		if (array_key_exists($keys[21], $arr)) $this->setCreatedAt($arr[$keys[21]]);
-		if (array_key_exists($keys[22], $arr)) $this->setFm1Relation($arr[$keys[22]]);
-		if (array_key_exists($keys[23], $arr)) $this->setFm1Name($arr[$keys[23]]);
-		if (array_key_exists($keys[24], $arr)) $this->setFm1Age($arr[$keys[24]]);
-		if (array_key_exists($keys[25], $arr)) $this->setFm1Occupation($arr[$keys[25]]);
-		if (array_key_exists($keys[26], $arr)) $this->setFm1Discription($arr[$keys[26]]);
-		if (array_key_exists($keys[27], $arr)) $this->setFm2Relation($arr[$keys[27]]);
-		if (array_key_exists($keys[28], $arr)) $this->setFm2Name($arr[$keys[28]]);
-		if (array_key_exists($keys[29], $arr)) $this->setFm2Age($arr[$keys[29]]);
-		if (array_key_exists($keys[30], $arr)) $this->setFm2Occupation($arr[$keys[30]]);
-		if (array_key_exists($keys[31], $arr)) $this->setFm2Discription($arr[$keys[31]]);
-		if (array_key_exists($keys[32], $arr)) $this->setFm3Relation($arr[$keys[32]]);
-		if (array_key_exists($keys[33], $arr)) $this->setFm3Name($arr[$keys[33]]);
-		if (array_key_exists($keys[34], $arr)) $this->setFm3Age($arr[$keys[34]]);
-		if (array_key_exists($keys[35], $arr)) $this->setFm3Occupation($arr[$keys[35]]);
-		if (array_key_exists($keys[36], $arr)) $this->setFm3Discription($arr[$keys[36]]);
-		if (array_key_exists($keys[37], $arr)) $this->setFm4Relation($arr[$keys[37]]);
-		if (array_key_exists($keys[38], $arr)) $this->setFm4Name($arr[$keys[38]]);
-		if (array_key_exists($keys[39], $arr)) $this->setFm4Age($arr[$keys[39]]);
-		if (array_key_exists($keys[40], $arr)) $this->setFm4Occupation($arr[$keys[40]]);
-		if (array_key_exists($keys[41], $arr)) $this->setFm4Discription($arr[$keys[41]]);
+		if (array_key_exists($keys[2], $arr)) $this->setOfsId($arr[$keys[2]]);
+		if (array_key_exists($keys[3], $arr)) $this->setName($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setNickname($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setRace($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setHeadTeacher($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setGuardian($arr[$keys[7]]);
+		if (array_key_exists($keys[8], $arr)) $this->setBirthday($arr[$keys[8]]);
+		if (array_key_exists($keys[9], $arr)) $this->setGrade($arr[$keys[9]]);
+		if (array_key_exists($keys[10], $arr)) $this->setMale($arr[$keys[10]]);
+		if (array_key_exists($keys[11], $arr)) $this->setTel($arr[$keys[11]]);
+		if (array_key_exists($keys[12], $arr)) $this->setAddress($arr[$keys[12]]);
+		if (array_key_exists($keys[13], $arr)) $this->setPostal($arr[$keys[13]]);
+		if (array_key_exists($keys[14], $arr)) $this->setCity($arr[$keys[14]]);
+		if (array_key_exists($keys[15], $arr)) $this->setProvince($arr[$keys[15]]);
+		if (array_key_exists($keys[16], $arr)) $this->setConsignee($arr[$keys[16]]);
+		if (array_key_exists($keys[17], $arr)) $this->setConsigneeAddress($arr[$keys[17]]);
+		if (array_key_exists($keys[18], $arr)) $this->setConsigneePostal($arr[$keys[18]]);
+		if (array_key_exists($keys[19], $arr)) $this->setAssistHistory($arr[$keys[19]]);
+		if (array_key_exists($keys[20], $arr)) $this->setIsInstudy($arr[$keys[20]]);
+		if (array_key_exists($keys[21], $arr)) $this->setIsBoarder($arr[$keys[21]]);
+		if (array_key_exists($keys[22], $arr)) $this->setIsDonated($arr[$keys[22]]);
+		if (array_key_exists($keys[23], $arr)) $this->setDropoutHistory($arr[$keys[23]]);
+		if (array_key_exists($keys[24], $arr)) $this->setTechang($arr[$keys[24]]);
+		if (array_key_exists($keys[25], $arr)) $this->setReward($arr[$keys[25]]);
+		if (array_key_exists($keys[26], $arr)) $this->setTermExpense($arr[$keys[26]]);
+		if (array_key_exists($keys[27], $arr)) $this->setDiscription($arr[$keys[27]]);
+		if (array_key_exists($keys[28], $arr)) $this->setCreatedAt($arr[$keys[28]]);
+		if (array_key_exists($keys[29], $arr)) $this->setRemark($arr[$keys[29]]);
+		if (array_key_exists($keys[30], $arr)) $this->setPhoto($arr[$keys[30]]);
+		if (array_key_exists($keys[31], $arr)) $this->setMemberPhoto($arr[$keys[31]]);
+		if (array_key_exists($keys[32], $arr)) $this->setHousePhoto($arr[$keys[32]]);
+		if (array_key_exists($keys[33], $arr)) $this->setFm1Relation($arr[$keys[33]]);
+		if (array_key_exists($keys[34], $arr)) $this->setFm1Name($arr[$keys[34]]);
+		if (array_key_exists($keys[35], $arr)) $this->setFm1Age($arr[$keys[35]]);
+		if (array_key_exists($keys[36], $arr)) $this->setFm1Occupation($arr[$keys[36]]);
+		if (array_key_exists($keys[37], $arr)) $this->setFm1Discription($arr[$keys[37]]);
+		if (array_key_exists($keys[38], $arr)) $this->setFm2Relation($arr[$keys[38]]);
+		if (array_key_exists($keys[39], $arr)) $this->setFm2Name($arr[$keys[39]]);
+		if (array_key_exists($keys[40], $arr)) $this->setFm2Age($arr[$keys[40]]);
+		if (array_key_exists($keys[41], $arr)) $this->setFm2Occupation($arr[$keys[41]]);
+		if (array_key_exists($keys[42], $arr)) $this->setFm2Discription($arr[$keys[42]]);
+		if (array_key_exists($keys[43], $arr)) $this->setFm3Relation($arr[$keys[43]]);
+		if (array_key_exists($keys[44], $arr)) $this->setFm3Name($arr[$keys[44]]);
+		if (array_key_exists($keys[45], $arr)) $this->setFm3Age($arr[$keys[45]]);
+		if (array_key_exists($keys[46], $arr)) $this->setFm3Occupation($arr[$keys[46]]);
+		if (array_key_exists($keys[47], $arr)) $this->setFm3Discription($arr[$keys[47]]);
+		if (array_key_exists($keys[48], $arr)) $this->setFm4Relation($arr[$keys[48]]);
+		if (array_key_exists($keys[49], $arr)) $this->setFm4Name($arr[$keys[49]]);
+		if (array_key_exists($keys[50], $arr)) $this->setFm4Age($arr[$keys[50]]);
+		if (array_key_exists($keys[51], $arr)) $this->setFm4Occupation($arr[$keys[51]]);
+		if (array_key_exists($keys[52], $arr)) $this->setFm4Discription($arr[$keys[52]]);
 	}
 
 	
@@ -1841,26 +2254,37 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 		if ($this->isColumnModified(StudentPeer::STUDENT_ID)) $criteria->add(StudentPeer::STUDENT_ID, $this->student_id);
 		if ($this->isColumnModified(StudentPeer::SCHOOL_ID)) $criteria->add(StudentPeer::SCHOOL_ID, $this->school_id);
+		if ($this->isColumnModified(StudentPeer::OFS_ID)) $criteria->add(StudentPeer::OFS_ID, $this->ofs_id);
 		if ($this->isColumnModified(StudentPeer::NAME)) $criteria->add(StudentPeer::NAME, $this->name);
 		if ($this->isColumnModified(StudentPeer::NICKNAME)) $criteria->add(StudentPeer::NICKNAME, $this->nickname);
-		if ($this->isColumnModified(StudentPeer::PHOTO)) $criteria->add(StudentPeer::PHOTO, $this->photo);
+		if ($this->isColumnModified(StudentPeer::RACE)) $criteria->add(StudentPeer::RACE, $this->race);
 		if ($this->isColumnModified(StudentPeer::HEAD_TEACHER)) $criteria->add(StudentPeer::HEAD_TEACHER, $this->head_teacher);
 		if ($this->isColumnModified(StudentPeer::GUARDIAN)) $criteria->add(StudentPeer::GUARDIAN, $this->guardian);
 		if ($this->isColumnModified(StudentPeer::BIRTHDAY)) $criteria->add(StudentPeer::BIRTHDAY, $this->birthday);
 		if ($this->isColumnModified(StudentPeer::GRADE)) $criteria->add(StudentPeer::GRADE, $this->grade);
 		if ($this->isColumnModified(StudentPeer::MALE)) $criteria->add(StudentPeer::MALE, $this->male);
+		if ($this->isColumnModified(StudentPeer::TEL)) $criteria->add(StudentPeer::TEL, $this->tel);
 		if ($this->isColumnModified(StudentPeer::ADDRESS)) $criteria->add(StudentPeer::ADDRESS, $this->address);
 		if ($this->isColumnModified(StudentPeer::POSTAL)) $criteria->add(StudentPeer::POSTAL, $this->postal);
 		if ($this->isColumnModified(StudentPeer::CITY)) $criteria->add(StudentPeer::CITY, $this->city);
 		if ($this->isColumnModified(StudentPeer::PROVINCE)) $criteria->add(StudentPeer::PROVINCE, $this->province);
+		if ($this->isColumnModified(StudentPeer::CONSIGNEE)) $criteria->add(StudentPeer::CONSIGNEE, $this->consignee);
+		if ($this->isColumnModified(StudentPeer::CONSIGNEE_ADDRESS)) $criteria->add(StudentPeer::CONSIGNEE_ADDRESS, $this->consignee_address);
+		if ($this->isColumnModified(StudentPeer::CONSIGNEE_POSTAL)) $criteria->add(StudentPeer::CONSIGNEE_POSTAL, $this->consignee_postal);
 		if ($this->isColumnModified(StudentPeer::ASSIST_HISTORY)) $criteria->add(StudentPeer::ASSIST_HISTORY, $this->assist_history);
 		if ($this->isColumnModified(StudentPeer::IS_INSTUDY)) $criteria->add(StudentPeer::IS_INSTUDY, $this->is_instudy);
 		if ($this->isColumnModified(StudentPeer::IS_BOARDER)) $criteria->add(StudentPeer::IS_BOARDER, $this->is_boarder);
 		if ($this->isColumnModified(StudentPeer::IS_DONATED)) $criteria->add(StudentPeer::IS_DONATED, $this->is_donated);
-		if ($this->isColumnModified(StudentPeer::HAS_DROPOUT_HISTORY)) $criteria->add(StudentPeer::HAS_DROPOUT_HISTORY, $this->has_dropout_history);
+		if ($this->isColumnModified(StudentPeer::DROPOUT_HISTORY)) $criteria->add(StudentPeer::DROPOUT_HISTORY, $this->dropout_history);
+		if ($this->isColumnModified(StudentPeer::TECHANG)) $criteria->add(StudentPeer::TECHANG, $this->techang);
+		if ($this->isColumnModified(StudentPeer::REWARD)) $criteria->add(StudentPeer::REWARD, $this->reward);
 		if ($this->isColumnModified(StudentPeer::TERM_EXPENSE)) $criteria->add(StudentPeer::TERM_EXPENSE, $this->term_expense);
 		if ($this->isColumnModified(StudentPeer::DISCRIPTION)) $criteria->add(StudentPeer::DISCRIPTION, $this->discription);
 		if ($this->isColumnModified(StudentPeer::CREATED_AT)) $criteria->add(StudentPeer::CREATED_AT, $this->created_at);
+		if ($this->isColumnModified(StudentPeer::REMARK)) $criteria->add(StudentPeer::REMARK, $this->remark);
+		if ($this->isColumnModified(StudentPeer::PHOTO)) $criteria->add(StudentPeer::PHOTO, $this->photo);
+		if ($this->isColumnModified(StudentPeer::MEMBER_PHOTO)) $criteria->add(StudentPeer::MEMBER_PHOTO, $this->member_photo);
+		if ($this->isColumnModified(StudentPeer::HOUSE_PHOTO)) $criteria->add(StudentPeer::HOUSE_PHOTO, $this->house_photo);
 		if ($this->isColumnModified(StudentPeer::FM1_RELATION)) $criteria->add(StudentPeer::FM1_RELATION, $this->fm1_relation);
 		if ($this->isColumnModified(StudentPeer::FM1_NAME)) $criteria->add(StudentPeer::FM1_NAME, $this->fm1_name);
 		if ($this->isColumnModified(StudentPeer::FM1_AGE)) $criteria->add(StudentPeer::FM1_AGE, $this->fm1_age);
@@ -1913,11 +2337,13 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 		$copyObj->setSchoolId($this->school_id);
 
+		$copyObj->setOfsId($this->ofs_id);
+
 		$copyObj->setName($this->name);
 
 		$copyObj->setNickname($this->nickname);
 
-		$copyObj->setPhoto($this->photo);
+		$copyObj->setRace($this->race);
 
 		$copyObj->setHeadTeacher($this->head_teacher);
 
@@ -1929,6 +2355,8 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 		$copyObj->setMale($this->male);
 
+		$copyObj->setTel($this->tel);
+
 		$copyObj->setAddress($this->address);
 
 		$copyObj->setPostal($this->postal);
@@ -1936,6 +2364,12 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 		$copyObj->setCity($this->city);
 
 		$copyObj->setProvince($this->province);
+
+		$copyObj->setConsignee($this->consignee);
+
+		$copyObj->setConsigneeAddress($this->consignee_address);
+
+		$copyObj->setConsigneePostal($this->consignee_postal);
 
 		$copyObj->setAssistHistory($this->assist_history);
 
@@ -1945,13 +2379,25 @@ abstract class BaseStudent extends BaseObject  implements Persistent {
 
 		$copyObj->setIsDonated($this->is_donated);
 
-		$copyObj->setHasDropoutHistory($this->has_dropout_history);
+		$copyObj->setDropoutHistory($this->dropout_history);
+
+		$copyObj->setTechang($this->techang);
+
+		$copyObj->setReward($this->reward);
 
 		$copyObj->setTermExpense($this->term_expense);
 
 		$copyObj->setDiscription($this->discription);
 
 		$copyObj->setCreatedAt($this->created_at);
+
+		$copyObj->setRemark($this->remark);
+
+		$copyObj->setPhoto($this->photo);
+
+		$copyObj->setMemberPhoto($this->member_photo);
+
+		$copyObj->setHousePhoto($this->house_photo);
 
 		$copyObj->setFm1Relation($this->fm1_relation);
 

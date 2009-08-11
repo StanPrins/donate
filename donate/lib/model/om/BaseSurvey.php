@@ -364,8 +364,8 @@ abstract class BaseSurvey extends BaseObject  implements Persistent {
 
 		
 		
-		if ($v !== null && !is_int($v) && is_numeric($v)) {
-			$v = (int) $v;
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
 		}
 
 		if ($this->grade !== $v) {
@@ -614,7 +614,7 @@ abstract class BaseSurvey extends BaseObject  implements Persistent {
 
 			$this->family_condition = $rs->getString($startcol + 4);
 
-			$this->grade = $rs->getInt($startcol + 5);
+			$this->grade = $rs->getString($startcol + 5);
 
 			$this->other_assist = $rs->getString($startcol + 6);
 

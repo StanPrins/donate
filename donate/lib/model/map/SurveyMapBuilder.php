@@ -42,7 +42,7 @@ class SurveyMapBuilder {
 
 		$tMap->addColumn('FAMILY_CONDITION', 'FamilyCondition', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
-		$tMap->addColumn('GRADE', 'Grade', 'int', CreoleTypes::INTEGER, true, 11);
+		$tMap->addColumn('GRADE', 'Grade', 'string', CreoleTypes::VARCHAR, true, 16);
 
 		$tMap->addColumn('OTHER_ASSIST', 'OtherAssist', 'string', CreoleTypes::VARCHAR, true, 256);
 
