@@ -203,6 +203,12 @@ class surveyActions extends sfActions
 		$e = new Criteria();
 		$e->addAscendingOrderByColumn(StudentPeer::NAME);		
 		$this->student = StudentPeer::doSelect($e);
+		$s =new Criteria();
+    	$s->addAscendingOrderByColumn(ProjectSitePeer::SITE_NAME);
+    	$this->site = ProjectSitePeer::doSelect($s);
+    	$p = new Criteria();
+    	$p->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
+    	$this->school = SchoolPeer::doSelect($p);
 	}
 
 	public function executeEdit()
@@ -251,7 +257,32 @@ class surveyActions extends sfActions
 
 		return $this->redirect('survey/show?survey_id='.$survey->getSurveyId().'&after_edit=1');
 	}
-
+	
+	public function executeCascade()
+	{
+  		$site_id = $this->getRequestParameter('site_id');
+  		$c = new Criteria();
+  		$c->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
+  		if(!empty($site_id))
+  			$c->add(SchoolPeer::SITE_ID,$site_id);
+  		$this->school = SchoolPeer::doSelect($c);  		
+  		$d = new Criteria();
+  		$d->addAscendingOrderByColumn(StudentPeer::NAME);
+  		if(!empty($site_id))
+  			$d->add(SchoolPeer::SITE_ID,$site_id);
+  		$this->student = StudentPeer::doSelectJoinSchool($d);
+	}
+	public function executeCascade2()
+	{
+  		$school_id = $this->getRequestParameter('school_id');
+  		$this->aaa = $school_id; 
+  		$d = new Criteria();
+  		$d->addAscendingOrderByColumn(StudentPeer::NAME);
+  		if(!empty($school_id))
+  			$d->add(StudentPeer::SCHOOL_ID,$school_id);
+  		$this->student = StudentPeer::doSelect($d);
+	}
+  
 	public function executeDelete()
 	{
 		$survey = SurveyPeer::retrieveByPk($this->getRequestParameter('survey_id'));
