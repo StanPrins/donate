@@ -5,8 +5,6 @@ validators:
   strValidator:
     class:  sfStringValidator
     param:
-      min:  2
-      min_error:  至少2个字符
       max:  16
       max_error:  至多16个字符
   numValidator:
@@ -16,7 +14,7 @@ validators:
       min: 0
       min_error: 成绩不能小于0
       max: 100
-      max_error: 成绩不能大于	100
+      max_error: 成绩不能大于100
 
 fields:
   term:

@@ -19,7 +19,12 @@ validators:
 
 fields:
   amount:
-    strValidator:
+    sfNumberValidator:
+      nan_error: 请输入数字
+      min:  0
+      min_error:  金额不能小于0
+      max:  9999999999999999
+      max_error:  金额过大
   start_date:
     dateValidator:
   end_date:

@@ -5,12 +5,16 @@ validators:
   nameStringValidator:
     class:  sfStringValidator
     param:
-      min:  2
-      min_error:  至少两个字符
       max:  16
       max_error:  至多16个字符
 
 fields:
+  ofs_id:
+    required:
+      msg:  "OFS ID不能为空"
+    sfStringValidator:
+      max:  32
+      max_error:  至多32个字符
   name:
     required:
       msg:  "名字不能为空"
@@ -19,7 +23,37 @@ fields:
     required:
       msg:  昵称不能为空
     nameStringValidator:
+  race:
+    required:
+      msg:  "民族不能为空"
+    nameStringValidator:
   photo:
+    file:  True
+    sfFileValidator:
+      mime_types:
+        - 'image/jpeg'
+        - 'image/png'
+        - 'image/x-png'
+        - 'image/pjpeg'
+        - 'image/bmp'
+        - 'image/gif'        
+      mime_types_error: 只能上传BMP、JPEG、PNG和GIF图像
+      max_size:  512000
+      max_size_error:  文件大小不能超过512kb
+  member_photo:
+    file:  True
+    sfFileValidator:
+      mime_types:
+        - 'image/jpeg'
+        - 'image/png'
+        - 'image/x-png'
+        - 'image/pjpeg'
+        - 'image/bmp'
+        - 'image/gif'        
+      mime_types_error: 只能上传BMP、JPEG、PNG和GIF图像
+      max_size:  512000
+      max_size_error:  文件大小不能超过512kb
+  house_photo:
     file:  True
     sfFileValidator:
       mime_types:
@@ -52,22 +86,23 @@ fields:
     required:
       msg:  班级不能为空
     nameStringValidator:
+  tel:
+    nameStringValidator:
   address:
     required:
       msg:  地址不能为空
     sfStringValidator:
-      min:  10
-      min_error:  至少10个字符
       max:  256
       max_error:  至多256个字符
   postal:
     required:
       msg:  邮编不能为空
-    sfStringValidator:
-      min:  2
-      min_error:  至少2个字符
-      max:  7
-      max_error:  至多7个字符
+    sfNumberValidator:
+      nan_error:  请输入数字
+      min:  1
+      min_error:  邮编不存在
+      max:  9999999
+      max_error:  邮编不存在
   city:
     required:
       msg:  城市不能为空
@@ -76,15 +111,32 @@ fields:
     required:
       msg:  省份不能为空
     nameStringValidator:
-  term_expense:
+  consignee:
     required:
-      msg:  学期学费不能为空
+      msg:  "收件人不能为空"
+    nameStringValidator:
+  consignee_address:
+    required:
+      msg:  "收件人地址不能为空"
+    sfStringValidator:
+      max:  256
+      max_error:  至多256个字符
+  consignee_postal:
+    required:
+      msg:  收件人邮编不能为空
     sfNumberValidator:
-      nan_error:  请输入一个整数
-      min:  0
-      min_error:  学费不能小于0
-      max:  10000
-      max_error: 学费不能大于10000
+      nan_error:  请输入数字
+      min:  1
+      min_error:  邮编不存在
+      max:  9999999
+      max_error:  邮编不存在
+  assist_history:
+    required:
+      msg:  "资助史不能为空"
+  techang:
+    sfStringValidator:
+      max:  256
+      max_error:  至多256个字符 
   fm1_relation:
     nameStringValidator:
   fm1_name:

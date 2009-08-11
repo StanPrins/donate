@@ -5,8 +5,6 @@ validators:
   nameStringValidator:
     class:  sfStringValidator
     param:
-      min:  2
-      min_error:  至少2个字符
       max:  16
       max_error:  至多16个字符
 
@@ -31,24 +29,18 @@ fields:
     required:
       msg: "电话不能为空"
     sfStringValidator:
-      min: 11
-      min_error: "格式为（区号）-电话号码"
       max: 32
       max_error: "格式为（区号）-电话号码"
   address:
     required:
       msg: "地址不能为空"
     sfStringValidator:
-      min: 10
-      min_error: 至少10个字符
       max: 256
       max_error: 至多256个字符
   postal:
     required:
       msg: "邮政编码不能为空"
     sfStringValidator:
-      min: 6
-      min_error: 至少6个字符
       max: 7
       max_error: 至多7个字符
  
