@@ -17,14 +17,31 @@ validators:
 
 fields:
   amount:
-    nameStringValidator:
+    sfNumberValidator:
+      nan_error: 请输入数字
+      min:  0
+      min_error:  金额不能小于0
+      max:  9999999999999999
+      max_error:  金额过大
   receive_date:
     dateValidator:
   receive_amount:
-    nameStringValidator:
+    sfNumberValidator:
+      nan_error: 请输入数字
+      min:  0
+      min_error:  金额不能小于0
+      max:  9999999999999999
+      max_error:  金额过大
   sendout_date:
     dateValidator:
   sendout_amount:
+    sfNumberValidator:
+      nan_error: 请输入数字
+      min:  0
+      min_error:  金额不能小于0
+      max:  9999999999999999
+      max_error:  金额过大
+  sendout_receiver:
     nameStringValidator:
     
   

@@ -5,8 +5,6 @@ validators:
   nameStringValidator:
     class:  sfStringValidator
     param:
-      min:  2
-      min_error:  至少2个字符
       max:  16
       max_error:  至多16个字符
 
@@ -27,10 +25,14 @@ fields:
       max_error: 至多40个字符 
   name:
     sfStringValidator:
-      min:  2
-      min_error: 至少2个字符
       max:  40
       max_error: 至多40个字符
+  id_card:
+    required:
+      msg:  "身份证不能为空"
+    sfStringValidator:
+      max:  32
+      max_error:  至多32个字符
   photo:
     file:  True
     sfFileValidator:
@@ -60,6 +62,8 @@ fields:
       compare_error:  "对不起，创建日期 不能早于2009年8月8日"
   mobile:
     nameStringValidator:
+  tel:
+    nameStringValidator:
   identity:
     nameStringValidator:
   email:
@@ -76,8 +80,6 @@ fields:
       max_error:  不能多于32个字符
   address:
     sfStringValidator:
-      min:  10
-      min_error:  至少10个字符
       max:  256
       max_error:  至多256个字符     
     
