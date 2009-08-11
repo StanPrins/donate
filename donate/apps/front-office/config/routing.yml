@@ -90,6 +90,64 @@ remit_update:
   url:  /remit_update
   param: { module: remit, action: update }
   
+#school
+school_create:
+  url:  /school_create/*
+  param: { module: school, action: create }
+
+school_edit:
+  url:  /school_edit/:school_id
+  param: { module: school, action: edit }
+  
+school_by_site:
+  url:  /school_by_site/:site_id/*
+  param: { module: school, action: listsite }  
+  
+school_list:
+  url:  /school_list/*
+  param: { module: school, action: list }
+
+school_show:
+  url:  /school_show/:school_id/*
+  param: { module: school, action: show }  
+  
+#student
+student_autocomplete:
+  url:  /student_autocomplete/:school_id/:site_id/*
+  param: { module: student, action: autocomplete }  
+
+student_cascade:
+  url:  /student_cascade
+  param: { module: student, action: cascade }  
+
+student_edit:
+  url:  /student_edit/:student_id
+  param: { module: student, action: edit }
+
+student_list_all:
+  url:  /student_list_all
+  param: { module: student, action: listall }
+  
+student_need_donate:
+  url:  /student_need_donate
+  param: { module: student, action: listno }
+
+student_overdue:
+  url:  /student_overdue/:student_id
+  param: { module: student, action: listone }
+
+print_table:
+  url:  /print_table/:student_id
+  param: { module: student, action: print }
+
+student_show:
+  url:  /student_show/:student_id/*
+  param: { module: student, action: show }
+  
+student_update:
+  url:  /student_update
+  param: { module: student, action: update }  
+  
 #user
 user_approve:
   url:  /user_approve

@@ -26,7 +26,7 @@
      <ul>
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
-       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
+       <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
@@ -45,7 +45,7 @@
      <ul>
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
-       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
+       <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
@@ -64,7 +64,7 @@
    <li><?php echo link_to('学生', '#') ?>
      <ul>
        <li><?php echo link_to('添加学生', 'student/create') ?></li>
-       <li><?php echo link_to('所有学生', 'student/listall') ?></li>
+       <li><?php echo link_to('所有学生', '@student_list_all') ?></li>
      </ul>
    </li>  
    <li><?php echo link_to('个人信息', '@user_edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
@@ -77,7 +77,7 @@
      <ul>
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
-       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
+       <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
@@ -99,14 +99,14 @@
    <li><?php echo link_to('学生', '#') ?>
      <ul>
        <li><?php echo link_to('添加学生', 'student/create') ?></li>
-       <li><?php echo link_to('所有学生', 'student/listall') ?></li>
+       <li><?php echo link_to('所有学生', '@student_list_all') ?></li>
      </ul>
    </li> 
    <li><?php echo link_to('用户管理', '@all_user') ?></li>
    <li><?php echo link_to('资助项目管理', '#') ?>
      <ul>
        <li><?php echo link_to('资助点管理', '@site_list') ?></li>
-       <li><?php echo link_to('学校管理', 'school/list') ?></li>     
+       <li><?php echo link_to('学校管理', '@school_list') ?></li>     
      </ul>
    </li>
    <li><?php echo link_to('个人信息', '@user_edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
@@ -119,7 +119,7 @@
      <ul>
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
-       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
+       <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
@@ -141,14 +141,14 @@
    <li><?php echo link_to('学生', '#') ?>
      <ul>
        <li><?php echo link_to('添加学生', 'student/create') ?></li>
-       <li><?php echo link_to('所有学生', 'student/listall') ?></li>
+       <li><?php echo link_to('所有学生', '@student_list_all') ?></li>
      </ul>
    </li> 
    <li><?php echo link_to('用户管理', '@all_user') ?></li>
    <li><?php echo link_to('资助项目管理', '#') ?>
      <ul>
        <li><?php echo link_to('资助点管理', '@site_list') ?></li>
-       <li><?php echo link_to('学校管理', 'school/list') ?></li>     
+       <li><?php echo link_to('学校管理', '@school_list') ?></li>     
      </ul>
    </li>
    <li><?php echo link_to('个人信息', '@user_edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
