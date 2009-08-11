@@ -10,7 +10,7 @@
 <?php use_helper('Javascript')?>
 <?php use_helper('Validation') ?>
 
-<?php echo form_tag('@student_update','multipart=true') ?>
+<?php echo form_tag('student/update','multipart=true') ?>
 
 <?php echo object_input_hidden_tag($student, 'getStudentId') ?>
 
@@ -36,7 +36,7 @@
   </div>
 </div>
 <?php echo observe_field('site_id',array('update'=>"school_select",
-'url'=>"@student_cascade",
+'url'=>"student/cascade",
 'with'=>"'site_id='+$('site_id').value",
 'script'=>true))
 ?>
@@ -106,6 +106,7 @@ function display(obj,ctl)
   <div class="content">
   <?php if(!is_null($student->getPhoto())):?>
   <?php echo image_tag('students/'.$student->getPhoto())?>
+  <br />
   <?php echo input_file_tag('photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
   <?php echo button_to_function('重新上传','display("photo","control_button")',array('id'=>'control_button','size'=>'2'))?>
   <?php else:?>   
@@ -300,6 +301,7 @@ function display(obj,ctl)
   <div class="content">   
   <?php if(!is_null($student->getMemberPhoto())):?>
   <?php echo image_tag('students/'.$student->getMemberPhoto())?>
+  <br />
   <?php echo input_file_tag('member_photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
   <?php echo button_to_function('重新上传','display("member_photo","member_control")',array('id'=>'member_control','size'=>'2'))?>
   <?php else:?>   
@@ -313,6 +315,7 @@ function display(obj,ctl)
   <div class="content">   
   <?php if(!is_null($student->getHousePhoto())):?>
   <?php echo image_tag('students/'.$student->getHousePhoto())?>
+  <br />
   <?php echo input_file_tag('house_photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
   <?php echo button_to_function('重新上传','display("house_photo","house_control")',array('id'=>'house_control','size'=>'2'))?>
   <?php else:?>   
