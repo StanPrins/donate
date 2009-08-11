@@ -3,7 +3,56 @@
 // date: 2009/07/19 21:34:06
 ?>
 <div id="sf_admin_container">
-
+<SCRIPT language=javascript>  
+ function printpr() //预览函数  
+ {  
+	 document.all("qingkongyema").click();//打印之前去掉页眉，页脚  
+	 document.all("dayinDiv").style.display="none"; //打印之前先隐藏不想打印输出的元素（此例中隐藏“打印”和“打印预览”两个按钮）  
+	 var OLECMDID = 7;  
+	 var PROMPT = 1;  
+	 var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';  
+	 document.body.insertAdjacentHTML('beforeEnd', WebBrowser);  
+	 WebBrowser1.ExecWB(OLECMDID, PROMPT);  
+	 WebBrowser1.outerHTML = "";  
+	 document.all("dayinDiv").style.display="";//打印之后将该元素显示出来（显示出“打印”和“打印预览”两个按钮，方便别人下次打印）  
+ }  
+   
+ function printTure() //打印函数  
+ {  
+	  document.all('qingkongyema').click();//同上  
+	  document.all("dayinDiv").style.display="none";//同上  
+	  window.print();  
+	  document.all("dayinDiv").style.display="";  
+ }
+ </SCRIPT>    
+ <script language="VBScript">  
+ dim hkey_root,hkey_path,hkey_key  
+ hkey_root="HKEY_CURRENT_USER"  
+ hkey_path="\Software\Microsoft\Internet Explorer\PageSetup"  
+ //设置网页打印的页眉页脚为空  
+ function pagesetup_null()  
+ on error resume next  
+ Set RegWsh = CreateObject("WScript.Shell")  
+ hkey_key="\header"  
+ RegWsh.RegWrite hkey_root+hkey_path+hkey_key,""  
+ hkey_key="\footer"  
+ RegWsh.RegWrite hkey_root+hkey_path+hkey_key,""  
+ end function  
+ //设置网页打印的页眉页脚为默认值  
+ function pagesetup_default()  
+ on error resume next  
+ Set RegWsh = CreateObject("WScript.Shell")  
+ hkey_key="\header"  
+ RegWsh.RegWrite hkey_root+hkey_path+hkey_key,"&w&b页码，&p/&P"  
+ hkey_key="\footer"  
+ RegWsh.RegWrite hkey_root+hkey_path+hkey_key,"&u&b&d"  
+ end function  
+ </script> 
+ <DIV id="dayinDiv" name="dayinDiv" align="center"><input type="button" class="tab" value="打印" onclick="printTure();">&nbsp;&nbsp;  
+ <input type="button" class="tab" value="打印预览" onclick="printpr();">  
+ <input type="hidden" name="qingkongyema" id="qingkongyema" class="tab" value="清空页码" onclick="pagesetup_null()">&nbsp;&nbsp;  
+ <input type="hidden" class="tab" value="恢复页码" onclick="pagesetup_default()">  
+ </DIV> 
 <div style='tab-interval:21.0pt;text-justify-trim:punctuation'> 
 <div class=Section1 style='layout-grid:15.6pt'>
 <div align=center>
@@ -192,7 +241,7 @@
  <?php $remits = $a[$i] ?>
  <?php foreach ($remits as $remit): ?>
  <tr style='mso-yfti-irow:5;height:22.6pt'>
-  <td width=134 colspan=4 style='width:80.7pt;border:solid windowtext 1.0pt;
+  <td width=134 colspan=3 style='width:80.7pt;border:solid windowtext 1.0pt;
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'><b
@@ -211,7 +260,7 @@
   mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#25910;&#27454;&#26085;&#26399;</span><span
   style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
   </td>
-  <td width=106 colspan=2 style='width:1.5in;border-top:none;border-left:none;
+  <td width=106 colspan=3 style='width:1.5in;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
@@ -739,6 +788,8 @@ mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'
 style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
 150%'><o:p></o:p></span></b></p>
 </div>
+
+
 <?php if(!is_null($survey)): ?>
 <div class=Section2 style='layout-grid:15.6pt'>
 <div align=center>
