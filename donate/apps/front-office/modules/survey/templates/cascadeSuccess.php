@@ -9,8 +9,19 @@
   </div>
 </div>  
 <?php ?>
+
 <div class="form-row">
-  <label for="survey_student_id" class="required">被调查学生：</label>
+  <label for="survey_student_id" class="required">
+  <?php 
+  switch($type){
+  	case 0:
+  		echo "被调查学生：";
+  		break;
+  	case 1:
+  		echo "学生：";
+  		break;  
+  }?>
+  </label>
   <div id="student_name" class="content">     
   <?php 
   	echo select_tag('student_id',objects_for_select($student,'getStudentId','getName'));

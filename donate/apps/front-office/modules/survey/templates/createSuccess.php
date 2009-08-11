@@ -54,7 +54,7 @@
 </div>
 <?php echo observe_field('site_id',array('update'=>"new_area",
 'url'=>"survey/cascade",
-'with'=>"'site_id='+$('site_id').value",
+'with'=>"'type=0&site_id='+$('site_id').value",
 'script'=>true))
 ?>
 <?php echo observe_field('school_id',array('update'=>"student_name",
