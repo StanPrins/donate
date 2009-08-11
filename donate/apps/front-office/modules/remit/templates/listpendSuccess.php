@@ -99,7 +99,7 @@
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager , 'listpend' => 1, 'page_to_link' => 'listpend' ))?>
+<?php include_partial('pager',array('pager' => $pager , 'listpend' => 1, 'page_to_link' => '@remit_pending' ))?>
 
 <?php else:?>
 无到款信息<br/>

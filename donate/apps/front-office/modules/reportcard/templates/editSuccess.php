@@ -8,7 +8,7 @@
 
 <?php use_helper('Object') ?>
 <?php use_helper('Validation')?>
-<?php echo form_tag('reportcard/update') ?>
+<?php echo form_tag('@score_update') ?>
 
 <?php echo object_input_hidden_tag($report_card, 'getReportId') ?>
 <?php echo object_input_hidden_tag($report_card, 'getStudentId') ?>

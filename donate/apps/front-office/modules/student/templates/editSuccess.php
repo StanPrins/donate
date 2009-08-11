@@ -106,7 +106,6 @@ function display(obj,ctl)
   <div class="content">
   <?php if(!is_null($student->getPhoto())):?>
   <?php echo image_tag('students/'.$student->getPhoto())?>
-  <br />
   <?php echo input_file_tag('photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
   <?php echo button_to_function('重新上传','display("photo","control_button")',array('id'=>'control_button','size'=>'2'))?>
   <?php else:?>   
@@ -301,7 +300,6 @@ function display(obj,ctl)
   <div class="content">   
   <?php if(!is_null($student->getMemberPhoto())):?>
   <?php echo image_tag('students/'.$student->getMemberPhoto())?>
-  <br />
   <?php echo input_file_tag('member_photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
   <?php echo button_to_function('重新上传','display("member_photo","member_control")',array('id'=>'member_control','size'=>'2'))?>
   <?php else:?>   
@@ -315,7 +313,6 @@ function display(obj,ctl)
   <div class="content">   
   <?php if(!is_null($student->getHousePhoto())):?>
   <?php echo image_tag('students/'.$student->getHousePhoto())?>
-  <br />
   <?php echo input_file_tag('house_photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
   <?php echo button_to_function('重新上传','display("house_photo","house_control")',array('id'=>'house_control','size'=>'2'))?>
   <?php else:?>   
