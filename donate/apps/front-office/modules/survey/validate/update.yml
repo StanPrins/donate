@@ -5,8 +5,6 @@ validators:
   nameStringValidator:
     class:  sfStringValidator
     param:
-      min:  6
-      min_error:  至少6个字符
       max:  16
       max_error:  至多16个字符
 
