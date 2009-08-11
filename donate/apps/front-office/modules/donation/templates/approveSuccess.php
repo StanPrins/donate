@@ -59,7 +59,7 @@
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager, 'page_to_link' => '@donation_approve' ))?>
+<?php include_partial('pager',array('pager' => $pager, 'page_to_link' => 'approve' ))?>
 
 <?php else:?>
 无相关记录<br/>

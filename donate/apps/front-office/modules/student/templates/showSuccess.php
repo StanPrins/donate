@@ -10,7 +10,7 @@
 <?php /*if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager')
            || ($sf_user->getAttribute('usertype', '')=='surveyor'))
       {  
-         echo link_to('修改', '@student_edit?student_id='.$student->getStudentId());
+         echo link_to('修改', 'student/edit?student_id='.$student->getStudentId());
       }*/
  ?>
 

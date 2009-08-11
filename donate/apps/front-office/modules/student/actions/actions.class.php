@@ -332,7 +332,7 @@ public function executeListno()
 
     $student->save();
 
-    return $this->redirect('@student_show?student_id='.$student->getStudentId().'&after_edit=1');
+    return $this->redirect('student/show?student_id='.$student->getStudentId().'&after_edit=1');
   }
 
   /*public function executeDelete()       
@@ -387,7 +387,7 @@ public function executeListno()
     
     $student->delete();
 
-    //return $this->redirect('@student_list_all');
+    //return $this->redirect('student/listall');
     return $this->redirect($this->getRequest()->getReferer());
   }*/
   function handleErrorUpdate()

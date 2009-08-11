@@ -56,11 +56,11 @@
       <td><?php echo $survey->getSurveyDate() ?></td>      
       <td><?php echo $survey->getUserOpinion() ?></td>
       <td><?php echo $survey->getDiscription() ?></td>
-      <td><?php echo link_to('详情', '@survey_show?survey_id='.$survey->getSurveyId())?>
+      <td><?php echo link_to('详情', 'survey/show?survey_id='.$survey->getSurveyId())?>
           <?php if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
                      || ($sf_user->getAttribute('usertype', '')=='administrator'))
                 {          
-                   echo link_to('修改', '@survey_edit?survey_id='.$survey->getSurveyId());
+                   echo link_to('修改', 'survey/edit?survey_id='.$survey->getSurveyId());
                 } 
           ?>
                    
@@ -77,7 +77,7 @@
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager, 'flag_no_all' => 1, 'page_to_link' =>'@survey_by_student' ))?>
+<?php include_partial('pager',array('pager' => $pager, 'flag_no_all' => 1, 'page_to_link' =>'liststu' ))?>
 
 <?php else:?>
 <h1>调查信息</h1>
@@ -87,7 +87,7 @@
 <?php if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
                      || ($sf_user->getAttribute('usertype', '')=='administrator'))
       {
-         echo link_to ('添加调查记录', '@survey_create?student_id='.$sf_params->get('student_id'));
+         echo link_to ('添加调查记录', 'survey/create?student_id='.$sf_params->get('student_id'));
       }
 ?>
 
