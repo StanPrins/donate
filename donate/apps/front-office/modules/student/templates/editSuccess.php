@@ -10,7 +10,7 @@
 <?php use_helper('Javascript')?>
 <?php use_helper('Validation') ?>
 
-<?php echo form_tag('student/update','multipart=true') ?>
+<?php echo form_tag('@student_update','multipart=true') ?>
 
 <?php echo object_input_hidden_tag($student, 'getStudentId') ?>
 
@@ -36,7 +36,7 @@
   </div>
 </div>
 <?php echo observe_field('site_id',array('update'=>"school_select",
-'url'=>"student/cascade",
+'url'=>"@student_cascade",
 'with'=>"'site_id='+$('site_id').value",
 'script'=>true))
 ?>
