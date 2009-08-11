@@ -21,14 +21,14 @@
 <div class="form-row">
   <label for="donation_user" class="required">捐助人：</label> 
   <div class="content">
-  <?php echo $student->getName() ?>
+  <?php echo $user->getName() ?>
   </div>
 </div>  
 
 <div class="form-row">
   <label for="donation_student" class="required">被捐助人：</label> 
   <div class="content">
-  <?php echo $user->getName() ?>
+  <?php echo $student->getName() ?>
   </div>
 </div>  
 <?php echo form_error('amount')?>

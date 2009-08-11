@@ -29,9 +29,9 @@
       <br/>
       &nbsp;<strong>自述：&nbsp;</strong><?php echo $donation->getStudent()->getDiscription() ?>
       <br/>
-      <?php echo link_to ('成绩单', '@score_by_student?student_id='.$donation->getStudent()->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
-      <?php echo link_to ('调查记录', '@survey_by_student?student_id='.$donation->getStudent()->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
-      <?php echo link_to ('资助记录', '@donation_student?student_id='.$donation->getStudent()->getStudentId().'&page=1') ?>&nbsp;&nbsp;&nbsp;
+      <?php echo link_to ('成绩单', '@score_by_student?student_id='.$donation->getStudent()->getStudentId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
+      <?php echo link_to ('调查记录', '@survey_by_student?student_id='.$donation->getStudent()->getStudentId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
+      <?php echo link_to ('资助记录', '@donation_student?student_id='.$donation->getStudent()->getStudentId().'&page=1','post=true') ?>&nbsp;&nbsp;&nbsp;
       <br/>
       <?php echo link_to ('详情', '@student_show?student_id='.$donation->getStudent()->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <?php if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager')

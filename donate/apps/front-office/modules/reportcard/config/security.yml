@@ -6,9 +6,10 @@ edit:
   is_secure:   on
   credentials: [[ surveyor, manager, administrator]]
 
-delete:
+listall:
   is_secure:   on
-  credentials: [[ surveyor, manager, administrator]]
+  credentials: [[ manager, administrator]]
+
 
 
   

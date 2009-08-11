@@ -48,7 +48,7 @@
           &nbsp;
           <?php if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager'))
                 {  
-                   echo link_to('删除', 'donation/delete?donation_id='.$donation->getDonationId(), 'post=true&confirm=真的要删除么？');
+                   //echo link_to('删除', 'donation/delete?donation_id='.$donation->getDonationId(), 'post=true&confirm=真的要删除么？');
                 }
           ?>
       </td> 
@@ -59,18 +59,18 @@
 
 <?php $donations = $pager->getResults()?>
 <?php if ($pager->haveToPaginate()): ?>
-  <?php echo link_to(image_tag('admin_db/first.png'), '@donation_student?page='.$pager->getFirstPage().'&student_id='.$donations[0]->getStudentId()) ?>
-  <?php echo link_to(image_tag('admin_db/previous.png'), '@donation_student?page='.$pager->getPreviousPage().'&student_id='.$donations[0]->getStudentId()) ?>
+  <?php echo link_to(image_tag('admin_db/first.png'), '@donation_student?page='.$pager->getFirstPage().'&student_id='.$donations[0]->getStudentId(),'post=true') ?>
+  <?php echo link_to(image_tag('admin_db/previous.png'), '@donation_student?page='.$pager->getPreviousPage().'&student_id='.$donations[0]->getStudentId(),'post=true') ?>
   <?php $links = $pager->getLinks(); foreach ($links as $page): ?>
-    <?php echo ($page == $pager->getPage()) ? $page : link_to($page, '@donation_student?page='.$page.'&student_id='.$donations[0]->getStudentId()) ?>
+    <?php echo ($page == $pager->getPage()) ? $page : link_to($page, '@donation_student?page='.$page.'&student_id='.$donations[0]->getStudentId(),'post=true') ?>
     <?php if ($page != $pager->getCurrentMaxLink()): ?><?php endif ?>
   <?php endforeach ?>
-  <?php echo link_to(image_tag('admin_db/next.png'), '@donation_student?page='.$pager->getNextPage().'&student_id='.$donations[0]->getStudentId()) ?>
-  <?php echo link_to(image_tag('admin_db/last.png'), '@donation_student?page='.$pager->getLastPage().'&student_id='.$donations[0]->getStudentId()) ?>
+  <?php echo link_to(image_tag('admin_db/next.png'), '@donation_student?page='.$pager->getNextPage().'&student_id='.$donations[0]->getStudentId(),'post=true') ?>
+  <?php echo link_to(image_tag('admin_db/last.png'), '@donation_student?page='.$pager->getLastPage().'&student_id='.$donations[0]->getStudentId(),'post=true') ?>
   <?php echo $pager->getNbResults() ?> results found.<br />
   Displaying results <?php echo $pager->getFirstIndice() ?> to  <?php echo $pager->getLastIndice() ?>.<br/>
 
-  <?php echo form_tag('@donation_student?student_id='.$donations[0]->getStudentId())?>
+  <?php echo form_tag('@donation_student?student_id='.$donations[0]->getStudentId(),'post=true')?>
   Jump to Page <?php echo input_tag('page', 1, 'size=2' )?>
   
   <?php echo submit_tag('Go!')?>

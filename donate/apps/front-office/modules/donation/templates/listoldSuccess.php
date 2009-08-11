@@ -30,7 +30,7 @@
 
   <?php echo "<tr class='sf_admin_row_".$count_row."' >" ?>
       <td><?php echo $donation->getDonationId() ?></td>
-      <td><?php echo link_to($donation->getStudent()->getName(), '@student_overdue?student_id='.$donation->getStudentId ()) ?></td>
+      <td><?php echo link_to($donation->getStudent()->getName(), '@student_show?student_id='.$donation->getStudentId ()) ?></td>
       <td><?php echo $donation->getUser()->getName() ?></td>
       <td><?php echo $donation->getAmount() ?></td>      
       <td><?php echo $donation->getStartDate() ?></td>

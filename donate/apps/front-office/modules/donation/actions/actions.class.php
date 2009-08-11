@@ -16,6 +16,10 @@ class donationActions extends sfActions
 {
   public function executeListstu()
   {
+  	if ($this->getRequest()->getMethod() != sfRequest::POST)
+  	{
+  	   return $this->forward404();	   	
+  	}	
   	$c = new Criteria();
     $c -> add(DonationPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
     $pager = new sfPropelPager('Donation', sfConfig::get('app_pager_homepage_max'));    
@@ -25,7 +29,7 @@ class donationActions extends sfActions
     $this->pager = $pager;
   }
 
-  public function executeListall()
+  /*public function executeListall()
   {
   	$c = new Criteria();
     $pager = new sfPropelPager('Donation', sfConfig::get('app_pager_homepage_max'));    
@@ -33,7 +37,7 @@ class donationActions extends sfActions
     $pager->setPage($this->getRequestParameter('page', 1));
     $pager->init();
     $this->pager = $pager;
-  }
+  }*/
     
   public function executeListmy()
   {
@@ -94,6 +98,13 @@ class donationActions extends sfActions
   {
     $this->donation = DonationPeer::retrieveByPk($this->getRequestParameter('donation_id'));
     $this->forward404Unless($this->donation);    
+
+    $usertype = $this->getContext()->getUser()->getAttribute('usertype','');
+    $user_id = $this->getContext()->getUser()->getAttribute('user_id','');
+    if ( ($usertype == 'volunteer' ) && ($user_id != $this->donation->getUserId()) )
+    {
+       return $this->forward404();
+    }
   }
 
   public function executeCreate()
@@ -120,6 +131,10 @@ class donationActions extends sfActions
 
   public function executeUpdate()
   {
+    if ($this->getRequest()->getMethod() != sfRequest::POST)
+	{
+	   return $this->forward404();	   	
+	}
     if (!$this->getRequestParameter('donation_id'))
     {
       $donation = new Donation();

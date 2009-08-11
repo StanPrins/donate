@@ -30,7 +30,7 @@
 
   <?php echo "<tr class='sf_admin_row_".$count_row."' >" ?>
       <td><?php echo $donation->getDonationId() ?></td>
-      <td><?php echo link_to($donation->getStudent()->getName(), '@student_overdue?student_id='.$donation->getStudentId ()) ?></td>
+      <td><?php echo link_to($donation->getStudent()->getName(), '@student_show?student_id='.$donation->getStudentId ()) ?></td>
       <td><?php echo $donation->getUser()->getName() ?></td>
       <td><?php echo $donation->getAmount() ?></td>      
       <td><?php echo $donation->getStartDate() ?></td>
@@ -44,7 +44,7 @@
                 {         
                    echo link_to('修改', '@donation_edit?donation_id='.$donation->getDonationId());
                    echo "&nbsp;&nbsp;&nbsp;";
-                   echo link_to('删除', 'donation/delete?donation_id='.$donation->getDonationId(), 'post=true&confirm=真的要删除么？');
+                   //echo link_to('删除', 'donation/delete?donation_id='.$donation->getDonationId(), 'post=true&confirm=真的要删除么？');
                 }
            ?>
       </td>
