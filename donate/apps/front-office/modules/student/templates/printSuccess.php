@@ -26,7 +26,7 @@ function pagesetup_null(){
     catch(e)
     {
 //        alert(e.description);
-		alert("对不起,您的浏览器设置里禁用了该功能!\n请将IE\\tools\\internet option\\security\\custom level\\initialize activex and plugins设置成prompt或者enable.");
+		alert("对不起,您的浏览器设置里禁用了该功能!\n请将IE\\tools\\internet option\\security\\custom level\\activeX controls and plug-ins\\initialize and script...设置成prompt或者enable.");
     } 
 } 
 
@@ -109,7 +109,7 @@ function pageSet() {
 </SCRIPT> 
 
  <DIV id="control" align="center" class='Noprint'>
- <p>请将IE\tools\internet option\security\custom level\initialize activex and plugins设置成prompt或者enable</p>
+ <p>请将IE\tools\internet option\security\custom level\activeX controls and plug-ins\initialize and script...设置成prompt或者enable</p>
  <input type="button" class="tab" value="打印" onclick="print();">&nbsp;&nbsp;
  <input type="button" class="tab" value="打印设置" onclick="pageSet();">&nbsp;&nbsp;  
  <input type="button" class="tab" value="打印预览" onclick="printShow();">
