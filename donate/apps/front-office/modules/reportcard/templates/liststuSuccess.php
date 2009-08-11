@@ -59,7 +59,7 @@
           <?php if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
                      || ($sf_user->getAttribute('usertype', '')=='administrator'))
                 {      
-                   echo link_to('修改 ', '@score_edit?report_id='.$report_card->getReportId());
+                   echo link_to('修改 ', 'reportcard/edit?report_id='.$report_card->getReportId());
                 }
           ?>
       </td>    
@@ -74,7 +74,7 @@
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager , 'page_to_link' => '@score_by_student' , 'flag_no_all' => 1 ))?>
+<?php include_partial('pager',array('pager' => $pager , 'page_to_link' => 'liststu' , 'flag_no_all' => 1 ))?>
 
 <?php else:?>
 无相关记录<br/>
@@ -83,7 +83,7 @@
 <?php if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
                      || ($sf_user->getAttribute('usertype', '')=='administrator'))
       {
-          echo link_to ('创建成绩单', '@score_create?student_id='.$sf_params->get('student_id'));
+          echo link_to ('创建成绩单', 'reportcard/create?student_id='.$sf_params->get('student_id'));
       }
  ?>
 &nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>

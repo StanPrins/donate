@@ -91,7 +91,7 @@ class schoolActions extends sfActions
 
 		$school->save();
 
-		return $this->redirect('@school_show?school_id='.$school->getSchoolId().'&after_edit=1');
+		return $this->redirect('school/show?school_id='.$school->getSchoolId().'&after_edit=1');
 	}
 
 	public function executeDelete()
@@ -102,7 +102,7 @@ class schoolActions extends sfActions
 
 		$school->delete();
 
-		return $this->redirect('@school_list');
+		return $this->redirect('school/list');
 	}
 	public function handleErrorUpdate()
 	{

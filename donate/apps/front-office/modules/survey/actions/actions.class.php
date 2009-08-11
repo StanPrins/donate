@@ -255,7 +255,7 @@ class surveyActions extends sfActions
 
 		$survey->save();
 
-		return $this->redirect('@survey_show?survey_id='.$survey->getSurveyId().'&after_edit=1');
+		return $this->redirect('survey/show?survey_id='.$survey->getSurveyId().'&after_edit=1');
 	}
 	
 	public function executeCascade()

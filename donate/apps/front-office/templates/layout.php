@@ -26,7 +26,7 @@
      <ul>
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
-       <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
+       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
@@ -45,7 +45,7 @@
      <ul>
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
-       <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
+       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
@@ -56,15 +56,15 @@
    </li>
    <li><?php echo link_to('走访', '#') ?>
      <ul>
-       <li><?php echo link_to('我的调查', '@survey_i_fill') ?></li>
-       <li><?php echo link_to('我的成绩单', '@score_i_fill') ?></li>
+       <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
+       <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
        <li><?php echo link_to('录入走访表', '@investigation_add') ?></li>
      </ul>
    </li>   
    <li><?php echo link_to('学生', '#') ?>
      <ul>
        <li><?php echo link_to('添加学生', 'student/create') ?></li>
-       <li><?php echo link_to('所有学生', '@student_list_all') ?></li>
+       <li><?php echo link_to('所有学生', 'student/listall') ?></li>
      </ul>
    </li>  
    <li><?php echo link_to('个人信息', '@user_edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
@@ -77,7 +77,7 @@
      <ul>
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
-       <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
+       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
@@ -89,24 +89,24 @@
    </li>
    <li><?php echo link_to('走访', '#') ?>
      <ul>
-       <li><?php echo link_to('我的调查', '@survey_i_fill') ?></li>
-       <li><?php echo link_to('所有调查', '@survey_list_all') ?></li>
-       <li><?php echo link_to('我的成绩单', '@score_i_fill') ?></li>
-       <li><?php echo link_to('所有成绩单', '@score_list_all') ?></li>
+       <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
+       <li><?php echo link_to('所有调查', 'survey/listall') ?></li>
+       <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
+       <li><?php echo link_to('所有成绩单', 'reportcard/listall') ?></li>
        <li><?php echo link_to('录入走访表', '@investigation_add') ?></li>
      </ul>
    </li>     
    <li><?php echo link_to('学生', '#') ?>
      <ul>
        <li><?php echo link_to('添加学生', 'student/create') ?></li>
-       <li><?php echo link_to('所有学生', '@student_list_all') ?></li>
+       <li><?php echo link_to('所有学生', 'student/listall') ?></li>
      </ul>
    </li> 
    <li><?php echo link_to('用户管理', '@all_user') ?></li>
    <li><?php echo link_to('资助项目管理', '#') ?>
      <ul>
        <li><?php echo link_to('资助点管理', '@site_list') ?></li>
-       <li><?php echo link_to('学校管理', '@school_list') ?></li>     
+       <li><?php echo link_to('学校管理', 'school/list') ?></li>     
      </ul>
    </li>
    <li><?php echo link_to('个人信息', '@user_edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>
@@ -119,7 +119,7 @@
      <ul>
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
-       <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
+       <li><?php echo link_to('我要资助', 'student/listno') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
@@ -131,24 +131,24 @@
    </li>
    <li><?php echo link_to('走访', '#') ?>
      <ul>
-       <li><?php echo link_to('我的调查', '@survey_i_fill') ?></li>
-       <li><?php echo link_to('所有调查', '@survey_list_all') ?></li>
-       <li><?php echo link_to('我的成绩单', '@score_i_fill') ?></li>
-       <li><?php echo link_to('所有成绩单', '@score_list_all') ?></li>
+       <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
+       <li><?php echo link_to('所有调查', 'survey/listall') ?></li>
+       <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
+       <li><?php echo link_to('所有成绩单', 'reportcard/listall') ?></li>
        <li><?php echo link_to('录入走访表', '@investigation_add') ?></li>
      </ul>
    </li>     
    <li><?php echo link_to('学生', '#') ?>
      <ul>
        <li><?php echo link_to('添加学生', 'student/create') ?></li>
-       <li><?php echo link_to('所有学生', '@student_list_all') ?></li>
+       <li><?php echo link_to('所有学生', 'student/listall') ?></li>
      </ul>
    </li> 
    <li><?php echo link_to('用户管理', '@all_user') ?></li>
    <li><?php echo link_to('资助项目管理', '#') ?>
      <ul>
        <li><?php echo link_to('资助点管理', '@site_list') ?></li>
-       <li><?php echo link_to('学校管理', '@school_list') ?></li>     
+       <li><?php echo link_to('学校管理', 'school/list') ?></li>     
      </ul>
    </li>
    <li><?php echo link_to('个人信息', '@user_edit?user_id='.$sf_user->getAttribute('user_id', ''),'post=true') ?></li>

@@ -85,7 +85,7 @@
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager , 'listpend' => 1, 'page_to_link' => '@user_remit_pending' ))?>
+<?php include_partial('pager',array('pager' => $pager , 'listpend' => 1, 'page_to_link' => 'listpenduser' ))?>
 
 <?php else:?>
 无到款信息<br/>

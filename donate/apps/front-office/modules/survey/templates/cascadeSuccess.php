@@ -29,7 +29,7 @@
   </div>
 </div>
 <?php echo observe_field('school_id',array('update'=>"student_name",
-'url'=>"@survey_cascade2",
+'url'=>"survey/cascade2",
 'with'=>"'school_id='+$('school_id').value",
 'script'=>true))
 ?>

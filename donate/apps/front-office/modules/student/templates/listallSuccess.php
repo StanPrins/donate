@@ -7,7 +7,7 @@
 <h1>所有学生信息</h1>
 <?php
  use_helper('Javascript');
- echo form_tag('@student_list_all','id="Find"');?> 
+ echo form_tag('student/listall','id="Find"');?> 
 <table class="sf_student_list">
 <tr><td><strong>地区：</strong></td>
 <td>
@@ -38,7 +38,7 @@ $default_name = empty($student_name)?'':$student_name;
 $default_school_id = empty($school_id)?-1:$school_id;
 $default_site_id = empty($site_id)?-1:$site_id;
  echo input_auto_complete_tag('student_name',$default_name,
-		'@student_autocomplete?donated=1&school_id='.$default_school_id.'&site_id='.$default_site_id,
+		'student/autocomplete?donated=1&school_id='.$default_school_id.'&site_id='.$default_site_id,
  		array('autocomplete'=>'on'),
  		array('use_style'=>true));
  echo submit_tag('查找');
@@ -50,7 +50,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
  <?php 
  echo observe_form('Find',array(
  		'update'=>'sf_admin_content',
- 		'url'=>'@student_list_all',
+ 		'url'=>'student/listall',
  		'with'=>"Form.serialize('Find')",
  		'script'=>true))?>
 <?php if(sizeof($pager->getResults())>0):?>
@@ -74,17 +74,17 @@ $default_site_id = empty($site_id)?-1:$site_id;
 			<br />
 			&nbsp;<strong>自述：&nbsp;</strong><?php echo $student->getDiscription() ?>
 			<br />
-			<?php echo link_to ('成绩单', '@score_by_student?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
-			<?php echo link_to ('调查记录', '@survey_by_student?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
+			<?php echo link_to ('成绩单', 'reportcard/liststu?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
+			<?php echo link_to ('调查记录', 'survey/liststu?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
 			<?php echo link_to ('资助记录', '@donation_student?student_id='.$student->getStudentId()) ?>
 			<br />
-			<?php echo link_to ('详细', '@student_show?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
+			<?php echo link_to ('详细', 'student/show?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
 			<?php if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager')
 			|| ($sf_user->getAttribute('usertype', '')=='surveyor'))
 			{
-				echo link_to ('修改', '@student_edit?student_id='.$student->getStudentId());
+				echo link_to ('修改', 'student/edit?student_id='.$student->getStudentId());
 				echo "&nbsp;&nbsp;&nbsp;";
-				echo link_to('打印回访表','@print_table?student_id='.$student->getStudentId());
+				echo link_to('打印回访表','student/print?student_id='.$student->getStudentId());
 			}
 			?></td>
 		</tr>
@@ -93,7 +93,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
 	</tbody>
 </table>
 
-<?php include_partial('listpager',array('pager' => $pager, 'page_to_link' => '@student_list_all', 'school_id'=>$default_school_id, 'site_id'=>$default_site_id ))?>
+<?php include_partial('listpager',array('pager' => $pager, 'page_to_link' => 'listall', 'school_id'=>$default_school_id, 'site_id'=>$default_site_id ))?>
 <?php else:?>
 <table class="sf_student_list">
 <tr><td align="center">无相关记录</td></tr>

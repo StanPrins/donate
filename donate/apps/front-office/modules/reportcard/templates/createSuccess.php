@@ -10,7 +10,7 @@
 <?php use_helper('Javascript')?>
 <?php use_helper('Validation')?>
 
-<?php echo form_tag('@score_update') ?>
+<?php echo form_tag('reportcard/update') ?>
 
 <?php echo object_input_hidden_tag($report_card, 'getReportId') ?>
 <?php echo object_input_hidden_tag($report_card, 'getStudentId') ?>
@@ -55,12 +55,12 @@
 </div>  
 </div>
 <?php echo observe_field('site_id',array('update'=>"new_area",
-'url'=>"@survey_cascade",
+'url'=>"survey/cascade",
 'with'=>"'type=1&site_id='+$('site_id').value",
 'script'=>true))
 ?>
 <?php echo observe_field('school_id',array('update'=>"student_name",
-'url'=>"@survey_cascade2",
+'url'=>"survey/cascade2",
 'with'=>"'school_id='+$('school_id').value",
 'script'=>true))
 ?>

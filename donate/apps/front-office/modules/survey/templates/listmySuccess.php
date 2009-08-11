@@ -7,7 +7,7 @@
 <h1>调查信息</h1>
 <?php
  use_helper('Javascript');
- echo form_tag('@survey_i_fill','id="Find"');?> 
+ echo form_tag('survey/listmy','id="Find"');?> 
 <table cellspacing="0" class="sf_admin_list">
 <tr><td><strong>地区：</strong></td>
 <td>
@@ -38,7 +38,7 @@ $default_name = empty($student_name)?'':$student_name;
 $default_school_id = empty($school_id)?-1:$school_id;
 $default_site_id = empty($site_id)?-1:$site_id;
  echo input_auto_complete_tag('student_name',$default_name,
-		'@survey_autocomplete?my=1&school_id='.$default_school_id.'&site_id='.$default_site_id,
+		'survey/autocomplete?my=1&school_id='.$default_school_id.'&site_id='.$default_site_id,
  		array('autocomplete'=>'on'),
  		array('use_style'=>true));
  echo submit_tag('查找');
@@ -50,7 +50,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
  <?php 
  echo observe_form('Find',array(
  		'update'=>'sf_admin_content',
- 		'url'=>'@survey_i_fill',
+ 		'url'=>'survey/listmy',
  		'with'=>"Form.serialize('Find')",
  		'script'=>true))?>
 <?php if(sizeof($pager->getResults()) != 0):?>
@@ -102,8 +102,8 @@ $default_site_id = empty($site_id)?-1:$site_id;
       <td><?php echo $survey->getSurveyDate() ?></td>      
       <td><?php echo $survey->getUserOpinion() ?></td>
       <td><?php echo $survey->getDiscription() ?></td>
-      <td><?php echo link_to('查看', '@survey_show?survey_id='.$survey->getSurveyId())?>
-          <?php echo link_to('修改', '@survey_edit?survey_id='.$survey->getSurveyId())?>
+      <td><?php echo link_to('查看', 'survey/show?survey_id='.$survey->getSurveyId())?>
+          <?php echo link_to('修改', 'survey/edit?survey_id='.$survey->getSurveyId())?>
       </td>
       
   <?php
@@ -117,7 +117,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager, 'flag_no_all' => 1, 'page_to_link' =>'@survey_i_fill' ))?>
+<?php include_partial('pager',array('pager' => $pager, 'flag_no_all' => 1, 'page_to_link' =>'listmy' ))?>
 
 <?php else:?>
 <table class="sf_student_list">
@@ -125,7 +125,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
 </table>
 <?php endif;?>
 
-<?php echo link_to('新增调查','@survey_create')?>
+<?php echo link_to('新增调查','survey/create')?>
 
 </div>
 </div>
