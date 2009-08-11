@@ -3,55 +3,114 @@
 // date: 2009/07/19 21:34:06
 ?>
 <div id="sf_admin_container">
-<SCRIPT language=javascript>  
- function printpr() //预览函数  
- {  
-	 document.all("qingkongyema").click();//打印之前去掉页眉，页脚  
-	 document.all("dayinDiv").style.display="none"; //打印之前先隐藏不想打印输出的元素（此例中隐藏“打印”和“打印预览”两个按钮）  
-	 var OLECMDID = 7;  
-	 var PROMPT = 1;  
-	 var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';  
-	 document.body.insertAdjacentHTML('beforeEnd', WebBrowser);  
-	 WebBrowser1.ExecWB(OLECMDID, PROMPT);  
-	 WebBrowser1.outerHTML = "";  
-	 document.all("dayinDiv").style.display="";//打印之后将该元素显示出来（显示出“打印”和“打印预览”两个按钮，方便别人下次打印）  
- }  
-   
- function printTure() //打印函数  
- {  
-	  document.all('qingkongyema').click();//同上  
-	  document.all("dayinDiv").style.display="none";//同上  
-	  window.print();  
-	  document.all("dayinDiv").style.display="";  
- }
- </SCRIPT>    
- <script language="VBScript">  
- dim hkey_root,hkey_path,hkey_key  
- hkey_root="HKEY_CURRENT_USER"  
- hkey_path="\Software\Microsoft\Internet Explorer\PageSetup"  
- //设置网页打印的页眉页脚为空  
- function pagesetup_null()  
- on error resume next  
- Set RegWsh = CreateObject("WScript.Shell")  
- hkey_key="\header"  
- RegWsh.RegWrite hkey_root+hkey_path+hkey_key,""  
- hkey_key="\footer"  
- RegWsh.RegWrite hkey_root+hkey_path+hkey_key,""  
- end function  
- //设置网页打印的页眉页脚为默认值  
- function pagesetup_default()  
- on error resume next  
- Set RegWsh = CreateObject("WScript.Shell")  
- hkey_key="\header"  
- RegWsh.RegWrite hkey_root+hkey_path+hkey_key,"&w&b页码，&p/&P"  
- hkey_key="\footer"  
- RegWsh.RegWrite hkey_root+hkey_path+hkey_key,"&u&b&d"  
- end function  
- </script> 
- <DIV id="dayinDiv" name="dayinDiv" align="center"><input type="button" class="tab" value="打印" onclick="printTure();">&nbsp;&nbsp;  
- <input type="button" class="tab" value="打印预览" onclick="printpr();">  
- <input type="hidden" name="qingkongyema" id="qingkongyema" class="tab" value="清空页码" onclick="pagesetup_null()">&nbsp;&nbsp;  
- <input type="hidden" class="tab" value="恢复页码" onclick="pagesetup_default()">  
+<style media=print> 
+.Noprint{display:none;} 
+.PageNext{page-break-after: always;} 
+</style> 
+<SCRIPT language=javascript>
+var hkey_root; 
+var hkey_path; 
+var hkey_key; 
+var isAddWebBrowser = false; 
+hkey_root="HKEY_CURRENT_USER"; 
+hkey_path="\\Software\\Microsoft\\Internet Explorer\\PageSetup\\";
+//设置网页打印的页眉页脚为空 
+function pagesetup_null(){ 	 
+    try{ 
+        var RegWsh = new ActiveXObject("WScript.Shell"); 
+        hkey_key="header"; 
+        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,""); 
+        hkey_key="footer"; 
+        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"");
+    }
+    catch(e)
+    {
+        alert(e.description);
+    } 
+} 
+
+function browseType()
+{
+	var Sys = {};
+	var ua = navigator.userAgent.toLowerCase();
+	var s;
+	(s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+	(s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+	(s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+	(s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+	(s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+	if(Sys.ie) return true;
+	else
+	{
+		if(Sys.firefox) alert('该功能不支持 Firefox: ' + Sys.firefox + '，请使用 Internet Explorer 内核浏览器。');
+		if(Sys.chrome) alert('该功能不支持 Chrome: ' + Sys.chrome + '，请使用 Internet Explorer 内核浏览器。');
+		if(Sys.opera) alert('该功能不支持 Opera: ' + Sys.opera + '，请使用 Internet Explorer 内核浏览器。');
+		if(Sys.safari) alert('该功能不支持 Safari: ' + Sys.safari + '，请使用 Internet Explorer 内核浏览器。');
+		return false;
+	}
+}
+//设置网页打印的页眉页脚为默认值 
+function pagesetup_default(){ 
+    try{ 
+        var RegWsh = new ActiveXObject("WScript.Shell"); 
+        hkey_key="header"; 
+        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"&w&b页码，&p/&P"); 
+        hkey_key="footer"; 
+        //RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"&u&b&d"); 
+        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,""); 
+        }catch(e){} 
+} 
+
+
+//注册打印设备 
+function addWebBrowser(){ 
+    var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>' 
+    document.body.insertAdjacentHTML('beforeEnd', WebBrowser);  
+} 
+//打印 
+function print() {
+	if(browseType())
+	{
+	    if(isAddWebBrowser == false){ 
+	        isAddWebBrowser = true; 
+	        addWebBrowser(); 
+	    }    
+	    pagesetup_null(); 
+	    document.all.WebBrowser1.ExecWB(6, 1);
+	}
+} 
+
+//打印预览 
+function printShow() {
+	if(browseType())
+	{
+	    if(isAddWebBrowser == false){ 
+	        isAddWebBrowser = true; 
+	        addWebBrowser(); 
+	    }    
+	    pagesetup_null(); 
+	    document.all.WebBrowser1.ExecWB(7, 1); 
+	}
+} 
+
+//页面设计 
+function pageSet() { 
+	if(browseType())
+	{
+	    if(isAddWebBrowser == false){ 
+	        isAddWebBrowser = true; 
+	        addWebBrowser(); 
+	    }    
+	    pagesetup_null(); 
+	    document.all.WebBrowser1.ExecWB(8, 1); 
+	}
+} 
+</SCRIPT> 
+
+ <DIV id="control" align="center" class='Noprint'>
+ <input type="button" class="tab" value="打印" onclick="print();">&nbsp;&nbsp;
+ <input type="button" class="tab" value="打印设置" onclick="pageSet();">&nbsp;&nbsp;  
+ <input type="button" class="tab" value="打印预览" onclick="printShow();">
  </DIV> 
 <div style='tab-interval:21.0pt;text-justify-trim:punctuation'> 
 <div class=Section1 style='layout-grid:15.6pt'>
@@ -788,8 +847,11 @@ mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'
 style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
 150%'><o:p></o:p></span></b></p>
 </div>
-
-
+<span style='font-size:10.5pt;mso-bidi-font-size:12.0pt;line-height:100%;
+font-family:"Times New Roman";mso-fareast-font-family:SimSun;mso-font-kerning:
+1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:
+AR-SA'><br clear=all style='page-break-before:always;mso-break-type:section-break'>
+</span>
 <?php if(!is_null($survey)): ?>
 <div class=Section2 style='layout-grid:15.6pt'>
 <div align=center>
