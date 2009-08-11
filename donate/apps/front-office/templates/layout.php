@@ -56,8 +56,8 @@
    </li>
    <li><?php echo link_to('走访', '#') ?>
      <ul>
-       <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
-       <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
+       <li><?php echo link_to('我的调查', '@survey_i_fill') ?></li>
+       <li><?php echo link_to('我的成绩单', '@score_i_fill') ?></li>
        <li><?php echo link_to('录入走访表', '@investigation_add') ?></li>
      </ul>
    </li>   
@@ -89,10 +89,10 @@
    </li>
    <li><?php echo link_to('走访', '#') ?>
      <ul>
-       <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
-       <li><?php echo link_to('所有调查', 'survey/listall') ?></li>
-       <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
-       <li><?php echo link_to('所有成绩单', 'reportcard/listall') ?></li>
+       <li><?php echo link_to('我的调查', '@survey_i_fill') ?></li>
+       <li><?php echo link_to('所有调查', '@survey_list_all') ?></li>
+       <li><?php echo link_to('我的成绩单', '@score_i_fill') ?></li>
+       <li><?php echo link_to('所有成绩单', '@score_list_all') ?></li>
        <li><?php echo link_to('录入走访表', '@investigation_add') ?></li>
      </ul>
    </li>     
@@ -131,10 +131,10 @@
    </li>
    <li><?php echo link_to('走访', '#') ?>
      <ul>
-       <li><?php echo link_to('我的调查', 'survey/listmy') ?></li>
-       <li><?php echo link_to('所有调查', 'survey/listall') ?></li>
-       <li><?php echo link_to('我的成绩单', 'reportcard/listmy') ?></li>
-       <li><?php echo link_to('所有成绩单', 'reportcard/listall') ?></li>
+       <li><?php echo link_to('我的调查', '@survey_i_fill') ?></li>
+       <li><?php echo link_to('所有调查', '@survey_list_all') ?></li>
+       <li><?php echo link_to('我的成绩单', '@score_i_fill') ?></li>
+       <li><?php echo link_to('所有成绩单', '@score_list_all') ?></li>
        <li><?php echo link_to('录入走访表', '@investigation_add') ?></li>
      </ul>
    </li>     

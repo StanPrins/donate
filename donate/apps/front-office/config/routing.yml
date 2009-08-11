@@ -1,6 +1,6 @@
 #donation
 donation_approve:
-  url:   /donation_approve
+  url:   /donation_approve/*
   param: { module: donation, action: approve }
 
 donation_create:
@@ -12,15 +12,15 @@ donation_edit:
   param: { module: donation, action: edit }
   
 donation_my:
-  url:   /donation_my
+  url:   /donation_my/*
   param: { module: donation, action: listmy }
 
 donation_overdue:
-  url:   /donation_overdue
+  url:   /donation_overdue/*
   param: { module: donation, action: listold }  
 
 donation_pending:
-  url:   /donation_pending
+  url:   /donation_pending/*
   param: { module: donation, action: listpend }  
 
 donation_student:
@@ -75,11 +75,11 @@ remit_by_donation:
   param: { module: remit, action: listdonate }  
   
 remit_pending:
-  url:  /remit_pending
+  url:  /remit_pending/*
   param: { module: remit, action: listpend }  
 
 user_remit_pending:
-  url:  /user_remit_pending
+  url:  /user_remit_pending/*
   param: { module: remit, action: listpenduser }  
 
 remit_show:
@@ -90,6 +90,36 @@ remit_update:
   url:  /remit_update
   param: { module: remit, action: update }
   
+#reportcard
+score_autocomplete:
+  url:  /score_autocomplete/:school_id/:site_id/*
+  param: { module: reportcard, action: autocomplete}
+
+score_create:
+  url:  /score_create/:student_id
+  param: { module: reportcard, action: create}
+
+score_edit:
+  url:  /score_edit/:report_id
+  param: { module: reportcard, action: edit}
+
+score_list_all:
+  url:  /score_list_all/*
+  param: { module: reportcard, action: listall}
+
+score_i_fill:
+  url:  /score_i_fill/*
+  param: { module: reportcard, action: listmy}
+
+score_by_student:
+  url:  /score_by_student/:student_id/*
+  param: { module: reportcard, action: liststu}
+  
+score_update:
+  url:  /score_update
+  param: { module: reportcard, action: update}
+ 
+ 
 #school
 school_create:
   url:  /school_create/*
@@ -125,11 +155,11 @@ student_edit:
   param: { module: student, action: edit }
 
 student_list_all:
-  url:  /student_list_all
+  url:  /student_list_all/*
   param: { module: student, action: listall }
   
 student_need_donate:
-  url:  /student_need_donate
+  url:  /student_need_donate/*
   param: { module: student, action: listno }
 
 student_overdue:
@@ -147,6 +177,48 @@ student_show:
 student_update:
   url:  /student_update
   param: { module: student, action: update }  
+  
+#survey
+survey_autocomplete:
+  url:  /survey_autocomplete/:school_id/:site_id/*
+  param: { module: survey, action: autocomplete }
+  
+survey_cascade2:
+  url:  /survey_cascade2
+  param: { module: survey, action: cascade2 }
+    
+survey_cascade:
+  url:  /survey_cascade
+  param: { module: survey, action: cascade }
+  
+survey_create:
+  url:  /survey_create/*
+  param: { module: survey, action: create }
+
+survey_edit:
+  url:  /survey_edit/:survey_id
+  param: { module: survey, action: edit }  
+
+survey_list_all:
+  url:  /survey_list_all/*
+  param: { module: survey, action: listall }  
+
+survey_i_fill:
+  url:  /survey_i_fill/*
+  param: { module: survey, action: listmy }
+
+survey_by_student:
+  url:  /survey_by_student/:student_id/*
+  param: { module: survey, action: liststu }
+  
+survey_show:
+  url:  /survey_show/:student_id/*
+  param: { module: survey, action: show }
+
+survey_update:
+  url:  /survey_update
+  param: { module: survey, action: update }
+
   
 #user
 user_approve:

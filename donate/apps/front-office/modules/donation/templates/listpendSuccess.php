@@ -54,7 +54,7 @@
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager, 'page_to_link' => 'listpend' ))?>
+<?php include_partial('pager',array('pager' => $pager, 'page_to_link' => '@donation_pending' ))?>
 
 <?php else:?>
 无相关记录<br/>

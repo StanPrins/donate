@@ -7,7 +7,7 @@
 <h1>成绩单</h1>
 <?php
  use_helper('Javascript');
- echo form_tag('reportcard/listall','id="Find"');?> 
+ echo form_tag('@score_list_all','id="Find"');?> 
 <table cellspacing="0" class="sf_admin_list">
 <tr><td><strong>地区：</strong></td>
 <td>
@@ -38,7 +38,7 @@ $default_name = empty($student_name)?'':$student_name;
 $default_school_id = empty($school_id)?-1:$school_id;
 $default_site_id = empty($site_id)?-1:$site_id;
  echo input_auto_complete_tag('student_name',$default_name,
-		'reportcard/autocomplete?my=0&school_id='.$default_school_id.'&site_id='.$default_site_id,
+		'@score_autocomplete?my=0&school_id='.$default_school_id.'&site_id='.$default_site_id,
  		array('autocomplete'=>'on'),
  		array('use_style'=>true));
  echo submit_tag('查找');
@@ -50,7 +50,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
  <?php 
  echo observe_form('Find',array(
  		'update'=>'sf_admin_content',
- 		'url'=>'survey/listall',
+ 		'url'=>'@survey_list_all',
  		'with'=>"Form.serialize('Find')",
  		'script'=>true))?>
 <?php if(sizeof($pager->getResults()) != 0):?>
@@ -106,7 +106,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
           <?php if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
                      || ($sf_user->getAttribute('usertype', '')=='administrator'))
                 {      
-                   echo link_to('修改 ', 'reportcard/edit?report_id='.$report_card->getReportId());
+                   echo link_to('修改 ', '@score_edit?report_id='.$report_card->getReportId());
                 }
           ?>
       </td>    
@@ -121,7 +121,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
 </tbody>
 </table>
 
-<?php include_partial('pager',array('pager' => $pager , 'page_to_link' => 'listall' , 'flag_no_all' => 0))?>
+<?php include_partial('pager',array('pager' => $pager , 'page_to_link' => '@score_list_all' , 'flag_no_all' => 0))?>
 
 <?php else:?>
 <table class="sf_student_list">
@@ -132,7 +132,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
 <?php if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager')
                      || ($sf_user->getAttribute('usertype', '')=='administrator'))
       {
-          echo link_to ('创建成绩单', 'reportcard/create?student_id='.$sf_params->get('student_id'));
+          echo link_to ('创建成绩单', '@score_create?student_id='.$sf_params->get('student_id'));
       }
  ?>
 &nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>
