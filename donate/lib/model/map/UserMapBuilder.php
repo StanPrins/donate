@@ -44,6 +44,8 @@ class UserMapBuilder {
 
 		$tMap->addColumn('NAME', 'Name', 'string', CreoleTypes::VARCHAR, true, 16);
 
+		$tMap->addColumn('ID_CARD', 'IdCard', 'string', CreoleTypes::VARCHAR, true, 32);
+
 		$tMap->addColumn('PHOTO', 'Photo', 'string', CreoleTypes::VARCHAR, false, 256);
 
 		$tMap->addColumn('BBS_ID', 'BbsId', 'string', CreoleTypes::VARCHAR, false, 16);

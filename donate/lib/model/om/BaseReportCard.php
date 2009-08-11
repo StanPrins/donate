@@ -90,6 +90,12 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 	protected $aUser;
 
 	
+	protected $collRemits;
+
+	
+	protected $lastRemitCriteria = null;
+
+	
 	protected $alreadyInSave = false;
 
 	
@@ -692,6 +698,14 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 				}
 				$this->resetModified(); 			}
 
+			if ($this->collRemits !== null) {
+				foreach($this->collRemits as $referrerFK) {
+					if (!$referrerFK->isDeleted()) {
+						$affectedRows += $referrerFK->save($con);
+					}
+				}
+			}
+
 			$this->alreadyInSave = false;
 		}
 		return $affectedRows;
@@ -746,6 +760,14 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
+
+				if ($this->collRemits !== null) {
+					foreach($this->collRemits as $referrerFK) {
+						if (!$referrerFK->validate($columns)) {
+							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
+						}
+					}
+				}
 
 
 			$this->alreadyInValidation = false;
@@ -1042,6 +1064,15 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 		$copyObj->setCreatedAt($this->created_at);
 
 
+		if ($deepCopy) {
+									$copyObj->setNew(false);
+
+			foreach($this->getRemits() as $relObj) {
+				$copyObj->addRemit($relObj->copy($deepCopy));
+			}
+
+		} 
+
 		$copyObj->setNew(true);
 
 		$copyObj->setReportId(NULL); 
@@ -1121,6 +1152,251 @@ abstract class BaseReportCard extends BaseObject  implements Persistent {
 			
 		}
 		return $this->aUser;
+	}
+
+	
+	public function initRemits()
+	{
+		if ($this->collRemits === null) {
+			$this->collRemits = array();
+		}
+	}
+
+	
+	public function getRemits($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemits === null) {
+			if ($this->isNew()) {
+			   $this->collRemits = array();
+			} else {
+
+				$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+				RemitPeer::addSelectColumns($criteria);
+				$this->collRemits = RemitPeer::doSelect($criteria, $con);
+			}
+		} else {
+						if (!$this->isNew()) {
+												
+
+				$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+				RemitPeer::addSelectColumns($criteria);
+				if (!isset($this->lastRemitCriteria) || !$this->lastRemitCriteria->equals($criteria)) {
+					$this->collRemits = RemitPeer::doSelect($criteria, $con);
+				}
+			}
+		}
+		$this->lastRemitCriteria = $criteria;
+		return $this->collRemits;
+	}
+
+	
+	public function countRemits($criteria = null, $distinct = false, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+		return RemitPeer::doCount($criteria, $distinct, $con);
+	}
+
+	
+	public function addRemit(Remit $l)
+	{
+		$this->collRemits[] = $l;
+		$l->setReportCard($this);
+	}
+
+
+	
+	public function getRemitsJoinDonation($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemits === null) {
+			if ($this->isNew()) {
+				$this->collRemits = array();
+			} else {
+
+				$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+				$this->collRemits = RemitPeer::doSelectJoinDonation($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+			if (!isset($this->lastRemitCriteria) || !$this->lastRemitCriteria->equals($criteria)) {
+				$this->collRemits = RemitPeer::doSelectJoinDonation($criteria, $con);
+			}
+		}
+		$this->lastRemitCriteria = $criteria;
+
+		return $this->collRemits;
+	}
+
+
+	
+	public function getRemitsJoinUserRelatedByReceiveUserId($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemits === null) {
+			if ($this->isNew()) {
+				$this->collRemits = array();
+			} else {
+
+				$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedByReceiveUserId($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+			if (!isset($this->lastRemitCriteria) || !$this->lastRemitCriteria->equals($criteria)) {
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedByReceiveUserId($criteria, $con);
+			}
+		}
+		$this->lastRemitCriteria = $criteria;
+
+		return $this->collRemits;
+	}
+
+
+	
+	public function getRemitsJoinUserRelatedByReceiveSubmitter($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemits === null) {
+			if ($this->isNew()) {
+				$this->collRemits = array();
+			} else {
+
+				$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedByReceiveSubmitter($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+			if (!isset($this->lastRemitCriteria) || !$this->lastRemitCriteria->equals($criteria)) {
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedByReceiveSubmitter($criteria, $con);
+			}
+		}
+		$this->lastRemitCriteria = $criteria;
+
+		return $this->collRemits;
+	}
+
+
+	
+	public function getRemitsJoinUserRelatedBySendoutUserId($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemits === null) {
+			if ($this->isNew()) {
+				$this->collRemits = array();
+			} else {
+
+				$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedBySendoutUserId($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+			if (!isset($this->lastRemitCriteria) || !$this->lastRemitCriteria->equals($criteria)) {
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedBySendoutUserId($criteria, $con);
+			}
+		}
+		$this->lastRemitCriteria = $criteria;
+
+		return $this->collRemits;
+	}
+
+
+	
+	public function getRemitsJoinUserRelatedBySendoutSubmitter($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemits === null) {
+			if ($this->isNew()) {
+				$this->collRemits = array();
+			} else {
+
+				$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedBySendoutSubmitter($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::REPORT_ID, $this->getReportId());
+
+			if (!isset($this->lastRemitCriteria) || !$this->lastRemitCriteria->equals($criteria)) {
+				$this->collRemits = RemitPeer::doSelectJoinUserRelatedBySendoutSubmitter($criteria, $con);
+			}
+		}
+		$this->lastRemitCriteria = $criteria;
+
+		return $this->collRemits;
 	}
 
 } 

@@ -65,7 +65,23 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 
 	
+	protected $sendout_receiver;
+
+
+	
 	protected $created_at;
+
+
+	
+	protected $report_id;
+
+
+	
+	protected $discription;
+
+
+	
+	protected $remark;
 
 	
 	protected $aDonation;
@@ -81,6 +97,9 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 	
 	protected $aUserRelatedBySendoutSubmitter;
+
+	
+	protected $aReportCard;
 
 	
 	protected $alreadyInSave = false;
@@ -217,6 +236,13 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 	}
 
 	
+	public function getSendoutReceiver()
+	{
+
+		return $this->sendout_receiver;
+	}
+
+	
 	public function getCreatedAt($format = 'Y-m-d H:i:s')
 	{
 
@@ -236,6 +262,27 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 		} else {
 			return date($format, $ts);
 		}
+	}
+
+	
+	public function getReportId()
+	{
+
+		return $this->report_id;
+	}
+
+	
+	public function getDiscription()
+	{
+
+		return $this->discription;
+	}
+
+	
+	public function getRemark()
+	{
+
+		return $this->remark;
 	}
 
 	
@@ -280,8 +327,8 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 		
 		
-		if ($v !== null && !is_string($v)) {
-			$v = (string) $v; 
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
 		}
 
 		if ($this->amount !== $v) {
@@ -353,8 +400,8 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 		
 		
-		if ($v !== null && !is_string($v)) {
-			$v = (string) $v; 
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
 		}
 
 		if ($this->receive_amount !== $v) {
@@ -436,8 +483,8 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 		
 		
-		if ($v !== null && !is_string($v)) {
-			$v = (string) $v; 
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
 		}
 
 		if ($this->sendout_amount !== $v) {
@@ -467,6 +514,22 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setSendoutReceiver($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->sendout_receiver !== $v) {
+			$this->sendout_receiver = $v;
+			$this->modifiedColumns[] = RemitPeer::SENDOUT_RECEIVER;
+		}
+
+	} 
+	
 	public function setCreatedAt($v)
 	{
 
@@ -484,6 +547,58 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setReportId($v)
+	{
+
+		
+		
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->report_id !== $v) {
+			$this->report_id = $v;
+			$this->modifiedColumns[] = RemitPeer::REPORT_ID;
+		}
+
+		if ($this->aReportCard !== null && $this->aReportCard->getReportId() !== $v) {
+			$this->aReportCard = null;
+		}
+
+	} 
+	
+	public function setDiscription($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->discription !== $v) {
+			$this->discription = $v;
+			$this->modifiedColumns[] = RemitPeer::DISCRIPTION;
+		}
+
+	} 
+	
+	public function setRemark($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->remark !== $v) {
+			$this->remark = $v;
+			$this->modifiedColumns[] = RemitPeer::REMARK;
+		}
+
+	} 
+	
 	public function hydrate(ResultSet $rs, $startcol = 1)
 	{
 		try {
@@ -492,7 +607,7 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 			$this->donation_id = $rs->getInt($startcol + 1);
 
-			$this->amount = $rs->getString($startcol + 2);
+			$this->amount = $rs->getInt($startcol + 2);
 
 			$this->is_by_ofs = $rs->getBoolean($startcol + 3);
 
@@ -502,7 +617,7 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 			$this->receive_user_id = $rs->getInt($startcol + 6);
 
-			$this->receive_amount = $rs->getString($startcol + 7);
+			$this->receive_amount = $rs->getInt($startcol + 7);
 
 			$this->receive_submitter = $rs->getInt($startcol + 8);
 
@@ -512,17 +627,25 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 			$this->sendout_user_id = $rs->getInt($startcol + 11);
 
-			$this->sendout_amount = $rs->getString($startcol + 12);
+			$this->sendout_amount = $rs->getInt($startcol + 12);
 
 			$this->sendout_submitter = $rs->getInt($startcol + 13);
 
-			$this->created_at = $rs->getTimestamp($startcol + 14, null);
+			$this->sendout_receiver = $rs->getString($startcol + 14);
+
+			$this->created_at = $rs->getTimestamp($startcol + 15, null);
+
+			$this->report_id = $rs->getInt($startcol + 16);
+
+			$this->discription = $rs->getString($startcol + 17);
+
+			$this->remark = $rs->getString($startcol + 18);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 15; 
+						return $startcol + 19; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Remit object", $e);
 		}
@@ -620,6 +743,13 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 				$this->setUserRelatedBySendoutSubmitter($this->aUserRelatedBySendoutSubmitter);
 			}
 
+			if ($this->aReportCard !== null) {
+				if ($this->aReportCard->isModified()) {
+					$affectedRows += $this->aReportCard->save($con);
+				}
+				$this->setReportCard($this->aReportCard);
+			}
+
 
 						if ($this->isModified()) {
 				if ($this->isNew()) {
@@ -699,6 +829,12 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 				}
 			}
 
+			if ($this->aReportCard !== null) {
+				if (!$this->aReportCard->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aReportCard->getValidationFailures());
+				}
+			}
+
 
 			if (($retval = RemitPeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
@@ -766,7 +902,19 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 				return $this->getSendoutSubmitter();
 				break;
 			case 14:
+				return $this->getSendoutReceiver();
+				break;
+			case 15:
 				return $this->getCreatedAt();
+				break;
+			case 16:
+				return $this->getReportId();
+				break;
+			case 17:
+				return $this->getDiscription();
+				break;
+			case 18:
+				return $this->getRemark();
 				break;
 			default:
 				return null;
@@ -792,7 +940,11 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 			$keys[11] => $this->getSendoutUserId(),
 			$keys[12] => $this->getSendoutAmount(),
 			$keys[13] => $this->getSendoutSubmitter(),
-			$keys[14] => $this->getCreatedAt(),
+			$keys[14] => $this->getSendoutReceiver(),
+			$keys[15] => $this->getCreatedAt(),
+			$keys[16] => $this->getReportId(),
+			$keys[17] => $this->getDiscription(),
+			$keys[18] => $this->getRemark(),
 		);
 		return $result;
 	}
@@ -851,7 +1003,19 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 				$this->setSendoutSubmitter($value);
 				break;
 			case 14:
+				$this->setSendoutReceiver($value);
+				break;
+			case 15:
 				$this->setCreatedAt($value);
+				break;
+			case 16:
+				$this->setReportId($value);
+				break;
+			case 17:
+				$this->setDiscription($value);
+				break;
+			case 18:
+				$this->setRemark($value);
 				break;
 		} 	}
 
@@ -874,7 +1038,11 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[11], $arr)) $this->setSendoutUserId($arr[$keys[11]]);
 		if (array_key_exists($keys[12], $arr)) $this->setSendoutAmount($arr[$keys[12]]);
 		if (array_key_exists($keys[13], $arr)) $this->setSendoutSubmitter($arr[$keys[13]]);
-		if (array_key_exists($keys[14], $arr)) $this->setCreatedAt($arr[$keys[14]]);
+		if (array_key_exists($keys[14], $arr)) $this->setSendoutReceiver($arr[$keys[14]]);
+		if (array_key_exists($keys[15], $arr)) $this->setCreatedAt($arr[$keys[15]]);
+		if (array_key_exists($keys[16], $arr)) $this->setReportId($arr[$keys[16]]);
+		if (array_key_exists($keys[17], $arr)) $this->setDiscription($arr[$keys[17]]);
+		if (array_key_exists($keys[18], $arr)) $this->setRemark($arr[$keys[18]]);
 	}
 
 	
@@ -896,7 +1064,11 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(RemitPeer::SENDOUT_USER_ID)) $criteria->add(RemitPeer::SENDOUT_USER_ID, $this->sendout_user_id);
 		if ($this->isColumnModified(RemitPeer::SENDOUT_AMOUNT)) $criteria->add(RemitPeer::SENDOUT_AMOUNT, $this->sendout_amount);
 		if ($this->isColumnModified(RemitPeer::SENDOUT_SUBMITTER)) $criteria->add(RemitPeer::SENDOUT_SUBMITTER, $this->sendout_submitter);
+		if ($this->isColumnModified(RemitPeer::SENDOUT_RECEIVER)) $criteria->add(RemitPeer::SENDOUT_RECEIVER, $this->sendout_receiver);
 		if ($this->isColumnModified(RemitPeer::CREATED_AT)) $criteria->add(RemitPeer::CREATED_AT, $this->created_at);
+		if ($this->isColumnModified(RemitPeer::REPORT_ID)) $criteria->add(RemitPeer::REPORT_ID, $this->report_id);
+		if ($this->isColumnModified(RemitPeer::DISCRIPTION)) $criteria->add(RemitPeer::DISCRIPTION, $this->discription);
+		if ($this->isColumnModified(RemitPeer::REMARK)) $criteria->add(RemitPeer::REMARK, $this->remark);
 
 		return $criteria;
 	}
@@ -953,7 +1125,15 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 
 		$copyObj->setSendoutSubmitter($this->sendout_submitter);
 
+		$copyObj->setSendoutReceiver($this->sendout_receiver);
+
 		$copyObj->setCreatedAt($this->created_at);
+
+		$copyObj->setReportId($this->report_id);
+
+		$copyObj->setDiscription($this->discription);
+
+		$copyObj->setRemark($this->remark);
 
 
 		$copyObj->setNew(true);
@@ -1122,6 +1302,35 @@ abstract class BaseRemit extends BaseObject  implements Persistent {
 			
 		}
 		return $this->aUserRelatedBySendoutSubmitter;
+	}
+
+	
+	public function setReportCard($v)
+	{
+
+
+		if ($v === null) {
+			$this->setReportId(NULL);
+		} else {
+			$this->setReportId($v->getReportId());
+		}
+
+
+		$this->aReportCard = $v;
+	}
+
+
+	
+	public function getReportCard($con = null)
+	{
+		if ($this->aReportCard === null && ($this->report_id !== null)) {
+						include_once 'lib/model/om/BaseReportCardPeer.php';
+
+			$this->aReportCard = ReportCardPeer::retrieveByPK($this->report_id, $con);
+
+			
+		}
+		return $this->aReportCard;
 	}
 
 } 

@@ -33,6 +33,10 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 
 
 	
+	protected $id_card;
+
+
+	
 	protected $photo;
 
 
@@ -175,6 +179,13 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 	{
 
 		return $this->name;
+	}
+
+	
+	public function getIdCard()
+	{
+
+		return $this->id_card;
 	}
 
 	
@@ -383,6 +394,22 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 		if ($this->name !== $v) {
 			$this->name = $v;
 			$this->modifiedColumns[] = UserPeer::NAME;
+		}
+
+	} 
+	
+	public function setIdCard($v)
+	{
+
+		
+		
+		if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
+		}
+
+		if ($this->id_card !== $v) {
+			$this->id_card = $v;
+			$this->modifiedColumns[] = UserPeer::ID_CARD;
 		}
 
 	} 
@@ -622,39 +649,41 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 
 			$this->name = $rs->getString($startcol + 5);
 
-			$this->photo = $rs->getString($startcol + 6);
+			$this->id_card = $rs->getString($startcol + 6);
 
-			$this->bbs_id = $rs->getString($startcol + 7);
+			$this->photo = $rs->getString($startcol + 7);
 
-			$this->ofs_id = $rs->getString($startcol + 8);
+			$this->bbs_id = $rs->getString($startcol + 8);
 
-			$this->duty = $rs->getString($startcol + 9);
+			$this->ofs_id = $rs->getString($startcol + 9);
 
-			$this->mobile = $rs->getString($startcol + 10);
+			$this->duty = $rs->getString($startcol + 10);
 
-			$this->tel = $rs->getString($startcol + 11);
+			$this->mobile = $rs->getString($startcol + 11);
 
-			$this->usertype = $rs->getString($startcol + 12);
+			$this->tel = $rs->getString($startcol + 12);
 
-			$this->approve = $rs->getBoolean($startcol + 13);
+			$this->usertype = $rs->getString($startcol + 13);
 
-			$this->identity = $rs->getString($startcol + 14);
+			$this->approve = $rs->getBoolean($startcol + 14);
 
-			$this->email = $rs->getString($startcol + 15);
+			$this->identity = $rs->getString($startcol + 15);
 
-			$this->qq = $rs->getString($startcol + 16);
+			$this->email = $rs->getString($startcol + 16);
 
-			$this->msn = $rs->getString($startcol + 17);
+			$this->qq = $rs->getString($startcol + 17);
 
-			$this->address = $rs->getString($startcol + 18);
+			$this->msn = $rs->getString($startcol + 18);
 
-			$this->created_at = $rs->getTimestamp($startcol + 19, null);
+			$this->address = $rs->getString($startcol + 19);
+
+			$this->created_at = $rs->getTimestamp($startcol + 20, null);
 
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 20; 
+						return $startcol + 21; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating User object", $e);
 		}
@@ -917,45 +946,48 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 				return $this->getName();
 				break;
 			case 6:
-				return $this->getPhoto();
+				return $this->getIdCard();
 				break;
 			case 7:
-				return $this->getBbsId();
+				return $this->getPhoto();
 				break;
 			case 8:
-				return $this->getOfsId();
+				return $this->getBbsId();
 				break;
 			case 9:
-				return $this->getDuty();
+				return $this->getOfsId();
 				break;
 			case 10:
-				return $this->getMobile();
+				return $this->getDuty();
 				break;
 			case 11:
-				return $this->getTel();
+				return $this->getMobile();
 				break;
 			case 12:
-				return $this->getUsertype();
+				return $this->getTel();
 				break;
 			case 13:
-				return $this->getApprove();
+				return $this->getUsertype();
 				break;
 			case 14:
-				return $this->getIdentity();
+				return $this->getApprove();
 				break;
 			case 15:
-				return $this->getEmail();
+				return $this->getIdentity();
 				break;
 			case 16:
-				return $this->getQq();
+				return $this->getEmail();
 				break;
 			case 17:
-				return $this->getMsn();
+				return $this->getQq();
 				break;
 			case 18:
-				return $this->getAddress();
+				return $this->getMsn();
 				break;
 			case 19:
+				return $this->getAddress();
+				break;
+			case 20:
 				return $this->getCreatedAt();
 				break;
 			default:
@@ -974,20 +1006,21 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 			$keys[3] => $this->getSha1Password(),
 			$keys[4] => $this->getSalt(),
 			$keys[5] => $this->getName(),
-			$keys[6] => $this->getPhoto(),
-			$keys[7] => $this->getBbsId(),
-			$keys[8] => $this->getOfsId(),
-			$keys[9] => $this->getDuty(),
-			$keys[10] => $this->getMobile(),
-			$keys[11] => $this->getTel(),
-			$keys[12] => $this->getUsertype(),
-			$keys[13] => $this->getApprove(),
-			$keys[14] => $this->getIdentity(),
-			$keys[15] => $this->getEmail(),
-			$keys[16] => $this->getQq(),
-			$keys[17] => $this->getMsn(),
-			$keys[18] => $this->getAddress(),
-			$keys[19] => $this->getCreatedAt(),
+			$keys[6] => $this->getIdCard(),
+			$keys[7] => $this->getPhoto(),
+			$keys[8] => $this->getBbsId(),
+			$keys[9] => $this->getOfsId(),
+			$keys[10] => $this->getDuty(),
+			$keys[11] => $this->getMobile(),
+			$keys[12] => $this->getTel(),
+			$keys[13] => $this->getUsertype(),
+			$keys[14] => $this->getApprove(),
+			$keys[15] => $this->getIdentity(),
+			$keys[16] => $this->getEmail(),
+			$keys[17] => $this->getQq(),
+			$keys[18] => $this->getMsn(),
+			$keys[19] => $this->getAddress(),
+			$keys[20] => $this->getCreatedAt(),
 		);
 		return $result;
 	}
@@ -1022,45 +1055,48 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 				$this->setName($value);
 				break;
 			case 6:
-				$this->setPhoto($value);
+				$this->setIdCard($value);
 				break;
 			case 7:
-				$this->setBbsId($value);
+				$this->setPhoto($value);
 				break;
 			case 8:
-				$this->setOfsId($value);
+				$this->setBbsId($value);
 				break;
 			case 9:
-				$this->setDuty($value);
+				$this->setOfsId($value);
 				break;
 			case 10:
-				$this->setMobile($value);
+				$this->setDuty($value);
 				break;
 			case 11:
-				$this->setTel($value);
+				$this->setMobile($value);
 				break;
 			case 12:
-				$this->setUsertype($value);
+				$this->setTel($value);
 				break;
 			case 13:
-				$this->setApprove($value);
+				$this->setUsertype($value);
 				break;
 			case 14:
-				$this->setIdentity($value);
+				$this->setApprove($value);
 				break;
 			case 15:
-				$this->setEmail($value);
+				$this->setIdentity($value);
 				break;
 			case 16:
-				$this->setQq($value);
+				$this->setEmail($value);
 				break;
 			case 17:
-				$this->setMsn($value);
+				$this->setQq($value);
 				break;
 			case 18:
-				$this->setAddress($value);
+				$this->setMsn($value);
 				break;
 			case 19:
+				$this->setAddress($value);
+				break;
+			case 20:
 				$this->setCreatedAt($value);
 				break;
 		} 	}
@@ -1076,20 +1112,21 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[3], $arr)) $this->setSha1Password($arr[$keys[3]]);
 		if (array_key_exists($keys[4], $arr)) $this->setSalt($arr[$keys[4]]);
 		if (array_key_exists($keys[5], $arr)) $this->setName($arr[$keys[5]]);
-		if (array_key_exists($keys[6], $arr)) $this->setPhoto($arr[$keys[6]]);
-		if (array_key_exists($keys[7], $arr)) $this->setBbsId($arr[$keys[7]]);
-		if (array_key_exists($keys[8], $arr)) $this->setOfsId($arr[$keys[8]]);
-		if (array_key_exists($keys[9], $arr)) $this->setDuty($arr[$keys[9]]);
-		if (array_key_exists($keys[10], $arr)) $this->setMobile($arr[$keys[10]]);
-		if (array_key_exists($keys[11], $arr)) $this->setTel($arr[$keys[11]]);
-		if (array_key_exists($keys[12], $arr)) $this->setUsertype($arr[$keys[12]]);
-		if (array_key_exists($keys[13], $arr)) $this->setApprove($arr[$keys[13]]);
-		if (array_key_exists($keys[14], $arr)) $this->setIdentity($arr[$keys[14]]);
-		if (array_key_exists($keys[15], $arr)) $this->setEmail($arr[$keys[15]]);
-		if (array_key_exists($keys[16], $arr)) $this->setQq($arr[$keys[16]]);
-		if (array_key_exists($keys[17], $arr)) $this->setMsn($arr[$keys[17]]);
-		if (array_key_exists($keys[18], $arr)) $this->setAddress($arr[$keys[18]]);
-		if (array_key_exists($keys[19], $arr)) $this->setCreatedAt($arr[$keys[19]]);
+		if (array_key_exists($keys[6], $arr)) $this->setIdCard($arr[$keys[6]]);
+		if (array_key_exists($keys[7], $arr)) $this->setPhoto($arr[$keys[7]]);
+		if (array_key_exists($keys[8], $arr)) $this->setBbsId($arr[$keys[8]]);
+		if (array_key_exists($keys[9], $arr)) $this->setOfsId($arr[$keys[9]]);
+		if (array_key_exists($keys[10], $arr)) $this->setDuty($arr[$keys[10]]);
+		if (array_key_exists($keys[11], $arr)) $this->setMobile($arr[$keys[11]]);
+		if (array_key_exists($keys[12], $arr)) $this->setTel($arr[$keys[12]]);
+		if (array_key_exists($keys[13], $arr)) $this->setUsertype($arr[$keys[13]]);
+		if (array_key_exists($keys[14], $arr)) $this->setApprove($arr[$keys[14]]);
+		if (array_key_exists($keys[15], $arr)) $this->setIdentity($arr[$keys[15]]);
+		if (array_key_exists($keys[16], $arr)) $this->setEmail($arr[$keys[16]]);
+		if (array_key_exists($keys[17], $arr)) $this->setQq($arr[$keys[17]]);
+		if (array_key_exists($keys[18], $arr)) $this->setMsn($arr[$keys[18]]);
+		if (array_key_exists($keys[19], $arr)) $this->setAddress($arr[$keys[19]]);
+		if (array_key_exists($keys[20], $arr)) $this->setCreatedAt($arr[$keys[20]]);
 	}
 
 	
@@ -1103,6 +1140,7 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(UserPeer::SHA1_PASSWORD)) $criteria->add(UserPeer::SHA1_PASSWORD, $this->sha1_password);
 		if ($this->isColumnModified(UserPeer::SALT)) $criteria->add(UserPeer::SALT, $this->salt);
 		if ($this->isColumnModified(UserPeer::NAME)) $criteria->add(UserPeer::NAME, $this->name);
+		if ($this->isColumnModified(UserPeer::ID_CARD)) $criteria->add(UserPeer::ID_CARD, $this->id_card);
 		if ($this->isColumnModified(UserPeer::PHOTO)) $criteria->add(UserPeer::PHOTO, $this->photo);
 		if ($this->isColumnModified(UserPeer::BBS_ID)) $criteria->add(UserPeer::BBS_ID, $this->bbs_id);
 		if ($this->isColumnModified(UserPeer::OFS_ID)) $criteria->add(UserPeer::OFS_ID, $this->ofs_id);
@@ -1156,6 +1194,8 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 		$copyObj->setSalt($this->salt);
 
 		$copyObj->setName($this->name);
+
+		$copyObj->setIdCard($this->id_card);
 
 		$copyObj->setPhoto($this->photo);
 
@@ -1452,6 +1492,41 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 		return $this->collRemitsRelatedByReceiveUserId;
 	}
 
+
+	
+	public function getRemitsRelatedByReceiveUserIdJoinReportCard($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemitsRelatedByReceiveUserId === null) {
+			if ($this->isNew()) {
+				$this->collRemitsRelatedByReceiveUserId = array();
+			} else {
+
+				$criteria->add(RemitPeer::RECEIVE_USER_ID, $this->getUserId());
+
+				$this->collRemitsRelatedByReceiveUserId = RemitPeer::doSelectJoinReportCard($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::RECEIVE_USER_ID, $this->getUserId());
+
+			if (!isset($this->lastRemitRelatedByReceiveUserIdCriteria) || !$this->lastRemitRelatedByReceiveUserIdCriteria->equals($criteria)) {
+				$this->collRemitsRelatedByReceiveUserId = RemitPeer::doSelectJoinReportCard($criteria, $con);
+			}
+		}
+		$this->lastRemitRelatedByReceiveUserIdCriteria = $criteria;
+
+		return $this->collRemitsRelatedByReceiveUserId;
+	}
+
 	
 	public function initRemitsRelatedByReceiveSubmitter()
 	{
@@ -1550,6 +1625,41 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 
 			if (!isset($this->lastRemitRelatedByReceiveSubmitterCriteria) || !$this->lastRemitRelatedByReceiveSubmitterCriteria->equals($criteria)) {
 				$this->collRemitsRelatedByReceiveSubmitter = RemitPeer::doSelectJoinDonation($criteria, $con);
+			}
+		}
+		$this->lastRemitRelatedByReceiveSubmitterCriteria = $criteria;
+
+		return $this->collRemitsRelatedByReceiveSubmitter;
+	}
+
+
+	
+	public function getRemitsRelatedByReceiveSubmitterJoinReportCard($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemitsRelatedByReceiveSubmitter === null) {
+			if ($this->isNew()) {
+				$this->collRemitsRelatedByReceiveSubmitter = array();
+			} else {
+
+				$criteria->add(RemitPeer::RECEIVE_SUBMITTER, $this->getUserId());
+
+				$this->collRemitsRelatedByReceiveSubmitter = RemitPeer::doSelectJoinReportCard($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::RECEIVE_SUBMITTER, $this->getUserId());
+
+			if (!isset($this->lastRemitRelatedByReceiveSubmitterCriteria) || !$this->lastRemitRelatedByReceiveSubmitterCriteria->equals($criteria)) {
+				$this->collRemitsRelatedByReceiveSubmitter = RemitPeer::doSelectJoinReportCard($criteria, $con);
 			}
 		}
 		$this->lastRemitRelatedByReceiveSubmitterCriteria = $criteria;
@@ -1662,6 +1772,41 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 		return $this->collRemitsRelatedBySendoutUserId;
 	}
 
+
+	
+	public function getRemitsRelatedBySendoutUserIdJoinReportCard($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemitsRelatedBySendoutUserId === null) {
+			if ($this->isNew()) {
+				$this->collRemitsRelatedBySendoutUserId = array();
+			} else {
+
+				$criteria->add(RemitPeer::SENDOUT_USER_ID, $this->getUserId());
+
+				$this->collRemitsRelatedBySendoutUserId = RemitPeer::doSelectJoinReportCard($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::SENDOUT_USER_ID, $this->getUserId());
+
+			if (!isset($this->lastRemitRelatedBySendoutUserIdCriteria) || !$this->lastRemitRelatedBySendoutUserIdCriteria->equals($criteria)) {
+				$this->collRemitsRelatedBySendoutUserId = RemitPeer::doSelectJoinReportCard($criteria, $con);
+			}
+		}
+		$this->lastRemitRelatedBySendoutUserIdCriteria = $criteria;
+
+		return $this->collRemitsRelatedBySendoutUserId;
+	}
+
 	
 	public function initRemitsRelatedBySendoutSubmitter()
 	{
@@ -1760,6 +1905,41 @@ abstract class BaseUser extends BaseObject  implements Persistent {
 
 			if (!isset($this->lastRemitRelatedBySendoutSubmitterCriteria) || !$this->lastRemitRelatedBySendoutSubmitterCriteria->equals($criteria)) {
 				$this->collRemitsRelatedBySendoutSubmitter = RemitPeer::doSelectJoinDonation($criteria, $con);
+			}
+		}
+		$this->lastRemitRelatedBySendoutSubmitterCriteria = $criteria;
+
+		return $this->collRemitsRelatedBySendoutSubmitter;
+	}
+
+
+	
+	public function getRemitsRelatedBySendoutSubmitterJoinReportCard($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemitsRelatedBySendoutSubmitter === null) {
+			if ($this->isNew()) {
+				$this->collRemitsRelatedBySendoutSubmitter = array();
+			} else {
+
+				$criteria->add(RemitPeer::SENDOUT_SUBMITTER, $this->getUserId());
+
+				$this->collRemitsRelatedBySendoutSubmitter = RemitPeer::doSelectJoinReportCard($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::SENDOUT_SUBMITTER, $this->getUserId());
+
+			if (!isset($this->lastRemitRelatedBySendoutSubmitterCriteria) || !$this->lastRemitRelatedBySendoutSubmitterCriteria->equals($criteria)) {
+				$this->collRemitsRelatedBySendoutSubmitter = RemitPeer::doSelectJoinReportCard($criteria, $con);
 			}
 		}
 		$this->lastRemitRelatedBySendoutSubmitterCriteria = $criteria;

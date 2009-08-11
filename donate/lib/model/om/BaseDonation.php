@@ -231,8 +231,8 @@ abstract class BaseDonation extends BaseObject  implements Persistent {
 
 		
 		
-		if ($v !== null && !is_string($v)) {
-			$v = (string) $v; 
+		if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
 		}
 
 		if ($this->amount !== $v) {
@@ -323,7 +323,7 @@ abstract class BaseDonation extends BaseObject  implements Persistent {
 
 			$this->user_id = $rs->getInt($startcol + 2);
 
-			$this->amount = $rs->getString($startcol + 3);
+			$this->amount = $rs->getInt($startcol + 3);
 
 			$this->start_date = $rs->getDate($startcol + 4, null);
 
@@ -977,6 +977,41 @@ abstract class BaseDonation extends BaseObject  implements Persistent {
 
 			if (!isset($this->lastRemitCriteria) || !$this->lastRemitCriteria->equals($criteria)) {
 				$this->collRemits = RemitPeer::doSelectJoinUserRelatedBySendoutSubmitter($criteria, $con);
+			}
+		}
+		$this->lastRemitCriteria = $criteria;
+
+		return $this->collRemits;
+	}
+
+
+	
+	public function getRemitsJoinReportCard($criteria = null, $con = null)
+	{
+				include_once 'lib/model/om/BaseRemitPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collRemits === null) {
+			if ($this->isNew()) {
+				$this->collRemits = array();
+			} else {
+
+				$criteria->add(RemitPeer::DONATION_ID, $this->getDonationId());
+
+				$this->collRemits = RemitPeer::doSelectJoinReportCard($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(RemitPeer::DONATION_ID, $this->getDonationId());
+
+			if (!isset($this->lastRemitCriteria) || !$this->lastRemitCriteria->equals($criteria)) {
+				$this->collRemits = RemitPeer::doSelectJoinReportCard($criteria, $con);
 			}
 		}
 		$this->lastRemitCriteria = $criteria;
