@@ -33,9 +33,9 @@
       <td><?php echo $school->getPhone() ?></td>
       <td>
       <?php
-        echo link_to('详情', 'school/show?school_id='.$school->getSchoolId());
+        echo link_to('详情', '@school_show?school_id='.$school->getSchoolId());
         echo "&nbsp;&nbsp;&nbsp;";
-        echo link_to('修改', 'school/edit?school_id='.$school->getSchoolId());
+        echo link_to('修改', '@school_edit?school_id='.$school->getSchoolId());
       ?>
       </td>
   <?php
@@ -55,7 +55,7 @@
 无相关记录<br/>
 <?php endif;?>
 
-<?php echo link_to ('新建学校', 'school/create') ?>
+<?php echo link_to ('新建学校', '@school_create') ?>
 &nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>
 </div>
 </div>

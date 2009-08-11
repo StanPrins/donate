@@ -9,7 +9,7 @@
 <?php use_helper('Object') ?>
 <?php use_helper('Validation')?>
 
-<?php echo form_tag('survey/update') ?>
+<?php echo form_tag('@survey_update') ?>
 
 <?php echo object_input_hidden_tag($survey, 'getSurveyId') ?>
 <?php echo object_input_hidden_tag($survey, 'getStudentId') ?>

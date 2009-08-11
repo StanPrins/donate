@@ -36,7 +36,7 @@
       echo "&nbsp;&nbsp;&nbsp;";
       echo link_to('修改', '@site_edit?site_id='.$project_site->getSiteId());
     ?></td>
-    <td width="15%"><?php echo link_to('查看该地区学校', 'school/listsite?site_id='.$project_site->getSiteId()) ?></td> 
+    <td width="15%"><?php echo link_to('查看该地区学校', '@school_by_site?site_id='.$project_site->getSiteId()) ?></td> 
   <?php
     if($count_row)
        $count_row = 0;
