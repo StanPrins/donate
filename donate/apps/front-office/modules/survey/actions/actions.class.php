@@ -261,6 +261,7 @@ class surveyActions extends sfActions
 	public function executeCascade()
 	{
   		$site_id = $this->getRequestParameter('site_id');
+  		$this->type = $this->getRequestParameter('type');
   		$c = new Criteria();
   		$c->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
   		if(!empty($site_id))

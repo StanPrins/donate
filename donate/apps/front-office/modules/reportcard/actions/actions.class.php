@@ -205,6 +205,13 @@ class reportcardActions extends sfActions
 		$e = new Criteria();
 		$e->addAscendingOrderByColumn(StudentPeer::NAME);		
 		$this->student = StudentPeer::doSelect($e);
+		
+		$s =new Criteria();
+    	$s->addAscendingOrderByColumn(ProjectSitePeer::SITE_NAME);
+    	$this->site = ProjectSitePeer::doSelect($s);
+    	$p = new Criteria();
+    	$p->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
+    	$this->school = SchoolPeer::doSelect($p);
 	}
 
 	public function executeEdit()

@@ -7,6 +7,7 @@
 <h1>成绩单</h1>
 
 <?php use_helper('Object') ?>
+<?php use_helper('Javascript')?>
 <?php use_helper('Validation')?>
 
 <?php echo form_tag('reportcard/update') ?>
@@ -19,16 +20,51 @@
 
 <fieldset id="sf_fieldset_none" class="">
 
+<?php if ($report_card->getStudentId()):?>
 <div class="form-row">
-  <label for="report_card_student_id" class="required">学生：</label>
+  <label for="survey_student_id" class="required">学生：</label>
+  <div id="student_name" class="content">
+  <?php echo $report_card->getStudent()->getName()?>
+  </div>
+</div>
+<?php else:?>
+<div class="form-row">
+  <label for="survey_student_id" class="required">捐助点：</label>
   <div class="content">     
-  <?php if ($report_card->getStudentId())
-           echo $report_card->getStudent()->getName();
-        else
-           echo select_tag('student_id',objects_for_select($student,'getStudentId','getName'));
+  <?php
+  echo select_tag('site_id', objects_for_select($site,'getSiteId','getSiteName', null,array('include_custom' => '--请选择--')));
+  ?> 
+  </div>
+</div>  
+<div id="new_area">
+<div class="form-row">
+  <label for="survey_student_id" class="required">学校：</label>
+  <div id="school_select" class="content">     
+  <?php
+  echo select_tag('school_id', objects_for_select($school,'getSchoolId','getSchoolName', null,array('include_custom' => '--请选择--')));
+  ?> 
+  </div>
+</div>  
+<div class="form-row">
+  <label for="survey_student_id" class="required">学生：</label>
+  <div id="student_name" class="content">     
+  <?php
+  	echo select_tag('student_id',objects_for_select($student,'getStudentId','getName'));
   ?>
   </div>
 </div>  
+</div>
+<?php echo observe_field('site_id',array('update'=>"new_area",
+'url'=>"survey/cascade",
+'with'=>"'type=1&site_id='+$('site_id').value",
+'script'=>true))
+?>
+<?php echo observe_field('school_id',array('update'=>"student_name",
+'url'=>"survey/cascade2",
+'with'=>"'school_id='+$('school_id').value",
+'script'=>true))
+?>
+<?php endif;?>  
 
 <div class="form-row">
   <label for="report_card_student_id" class="required">录入人：</label> 
