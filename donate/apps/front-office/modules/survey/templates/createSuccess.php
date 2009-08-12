@@ -135,7 +135,7 @@
   <?php echo object_textarea_tag($survey, 'getDonationUsage', $options = array('size' =>  '70x3')) ?>
   </div>
 </div>  
-<?php echo form_error('dornor_concerned')?>
+<?php echo form_error('donor_concerned')?>
 <div class="form-row">
   <label for="survey_dornor_concerned" class="required">捐助人关心的问题：</label> 
   <div class="content">     

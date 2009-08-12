@@ -50,7 +50,7 @@ fields:
     sfStringValidator:
       max: 256
       max_error:  至多256个字符
-  dornor_concerned:
+  donor_concerned:
     required:
       msg: "捐助人关心的问题不能为空"
     sfStringValidator:
