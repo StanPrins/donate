@@ -295,7 +295,7 @@ function display(obj,ctl)
   <?php echo object_textarea_tag($student,'getDiscription', $options = array('size' => '70x4')) ?>
   </div>
 </div>
-
+<?php echo form_error('member_photo')?>
 <div class="form-row">
   <label for="student_discription" class="required">全家照片：</label> 
   <div class="content">   
@@ -309,7 +309,7 @@ function display(obj,ctl)
   <?php endif;?>
   </div>
 </div> 
-
+<?php echo form_error('house_photo')?>
 <div class="form-row">
   <label for="student_discription" class="required">房屋照片：</label> 
   <div class="content">   
@@ -324,7 +324,6 @@ function display(obj,ctl)
   </div>
 </div> 
 
-<?php echo form_error('remark')?>
 <div class="form-row">
   <label for="student_remark" class="required">备注：</label> 
   <div class="content">   
