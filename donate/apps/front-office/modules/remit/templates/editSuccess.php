@@ -157,15 +157,13 @@
     'include_blank' => true,
   )) ?>
   </div>
-</div>  
-<?php echo form_error('discription')?>
+</div> 
 <div class="form-row">
   <label for="remit_discription" class="required">发放详情：</label> 
   <div class="content">  
   <?php echo object_textarea_tag($remit, 'getDiscription', array ('size' => '70x3')) ?>
   </div>
 </div>  
-<?php echo form_error('remark')?>
 <div class="form-row">
   <label for="remit_remark" class="required">备注：</label> 
   <div class="content">  
