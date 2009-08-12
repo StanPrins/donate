@@ -75,6 +75,6 @@
 
 <?php include_partial('pager',array('pager' => $pager))?>
 
-<?php echo link_to ('新建用户', 'user/create') ?>
+<?php echo link_to ('新建用户', '@user_create','post=true') ?>
 </div>
 </div>
