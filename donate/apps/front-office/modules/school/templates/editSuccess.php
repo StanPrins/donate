@@ -50,7 +50,7 @@
   )) ?>
   </div>
 </div>
-  
+<?php echo form_error('contact')?>  
 <div class="form-row">
   <label for="school_contact" class="required">联系人：</label> 
   <div class="content">   
