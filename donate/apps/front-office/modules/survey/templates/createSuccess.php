@@ -20,6 +20,7 @@
 <fieldset id="sf_fieldset_none" class="">
 <?php if ($survey->getStudentId()):?>
 <div class="form-row">
+  <?php echo object_input_hidden_tag($survey, 'getStudentId') ?>
   <label for="survey_student_id" class="required">被调查学生：</label>
   <div id="student_name" class="content">
   <?php echo $survey->getStudent()->getName()?>
