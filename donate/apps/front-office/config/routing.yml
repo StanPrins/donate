@@ -226,8 +226,8 @@ user_approve:
   param: { module: user, action: approve }  
 
 user_create:
-  url:  /user_edit
-  param: { module: user, action: edit }
+  url:  /user_create
+  param: { module: user, action: create }
 
 user_edit:
   url:  /user_edit/:user_id
