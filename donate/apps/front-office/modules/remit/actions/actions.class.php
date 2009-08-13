@@ -109,6 +109,9 @@ class remitActions extends sfActions
 	     return $this->forward404();	   	
 	   }*/				
 		$this->remit = RemitPeer::retrieveByPk($this->getRequestParameter('remit_id'));
+		$c = new Criteria();
+		$c->addAscendingOrderByColumn(UserPeer::NICKNAME);
+		$this->user = UserPeer::doSelect($c);
 		$this->forward404Unless($this->remit);
 	}
 
