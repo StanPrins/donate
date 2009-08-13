@@ -120,6 +120,7 @@ function display()
   <div class="content">
   <?php if(!is_null($user->getPhoto())):?>
   <?php echo image_tag('users/'.$user->getPhoto())?>
+  <br />
   <?php echo input_file_tag('photo',array('accept'=>'image/*','size'=>'10','style'=>'display:none'))?>
   <?php echo button_to_function('重新上传','display()',array('id'=>'control_button','size'=>'2'))?>
   <?php else:?>   
