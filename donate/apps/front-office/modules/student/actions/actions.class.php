@@ -285,7 +285,7 @@ public function executeListno()
     if(is_file($this->getRequest()->getFilePath('house_photo')))
     {
     	$filename = md5(uniqid(mt_rand()));
-    	$file = $this->getRequest()->getFilePath('photo');
+    	$file = $this->getRequest()->getFilePath('house_photo');
     	$extension = $this->getRequest()->getFileExtension('house_photo');
     	$newfilename = $filename.$extension;
     	$img = new sfImage($file);
