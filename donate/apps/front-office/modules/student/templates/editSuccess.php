@@ -233,7 +233,7 @@ function display(obj,ctl)
   </div>
 </div>
 
-<?php echo form_error('assit_history')?>
+<?php echo form_error('assist_history')?>
 <div class="form-row">
   <label for="student_assist_history" class="required">资助史：</label> 
   <div class="content">   
