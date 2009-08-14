@@ -65,3 +65,9 @@ div#content_main {
 	width: 760px;
 	margin-right: 0px;
 }
+
+.form_error
+{
+  color: #00ff00;
+  background-color: #ff0000;
+}
