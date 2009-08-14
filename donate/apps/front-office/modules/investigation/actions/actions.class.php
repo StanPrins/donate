@@ -104,4 +104,18 @@ class investigationActions extends sfActions
 	$survey->save();
     
   }  
+  function handleErrorUpdate()
+  {
+/*  	$student_id = $this->getRequestParameter('student_id');
+	if(empty($student_id))
+	{
+		return $this->forward('student','create');
+	}
+	else
+	{
+		$this->getRequest()->setParameter('student_id',$student_id);
+    	return $this->forward('student','edit');
+	}*/
+  	return $this->forward('investigation','Insert');
+  }
 }
