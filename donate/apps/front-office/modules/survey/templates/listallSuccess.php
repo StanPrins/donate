@@ -103,6 +103,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
       <td><?php echo $survey->getUserOpinion() ?></td>
       <td><?php echo $survey->getDiscription() ?></td>
       <td><?php echo link_to('详情', '@survey_show?survey_id='.$survey->getSurveyId())?>
+      <br />
           <?php echo link_to('修改', '@survey_edit?survey_id='.$survey->getSurveyId())?>          
       </td>      
   <?php
