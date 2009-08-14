@@ -62,7 +62,20 @@
 <table border="0" style="border: #000000 1px inset;">
   <tr>
     <td width='11.1%'>就读学校</td>
-    <td width='22.2%'><?php echo select_tag('school_id', objects_for_select($school,'getSchoolId','getSchoolName',$student->getSchoolId())) ?></td>
+    <td width='22.2%'>
+    <?php 
+	  if($student->getSchoolId())
+	  echo select_tag('site_id', objects_for_select($site,'getSiteId','getSiteName',$student->getSchool()->getSiteId(),array('include_custom' => '--请选择--')));
+	  else
+	  echo select_tag('site_id', objects_for_select($site,'getSiteId','getSiteName',$selected = null,array('include_custom' => '--请选择--')));
+	?>
+    <div id="school_select"><?php echo select_tag('school_id', objects_for_select($school,'getSchoolId','getSchoolName',$student->getSchoolId())) ?></div>
+    <?php echo observe_field('site_id',array('update'=>"school_select",
+							'url'=>"@student_cascade",
+							'with'=>"'site_id='+$('site_id').value",
+							'script'=>true))
+	?>
+    </td>
     <td width='11.1%'>班级</td>
     <td width='22.2%'><?php echo object_input_tag($student, 'getGrade', array ('size' => 10)) ?></td>
     <td width='11.1%'>是否住校</td>
@@ -97,7 +110,6 @@
     <td colspan="5"><?php echo object_textarea_tag($survey, 'getSchoolOpinion', $options = array('size' =>  '80x4')) ?></td>
   </tr>  
 </table>
-
 <h1>家庭成员情况</h1>
 <?php echo form_error('fm1_relation')?>
 <?php echo form_error('fm1_name')?>
@@ -189,7 +201,7 @@
 <table border="0" style="border: #000000 1px inset;">
   <tr>
     <td width='20%'>走访志愿者</td>
-    <td width='30%'><?php echo object_select_tag($survey, 'getUserId', array ('related_class' => 'User')) ?></td>
+    <td width='30%'><?php echo select_tag('user_id',objects_for_select($user, 'getUserId', 'getNickname',$survey->getUserId(),array('include_custom'=>"--请选择--"))) ?></td>
     <td width='20%'>走访时间</td>
     <td width='30%'><?php echo object_input_date_tag($survey, 'getSurveyDate', array ('rich' => true)) ?></td>
   </tr>
