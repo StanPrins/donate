@@ -32,13 +32,18 @@
       <?php echo link_to ('成绩单', '@score_by_student?student_id='.$donation->getStudent()->getStudentId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
       <?php echo link_to ('调查记录', '@survey_by_student?student_id='.$donation->getStudent()->getStudentId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
       <?php echo link_to ('资助记录', '@donation_student?student_id='.$donation->getStudent()->getStudentId().'&page=1','post=true') ?>&nbsp;&nbsp;&nbsp;
+      <?php echo link_to ('详情', '@student_show?student_id='.$donation->getStudent()->getStudentId()) ?>
       <br/>
-      <?php echo link_to ('详情', '@student_show?student_id='.$donation->getStudent()->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <?php if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager')
 			|| ($sf_user->getAttribute('usertype', '')=='surveyor'))
 			{
 				echo link_to ('修改', '@student_edit?student_id='.$donation->getStudent()->getStudentId());
 				echo "&nbsp;&nbsp;&nbsp;";
+				echo link_to ('录入成绩单','@score_create?student_id='.$donation->getStudent()->getStudentId());
+				echo "&nbsp;&nbsp;&nbsp;";
+				echo link_to ('新建调查', '@survey_create?student_id='.$donation->getStudent()->getStudentId());
+				echo "&nbsp;&nbsp;&nbsp;";
+				echo link_to ('新建资助', '@donation_create?student_id='.$donation->getStudent()->getStudentId());
 			}
 	   ?>
 </td>
