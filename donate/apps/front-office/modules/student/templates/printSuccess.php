@@ -26,7 +26,7 @@ function pagesetup_null(){
     catch(e)
     {
 //        alert(e.description);
-		alert("对不起,您的浏览器设置里禁用了该功能!\n请将IE\\tools\\internet option\\security\\custom level\\activeX controls and plug-ins\\initialize and script...设置成prompt或者enable.");
+		alert("对不起,您的IE浏览器设置里禁用了该功能!\n继续将无法消除页眉页脚.");
     } 
 } 
 
@@ -109,7 +109,7 @@ function pageSet() {
 </SCRIPT> 
 
  <DIV id="control" align="center" class='Noprint'>
- <p>请将IE\tools\internet option\security\custom level\activeX controls and plug-ins\initialize and script...设置成prompt或者enable</p>
+ <p>请将IE\tools\internet option\security\custom level\activeX controls and plug-ins\initialize and script...设置成enable或者prompt</p>
  <input type="button" class="tab" value="打印" onclick="print();">&nbsp;&nbsp;
  <input type="button" class="tab" value="打印设置" onclick="pageSet();">&nbsp;&nbsp;  
  <input type="button" class="tab" value="打印预览" onclick="printShow();">
@@ -300,6 +300,7 @@ function pageSet() {
   </td>
  </tr>
  <?php $remits = $a[$i] ?>
+ <?php if(sizeof($remits)!=0):?>
  <?php foreach ($remits as $remit): ?>
  <tr style='mso-yfti-irow:5;height:22.6pt'>
   <td width=134 colspan=3 style='width:80.7pt;border:solid windowtext 1.0pt;
@@ -377,6 +378,16 @@ function pageSet() {
   </td>
  </tr>
  <?php endforeach; ?>
+ <?php else:?>
+ <tr style='mso-yfti-irow:3;height:23.25pt'>
+  <td width=650 colspan=15 valign=top style='width:487.7pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  background:#F3F3F3;padding:0in 5.4pt 0in 5.4pt;height:23.25pt'>
+  <p class=MsoNormal style='text-align:left;line-height:100%'><span
+  style='font-size:12.0pt;line-height:100%'><o:p>无收款情况</o:p></span></p>
+  </td>
+ </tr>
+<?php endif;?>
 <?php $i++;?>      
 <?php endforeach; ?>
 <?php else:?>
@@ -525,13 +536,13 @@ function pageSet() {
 </div>
 
 </div>
-
+<!--  
 <span style='font-size:10.5pt;mso-bidi-font-size:12.0pt;line-height:100%;
 font-family:"Times New Roman";mso-fareast-font-family:SimSun;mso-font-kerning:
 1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:
 AR-SA'><br clear=all style='page-break-before:always;mso-break-type:section-break'>
 </span>
-
+-->
 <div class=Section2 style='layout-grid:15.6pt'>
 
 <div align=center>
@@ -849,11 +860,15 @@ mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'
 style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
 150%'><o:p></o:p></span></b></p>
 </div>
+
+<!--
 <span style='font-size:10.5pt;mso-bidi-font-size:12.0pt;line-height:100%;
 font-family:"Times New Roman";mso-fareast-font-family:SimSun;mso-font-kerning:
 1.0pt;mso-ansi-language:EN-US;mso-fareast-language:ZH-CN;mso-bidi-language:
 AR-SA'><br clear=all style='page-break-before:always;mso-break-type:section-break'>
 </span>
+-->
+
 <?php if(!is_null($survey)): ?>
 <div class=Section2 style='layout-grid:15.6pt'>
 <div align=center>
@@ -873,7 +888,7 @@ AR-SA'><br clear=all style='page-break-before:always;mso-break-type:section-brea
   150%;mso-fareast-font-family:SimHei'><o:p></o:p></span></b></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:2;height:27.15pt'>
+ <tr style='mso-yfti-irow:2;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
@@ -916,212 +931,212 @@ AR-SA'><br clear=all style='page-break-before:always;mso-break-type:section-brea
   style='font-size:12.0pt;line-height:100%'><o:p><?php echo $survey->getSurveyDate() ?>（<?php echo $survey->getGrade() ?>）</o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>家庭情况</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getFamilyCondition() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>其他资助情况</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getOtherAssist() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>退学史</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getDropoutInfo() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>自述</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getPresentation() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>年收入</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getRevenue() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>家庭财产</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getProperty() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>捐款用途</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getDonationUsage() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>捐助者关心的问题</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getDonorConcerned() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>给捐助者的话</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getMsgToDonor() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>给学生的话</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getMsgToStu() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>学校意见</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getSchoolOpinion() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>老师意见</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getTeacherOpinion() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>志愿者意见</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getUserOpinion() ?></o:p></span></p>
   </td>
  </tr>
- <tr style='mso-yfti-irow:3;height:63.8pt'>
+ <tr style='mso-yfti-irow:3;'>
   <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
-  padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'>
   <span style='font-size:12.0pt;line-height:100%'><o:p>小结</o:p></span></p>
   </td>
   <td width=580 colspan=7 style='width:434.8pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
-  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:63.8pt'>
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;'>
   <p class=MsoNormal style='line-height:100%'><span style='font-size:12.0pt;
   line-height:100%'><o:p><?php echo $survey->getDiscription() ?></o:p></span></p>
   </td>
