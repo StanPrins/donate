@@ -72,15 +72,57 @@
    通过OFS捐款  
   </div>
 </div>  
-
+<script type="text/javascript">
+function rExamine(){
+	var rCheck = document.getElementById('is_received').checked;
+	var sCheck = document.getElementById('is_sendout').checked;
+	if(rCheck)
+	{
+		document.getElementById('rExamine').style.display = "block";
+		document.getElementById('sExamine').style.display = sCheck?"block":"none";
+	}
+	else
+	{
+		document.getElementById('rExamine').style.display = "none";
+		document.getElementById('receive_date').value = "";
+		document.getElementById('receive_user_id').value = "";
+		document.getElementById('receive_amount').value = "";
+		document.getElementById('is_sendout').checked = false;
+		document.getElementById('sendout_date').value = "";
+		document.getElementById('sendout_user_id').value = "";
+		document.getElementById('sendout_amount').value = "";
+		document.getElementById('sendout_receiver').value = "";
+		document.getElementById('report_id').value = "";
+		document.getElementById('discription').value = "";
+	}	
+}
+function sExamine(){
+	var sCheck = document.getElementById('is_sendout').checked;
+	if(sCheck)
+	{
+		document.getElementById('sExamine').style.display = "block";
+	}
+	else
+	{
+		document.getElementById('sExamine').style.display = "none";
+		document.getElementById('sendout_date').value = "";
+		document.getElementById('sendout_user_id').value = "";
+		document.getElementById('sendout_amount').value = "";
+		document.getElementById('sendout_receiver').value = "";
+		document.getElementById('report_id').value = "";
+		document.getElementById('discription').value = "";
+	}
+}
+</script>
 <?php if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager') || ($sf_user->getAttribute('usertype', '')=='administrator')):?>
 <div class="form-row">
   <label for="remit_is_ceived" class="required">OFS收到：</label> 
   <div class="content">   
-  <?php echo object_checkbox_tag($remit, 'getIsReceived', array (
+  <?php echo object_checkbox_tag($remit, 'getIsReceived', array ('onClick'=>"rExamine()"
   )) ?>
   </div>
-</div>  
+</div> 
+<div id="rExamine" style="display:none">
 <?php echo form_error('receive_date')?>
 <div class="form-row">
   <label for="remit_receive_date" class="required">到款日期：</label> 
@@ -94,7 +136,7 @@
 <div class="form-row">
   <label for="remit_receive_user_id" class="required">OFS收款人：</label> 
   <div class="content">   
-	<?php echo select_tag('receive_user_id',objects_for_select($user,'getUserId','getNickname',$remit->getReceiveUserId()))?>
+	<?php echo select_tag('receive_user_id',objects_for_select($user,'getUserId','getNickname',$remit->getReceiveUserId(),array('include_custom'=>"--请选择--")))?>
   </div>
 </div>   
 <?php echo form_error('receive_amount')?>
@@ -110,10 +152,11 @@
 <div class="form-row">
   <label for="remit_is_sendout" class="required">OFS发出：</label> 
   <div class="content">   
-  <?php echo object_checkbox_tag($remit, 'getIsSendout', array (
+  <?php echo object_checkbox_tag($remit, 'getIsSendout', array ('onClick'=>"sExamine()"
   )) ?>
   </div>
 </div>  
+<div id="sExamine" style="display:none">
 <?php echo form_error('sendout_date')?>  
 <div class="form-row">
   <label for="remit_sendout_date" class="required">发款日期：</label> 
@@ -128,9 +171,9 @@
   <label for="remit_sendout_user_id" class="required">OFS发款人：</label> 
   <div class="content">
   <?php if(is_null($remit->getSendoutUserId()))
-  			echo select_tag('sendout_user_id',objects_for_select($user,'getUserId','getNickname'));
+  			echo select_tag('sendout_user_id',objects_for_select($user,'getUserId','getNickname',null,array('include_custom'=>'--请选择--')));
   		else
-  			echo select_tag('sendout_user_id',objects_for_select($user,'getUserId','getNickname',$remit->getSendoutUserId()));
+  			echo select_tag('sendout_user_id',objects_for_select($user,'getUserId','getNickname',$remit->getSendoutUserId(),array('include_custom'=>'--请选择--')));
   ?> 
   </div>
 </div> 
@@ -167,7 +210,9 @@
   <div class="content">  
   <?php echo object_textarea_tag($remit, 'getDiscription', array ('size' => '70x3')) ?>
   </div>
-</div>  
+</div> 
+</div> 
+</div> 
 <div class="form-row">
   <label for="remit_remark" class="required">备注：</label> 
   <div class="content">  
