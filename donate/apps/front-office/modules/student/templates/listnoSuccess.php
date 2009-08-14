@@ -87,7 +87,12 @@ $default_site_id = empty($site_id)?-1:$site_id;
       || ($sf_user->getAttribute('usertype', '')=='surveyor'))
       {
       	echo link_to ('修改', '@student_edit?student_id='.$student->getStudentId());
-      	echo "&nbsp;&nbsp;&nbsp;";      	
+      	echo "&nbsp;&nbsp;&nbsp;";
+      	echo link_to ('录入成绩单','@score_create?student_id='.$student->getStudentId());
+		echo "&nbsp;&nbsp;&nbsp;";
+		echo link_to ('新建调查', '@survey_create?student_id='.$student->getStudentId());
+		echo "&nbsp;&nbsp;&nbsp;";
+		echo link_to ('新建资助', '@donation_create?student_id='.$student->getStudentId());    	
       }
       ?>      
     <?php endif;?>      
