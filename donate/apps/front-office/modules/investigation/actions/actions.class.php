@@ -22,6 +22,14 @@ class investigationActions extends sfActions
 	$c = new Criteria();
     $c->addAscendingOrderByColumn(SchoolPeer::SCHOOL_NAME);
     $this->school = SchoolPeer::doSelect($c);
+    
+    $d = new Criteria();
+    $d->addAscendingOrderByColumn(UserPeer::NICKNAME);
+    $this->user = UserPeer::doSelect($d);
+    
+    $s =new Criteria();
+    $s->addAscendingOrderByColumn(ProjectSitePeer::SITE_NAME);
+    $this->site = ProjectSitePeer::doSelect($s);
   }
 
   public function executeUpdate()
@@ -106,16 +114,6 @@ class investigationActions extends sfActions
   }  
   function handleErrorUpdate()
   {
-/*  	$student_id = $this->getRequestParameter('student_id');
-	if(empty($student_id))
-	{
-		return $this->forward('student','create');
-	}
-	else
-	{
-		$this->getRequest()->setParameter('student_id',$student_id);
-    	return $this->forward('student','edit');
-	}*/
   	return $this->forward('investigation','Insert');
   }
 }
