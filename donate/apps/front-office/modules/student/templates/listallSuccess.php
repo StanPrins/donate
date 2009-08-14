@@ -76,15 +76,21 @@ $default_site_id = empty($site_id)?-1:$site_id;
 			<br />
 			<?php echo link_to ('成绩单', '@score_by_student?student_id='.$student->getStudentId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
 			<?php echo link_to ('调查记录', '@survey_by_student?student_id='.$student->getStudentId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
-			<?php echo link_to ('资助记录', '@donation_student?student_id='.$student->getStudentId(),'post=true') ?>
+			<?php echo link_to ('资助记录', '@donation_student?student_id='.$student->getStudentId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
+			<?php echo link_to ('详细', '@student_show?student_id='.$student->getStudentId()) ?>
 			<br />
-			<?php echo link_to ('详细', '@student_show?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
 			<?php if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager')
 			|| ($sf_user->getAttribute('usertype', '')=='surveyor'))
 			{
 				echo link_to ('修改', '@student_edit?student_id='.$student->getStudentId());
 				echo "&nbsp;&nbsp;&nbsp;";
 				echo link_to('打印回访表','@print_table?student_id='.$student->getStudentId());
+				echo "&nbsp;&nbsp;&nbsp;";
+				echo link_to ('录入成绩单','@score_create?student_id='.$student->getStudentId());
+				echo "&nbsp;&nbsp;&nbsp;";
+				echo link_to ('新建调查', '@survey_create?student_id='.$student->getStudentId());
+				echo "&nbsp;&nbsp;&nbsp;";
+				echo link_to ('新建资助', '@donation_create?student_id='.$student->getStudentId());
 			}
 			?></td>
 		</tr>
