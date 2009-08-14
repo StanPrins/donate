@@ -73,10 +73,15 @@ $default_site_id = empty($site_id)?-1:$site_id;
       <br/>
       &nbsp;<strong>自述：&nbsp;</strong><?php echo $student->getDiscription() ?>
       <br/>
+    <?php if ($sf_user->getAttribute('usertype', '')=='volunteer'):?>
+    <?php else:?>
       <?php echo link_to ('成绩单', '@score_by_student?student_id='.$student->getStudentId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
       <?php echo link_to ('调查记录', '@survey_by_student?student_id='.$student->getStudentId(),'post=true') ?>&nbsp;&nbsp;&nbsp;
+    <?php endif;?>      
       <?php echo link_to ('资助他', '@donation_create?student_id='.$student->getStudentId(),'post=true') ?>
       <br />
+    <?php if ($sf_user->getAttribute('usertype', '')=='volunteer'):?>
+    <?php else:?>
       <?php echo link_to ('详细', '@student_show?student_id='.$student->getStudentId()) ?>&nbsp;&nbsp;&nbsp;
       <?php if (($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager')
       || ($sf_user->getAttribute('usertype', '')=='surveyor'))
@@ -85,6 +90,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
       	echo "&nbsp;&nbsp;&nbsp;";      	
       }
       ?>      
+    <?php endif;?>      
            
 </td></tr>
 <?php endforeach; ?>

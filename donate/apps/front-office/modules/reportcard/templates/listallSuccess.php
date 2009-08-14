@@ -77,7 +77,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
   <th>老师评语</th>
 
   <th>创建于</th>  
-  <th>操作</th>  
+  <th width="10%">操作</th>  
 </tr>
 </thead>
 <tbody>
