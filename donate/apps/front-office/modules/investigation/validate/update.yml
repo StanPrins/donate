@@ -19,60 +19,13 @@ fields:
     required:
       msg:  "名字不能为空"
     nameStringValidator:
-  nickname:
-    required:
-      msg:  昵称不能为空
-    nameStringValidator:
   race:
     required:
       msg:  "民族不能为空"
     nameStringValidator:
-  photo:
-    file:  True
-    sfFileValidator:
-      mime_types:
-        - 'image/jpeg'
-        - 'image/png'
-        - 'image/x-png'
-        - 'image/pjpeg'
-        - 'image/bmp'
-        - 'image/gif'        
-      mime_types_error: 只能上传BMP、JPEG、PNG和GIF图像
-      max_size:  512000
-      max_size_error:  文件大小不能超过512kb
-  member_photo:
-    file:  True
-    sfFileValidator:
-      mime_types:
-        - 'image/jpeg'
-        - 'image/png'
-        - 'image/x-png'
-        - 'image/pjpeg'
-        - 'image/bmp'
-        - 'image/gif'        
-      mime_types_error: 只能上传BMP、JPEG、PNG和GIF图像
-      max_size:  512000
-      max_size_error:  文件大小不能超过512kb
-  house_photo:
-    file:  True
-    sfFileValidator:
-      mime_types:
-        - 'image/jpeg'
-        - 'image/png'
-        - 'image/x-png'
-        - 'image/pjpeg'
-        - 'image/bmp'
-        - 'image/gif'        
-      mime_types_error: 只能上传BMP、JPEG、PNG和GIF图像
-      max_size:  512000
-      max_size_error:  文件大小不能超过512kb
-  head_teacher:
-    required:
-      msg:  班主任不能为空
-    nameStringValidator:
   guardian:
     required:
-      msg:  监护人不能为空
+      msg:  家长不能为空
     nameStringValidator:
   birthday:
     required:
@@ -103,14 +56,6 @@ fields:
       min_error:  邮编不存在
       max:  9999999
       max_error:  邮编不存在
-  city:
-    required:
-      msg:  城市不能为空
-    nameStringValidator:
-  province:
-    required:
-      msg:  省份不能为空
-    nameStringValidator:
   consignee:
     required:
       msg:  "收件人不能为空"
@@ -188,6 +133,42 @@ fields:
       max:  10000
       max_error: 年龄不能大于200
   fm4_occupation:
-    nameStringValidator:        
+    nameStringValidator:
+  survey_date:
+    sfDateValidator:
+      date_error:  日期无效
+      compare:  "2009-08-08"
+      operator: ">="
+      compare_error:  "对不起，创建日期 不能早于2009年8月8日"
+  revenue:
+    required:
+      msg: "收入不能为空"
+    sfStringValidator:
+      max: 128
+      max_error:  至多128个字符
+  property:
+    required:
+      msg: "财产不能为空"
+    sfStringValidator:
+      max: 256
+      max_error:  至多256个字符
+  school_opinion:
+    required:
+      msg: "学校意见不能为空"
+    sfStringValidator:
+      max: 256
+      max_error:  至多256个字符
+  teacher_opinion:
+    required:
+      msg: "老师意见不能为空"
+    sfStringValidator:
+      max: 256
+      max_error:  至多256个字符
+  user_opinion:
+    required:
+      msg: "志愿者意见不能为空"
+    sfStringValidator:
+      max: 256
+      max_error:  至多256个字符      
     
   
