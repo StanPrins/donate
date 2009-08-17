@@ -173,14 +173,14 @@ function pageSet() {
   mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#27665;&#26063;</span><span
   style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
   </td>
-  <td width=123 colspan=2 style='width:92.55pt;border-top:none;border-left:
+  <td width=123 colspan=2 style='width:82.55pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'><span
   style='font-size:12.0pt;line-height:100%'><o:p><o:p><?php echo $student->getRace()?></o:p></span></p>
   </td>
-  <td width=45 style='width:33.45pt;border-top:none;border-left:none;
+  <td width=45 style='width:43.45pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:21.0pt'>
@@ -284,7 +284,7 @@ function pageSet() {
   line-height:100%;font-family:SimSun;mso-ascii-font-family:"Times New Roman";
   mso-hansi-font-family:"Times New Roman"'>&#25910;&#27454;&#24773;&#20917;<br /><?php echo ++$k?></span></b></p>
   </td>
-  <td width=73 colspan=2 style='width:54.5pt;border-top:none;border-left:none;
+  <td width=73 colspan=3 style='width:54.5pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
@@ -294,7 +294,7 @@ function pageSet() {
   style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;line-height:
   150%'><o:p></o:p></span></b></p>
   </td>
-  <td width=96 colspan=4 style='width:1.0in;border-top:none;border-left:none;
+  <td width=96 colspan=3 style='width:1.0in;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
@@ -309,14 +309,14 @@ function pageSet() {
   lang=ZH-CN style='font-size:12.0pt;line-height:100%;font-family:SimSun'>&#25910;&#27454;&#20154;</span><span
   style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
   </td>
-  <td width=96 style='width:1.0in;border-top:none;border-left:none;border-bottom:
+  <td width=96 style='width:63pt;border-top:none;border-left:none;border-bottom:
   solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
   solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
   solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'><span
   style='font-size:12.0pt;line-height:100%'><o:p><?php echo $remit->getSendoutReceiver()?></o:p></span></p>
   </td>
-  <td width=48 colspan=2 style='width:.5in;border-top:none;border-left:none;
+  <td width=48 colspan=1 style='width:.5in;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
@@ -325,18 +325,18 @@ function pageSet() {
   mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#37329;&#39069;</span><span
   style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
   </td>
-  <td width=60 colspan=2 style='width:45.0pt;border-top:none;border-left:none;
+  <td width=60 colspan=2 style='width:0.5in;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'><span
   style='font-size:12.0pt;line-height:100%'><?php echo $remit->getAmount()?><o:p></o:p></span></p>
   </td>
-  <td width=84 colspan=2 style='width:63.0pt;border-top:none;border-left:none;
+  <td width=84 colspan=3 style='width:81.0pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:22.6pt'>
-  <p class=MsoNormal style='line-height:100%'><span lang=ZH-CN
+  <p class=MsoNormal align=center style='line-height:100%'><span lang=ZH-CN
   style='font-size:12.0pt;line-height:100%;font-family:SimSun;mso-ascii-font-family:
   "Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#25910;&#27454;&#26085;&#26399;</span><span
   style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
