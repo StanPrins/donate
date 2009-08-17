@@ -377,7 +377,7 @@ function pageSet() {
   <td width=650 colspan=17 valign=center style='width:487.7pt;border:solid windowtext 1.0pt;
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:23.25pt'>
-  <p class=MsoNormal align=center style='text-align:center;line-height:100%'><b
+  <p class=MsoNormal align=left style='text-align:left;line-height:100%'><b
   style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
   150%;mso-fareast-font-family:SimHei'><o:p>无收款情况</o:p></span></b></p>
   </td>
@@ -388,7 +388,7 @@ function pageSet() {
 <td width=650 colspan=17 valign=center style='width:487.7pt;border:solid windowtext 1.0pt;
   border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:23.25pt'>
-  <p class=MsoNormal align=center style='text-align:center;line-height:100%'><b
+  <p class=MsoNormal align=left style='text-align:left;line-height:100%'><b
   style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
   150%;mso-fareast-font-family:SimHei'><o:p>无资助记录</o:p></span></b></p>
   </td>
