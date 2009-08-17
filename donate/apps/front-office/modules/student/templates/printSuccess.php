@@ -231,14 +231,14 @@ function pageSet() {
   mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#32534;</span><span
   style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
   </td>
-  <td width=98 colspan=4 style='width:73.25pt;border-top:none;border-left:none;
+  <td width=98 colspan=4 style='width:63.25pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:23.65pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'><span
   style='font-size:12.0pt;line-height:100%'><o:p><?php if ($student->getPostal()) echo $student->getPostal(); ?></o:p></span></p>
   </td>
-  <td width=84 colspan=2 style='width:63.0pt;border-top:none;border-left:none;
+  <td width=84 colspan=2 style='width:73.0pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:23.65pt'>
@@ -610,7 +610,7 @@ AR-SA'>
   </td>
  </tr>
  <tr style='mso-yfti-irow:2;height:27.15pt'>
-  <td width=96 style='width:1.0in;border:solid windowtext 1.0pt;border-top:
+  <td width=96 style='width:0.5in;border:solid windowtext 1.0pt;border-top:
   none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
   padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'><span
@@ -621,14 +621,14 @@ AR-SA'>
   mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#38271;</span><span
   style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
   </td>
-  <td width=119 style='width:89.3pt;border-top:none;border-left:none;
+  <td width=119 style='width:80.3pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'><span
   style='font-size:12.0pt;line-height:100%'><o:p><?php echo $student->getSchool()->getMaster() ?></o:p></span></p>
   </td>
-  <td width=85 colspan=2 style='width:63.8pt;border-top:none;border-left:none;
+  <td width=85 colspan=2 style='width:72.8pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
@@ -637,7 +637,7 @@ AR-SA'>
   mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#32852;&#31995;&#26041;&#24335;</span><span
   style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
   </td>
-  <td width=151 colspan=2 style='width:113.4pt;border-top:none;border-left:
+  <td width=151 colspan=2 style='width:150.4pt;border-top:none;border-left:
   none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
@@ -653,7 +653,7 @@ AR-SA'>
   mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman"'>&#37038;&#32534;</span><span
   style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
   </td>
-  <td width=130 style='width:97.45pt;border-top:none;border-left:none;
+  <td width=130 style='width:80.45pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:27.15pt'>
@@ -906,11 +906,9 @@ AR-SA'><br clear=all style='page-break-before:always;mso-break-type:section-brea
   solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
   solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt; '>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'><span
-  lang=ZH-CN style='font-family:SimSun;mso-ascii-font-family:"Times New Roman";
-  mso-hansi-font-family:"Times New Roman"'>&#23398;&#29983;&#22235;</span><span
-  style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
+  style='font-size:12.0pt;line-height:100%'><o:p><?php echo $survey->getStudent()->getName() ?></o:p></span></p>
   </td>
-  <td width=96 style='width:0.75in;border-top:none;border-left:none;border-bottom:
+  <td width=96 style='width:0.65in;border-top:none;border-left:none;border-bottom:
   solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;mso-border-top-alt:
   solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
   solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt; '>
@@ -919,16 +917,14 @@ AR-SA'><br clear=all style='page-break-before:always;mso-break-type:section-brea
   mso-hansi-font-family:"Times New Roman"'>&#35843;&#26597;&#20154;</span><span
   style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
   </td>
-  <td width=126 style='width:1.1in;border-top:none;border-left:none;
+  <td width=126 style='width:1.0in;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt; '>
   <p class=MsoNormal align=center style='text-align:center;line-height:100%'><span
-  lang=ZH-CN style='font-family:SimSun;mso-ascii-font-family:"Times New Roman";
-  mso-hansi-font-family:"Times New Roman"'>&#19971;&#21697;&#21439;&#22826;&#29239;</span><span
-  style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
+  style='font-size:12.0pt;line-height:100%'><o:p><?php echo $survey->getUser()->getName() ?></o:p></span></p>
   </td>
-  <td width=131 style='width:1.4in;border-top:none;border-left:none;
+  <td width=131 style='width:1.6in;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt; '>
@@ -941,10 +937,8 @@ AR-SA'><br clear=all style='page-break-before:always;mso-break-type:section-brea
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
   mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt; '>
-  <p class=MsoNormal align=center style='text-align:center;line-height:100%'>2008-06-06<span
-  lang=ZH-CN style='font-family:SimSun;mso-ascii-font-family:"Times New Roman";
-  mso-hansi-font-family:"Times New Roman"'>&#65288;&#39640;&#20108;&#65289;</span><span
-  style='font-size:12.0pt;line-height:100%'><o:p></o:p></span></p>
+  <p class=MsoNormal align=center style='text-align:center;line-height:100%'><span
+  style='font-size:12.0pt;line-height:100%'><o:p><?php echo $survey->getSurveyDate() ?>（<?php echo $survey->getGrade() ?>）</o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:2;'>
