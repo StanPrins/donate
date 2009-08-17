@@ -141,6 +141,8 @@ class remitActions extends sfActions
 			list($d, $m, $y) = sfI18N::getDateForCulture($this->getRequestParameter('receive_date'), $this->getUser()->getCulture());
 			$remit->setReceiveDate("$y-$m-$d");
 		}
+		else
+		    $remit->setReceiveDate(null);
 		$remit->setReceiveUserId($this->getRequestParameter('receive_user_id') ? $this->getRequestParameter('receive_user_id') : null);
 		$remit->setReceiveAmount($this->getRequestParameter('receive_amount'));
 		
@@ -159,6 +161,9 @@ class remitActions extends sfActions
 			list($d, $m, $y) = sfI18N::getDateForCulture($this->getRequestParameter('sendout_date'), $this->getUser()->getCulture());
 			$remit->setSendoutDate("$y-$m-$d");
 		}
+		else
+			$remit->setSendoutDate(null);
+			
 		$remit->setSendoutUserId($this->getRequestParameter('sendout_user_id') ? $this->getRequestParameter('sendout_user_id') : null);
 		$remit->setSendoutAmount($this->getRequestParameter('sendout_amount'));
 		

@@ -122,7 +122,16 @@ function sExamine(){
   )) ?>
   </div>
 </div> 
+
+
 <div id="rExamine" style="display:none">
+<script>
+if(document.getElementById('is_received').checked)
+	document.getElementById('rExamine').style.display="block";
+else
+	document.getElementById('rExamine').style.display="none";
+</script>
+
 <?php echo form_error('receive_date')?>
 <div class="form-row">
   <label for="remit_receive_date" class="required">到款日期：</label> 
@@ -156,7 +165,15 @@ function sExamine(){
   )) ?>
   </div>
 </div>  
+
+
 <div id="sExamine" style="display:none">
+<script>
+if(document.getElementById('is_sendout').checked)
+	document.getElementById('sExamine').style.display="block";
+else
+	document.getElementById('sExamine').style.display="none";
+</script>
 <?php echo form_error('sendout_date')?>  
 <div class="form-row">
   <label for="remit_sendout_date" class="required">发款日期：</label> 

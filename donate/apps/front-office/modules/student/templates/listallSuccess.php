@@ -89,8 +89,6 @@ $default_site_id = empty($site_id)?-1:$site_id;
 				echo link_to ('录入成绩单','@score_create?student_id='.$student->getStudentId());
 				echo "&nbsp;&nbsp;&nbsp;";
 				echo link_to ('新建调查', '@survey_create?student_id='.$student->getStudentId());
-				echo "&nbsp;&nbsp;&nbsp;";
-				echo link_to ('新建资助', '@donation_create?student_id='.$student->getStudentId());
 			}
 			?></td>
 		</tr>
