@@ -9,6 +9,7 @@
 <?php echo object_input_hidden_tag($student, 'getStudentId') ?>
 
 <h1>我们的自由天空(OFS)受助学生走访调查表录入</h1>
+
 <?php echo form_error('ofs_id')?>
 <?php echo form_error('name')?>
 <?php echo form_error('race')?>
