@@ -52,7 +52,7 @@
           <?php if (!($donation->getStudent()->getIsDonated())) 
                      echo link_to('批复', '@donation_edit?donation_id='.$donation->getDonationId());
           ?>&nbsp;&nbsp;&nbsp;
-          <?php //echo link_to('删除', 'donation/delete?donation_id='.$donation->getDonationId(), 'post=true&confirm=真的要删除么？') ?>
+          <?php echo link_to('删除', 'donation/delete?donation_id='.$donation->getDonationId(), 'post=true&confirm=真的要删除么？') ?>
       </td>
   </tr>
 <?php endforeach; ?>

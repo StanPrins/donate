@@ -116,7 +116,7 @@ score_by_student:
   param: { module: reportcard, action: liststu}
 
 score_show:
-  url:  /score_show/:report_id
+  url:  /score_show/:report_id/*
   param: { module: reportcard, action: show}
 
 score_update:
