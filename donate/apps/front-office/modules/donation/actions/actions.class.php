@@ -197,6 +197,11 @@ class donationActions extends sfActions
 
   public function executeDelete()
   {
+    if ($this->getRequest()->getMethod() != sfRequest::POST)
+	{
+	   return $this->forward404();	   	
+	}
+	  	
     $donation = DonationPeer::retrieveByPk($this->getRequestParameter('donation_id'));
 
     $this->forward404Unless($donation);
