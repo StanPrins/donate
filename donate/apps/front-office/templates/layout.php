@@ -10,8 +10,7 @@
 <link rel="shortcut icon" href="/favicon.ico" />
 
 </head>
-<body style="width:760px">
-
+<body style="width:760px;margin-left:auto;margin-right:auto;">
 <div id="banner" >
   <?php echo image_tag('banner.jpg', 'alt=banner ') ?>
 </div>	
@@ -163,24 +162,11 @@
      
 </div>
 
-
-<div id="content_main">
+<div id="content_main" style="height:600px;overflow:auto;">
 <?php echo $sf_data->getRaw('sf_content') ?>
 </div>
-
-
-<div id="footer">
-	
-<br><p>&nbsp;</p>
-<hr/>
-<br/>
-Copyright(C)  2006-2009  www.ourfreesky.org  All rights reserved.
-<br/>
-OFS爱心热线：086-010-62246033 我们的自由天空 版权所有   未经许可 请勿转载 京ICP备07002433号 
-<br/>
-使用中的任何问题或建议请与 ourfreesky.org@hotmail.com 联系
-
-
+<div id="hoomerFooter">
+<iframe scrolling="no" height="112" frameborder="0" align="middle" width="760" src="http://www.ourfreesky.org/footer.html" marginheight="0" marginwidth="0" name="footer"></iframe>
 </div>
 
 
