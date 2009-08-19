@@ -174,7 +174,7 @@ class donationActions extends sfActions
     {
        $student = StudentPeer::retrieveByPk($this->getRequestParameter('student_id'));
        $ifSetDonatedZero = 0;
-       if($student -> getIsDonated())         //取消后若没有其他资助就标记学生为未资助
+       if($student -> getIsDonated())         
        {
           $c1 = new Criteria();
           $c1 -> add(DonationPeer::STUDENT_ID, $this->getRequestParameter('student_id'));
@@ -201,7 +201,7 @@ class donationActions extends sfActions
 	{
 	   return $this->forward404();	   	
 	}
-	  	
+
     $donation = DonationPeer::retrieveByPk($this->getRequestParameter('donation_id'));
 
     $this->forward404Unless($donation);
