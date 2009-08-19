@@ -1,0 +1,24 @@
+methods:
+  post: [username, password]
+
+names:
+  username:
+    required:     true
+    required_msg: 请输入用户名
+    validators:   [usernameValidator, userValidator]
+
+  password:
+    required:     true
+    required_msg: 请输入密码
+
+usernameValidator:
+    class:        sfStringValidator
+    param:
+      min:        5
+      min_error:  用户名必须是5个或者5个以上的字母或数字
+
+userValidator:
+    class:         myLoginValidator
+    param:
+      password:    password
+      login_error: 输入密码错误或帐号未批准
