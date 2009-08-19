@@ -162,7 +162,7 @@
      
 </div>
 
-<div id="content_main" style="height:600px;overflow:auto;">
+<div id="content_main" style="height:900px;overflow:auto;border:solid 1px #111222;">
 <?php echo $sf_data->getRaw('sf_content') ?>
 </div>
 <div id="hoomerFooter">

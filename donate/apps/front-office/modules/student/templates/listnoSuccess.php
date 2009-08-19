@@ -8,7 +8,7 @@
 <?php
  use_helper('Javascript');
  echo form_tag('@student_need_donate','id="Find"');?> 
-<table border=0>
+<table style="width:740px;">
 <tr><td><strong>地区：</strong></td>
 <td>
 <select name="site_id">
@@ -48,7 +48,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
  </table>
  </form>
  <?php if(sizeof($pager->getResults())>0):?>
-<table class="sf_student_list">
+<table class="sf_student_list" style="width:740px;">
 
 <tbody>
 <?php foreach ($pager->getResults() as $student): ?>

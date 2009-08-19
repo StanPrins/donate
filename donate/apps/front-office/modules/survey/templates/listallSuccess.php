@@ -61,7 +61,6 @@ $default_site_id = empty($site_id)?-1:$site_id;
   <th>学生</th>
   <th>家庭情况</th>
   <th>年级</th>
-  <th>其他资助者</th>
   <th>退学情况</th>
   <th>描述</th>
   <th>年收入</th>
@@ -87,7 +86,6 @@ $default_site_id = empty($site_id)?-1:$site_id;
       <td><?php echo $survey->getStudent()->getName() ?></td>
       <td><?php echo $survey->getFamilyCondition() ?></td>
       <td><?php echo $survey->getGrade() ?></td>
-      <td><?php echo $survey->getOtherAssist() ?></td>
       <td><?php echo $survey->getDropoutInfo() ?></td>
       <td><?php echo $survey->getPresentation() ?></td>
       <td><?php echo $survey->getRevenue() ?></td>
