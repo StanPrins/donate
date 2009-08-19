@@ -3,7 +3,7 @@ default:
     content-type: text/html
 
   metas:
-    title:        自由天空
+    title:        我们的自由天空 Our Free Sky
     robots:       index, follow
     description:  symfony project
     keywords:     symfony, project

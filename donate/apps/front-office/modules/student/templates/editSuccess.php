@@ -13,6 +13,7 @@
 <?php echo form_tag('@student_update','multipart=true') ?>
 
 <?php echo object_input_hidden_tag($student, 'getStudentId') ?>
+<?php echo object_input_hidden_tag($student, 'getIsDonated') ?>
 
 <div id="sf_admin_content">
 
@@ -515,5 +516,4 @@ function display(obj,ctl)
 
 &nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>
 </form>
-</div>
 </div>

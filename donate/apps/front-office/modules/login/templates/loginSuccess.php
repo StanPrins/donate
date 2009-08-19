@@ -32,3 +32,4 @@
    
 </form>
 <?php echo link_to('新建账户','@license') ?>
+</div>

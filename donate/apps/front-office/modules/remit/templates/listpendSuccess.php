@@ -130,4 +130,4 @@
 </div>    
 <?php //if (($sf_user->getAttribute('usertype', '')=='surveyor') || ($sf_user->getAttribute('usertype', '')=='manager') || ($sf_user->getAttribute('usertype', '')=='administrator')):?>       
 </div>
-</div>
+

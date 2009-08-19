@@ -7,6 +7,7 @@
 
 <?php if(sizeof($pager->getResults()) != 0):?>
 <div id="sf_admin_content">
+	
 <table cellspacing="0" class="sf_admin_list">
 
 <thead>
@@ -62,7 +63,11 @@
 <?php include_partial('pager',array('pager' => $pager, 'page_to_link' => '@donation_approve' ))?>
 
 <?php else:?>
-无相关记录<br/>
+
+<br/>
+无相关记录
+<br/>
+
 <?php endif;?>
 
 

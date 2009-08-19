@@ -163,8 +163,9 @@
   <tr>
     <td class="name">备注：</td>
     <td class="content"><?php echo $student->getRemark() ?></td>
-  </tr>      
-  <tbody>
+  </tr> 
+       
+  </tbody>
 </table>
 
 <br/>
