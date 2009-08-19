@@ -1172,5 +1172,3 @@ AR-SA'><br clear=all style='page-break-before:always;mso-break-type:section-brea
 <?php endif;?>
 </div>
 </div>
-
-</div>
