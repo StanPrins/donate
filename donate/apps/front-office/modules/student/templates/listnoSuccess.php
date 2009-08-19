@@ -104,6 +104,7 @@ $default_site_id = empty($site_id)?-1:$site_id;
 </table>
 <?php endif;?>
 </div>
+</div>
 <?php echo observe_form('Find',array(
  		'update'=>'sf_admin_content',
  		'url'=>'@student_need_donate',
