@@ -12,12 +12,26 @@ fields:
   username:
     required:
       msg:  "用户名不能为空"
-    nameStringValidator:
+    sfStringValidator:
+      min:  6
+      min_error:  至少6个字符
+      max:  16
+      max_error:  至多16个字符
+    sfRegexValidator:
+      match: Yes
+      match_error: "用户名包含非法字符"
+      pattern: /^[a-zA-Z][a-zA-Z0-9_]{6,16}$/
+    sfPropelUniqueValidator:
+      class:  User
+      column: username
+      unique_error:  "该用户名已存在，请重试"
   nickname:
     required:
       msg:  昵称不能为空
     nameStringValidator:
   sha1_password:
+    required:
+      msg:  密码不能为空
     sfStringValidator:
       min:  6
       min_error: 至少6个字符
