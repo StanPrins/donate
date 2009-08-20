@@ -3,43 +3,40 @@
 /**
  * mail actions.
  *
- * @package    donate
+ * @package    askeet
  * @subpackage mail
  * @author     Your name here
- * @version    SVN: $Id: actions.class.php 2692 2006-11-15 21:03:55Z fabien $
+ * @version    SVN: $Id: actions.class.php 29 2005-12-12 11:33:22Z fabien $
  */
 class mailActions extends sfActions
 {
-  public function executeTest()
+  public function executeSendPassword()
   {
-  	
-           $mail = new sfMail();
-           $mail->setMailer('smtp');
-           $mail->setCharset('GB2312');
-           $mail->setEncoding('base64');
-           
-           
-           $mail->setFrom('123');
-           
-                      
-           $mail->setHostname('ssl:smtp.gmail.com');
-           $mail->setPort(587);
-           
-           $mail->setUsername('ericsson.symfony@gmail.com');
-           $mail->setPassword('donatesvn');
-           
-           
-           $mail->addAddress('xirongguo@163.com');
+    $mail = new sfMail();
+    $mail->setMailer('smtp');
+    $mail->setCharset('GB2312');
+    $mail->setEncoding('base64');
+      
+    $mail->setHostname('smtp.sohu.com');
+    $mail->setUsername('our_freesky');
+    $mail->setPassword('hahaha888');
+      
+	$mail->addAddress('xirongguo@163.com');
+	$mail->setFrom('æˆ‘ä»¬è‡ªç”±çš„å¤©ç©º<our_freesky@sohu.com');
+	$mail->setSubject('å¯†ç æ‰¾å›ž');
+	$mail->setBody('');
+	 
+	$mail->setPriority(1);
+	$mail->send();
+	
+//    $mail->addAddress($this->getRequestParameter('email'));
+//    $mail->addEmbeddedImage(SF_WEB_DIR.'/images/askeet_logo.gif', 'CID1', 'Askeet Logo', 'base64', 'image/gif');
 
-           $mail->setSubject('ÔÙ´Î±£´æ¸ÃÒ³ÃæÎÄ¼þ');
-           $mail->setBody('
-hahaha
-ÔÙ´Î±£´æ¸ÃÒ³ÃæÎÄ¼þ
-¹þ¹þ¹þ
-'
-);	 
-           $mail->setPriority(1);
-           $mail -> send();
- 
+    $this->mail = $mail;
+
+    $this->nickname = $this->getRequest()->getAttribute('nickname');
+    $this->password = $this->getRequest()->getAttribute('password');
   }
 }
+
+?>
