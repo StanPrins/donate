@@ -177,35 +177,28 @@ class userActions extends sfActions
 		    // display the form
 		    return sfView::SUCCESS;
 		 }
-	 	 $username = $this->getRequestParameter('username');
 	 	 $email = $this->getRequestParameter('email');
 		  // handle the form submission
 		  $c = new Criteria();
 		  $c->add(UserPeer::EMAIL, $email);
 		  $user = UserPeer::doSelectOne($c);
-	 
 		  // email exists?
 		  if ($user)
 		  {
 		    // set new random password
 		    $password = substr(md5(rand(100000, 999999)), 0, 6);
 		    $user->setPassword($password);
-		 
 		    $this->getRequest()->setAttribute('password', $password);
-		    $this->getRequest()->setAttribute('nickname', $user->getNickname());
-		    
+		    $this->getRequest()->setAttribute('username', $user->getUsername());
 		    $raw_email = $this->sendEmail('mail', 'sendPassword');
 		    $this->logMessage($raw_email, 'debug');
-		 
 		    // save new password
 		    $user->save();
-		 
 		    return 'MailSent';
 		  }
 		  else
 		  {
-		    	$this->getRequest()->setError('email', '用户账号不存在，请重试或者注册！');
-		 
+		    $this->getRequest()->setError('email', '用户账号不存在，请重试或者注册！');
 		    return sfView::SUCCESS;
 		  }
 	}
