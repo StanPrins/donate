@@ -22,7 +22,6 @@ class myLoginValidator extends sfValidator
 
 		$login = $value;
 
-
 		$c = new Criteria();
 		$c->add(UserPeer::USERNAME, $login);
 		$user = UserPeer::doSelectOne($c);
@@ -30,12 +29,13 @@ class myLoginValidator extends sfValidator
 		// username exists?
 		if ($user)
 		{
-			$approve = $user->getApprove();
-			if($approve)
-			{
-			    // password is OK?
-				if (sha1($user->getSalt().$password) == $user->getSha1Password())
-                {
+			// password is OK?
+			if (sha1($user->getSalt().$password) == $user->getSha1Password())
+            {			
+				$approve = $user->getApprove();
+				if($approve)
+				{
+
                     $this->getContext()->getUser()->setAuthenticated(true);
 	
                     $usertype = $user->getUsertype();
@@ -75,6 +75,13 @@ class myLoginValidator extends sfValidator
 	
                     return true;
 				}
+				
+				else
+				{
+					$this->getContext()->getUser()->setAttribute('approved', 'none');
+					return true;
+				}
+
 			}
 		}
 

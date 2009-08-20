@@ -61,6 +61,7 @@ class userActions extends sfActions
        }  			
 		$this->user = new User();
 		$this->setTemplate('edit');
+		$this->new = 1;
 	}
 
 	public function executeEdit()
@@ -131,7 +132,11 @@ class userActions extends sfActions
 		$user->setAddress($this->getRequestParameter('address'));
 
 		$user->save();
-
+		
+        if ($this->getRequestParameter('new'))
+        {
+        	return $this->forward('user','submitted');
+        }
 		return $this->redirect('@user_show?user_id='.$user->getUserId().'&after_edit=1');
 		
 	
@@ -160,4 +165,8 @@ class userActions extends sfActions
 	    	return $this->forward('user','edit');
 		}
 	}
+	
+	public function executeSubmitted()
+	{
+	}	
 }
