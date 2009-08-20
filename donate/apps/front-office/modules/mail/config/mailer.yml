@@ -1,0 +1,5 @@
+dev:
+  deliver:    on
+
+all:
+  mailer:     sendmail
