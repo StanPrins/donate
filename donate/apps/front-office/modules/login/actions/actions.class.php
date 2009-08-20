@@ -24,6 +24,13 @@ class loginActions extends sfActions
 		{
 			// handle the form submission
 			// redirect to last page
+			if ($this->getContext()->getUser()->getAttribute('approved', '') == 'none')
+			{
+				$this->getUser()->clearCredentials();
+				$this->getUser()->getAttributeHolder()->removeNamespace('');				
+				return $this->forward('user','submitted');
+			}
+			
 			return $this->redirect('@donation_my');
 		}
 	}

@@ -18,6 +18,12 @@
 
 <?php echo object_input_hidden_tag($user, 'getUserId') ?>
 
+<?php 
+   if (empty($new))
+     echo input_hidden_tag('new', 0);
+   else
+     echo input_hidden_tag('new', 1);     
+?>
 
 <div id="sf_admin_content">
 
