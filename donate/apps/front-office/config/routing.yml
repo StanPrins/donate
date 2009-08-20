@@ -252,6 +252,10 @@ user_update:
 user_delete:
   url:  /user_delete/:user_id
   param: { module: user, action: delete }  
+  
+user_require_password:
+  url: /password_request
+  param: { module: user, action: passwordRequest }
 
 # default rules
 homepage:
