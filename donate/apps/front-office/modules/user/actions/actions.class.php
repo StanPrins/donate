@@ -61,7 +61,6 @@ class userActions extends sfActions
        }  			
 		$this->user = new User();
 		$this->setTemplate('edit');
-		$this->new = 1;
 	}
 
 	public function executeEdit()
@@ -132,11 +131,7 @@ class userActions extends sfActions
 		$user->setAddress($this->getRequestParameter('address'));
 
 		$user->save();
-		
-        if ($this->getRequestParameter('new'))
-        {
-        	return $this->forward('user','submitted');
-        }
+
 		return $this->redirect('@user_show?user_id='.$user->getUserId().'&after_edit=1');
 		
 	
@@ -165,8 +160,47 @@ class userActions extends sfActions
 	    	return $this->forward('user','edit');
 		}
 	}
-	
-	public function executeSubmitted()
+	public function executePasswordRequest()
 	{
-	}	
+		if ($this->getRequest()->getMethod() != sfRequest::POST)
+		 {
+		    // display the form
+		    return sfView::SUCCESS;
+		 }
+	 	 $username = $this->getRequestParameter('username');
+	 	 $email = $this->getRequestParameter('email');
+		  // handle the form submission
+		  $c = new Criteria();
+		  $c->add(UserPeer::EMAIL, $email);
+		  $user = UserPeer::doSelectOne($c);
+	 
+		  // email exists?
+		  if ($user)
+		  {
+		    // set new random password
+		    $password = substr(md5(rand(100000, 999999)), 0, 6);
+		    $user->setPassword($password);
+		 
+		    $this->getRequest()->setAttribute('password', $password);
+		    $this->getRequest()->setAttribute('nickname', $user->getNickname());
+		    
+		    $raw_email = $this->sendEmail('mail', 'sendPassword');
+		    $this->logMessage($raw_email, 'debug');
+		 
+		    // save new password
+		    $user->save();
+		 
+		    return 'MailSent';
+		  }
+		  else
+		  {
+		    	$this->getRequest()->setError('email', '用户账号不存在，请重试或者注册！');
+		 
+		    return sfView::SUCCESS;
+		  }
+	}
+	public function handleErrorPasswordRequest()
+	{
+	  return sfView::SUCCESS;
+	}
 }
