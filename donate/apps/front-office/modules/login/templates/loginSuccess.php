@@ -27,9 +27,9 @@
 
   <?php echo input_hidden_tag('referer', $sf_request->getAttribute('referer')) ?>
   <?php echo submit_tag('登录') ?>
- 
   </fieldset>
    
 </form>
+<?php echo link_to('忘记密码','@user_require_password')?>&nbsp;&nbsp;&nbsp;&nbsp;
 <?php echo link_to('新建账户','@license') ?>
 </div>
