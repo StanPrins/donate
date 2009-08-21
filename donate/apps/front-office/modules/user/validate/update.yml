@@ -36,6 +36,8 @@ fields:
       max:  40
       max_error: 至多40个字符 
   name:
+    required:
+      msg:  名字不能为空
     sfStringValidator:
       max:  40
       max_error: 至多40个字符
@@ -66,12 +68,6 @@ fields:
     sfStringValidator:
       max:  256
       max_error:  至多256字符 
-  create_at:
-    sfDateValidator:
-      date_error:  日期无效
-      compare:  "2009-08-08"
-      operator: ">="
-      compare_error:  "对不起，创建日期 不能早于2009年8月8日"
   mobile:
     nameStringValidator:
   tel:
