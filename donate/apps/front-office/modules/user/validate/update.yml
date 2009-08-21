@@ -44,9 +44,20 @@ fields:
   id_card:
     required:
       msg:  "身份证不能为空"
-    sfStringValidator:
-      max:  32
-      max_error:  至多32个字符
+    sfRegexValidator:
+      match: Yes
+      match_error: 身份证格式不正确
+      pattern: /d{15}|d{18}/
+  email:
+    required:
+      msg:  邮箱不能为空
+    sfEmailValidator:
+      strict:  true
+      email_error:  email地址无效
+    sfPropelUniqueValidator:
+      class: User
+      column: email
+      unique_error: 该email地址已注册
   photo:
     file:  True
     sfFileValidator:
@@ -74,12 +85,6 @@ fields:
     nameStringValidator:
   identity:
     nameStringValidator:
-  email:
-    required:
-      msg:  邮箱不能为空
-    sfEmailValidator:
-      strict:  true
-      email_error:  email地址无效
   qq:
     sfStringValidator:
       max:  32
