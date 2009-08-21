@@ -75,6 +75,8 @@ fields:
   identity:
     nameStringValidator:
   email:
+    required:
+      msg:  邮箱不能为空
     sfEmailValidator:
       strict:  true
       email_error:  email地址无效

@@ -142,14 +142,26 @@ class userActions extends sfActions
 		$user->setMsn($this->getRequestParameter('msn'));
 		$user->setAddress($this->getRequestParameter('address'));
 
+		if ($this->getRequestParameter('new'))
+		{
+			$this->getRequest()->setAttribute('password', $this->getRequestParameter('password'));
+	    	$this->getRequest()->setAttribute('username', $this->getRequestParameter('username'));
+	    	try
+	    	{
+	    		$raw_email = $this->sendEmail('mail', 'register');
+	    	}
+	    	catch(Exception $e)
+	    	{
+	    		$this->getRequest()->setError('email', '邮件不能送达指定邮箱，请检查您输入的邮箱！');
+	    		return $this->forward('user','create');
+	    	}
+		}
+
+
 		$user->save();
 		
         if ($this->getRequestParameter('new'))
         {
-        	$this->getRequest()->setAttribute('password', $this->getRequestParameter('password'));
-	    	$this->getRequest()->setAttribute('username', $this->getRequestParameter('username'));
-	    	$raw_email = $this->sendEmail('mail', 'register');
-	    	$this->logMessage($raw_email, 'debug');	
         	return $this->forward('user','submitted');
         }
         if(isset($approve))
@@ -159,8 +171,16 @@ class userActions extends sfActions
         	{
         		$this->getRequest()->setAttribute('password', $this->getRequestParameter('password'));
 		    	$this->getRequest()->setAttribute('username', $this->getRequestParameter('username'));
-		    	$raw_email = $this->sendEmail('mail', 'join');
-		    	$this->logMessage($raw_email, 'debug');
+		    	try
+		    	{
+		    		$raw_email = $this->sendEmail('mail', 'join');
+		    	}
+		    	catch(Exception $e)
+		    	{
+		    		$this->getRequest()->setParameter('u_name',$user->getUsername());
+		    		$this->getRequest()->setParameter('u_email',$user->getEmail());
+	    			return $this->forward('user','emailError');
+		    	}
         	}        	  	
         }
 		return $this->redirect('@user_show?user_id='.$user->getUserId().'&after_edit=1');
@@ -215,9 +235,17 @@ class userActions extends sfActions
 		    $password = substr(md5(rand(100000, 999999)), 0, 6);
 		    $user->setPassword($password);
 		    $this->getRequest()->setAttribute('password', $password);
-		    $this->getRequest()->setAttribute('username', $user->getUsername());
-		    $raw_email = $this->sendEmail('mail', 'sendPassword');
-		    $this->logMessage($raw_email, 'debug');
+		    $this->getRequest()->setAttribute('username', $user->getUsername());		    
+		    try
+		    {
+		    	$raw_email = $this->sendEmail('mail', 'sendPassword');
+		    }
+		    catch(Exception $e)
+		    {
+		    	$this->getRequest()->setError('email', '无法送达指定邮箱，请联系管理员^_^');
+		    	return sfView::SUCCESS;
+		    }
+//		    $this->logMessage($raw_email, 'debug');
 		    // save new password
 		    $user->save();
 		    return 'MailSent';
@@ -232,4 +260,10 @@ class userActions extends sfActions
 	{
 	  return sfView::SUCCESS;
 	}	
+	public function executeEmailError()
+	{
+		$this->u_name = $this->getRequestParameter('u_name');
+		$this->u_email = $this->getRequestParameter('u_email');
+		return sfView::SUCCESS;
+	}
 }
