@@ -95,7 +95,7 @@
 </div>
 <?php echo form_error('id_card')?>
 <div class="form-row">
-  <label for="user_name" class="required">身份证号：</label> 
+  <label for="user_name" class="required">*身份证号：</label> 
   <div class="content">    
   <?php echo object_input_tag($user, 'getIdCard', array (
   'size' => 20,
@@ -222,7 +222,7 @@ function display()
 <?php endif;?>    
 <?php echo form_error('email')?>  
 <div class="form-row">
-  <label for="user_email" class="required">Email：</label> 
+  <label for="user_email" class="required">*Email：</label> 
   <div class="content">      
   <?php echo object_input_tag($user, 'getEmail', array (
   'size' => 32,
