@@ -50,7 +50,13 @@
         echo input_hidden_tag('username', $user->getUserName());  ?>
   </div>
 </div>
-  
+<?php echo form_error('password')?>
+<div class="form-row">
+  <label for="user_password" class="required">输入新密码：</label> 
+  <div class="content">    
+  <?php echo input_tag('password');?>（6~40个字符）
+  </div>
+</div>    
 <?php else:?>
 
 <div class="form-row">
@@ -67,6 +73,13 @@
   （必须以字母开头，只能字母、数字和下划线的组合，6~16个字符）  
   </div>
 </div>
+<?php echo form_error('password')?>
+<div class="form-row">
+  <label for="user_password" class="required">*登录密码：</label> 
+  <div class="content">    
+  <?php echo input_tag('password');?>（6~40个字符）
+  </div>
+</div>  
 <?php endif;?>
 <?php echo form_error('nickname')?>   
 <div class="form-row">
@@ -76,14 +89,7 @@
   'size' => 20,
   )) ?>（6~16个字符）
   </div>
-</div>  
-<?php echo form_error('password')?>
-<div class="form-row">
-  <label for="user_password" class="required">输入新密码：</label> 
-  <div class="content">    
-  <?php echo input_tag('password');?>（6~40个字符）
-  </div>
-</div>  
+</div>
 <?php echo form_error('name')?>
 <div class="form-row">
   <label for="user_name" class="required">*姓名：</label> 
@@ -101,7 +107,16 @@
   'size' => 20,
   )) ?>（15~18个字符）
   </div>
-</div>   
+</div> 
+<?php echo form_error('email')?>  
+<div class="form-row">
+  <label for="user_email" class="required">*Email：</label> 
+  <div class="content">      
+  <?php echo object_input_tag($user, 'getEmail', array (
+  'size' => 32,
+  )) ?>（例如：www@domain.com）
+  </div>
+</div>    
 <script type="text/javascript">
 function display()
 {
@@ -217,18 +232,7 @@ function display()
   'size' => 60)) ?>
   </div>
 </div>
-
-<?php else:?>
 <?php endif;?>    
-<?php echo form_error('email')?>  
-<div class="form-row">
-  <label for="user_email" class="required">*Email：</label> 
-  <div class="content">      
-  <?php echo object_input_tag($user, 'getEmail', array (
-  'size' => 32,
-  )) ?>（例如：www@domain.com）
-  </div>
-</div>  
 <?php echo form_error('qq')?>
 <div class="form-row">
   <label for="user_qq" class="required">QQ：</label> 
