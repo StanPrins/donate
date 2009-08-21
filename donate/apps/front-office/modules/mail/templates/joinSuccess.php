@@ -10,6 +10,6 @@
 密码: <strong><?php echo $password ?></strong>
 </p>
 
-<p>赶紧行动吧， <?php echo link_to('登录', '@login') ?>！</p>
+<p>赶紧行动吧，<a href="http://www.ourfreesky.org/kids" target="_blank">登录</a>！</p>
  
 <p><img src="cid:CID1" /></p>
