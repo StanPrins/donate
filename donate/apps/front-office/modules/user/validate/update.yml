@@ -30,8 +30,6 @@ fields:
       msg:  昵称不能为空
     nameStringValidator:
   password:
-    required:
-      msg:  密码不能为空
     sfStringValidator:
       min:  6
       min_error: 至少6个字符

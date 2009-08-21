@@ -77,7 +77,7 @@
   )) ?>
   </div>
 </div>  
-<?php echo form_error('sha1_password')?>
+<?php echo form_error('password')?>
 <div class="form-row">
   <label for="user_password" class="required">输入新密码：</label> 
   <div class="content">    
