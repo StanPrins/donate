@@ -28,6 +28,42 @@ class mailActions extends sfActions
     $this->username = $this->getRequest()->getAttribute('username');
     $this->password = $this->getRequest()->getAttribute('password');
   }
+  public function executeRegister()
+  {
+  	$mail = new sfMail();
+    $mail->setMailer('smtp');
+    $mail->setCharset('UTF-8');
+    $mail->setEncoding('base64');
+    $mail->setHostname('smtp.sohu.com');
+    $mail->setUsername('our_freesky');
+    $mail->setPassword('hahaha888');
+    $mail->addAddress($this->getRequestParameter('email'));
+	$mail->setFrom('我们自由的天空<our_freesky@sohu.com>');
+	$mail->setSubject('注册成功');
+	$mail->setPriority(1);
+    $mail->addEmbeddedImage(sfconfig::get('sf_web_dir').'/images/banner.jpg', 'CID1', '我们的自由天空', 'base64', 'image/jpg');
+    $this->mail = $mail;
+    $this->username = $this->getRequest()->getAttribute('username');
+    $this->password = $this->getRequest()->getAttribute('password');
+  }
+  public function executeJoin()
+  {
+  	$mail = new sfMail();
+    $mail->setMailer('smtp');
+    $mail->setCharset('UTF-8');
+    $mail->setEncoding('base64');
+    $mail->setHostname('smtp.sohu.com');
+    $mail->setUsername('our_freesky');
+    $mail->setPassword('hahaha888');
+    $mail->addAddress($this->getRequestParameter('email'));
+	$mail->setFrom('我们自由的天空<our_freesky@sohu.com>');
+	$mail->setSubject('欢迎您的加入');
+	$mail->setPriority(1);
+    $mail->addEmbeddedImage(sfconfig::get('sf_web_dir').'/images/banner.jpg', 'CID1', '我们的自由天空', 'base64', 'image/jpg');
+    $this->mail = $mail;
+    $this->username = $this->getRequest()->getAttribute('username');
+    $this->password = $this->getRequest()->getAttribute('password');
+  }
 }
 
 ?>

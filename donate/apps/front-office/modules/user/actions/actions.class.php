@@ -84,21 +84,32 @@ class userActions extends sfActions
 	   
 		if (!$this->getRequestParameter('user_id'))
 		{
-			$user = new User();
+			$password = $this->getRequestParameter('password');
+			if(empty($password))
+			{
+				$this->getRequest()->setError('password', '密码不能为空');
+				return $this->forward('user','create');
+			}
+	        else
+	        {
+	        	$user = new User();
+	        	$user->setPassword($this->getRequestParameter('password'));
+	        }
 		}
 		else
 		{
 			$user = UserPeer::retrieveByPk($this->getRequestParameter('user_id'));
 			$this->forward404Unless($user);
+			if ($this->getRequestParameter('password'))
+	        {
+	           $user->setPassword($this->getRequestParameter('password'));
+	        }
+	        $approve = $user->getApprove();
 		}
 
 		$user->setUserId($this->getRequestParameter('user_id'));
 		$user->setUserName($this->getRequestParameter('username'));
 		$user->setNickName($this->getRequestParameter('nickname'));
-	    if ($this->getRequestParameter('password'))
-        {
-           $user->setPassword($this->getRequestParameter('password'));
-        }
 		$user->setName($this->getRequestParameter('name'));
 		$user->setIdCard($this->getRequestParameter('id_card'));
 		if(is_file($this->getRequest()->getFilePath('photo')))
@@ -135,7 +146,22 @@ class userActions extends sfActions
 		
         if ($this->getRequestParameter('new'))
         {
+        	$this->getRequest()->setAttribute('password', $this->getRequestParameter('password'));
+	    	$this->getRequest()->setAttribute('username', $this->getRequestParameter('username'));
+	    	$raw_email = $this->sendEmail('mail', 'register');
+	    	$this->logMessage($raw_email, 'debug');	
         	return $this->forward('user','submitted');
+        }
+        if(isset($approve))
+        {
+        	$approve_u = $user->getApprove();
+        	if(empty($approve) && !empty($approve_u))
+        	{
+        		$this->getRequest()->setAttribute('password', $this->getRequestParameter('password'));
+		    	$this->getRequest()->setAttribute('username', $this->getRequestParameter('username'));
+		    	$raw_email = $this->sendEmail('mail', 'join');
+		    	$this->logMessage($raw_email, 'debug');
+        	}        	  	
         }
 		return $this->redirect('@user_show?user_id='.$user->getUserId().'&after_edit=1');
 		
