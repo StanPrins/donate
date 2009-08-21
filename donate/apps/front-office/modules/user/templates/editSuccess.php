@@ -63,7 +63,8 @@
 <div class="form-row">
   <label for="user_username" class="required">用户名：</label> 
   <div class="content">
-  <?php echo input_tag('username') ?>  
+  <?php echo input_tag('username') ?><br/>
+  （必须以字母开头，不能输入中文和非法字符）  
   </div>
 </div>
 <?php endif;?>

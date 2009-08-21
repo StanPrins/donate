@@ -29,7 +29,7 @@ fields:
     required:
       msg:  昵称不能为空
     nameStringValidator:
-  sha1_password:
+  password:
     required:
       msg:  密码不能为空
     sfStringValidator:
