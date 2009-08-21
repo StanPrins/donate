@@ -61,36 +61,36 @@
 </div>
 <?php echo form_error('username')?>
 <div class="form-row">
-  <label for="user_username" class="required">用户名：</label> 
+  <label for="user_username" class="required">*用户名：</label> 
   <div class="content">
   <?php echo input_tag('username') ?><br/>
-  （必须以字母开头，不能输入中文和非法字符）  
+  （必须以字母开头，只能字母、数字和下划线的组合，6~16个字符）  
   </div>
 </div>
 <?php endif;?>
 <?php echo form_error('nickname')?>   
 <div class="form-row">
-  <label for="user_nickname" class="required">昵称：</label> 
+  <label for="user_nickname" class="required">*昵称：</label> 
   <div class="content">    
   <?php echo object_input_tag($user, 'getNickname', array (
   'size' => 20,
-  )) ?>
+  )) ?>（6~16个字符）
   </div>
 </div>  
 <?php echo form_error('password')?>
 <div class="form-row">
   <label for="user_password" class="required">输入新密码：</label> 
   <div class="content">    
-  <?php echo input_tag('password');?>
+  <?php echo input_tag('password');?>（6~40个字符）
   </div>
 </div>  
 <?php echo form_error('name')?>
 <div class="form-row">
-  <label for="user_name" class="required">姓名：</label> 
+  <label for="user_name" class="required">*姓名：</label> 
   <div class="content">    
   <?php echo object_input_tag($user, 'getName', array (
   'size' => 20,
-  )) ?>
+  )) ?>（6~40个字符）
   </div>
 </div>
 <?php echo form_error('id_card')?>
@@ -99,7 +99,7 @@
   <div class="content">    
   <?php echo object_input_tag($user, 'getIdCard', array (
   'size' => 20,
-  )) ?>
+  )) ?>（15~18个字符）
   </div>
 </div>   
 <script type="text/javascript">
@@ -132,8 +132,8 @@ function display()
   <?php echo button_to_function('重新上传','display()',array('id'=>'control_button','size'=>'2'))?>
   <?php else:?>   
   <?php echo input_file_tag('photo',array('accept'=>'image/*','size'=>'10'))?>
-  <?php endif;?>
-  </div>
+  <?php endif;?>（不能大于512KB）
+  </div>  
 </div>
 <?php echo form_error('bbs_id')?>   
 <div class="form-row">
@@ -143,6 +143,7 @@ function display()
   'size' => 20,
   )) ?>
   </div>
+  
 </div>  
 <?php echo form_error('ofs_id')?>
 <div class="form-row">
@@ -150,16 +151,6 @@ function display()
   <div class="content">    
   <?php echo object_input_tag($user, 'getOfsId', array (
   'size' => 20,
-  )) ?>
-  </div>
-</div>  
-<?php echo form_error('create_at')?>
-<div class="form-row">
-  <label for="user_created_at" class="required">创建日期：</label> 
-  <div class="content">    
-  <?php echo object_input_date_tag($user, 'getCreatedAt', array (
-  'rich' => true,
-  'withtime' => true,
   )) ?>
   </div>
 </div> 
@@ -223,8 +214,7 @@ function display()
   <label for="user_duty" class="required">职务：</label> 
   <div class="content">    
   <?php echo object_input_tag($user, 'getDuty', array (
-  'size' => 70,
-  )) ?>
+  'size' => 60)) ?>
   </div>
 </div>
 
@@ -236,7 +226,7 @@ function display()
   <div class="content">      
   <?php echo object_input_tag($user, 'getEmail', array (
   'size' => 32,
-  )) ?>
+  )) ?>（例如：www@domain.com）
   </div>
 </div>  
 <?php echo form_error('qq')?>
@@ -262,7 +252,7 @@ function display()
   <label for="user_address" class="required">地址：</label> 
   <div class="content">    
   <?php echo object_input_tag($user, 'getAddress', array (
-  'size' => 70,
+  'size' => 60,
   )) ?>
   </div>
 </div>  
