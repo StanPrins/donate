@@ -158,7 +158,7 @@
    
    <?php else: ?>  	
    <?php endif ?>      
-   <li><?php echo link_to('注销', 'login/logout') ?></li>
+   <li><?php echo link_to('退出', 'login/logout') ?></li>
    
 <?php else: ?>   
 <?php endif ?>
