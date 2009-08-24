@@ -17,7 +17,7 @@
     <td class="content"><?php echo $school->getSchoolId() ?></td>
   </tr>  
   <tr>
-    <td class="name">资助点：</td>
+    <td class="name">项目点：</td>
     <td class="content"><?php echo $school->getSiteId() ?></td>
   </tr>    
   <tr>

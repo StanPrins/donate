@@ -4,7 +4,7 @@
 ?>
 <div id="sf_admin_container">
 
-<h1>资助点管理</h1>
+<h1>项目点管理</h1>
 
 <?php use_helper('Object') ?>
 <?php use_helper('Validation')?>

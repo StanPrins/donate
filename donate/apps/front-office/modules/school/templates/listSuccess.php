@@ -12,7 +12,7 @@
 <thead>
 <tr>
   <th>学校名</th>
-  <th>资助点</th>
+  <th>项目点</th>
   <th>类型</th>
   <th>校长</th>
   <th>联系人</th>
