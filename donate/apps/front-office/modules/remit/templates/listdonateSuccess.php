@@ -7,7 +7,7 @@
 
 
 <h2>
-<?php echo "我资助的 &quot; ".$check_donation->getStudent()->getSchool()->getProjectSite()->getSiteName()." 的 ".$check_donation->getStudent()->getSchool()->getSchoolName()." 的 ".$check_donation->getStudent()->getName()." &quot; 的汇款信息"?>
+<?php echo $check_donation->getUser()->getUsername()."(".$check_donation->getUser()->getName().")"." 资助的 &quot; ".$check_donation->getStudent()->getSchool()->getProjectSite()->getSiteName()." 的 ".$check_donation->getStudent()->getSchool()->getSchoolName()." 的 ".$check_donation->getStudent()->getName()." &quot; 的汇款信息"?>
 
  </h2>
 <br/>
