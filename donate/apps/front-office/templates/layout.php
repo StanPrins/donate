@@ -26,6 +26,7 @@
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
        <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
+       <li><?php echo link_to('如何资助', '@donation_reference') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
@@ -45,6 +46,7 @@
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
        <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
+       <li><?php echo link_to('如何资助', '@donation_reference') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
@@ -77,6 +79,7 @@
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
        <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
+       <li><?php echo link_to('如何资助', '@donation_reference') ?></li>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>
@@ -118,7 +121,8 @@
      <ul>
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
-       <li><?php echo link_to('我要资助', '@student_need_donate') ?></li>
+       <li><?php echo link_to('我要资助', '@student_need_donate') ?></li
+       <li><?php echo link_to('如何资助', '@donation_reference') ?></li>>
      </ul>
    </li>
    <li><?php echo link_to('审批项', '#') ?>

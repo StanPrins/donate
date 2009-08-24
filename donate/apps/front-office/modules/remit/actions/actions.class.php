@@ -16,6 +16,8 @@ class remitActions extends sfActions
 {
 	public function executeListdonate()
 	{
+	   $this->check_donation = DonationPeer::retrieveByPk($this->getRequestParameter('donation_id'));
+		
        $c = new Criteria();
        $c -> add(RemitPeer::DONATION_ID, $this->getRequestParameter('donation_id'));
 

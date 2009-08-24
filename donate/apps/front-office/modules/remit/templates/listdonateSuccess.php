@@ -3,15 +3,21 @@
 // date: 2009/07/19 21:33:07
 ?>
 <div id="sf_admin_container">
-<h1>到款信息列表</h1>
+<h1>汇款信息列表</h1>
 
+
+<h2>
+<?php echo "我资助的 &quot; ".$check_donation->getStudent()->getSchool()->getProjectSite()->getSiteName()." 的 ".$check_donation->getStudent()->getSchool()->getSchoolName()." 的 ".$check_donation->getStudent()->getName()." &quot; 的汇款信息"?>
+
+ </h2>
+<br/>
 <?php if(sizeof($pager->getResults()) != 0):?>
 <div id="sf_admin_content">
+
 <table cellspacing="0" class="sf_admin_list">
 
 <thead>
 <tr>
-  <th>捐助号</th>
   <th>金额</th>
   <th>通过OFS捐助</th>
   <th>OFS收到</th>
@@ -29,7 +35,7 @@
 <?php $count_row = 0?>
 <?php foreach ($pager->getResults() as $remit): ?>
   <?php echo "<tr class='sf_admin_row_".$count_row."' >" ?>
-      <td><?php echo $remit->getDonationId() ?></td>
+      
       <td><?php echo $remit->getAmount() ?></td>
       
       
@@ -107,7 +113,7 @@
 
 
       
- <?php echo link_to_function ('新建到款信息', visual_effect('BlindDown','secret_div'));?>
+ <?php echo link_to_function ('新建汇款', visual_effect('BlindDown','secret_div'));?>
 &nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>           
 <div id="secret_div" style="display:none">
 <br/>

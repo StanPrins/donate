@@ -35,6 +35,10 @@ donation_update:
   url:   /donation_update
   param: { module: donation, action: update }        
 
+donation_reference:
+  url:   /donation_reference
+  param: { module: donation, action: reference } 
+
 #investigation
 investigation_add:
   url:   /investigation_add
