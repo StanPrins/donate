@@ -4,7 +4,7 @@
 ?>
 <?php use_helper('Text') ?>
 <div id="sf_admin_container">
-<h1>资助点管理</h1>
+<h1>项目点管理</h1>
 
 <?php if(sizeof($pager->getResults()) != 0):?>
 <div id="sf_admin_content">
@@ -53,7 +53,7 @@
 无相关记录<br/>
 <?php endif;?>
 
-<?php echo link_to ('新建资助点', 'projectsite/create') ?>
+<?php echo link_to ('新建项目点', 'projectsite/create') ?>
 </div>
 
 </div>

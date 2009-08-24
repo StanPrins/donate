@@ -5,7 +5,7 @@
 
 <div id="sf_admin_container">
 
-<h1>资助点详情</h1>
+<h1>项目点详情</h1>
 
 <?php use_helper('Object') ?>
 

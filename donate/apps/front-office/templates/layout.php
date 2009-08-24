@@ -107,7 +107,7 @@
    <li><?php echo link_to('用户管理', '@all_user') ?></li>
    <li><?php echo link_to('资助项目管理', '#') ?>
      <ul>
-       <li><?php echo link_to('资助点管理', '@site_list') ?></li>
+       <li><?php echo link_to('项目点管理', '@site_list') ?></li>
        <li><?php echo link_to('学校管理', '@school_list') ?></li>     
      </ul>
    </li>
@@ -150,7 +150,7 @@
    <li><?php echo link_to('用户管理', '@all_user') ?></li>
    <li><?php echo link_to('资助项目管理', '#') ?>
      <ul>
-       <li><?php echo link_to('资助点管理', '@site_list') ?></li>
+       <li><?php echo link_to('项目点管理', '@site_list') ?></li>
        <li><?php echo link_to('学校管理', '@school_list') ?></li>     
      </ul>
    </li>

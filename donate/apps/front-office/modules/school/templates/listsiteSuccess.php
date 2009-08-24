@@ -3,7 +3,7 @@
 // date: 2009/07/19 21:33:53
 ?>
 <div id="sf_admin_container">
-<h1>资助点<?php echo $projectsite->getSiteName() ?>的学校信息</h1>
+<h1>项目点<?php echo $projectsite->getSiteName() ?>的学校信息</h1>
 
 <?php if(sizeof($pager->getResults()) != 0):?>
 <div id="sf_admin_content">
@@ -12,7 +12,7 @@
 <thead>
 <tr>
   <th>学校名</th>
-  <th>资助点</th>
+  <th>项目点</th>
   <th>类型</th>
   <th>校长</th>
   <th>联系人</th>
