@@ -109,7 +109,7 @@
 
 
       
- <?php echo link_to_function ('新建到款信息', visual_effect('BlindDown','secret_div'));?>
+ <?php echo link_to_function ('新建汇款', visual_effect('BlindDown','secret_div'));?>
 &nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回</a>           
 <div id="secret_div" style="display:none">
 <br/>

@@ -29,15 +29,9 @@ class donationActions extends sfActions
     $this->pager = $pager;
   }
 
-  /*public function executeListall()
+  public function executeReference()
   {
-  	$c = new Criteria();
-    $pager = new sfPropelPager('Donation', sfConfig::get('app_pager_homepage_max'));    
-    $pager->setCriteria($c);
-    $pager->setPage($this->getRequestParameter('page', 1));
-    $pager->init();
-    $this->pager = $pager;
-  }*/
+  }
     
   public function executeListmy()
   {

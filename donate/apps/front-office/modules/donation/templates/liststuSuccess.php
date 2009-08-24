@@ -11,7 +11,7 @@
 
 <thead>
 <tr>
-  <th>捐助号</th>
+  <th>汇款信息</th>
   <th>学生姓名</th>
   <th>捐助人姓名</th>
   <th>捐助金额</th>
@@ -20,7 +20,6 @@
   <th>已批准</th>
   <th>进行中</th>  
   <th>提交于</th>
-  <th>到款信息</th>
   <th>操作</th>
 </tr>
 </thead>
@@ -29,7 +28,14 @@
 <?php foreach ($pager->getResults() as $donation): ?>
 
   <?php echo "<tr class='sf_admin_row_".$count_row."' >" ?>
-      <td><?php echo link_to($donation->getDonationId(), '@donation_show?donation_id='.$donation->getDonationId()) ?></td>
+      <td>
+      <?php
+        if ($donation->getApprove() || $donation->getIsActive())
+        {
+           echo link_to (image_tag('rmb.png'), '@remit_by_donation?donation_id='.$donation->getDonationId(),'post=true');
+           echo link_to ('汇款', '@remit_by_donation?donation_id='.$donation->getDonationId(),'post=true'); 	
+        }?>
+        </td>
       <td><?php echo $donation->getStudent()->getName() ?></td>
       <td><?php echo $donation->getUser()->getName() ?></td>
       <td><?php echo $donation->getAmount() ?></td>      
@@ -38,7 +44,7 @@
       <td><?php if ($donation->getApprove()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png'); ?></td>
       <td><?php if ($donation->getIsActive()) echo image_tag('admin_db/tick.png'); else echo image_tag('admin_db/x.png'); ?></td>
       <td><?php echo $donation->getCreatedAt() ?></td>
-      <td><?php if ($donation->getApprove() || $donation->getIsActive())echo link_to ('查看', '@remit_by_donation?donation_id='.$donation->getDonationId(),'post=true') ?></td>
+
       <td><?php echo link_to('详情', '@donation_show?donation_id='.$donation->getDonationId(),'post=true')?>&nbsp;
           <?php if (($sf_user->getAttribute('user_id', '')==$donation->getUserId())||($sf_user->getAttribute('usertype', '')=='administrator') || ($sf_user->getAttribute('usertype', '')=='manager'))
                 {
