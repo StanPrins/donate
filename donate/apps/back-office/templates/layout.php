@@ -32,7 +32,7 @@
        <li><?php echo link_to('user', 'user/list') ?></li>
      </ul>
    </li>
-   <li><?php echo link_to('注销', 'login/logout') ?></li>
+   <li><?php echo link_to('退出', 'login/logout') ?></li>
 </ul>   
 <?php else: ?>   
 <?php endif ?>
