@@ -11,12 +11,6 @@
 
 </head>
 <body style="width:760px;margin-left:auto;margin-right:auto;">
-<script type="text/javascript">
-var nav = navigator.userAgent.toLowerCase();
-var s = nav.match(/msie ([\d.]+)/);
-if( s && s[1]<=6.0 )
-	alert("您的IE浏览器版本过低，请升级到6.0以上版本！");
-</script>
 <div id="banner" >
   <?php echo image_tag('banner.jpg', 'alt=banner ') ?>
 </div>	
@@ -27,7 +21,7 @@ if( s && s[1]<=6.0 )
 
    <?php if ($sf_user->getAttribute('usertype', '')=='volunteer'): ?>   
    <li><p><?php echo '志愿者:'.$sf_user->getAttribute('name', '') ?></p></li>
-   <li><?php echo link_to('资助', '#') ?>
+   <li onmouseover="this."><?php echo link_to('资助', '#') ?>
      <ul>
        <li><?php echo link_to('当前资助', '@donation_my') ?></li>
        <li><?php echo link_to('过期资助', '@donation_overdue') ?></li>
@@ -168,18 +162,35 @@ if( s && s[1]<=6.0 )
    
 <?php else: ?>   
 <?php endif ?>
- </ul>  
-     
+ </ul>     
 </div>
-
+<script type="text/javascript">
+var nav = navigator.userAgent.toLowerCase();
+var s = nav.match(/msie ([\d.]+)/);
+if( s && s[1]<=6.0 )
+{
+	var menu = document.getElementById("navmenu-h");
+	var subMenu = menu.childNodes;
+	for(var i=0;i<subMenu.length;i++)
+	{
+		if(subMenu[i].getElementsByTagName("ul")[0])
+		{
+			subMenu[i].onmouseover = function () {
+				this.getElementsByTagName("ul")[0].style.display = "block";
+			}
+			subMenu[i].onmouseout = function () {
+				this.getElementsByTagName("ul")[0].style.display = "none";
+			}
+		}
+	}
+}
+</script>
 <div id="content_main" style="height:900px;overflow:auto;border:solid 1px #111222;">
 <?php echo $sf_data->getRaw('sf_content') ?>
 </div>
 <div id="hoomerFooter">
 <iframe scrolling="no" height="112" frameborder="0" align="middle" width="760" src="http://www.ourfreesky.org/footer.html" marginheight="0" marginwidth="0" name="footer"></iframe>
 </div>
-
-
 </body>
 </html>
 
