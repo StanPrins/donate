@@ -11,6 +11,12 @@
 
 </head>
 <body style="width:760px;margin-left:auto;margin-right:auto;">
+<script type="text/javascript">
+var nav = navigator.userAgent.toLowerCase();
+var s = nav.match(/msie ([\d.]+)/);
+if( s && s[1]<=6.0 )
+	alert("您的IE浏览器版本过低，请升级到6.0以上版本！");
+</script>
 <div id="banner" >
   <?php echo image_tag('banner.jpg', 'alt=banner ') ?>
 </div>	
