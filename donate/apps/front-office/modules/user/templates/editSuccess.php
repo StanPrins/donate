@@ -105,7 +105,7 @@
   <div class="content">    
   <?php echo object_input_tag($user, 'getIdCard', array (
   'size' => 20,
-  )) ?>（15~18个字符）
+  )) ?>（15或者18个字符）
   </div>
 </div> 
 <?php echo form_error('email')?>  
