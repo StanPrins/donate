@@ -344,7 +344,6 @@ class userActions extends sfActions
 		    	$this->getRequest()->setError('email', "Can't send to the Email, please contact the manager!" );
 		    	return sfView::SUCCESS;
 		    }
-//		    $this->logMessage($raw_email, 'debug');
 		    // save new password
 		    $user->save();
 		    return 'MailSent';
