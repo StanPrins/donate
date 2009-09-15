@@ -2,4 +2,8 @@ all:
   propel:
     class:          sfPropelDatabase
     param:
-      dsn:          mysql://root@localhost/qqchong
+      phptype:      mysql
+      host:         localhost
+      database:     qqchong
+      username:     root
+      encoding:     utf8

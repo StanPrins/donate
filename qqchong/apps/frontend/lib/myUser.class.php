@@ -35,7 +35,7 @@ class myUser extends sfBasicSecurityUser
 	 
 	    // save the key to the cookie
 	    $value = base64_encode(serialize(array($user->getRememberKey(), $user->getUsername())));
-	    sfContext::getInstance()->getResponse()->setCookie('QQchong', $value, time()+60*60*24*30, '/');
+	    sfContext::getInstance()->getResponse()->setCookie('QQchong', $value, time()+60*60*24*15, '/');
     }
         
   }

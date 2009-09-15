@@ -23,7 +23,7 @@
 <?php foreach ($pager->getResults() as $topic): ?>
 <dl>
     <dt><?php echo $topic->getCreatedAt() ?></dt>
-    <dd><?php echo link_to($topic->getTitle(), 'topic/show?id='.$topic->getId()) ?>(<?php echo $topic->countComments()?>)</dd>
+    <dd><?php echo link_to($topic->getTitle(), 'topic/show?id='.$topic->getId()) ?>(<?php echo $topic->countComments()?><?php if($topic->getNewComment()) echo ';'.$topic->getNewComment()->getCreatedAt().'--'.$topic->getNewComment()->getUser()->getNickname()?>)</dd>
 </dl>
 <?php endforeach; ?>
 <div class="pagerRelative"><p class="number">

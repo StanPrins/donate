@@ -1,6 +1,6 @@
 # default values
 all:
-  homepage_max: 5
+  homepage_max: 10
   active_days:  7
   pager_max:    10
   
