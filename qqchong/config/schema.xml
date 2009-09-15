@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<database name="propel" defaultIdMethod="native" noxsd="true" package="lib.model">
+	<table name="comment" phpName="Comment">
+		<column name="id" type="integer" size="11" required="true" primaryKey="true" autoIncrement="true" />
+		<column name="blog_id" type="integer" size="11" />
+		<foreign-key foreignTable="blog" onDelete="cascade" onUpdate="cascade">
+			<reference local="blog_id" foreign="id" />
+		</foreign-key>
+		<column name="topic_id" type="integer" size="11" />
+		<foreign-key foreignTable="topic" onDelete="cascade" onUpdate="cascade">
+			<reference local="topic_id" foreign="id" />
+		</foreign-key>
+		<column name="user_id" type="integer" size="11" required="true" />
+		<foreign-key foreignTable="user" onDelete="cascade" onUpdate="cascade">
+			<reference local="user_id" foreign="id" />
+		</foreign-key>
+		<column name="content" type="longvarchar" />
+		<column name="created_at" type="timestamp" />
+	</table>
+
+	<table name="blog" phpName="Blog">
+		<column name="id" type="integer" size="11" required="true" primaryKey="true" autoIncrement="true" />
+		<column name="user_id" type="integer" size="11" required="true" />
+		<foreign-key foreignTable="user" onDelete="cascade" onUpdate="cascade">
+		    <reference local="user_id" foreign="id" />
+		</foreign-key>
+		<column name="title" type="varchar" size="16" required="true" />
+		<column name="content" type="longvarchar" required="true" />
+		<column name="recommend" type="tinyint" size="1" require="true" default="0" />
+		<column name="rdtime" type="timestamp" />
+		<column name="created_at" type="timestamp" />
+	</table>
+
+	<table name="message" phpName="Message">
+		<column name="id" type="integer" size="11" required="true" primaryKey="true" autoIncrement="true" />
+		<column name="sender_id" type="integer" size="11" required="true" />
+		<foreign-key foreignTable="user" onDelete="cascade"	onUpdate="cascade">
+			<reference local="sender_id" foreign="id" />
+		</foreign-key>
+		<column name="reciever_id" type="integer" size="11" required="true" />
+		<foreign-key foreignTable="user" onDelete="cascade"	onUpdate="cascade">
+			<reference local="reciever_id" foreign="id" />
+		</foreign-key>
+		<column name="title" type="varchar" size="16" />
+		<column name="content" type="longvarchar" />
+		<column name="anonymity" type="tinyint" size="1" required="true" default="0" />
+		<column name="sdel" type="tinyint" size="1" required="true" default="0" />
+		<column name="rdel" type="tinyint" size="1" required="true" default="0" />
+		<column name="created_at" type="timestamp" />
+	</table>
+	
+    <table name="department" phpName="Department">
+        <column name="id" type="integer" size="11" required="true" primaryKey="true" autoIncrement="true" />
+		<column name="builder_id" type="integer" size="11" required="true" />
+		<foreign-key foreignTable="user">
+			<reference local="builder_id" foreign="id" />
+		</foreign-key>
+		<column name="manager_id" type="integer" size="11"/>
+		<foreign-key foreigntable="user">
+			<reference local="manager_id" foreign="id" />
+		</foreign-key>
+		<column name="arrange" type="integer" size="3" default="0" />
+		<column name="title" type="varchar" size="16" />
+		<column name="description" type="longvarchar" />
+		<column name="created_at" type="timestamp" />
+	</table>
+	
+	<table name="topic" phpName="Topic">
+		<column name="id" type="integer" size="11" required="true" primaryKey="true" autoIncrement="true" />
+		<column name="department_id" type="integer" size="11" required="true" />
+		<foreign-key foreigntable="department">
+			<reference local="department_id" foreign="id" />
+		</foreign-key>
+		<column name="user_id" type="integer" size="11" required="true" />
+		<foreign-key foreignTable="user" onDelete="cascade" onUpdate="cascade">
+		    <reference local="user_id" foreign="id" />
+		</foreign-key>
+		<column name="title" type="varchar" size="32" required="true" />
+		<column name="content" type="longvarchar" />
+		<column name="created_at" type="timestamp" />
+	</table>
+	
+	<table name="user" phpName="User">
+		<column name="id" type="integer" size="11" required="true" primaryKey="true" autoIncrement="true" />
+		<column name="username" type="varchar" size="32" required="true" />
+		<column name="nickname" type="varchar" size="16" required="true" />
+		<column name="sha1_password" type="varchar" size="40" />
+		<column name="salt" type="varchar" size="32" />
+		<column name="name" type="varchar" size="16" required="true" />
+		<column name="department_id" type="integer" size="11" requried="true" />
+		<foreign-key foreignTable="department">
+			<reference local="department_id" foreign="id" />
+		</foreign-key>
+		<column name="photo" type="varchar" size="256" />
+		<column name="duty" type="varchar" size="256" />
+		<column name="mobile" type="varchar" size="16" />
+		<column name="tel" type="varchar" size="16" />
+		<column name="twitter" type="varchar" size="256" />
+		<column name="droit" type="integer" size="3" required="true" default="0" />	
+		<column name="qq" type="varchar" size="32" />
+		<column name="msn" type="varchar" size="32" />
+		<column name="created_at" type="timestamp" />
+	</table>
+	
+</database>
