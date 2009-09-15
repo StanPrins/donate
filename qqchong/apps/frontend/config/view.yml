@@ -3,10 +3,10 @@ default:
     content-type: text/html
 
   metas:
-    title:        XBV_SNS
+    title:        Vhome
     robots:       index, follow
-    description:  XBV_SNS
-    keywords:     XBV, SNS
+    description:  Vhome
+    keywords:     XBV,SNS
     language:     en
 
   stylesheets:    [main]

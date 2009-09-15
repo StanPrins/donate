@@ -31,6 +31,7 @@ function checkpassword()
 		}
 		else
 		{
+			alert('Two passwords can not match.');
 			document.getElementById("submit").disabled="disabled";
 		}
 	}

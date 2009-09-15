@@ -129,7 +129,7 @@ FCKConfig.ToolbarSets["QQchong"] = [
 ] ;
 
 FCKConfig.ToolbarSets["Basic"] = [
-	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','Smiley']
+	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','Smiley','Image']
 ] ;
 
 FCKConfig.EnterMode = 'p' ;			// p | div | br

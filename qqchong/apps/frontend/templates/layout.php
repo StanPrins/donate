@@ -12,7 +12,7 @@
 
 <div id="Header">
 <div id="HeaderContainer">
-<h1><a href="/qqchong/index.php/">XBV_SNS</a></h1>
+<h1><a href="/vhome/index.php/">Vhome</a></h1>
 <div id="globalNav">
 <ul>
 <li><?php echo link_to("Home","")?></li>

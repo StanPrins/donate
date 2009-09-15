@@ -59,27 +59,29 @@ class userActions extends sfActions
   	
   	
   	
-  	
+  	$item_limit = sfConfig::get('app_homepage_max');
   	$h =new Criteria();
   	$h->add(BlogPeer::RECOMMEND,1);
   	$h->addDescendingOrderByColumn(BlogPeer::RDTIME);
-  	$h->setLimit(sfConfig::get('app_homepage_max'));
+  	$h->setLimit($item_limit);
   	$this->hots = BlogPeer::doSelect($h);
   	$this->hnumber = BlogPeer::doCount($h);
   	
   	$b = new Criteria();
   	$b->add(BlogPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
   	$b->addDescendingOrderByColumn(BlogPeer::CREATED_AT);
-  	$b->setLimit(sfConfig::get('app_homepage_max'));
+  	$b->setLimit($item_limit);
   	$this->blogs =  BlogPeer::doSelect($b);
   	$this->bnumber = BlogPeer::doCount($b);
   	
   	$t = new Criteria();
   	$t->add(TopicPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
   	$t->addDescendingOrderByColumn(TopicPeer::CREATED_AT);
-  	$t->setLimit(sfConfig::get('app_homepage_max'));
+  	$t->setLimit($item_limit);
   	$this->topics = TopicPeer::doSelect($t);
   	$this->tnumber = TopicPeer::doCount($t);
+	
+	$this->item_max = $item_limit;
   	
 	return sfView::SUCCESS; 
   }

@@ -686,7 +686,23 @@ abstract class BaseBlog extends BaseObject  implements Persistent {
 		$this->lastCommentCriteria = $criteria;
 		return $this->collComments;
 	}
-
+	
+	public function getNewComment($criteria = null, $con = null)
+	{
+	    include_once 'lib/model/om/BaseCommentPeer.php';
+		if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+		
+		$criteria->add(CommentPeer::BLOG_ID,$this->getId());
+		$criteria->addDescendingOrderByColumn(CommentPeer::CREATED_AT);
+		
+		return CommentPeer::doSelectOne($criteria, $con);		
+	}
 	
 	public function countComments($criteria = null, $distinct = false, $con = null)
 	{

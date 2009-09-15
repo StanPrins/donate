@@ -11,14 +11,14 @@
 <p class="photo"><?php echo link_to(image_tag($owner->getPhoto()?'users/'.$owner->getPhoto():'no_image.gif',array('size'=>'120x120')),'user/show?id='.$owner->getId())?></p>
 <p class="text"><?php echo $owner->getNickname()?></p>
 </div>
-<?php if($admin):?>
+<? if($admin): ?>
 <div class="parts pageNav">
 <div class="partsHeading"><h3>Post a blog</h3></div>
 <ul>
 <li><?php echo link_to("Post a blog","blog/create")?></li>
 </ul>
 </div>
-<?php endif;?>
+<? endif; ?>
 </div><!-- Left -->
 <div id="Center">
 <div class="dparts recentList"><div class="parts">
@@ -36,7 +36,7 @@
 <?php foreach ($pager->getResults() as $blog): ?>
 <dl>
 <dt><?php echo $blog->getCreatedAt() ?></dt>
-<dd><?php echo link_to($blog->getTitle(), 'blog/show?id='.$blog->getId()) ?>(<?php echo $blog->countComments()?>)</dd>
+<dd><?php echo link_to($blog->getTitle(), 'blog/show?id='.$blog->getId()) ?>(<?php echo $blog->countComments()?><?php if($blog->getNewComment()) echo ';'.$blog->getNewComment()->getCreatedAt().'--'.$blog->getNewComment()->getUser()->getNickname()?>)</dd>
 </dl>
 <?php endforeach;?>
 <div class="pagerRelative"><p class="number">
