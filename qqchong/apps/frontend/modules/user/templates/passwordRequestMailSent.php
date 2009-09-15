@@ -8,7 +8,6 @@
 <div class="item"> 
 <p>Your password has been sent to <?php echo $sf_params->get('email') ?>.</p><br />
 <p>Please <?php echo link_to('Login', '@login') ?> as soon as possible.</p>
-<?php echo $cuowu ?>
 </div></div></div>
 </div><!-- parts -->
 </div><!-- dparts -->
