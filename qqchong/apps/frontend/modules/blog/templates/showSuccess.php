@@ -17,6 +17,7 @@
 <li id='recommend'><?php echo link_to_remote('recommend the blog',array('update'=>'recommend','url'=>'blog/recommend?id='.$blog->getId()))?></li>
 <?php if($user==$blog->getUser()->getId()):?>
 <li><?php echo link_to("Post a blog","blog/create")?></li>
+<li><?php echo link_to("send notice","mail/sendNotice")?></li>
 <li><?php echo link_to("Edit the blog","blog/edit?id=".$blog->getId())?></li>
 <li><?php echo link_to('Delete the blog', 'blog/delete?id='.$blog->getId(), 'post=true&confirm=Are you sure?')?></li>
 <?php endif;?>
