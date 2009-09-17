@@ -1,0 +1,15 @@
+fillin:
+  enabled:  true
+
+fields:
+  title:
+    required:
+      msg:  Please enter title
+    sfStringValidator:
+      max:  32
+      max_error: At most 32 chars
+  content:
+    required:
+      msg: Please enter content
+    
+  
