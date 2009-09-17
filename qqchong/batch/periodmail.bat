@@ -1,0 +1,1 @@
+php c:\wamp\www\vhome\batch\periodmail.php
