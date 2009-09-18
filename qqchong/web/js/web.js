@@ -1,19 +1,58 @@
-//field_name: 窗口甲等待填入URI的文本框的id
-//url: 对于上传来说就别管了
-//type: 这个也不说了，对我们没用
-//win: 这就是窗口甲的句柄，后面用来通信
-function upload_image(field_name, url, type, win)
-{    
-	tinyMCE.activeEditor.windowManager.open({
-		file : '/js/uploadImg.js',  //上传窗口的路径        
-		title : '浏览图片',        
-		width : 420,        
-		height : 200,        
-		resizable : "no",        
-		inline : "yes",        
-		close_previous : "no"    }, {        
-			window : win,  //告诉它是被谁弹出来的        
-			input : field_name  //这个是指生成的图片地址要往哪里填    
-			});    
-	return false;
+function display()
+{
+	var photo_input = document.getElementById("photo");
+	var control_button = document.getElementById("control_button");
+	var str = control_button.value;
+	if(str == "Change")
+	{
+		photo_input.style.display = "inline";
+		control_button.value = "Cancel";
+	}
+	else
+	{
+		photo_input.style.display = "none";
+		photo_input.value = null;
+		control_button.value = "Change";
+	}	
+}
+
+function checkpassword()
+{
+	var pass1 = document.getElementById('password').value;
+	if(pass1)
+	{
+		var pass2 = document.getElementById('password_confirm').value;
+		if(pass1==pass2)
+		{
+			document.getElementById("submit").disabled="";
+		}
+		else
+		{
+			alert('Two passwords can not match.');
+			document.getElementById("submit").disabled="disabled";
+		}
+	}
+}
+
+function checkNum()
+{
+	var right = document.getElementById('droit').value;
+	var obj = document.getElementById('submit');
+	if(right.match(/\d{1,3}/))
+	{
+		 if(right<=100 && right>=0)
+		 {
+			 obj.disabled = '';
+		 }
+		 else
+		 {
+			 obj.disabled = 'disabled';
+			 alert('The integer over-ranged.'); 
+		 }
+	}
+	else
+	{
+		obj.disabled = 'disabled';
+		alert('Please input a integer.');		
+	}
 }

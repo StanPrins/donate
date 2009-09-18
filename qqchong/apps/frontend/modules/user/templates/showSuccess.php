@@ -18,47 +18,6 @@
 </ul>
 </div>
 </div>
-<script type="text/javascript">
-function checkpassword()
-{
-	var pass1 = document.getElementById('password').value;
-	if(pass1)
-	{
-		var pass2 = document.getElementById('password_confirm').value;
-		if(pass1==pass2)
-		{
-			document.getElementById("submit").disabled="";
-		}
-		else
-		{
-			alert('Two passwords can not match.');
-			document.getElementById("submit").disabled="disabled";
-		}
-	}
-}
-function checkNum()
-{
-	var right = document.getElementById('droit').value;
-	var obj = document.getElementById('submit');
-	if(right.match(/\d{1,3}/))
-	{
-		 if(right<=100 && right>=0)
-		 {
-			 obj.disabled = '';
-		 }
-		 else
-		 {
-			 obj.disabled = 'disabled';
-			 alert('The integer over-ranged.'); 
-		 }
-	}
-	else
-	{
-		obj.disabled = 'disabled';
-		alert('Please input a integer.');		
-	}
-}
-</script>
 <div id="Center">
 <div class="dparts searchResultList">
 <div class="parts">

@@ -50,7 +50,8 @@ class userActions extends sfActions
   			$blog = BlogPeer::doSelectOne($im);
   			$imembers[$i]['user_id'] = $member->getId();
   			$imembers[$i]['nickname'] = $member->getNickname();
-  			$imembers[$i]['time'] = ($blog)?floor((time()-$blog->getCreateAt())/86400):null;
+  			
+  			$imembers[$i]['time'] = ($blog)?floor((time()-strtotime($blog->getCreatedAt()))/86400):null;
   			$i++;
   		}  		
   	}

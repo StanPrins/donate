@@ -1,7 +1,7 @@
 # default values
 all:
   homepage_max: 10
-  active_days:  7
+  active_days:  2
   pager_max:    10
   
   tinymce_options:|
