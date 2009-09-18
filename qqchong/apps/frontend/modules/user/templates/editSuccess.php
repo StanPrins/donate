@@ -5,25 +5,6 @@
 <?php use_helper('Object') ?>
 <?php use_helper('Javascript')?>
 <?php use_helper('Validation')?>
-<script type="text/javascript">
-function display()
-{
-	var photo_input = document.getElementById("photo");
-	var control_button = document.getElementById("control_button");
-	var str = control_button.value;
-	if(str == "Change")
-	{
-		photo_input.style.display = "inline";
-		control_button.value = "Cancel";
-	}
-	else
-	{
-		photo_input.style.display = "none";
-		photo_input.value = null;
-		control_button.value = "Change";
-	}	
-}
-</script>
 <div class="dparts searchResultList">
 <div class="parts">
 <div class="partsHeading"><h3><?php if($user->getId()) echo "Edit personal information";else echo "Register"?></h3></div>
