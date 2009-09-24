@@ -11,8 +11,8 @@
 <div class="item">
 <?php foreach ($pager->getResults() as $item): ?>
 <ul class="articleList">
-    <li><span class='date'><?php echo $item->getCreatedAt() ?></span>
-    <?php echo link_to($item->getTitle(), 'blog/show?id='.$item->getId()) ?>( <?php echo $item->getUser()->getNickname().'--'.$item->countComments().' comments'?> )</li>
+    <li><span class='date'><?php echo date('y-m-d',strtotime($item->getCreatedAt())) ?></span>
+    <?php echo link_to($item->getTitle(), 'blog/show?id='.$item->getId()) ?><br /><?php echo $item->getUser()->getNickname().'--'.$item->countComments().' comments'?><?php if($item->getNewComment()) echo ';'.date('Y-m-d',strtotime($item->getNewComment()->getCreatedAt())).'--'.$item->getNewComment()->getUser()->getNickname()?></li>
 </ul>
 <?php endforeach; ?>
 <div class="pagerRelative"><p class="number">
@@ -34,8 +34,8 @@
 <div class="item">
 <?php foreach ($pager->getResults() as $item): ?>
 <ul class="articleList">
-    <li><span class='date'><?php echo $item->getCreatedAt() ?></span>
-    <?php echo link_to($item->getTitle(), 'blog/show?id='.$item->getId()) ?>( <?php echo $item->getUser()->getNickname().'--'.$item->countComments().' comments'?> )</li>
+    <li><span class='date'><?php echo date('y-m-d',strtotime($item->getCreatedAt())) ?></span>
+    <?php echo link_to($item->getTitle(), 'blog/show?id='.$item->getId()) ?><br /><?php echo $item->getUser()->getNickname().'--'.$item->countComments().' comments'?><?php if($item->getNewComment()) echo ';'.date('Y-m-d',strtotime($item->getNewComment()->getCreatedAt())).'--'.$item->getNewComment()->getUser()->getNickname()?></li>
 </ul>
 <?php endforeach; ?>
 <div class="pagerRelative"><p class="number">
@@ -57,8 +57,8 @@
 <div class="item">
 <?php foreach ($pager->getResults() as $item): ?>
 <ul class="articleList">
-    <li><span class='date'><?php echo $item->getCreatedAt() ?></span>
-    <?php echo link_to($item->getTitle(), 'topic/show?id='.$item->getId()) ?>( <?php echo $item->getUser()->getNickname().'--'.$item->countComments().' comments'?> )</li>
+    <li><span class='date'><?php echo date('y-m-d',strtotime($item->getCreatedAt())) ?></span>
+    <?php echo link_to($item->getTitle(), 'topic/show?id='.$item->getId()) ?><br /><?php echo $item->getUser()->getNickname().'--'.$item->countComments().' comments'?><?php if($item->getNewComment()) echo ';'.date('Y-m-d',strtotime($item->getNewComment()->getCreatedAt())).'--'.$item->getNewComment()->getUser()->getNickname()?></li>
 </ul>
 <?php endforeach; ?>
 <div class="pagerRelative"><p class="number">
