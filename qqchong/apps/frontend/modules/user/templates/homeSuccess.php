@@ -31,13 +31,14 @@
 <?php if($hnumber):?>
 <?php foreach($hots as $hot):?>
 <ul class="articleList">
-<li><span class="date"><?php echo $hot->getCreatedAt()?></span><?php echo link_to($hot->getTitle(),'blog/show?id='.$hot->getId())?>( <?php echo $hot->getUser()->getNickname().'--'.$hot->countComments().' comments'?><?php if($hot->getNewComment()) echo ';'.$hot->getNewComment()->getCreatedAt().'--'.$hot->getNewComment()->getUser()->getNickname()?> )</li>
+<li><span class="date"><?php echo date('y-m-d',strtotime($hot->getCreatedAt()))?></span>
+<?php echo link_to($hot->getTitle(),'blog/show?id='.$hot->getId())?><br /><?php echo $hot->getUser()->getNickname().'--'.$hot->countComments().' comments'?><?php if($hot->getNewComment()) echo ';'.date('Y-m-d',strtotime($hot->getNewComment()->getCreatedAt())).'--'.$hot->getNewComment()->getUser()->getNickname()?></li>
 </ul>
 <?php endforeach;?>
 <?php if($hnumber >= $item_max): ?>
 <div class="moreInfo">
 <ul class="moreInfo">
-<li><?php echo link_to_remote('More',array('update'=>'center','url'=>'user/recent?type=hot'))?></li>
+<li><?php echo link_to_remote('More',array('update'=>'Center','url'=>'user/recent?type=hot'))?></li>
 </ul>
 </div>
 <? endif; ?>
@@ -57,13 +58,13 @@
 <?php foreach($blogs as $blog):?>
 <ul class="articleList">
 <li><span class="date"><?php echo date('y-m-d',strtotime($blog->getCreatedAt()))?></span>
-<?php echo link_to($blog->getTitle(),'blog/show?id='.$blog->getId())?>( <?php echo $blog->getUser()->getNickname().'--'.$blog->countComments().' comments'?><?php if($blog->getNewComment()) echo ';'.$blog->getNewComment()->getCreatedAt().'--'.$blog->getNewComment()->getUser()->getNickname()?>)</li>
+<?php echo link_to($blog->getTitle(),'blog/show?id='.$blog->getId())?><br /><?php echo $blog->getUser()->getNickname().'--'.$blog->countComments().' comments'?><?php if($blog->getNewComment()) echo ';'.$blog->getNewComment()->getCreatedAt().'--'.$blog->getNewComment()->getUser()->getNickname()?></li>
 </ul>
 <?php endforeach;?>
 <? if($bnumber >= $item_max): ?>
 <div class="moreInfo">
 <ul class="moreInfo">
-<li><?php echo link_to_remote('More',array('update'=>'center','url'=>'user/recent?type=all'))?></li>
+<li><?php echo link_to_remote('More',array('update'=>'Center','url'=>'user/recent?type=all'))?></li>
 </ul>
 </div>
 <? endif; ?>
@@ -83,13 +84,13 @@
 <?php foreach($topics as $topic):?>
 <ul class="articleList">
 <li><span class="date"><?php echo date('y-m-d',strtotime($topic->getCreatedAt()))?></span>
-<?php echo link_to($topic->getTitle(),'topic/show?id='.$topic->getId())?>( <?php echo $topic->getUser()->getNickname().'--'.$topic->countComments().' comments'?><?php if($topic->getNewComment()) echo ';'.$topic->getNewComment()->getCreatedAt().'--'.$topic->getNewComment()->getUser()->getNickname()?>)</li>
+<?php echo link_to($topic->getTitle(),'topic/show?id='.$topic->getId())?><br /><?php echo $topic->getUser()->getNickname().'--'.$topic->countComments().' comments'?><?php if($topic->getNewComment()) echo ';'.$topic->getNewComment()->getCreatedAt().'--'.$topic->getNewComment()->getUser()->getNickname()?></li>
 </ul>
 <?php endforeach;?>
 <? if($tnumber >= $item_max): ?>
 <div class="moreInfo">
 <ul class="moreInfo">
-<li><?php echo link_to_remote('More',array('update'=>'center','url'=>'user/recent?type=topic'))?></li>
+<li><?php echo link_to_remote('More',array('update'=>'Center','url'=>'user/recent?type=topic'))?></li>
 </ul>
 </div>
 <? endif; ?>

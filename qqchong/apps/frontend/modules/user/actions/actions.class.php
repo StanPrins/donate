@@ -50,7 +50,6 @@ class userActions extends sfActions
   			$blog = BlogPeer::doSelectOne($im);
   			$imembers[$i]['user_id'] = $member->getId();
   			$imembers[$i]['nickname'] = $member->getNickname();
-  			
   			$imembers[$i]['time'] = ($blog)?floor((time()-strtotime($blog->getCreatedAt()))/86400):null;
   			$i++;
   		}  		
@@ -90,13 +89,14 @@ class userActions extends sfActions
   public function executeRecent()
   {
   	$type = $this->getRequestParameter('type');
+	$pager_max = sfConfig::get('app_recent_pager_max');
   	switch($type)
   	{
   		case 'hot':
   			$h =new Criteria();
 		  	$h->add(BlogPeer::RECOMMEND,1);
 		  	$h->addDescendingOrderByColumn(BlogPeer::RDTIME);
-		  	$pager = new sfPropelPager('Blog',sfConfig::get('app_pager_max'));
+		  	$pager = new sfPropelPager('Blog',$pager_max);
 		  	$pager->setCriteria($h);
 		  	$pager->setPage($this->getRequestParameter('page', 1));	  	
   			break;
@@ -104,7 +104,7 @@ class userActions extends sfActions
   			$b = new Criteria();
 		  	$b->add(BlogPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
 		  	$b->addDescendingOrderByColumn(BlogPeer::CREATED_AT);
-		  	$pager = new sfPropelPager('Blog',sfConfig::get('app_pager_max'));
+		  	$pager = new sfPropelPager('Blog',$pager_max);
 		  	$pager->setCriteria($b);
 		  	$pager->setPage($this->getRequestParameter('page', 1));
   			break;
@@ -112,7 +112,7 @@ class userActions extends sfActions
   			$t = new Criteria();
 		  	$t->add(TopicPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
 		  	$t->addDescendingOrderByColumn(TopicPeer::CREATED_AT);
-		  	$pager = new sfPropelPager('Topic',sfConfig::get('app_pager_max'));
+		  	$pager = new sfPropelPager('Topic',$pager_max);
 		  	$pager->setCriteria($t);
 		  	$pager->setPage($this->getRequestParameter('page', 1));
   			break;
@@ -345,6 +345,7 @@ class userActions extends sfActions
 		    	$this->getRequest()->setError('email', "Can't send to the Email, please contact the manager!" );
 		    	return sfView::SUCCESS;
 		    }
+//		    $this->logMessage($raw_email, 'debug');
 		    // save new password
 		    $user->save();
 		    return 'MailSent';
