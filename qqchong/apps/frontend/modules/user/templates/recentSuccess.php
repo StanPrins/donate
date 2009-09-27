@@ -35,7 +35,7 @@
 <?php foreach ($pager->getResults() as $item): ?>
 <ul class="articleList">
     <li><span class='date'><?php echo date('y-m-d',strtotime($item->getCreatedAt())) ?></span>
-    <?php echo link_to($item->getTitle(), 'blog/show?id='.$item->getId()) ?><br /><?php echo $item->getUser()->getNickname().'--'.$item->countComments().' comments'?><?php if($item->getNewComment()) echo ';'.date('Y-m-d',strtotime($item->getNewComment()->getCreatedAt())).'--'.$item->getNewComment()->getUser()->getNickname()?></li>
+    <?php echo link_to($item->getTitle(), 'blog/show?id='.$item->getId(),array('target'=>'_blank')) ?><br /><?php echo $item->getUser()->getNickname().'--'.$item->countComments().' comments'?><?php if($item->getNewComment()) echo ';'.date('Y-m-d',strtotime($item->getNewComment()->getCreatedAt())).'--'.$item->getNewComment()->getUser()->getNickname()?></li>
 </ul>
 <?php endforeach; ?>
 <div class="pagerRelative"><p class="number">
