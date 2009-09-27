@@ -58,7 +58,7 @@
 <?php foreach($blogs as $blog):?>
 <ul class="articleList">
 <li><span class="date"><?php echo date('y-m-d',strtotime($blog->getCreatedAt()))?></span>
-<?php echo link_to($blog->getTitle(),'blog/show?id='.$blog->getId())?><br /><?php echo $blog->getUser()->getNickname().'--'.$blog->countComments().' comments'?><?php if($blog->getNewComment()) echo ';'.$blog->getNewComment()->getCreatedAt().'--'.$blog->getNewComment()->getUser()->getNickname()?></li>
+<?php echo link_to($blog->getTitle(),'blog/show?id='.$blog->getId(),array('target'=>'_blank'))?><br /><?php echo $blog->getUser()->getNickname().'--'.$blog->countComments().' comments'?><?php if($blog->getNewComment()) echo ';'.$blog->getNewComment()->getCreatedAt().'--'.$blog->getNewComment()->getUser()->getNickname()?></li>
 </ul>
 <?php endforeach;?>
 <? if($bnumber >= $item_max): ?>

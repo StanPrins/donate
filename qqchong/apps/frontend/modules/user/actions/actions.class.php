@@ -68,7 +68,7 @@ class userActions extends sfActions
   	$this->hnumber = BlogPeer::doCount($h);
   	
   	$b = new Criteria();
-  	$b->add(BlogPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
+//  	$b->add(BlogPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
   	$b->addDescendingOrderByColumn(BlogPeer::CREATED_AT);
   	$b->setLimit($item_limit);
   	$this->blogs =  BlogPeer::doSelect($b);
