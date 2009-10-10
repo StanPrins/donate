@@ -3,7 +3,7 @@ all:
   homepage_max:      15
   active_days:       7
   pager_max:         15
-  recent_pager_max:  45  
+  recent_pager_max:  48  
     
   sfImageTransformPlugin:
     default_adapter: GD # GD or ImageMagick

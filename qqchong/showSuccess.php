@@ -24,13 +24,12 @@
 </div>
 </div><!-- Left -->
 <script type="text/javascript">
-function display(obj)
+function display(edit,obj)
 {
+	var usual = "usual" + obj;
 	var edit = "edit" + obj;
-	document.getElementById('id').value = obj;	
-	var oEditor = FCKeditorAPI.GetInstance('content');
-	oEditor.EditorDocument.body.innerHTML = "";
-	oEditor.InsertHtml(document.getElementById(edit).innerHTML);
+	document.getElementById(usual).style.display=edit?"none":"block";
+	document.getElementById(edit).style.display=edit?"block":"none";
 }
 </script>
 <div id="Center">
@@ -46,15 +45,29 @@ function display(obj)
 <div class="partsHeading"><h3>Comments</h3></div>
 <?php if($pager->getNbResults()):?>
 <?php foreach($pager->getResults() as $comment):?>
-<table>
+<table id="comments">
 <tbody>
 <?php if($user==$comment->getUser()->getId()):?>
 <tr>
-<td><?php echo $comment->getCreatedAt() ?>:<?php echo $comment->getUser()->getNickname() ?>---<?php echo link_to_function('Edit','display('.$comment->getId().')')?></td>
+<td><?php echo $comment->getCreatedAt() ?>:<?php echo $comment->getUser()->getNickname() ?>---<?php echo link_to_function('Edit','display(1,'.$comment->getId().')')?></td>
 </tr>
 <tr>
-<td><?php echo $comment->getContent() ?></td>
-<div id="edit<?php echo $comment->getId()?>" style="display:none"><?php echo $comment->getContent() ?></div>
+<td id="usual<?php echo $comment->getId()?>" style="display:block;"><?php echo $comment->getContent() ?></td>
+<td id="edit<?php echo $comment->getId()?>" style="display:none;">
+<?php echo form_tag('comment/update') ?>
+<?php echo input_hidden_tag('id',$comment->getId())?>
+<?php $options = array(
+	'rich' => 'fck',
+	'height' => 150,
+	'width'	=> 720,
+    'tool'  => 'Basic',
+);
+echo textarea_tag('content', $comment->getContent(), $options ); 
+  ?>
+<?php echo submit_tag('Update') ?>
+<?php echo button_to_function('Cancle','display(0,'.$comment->getId().')')?>
+<?php echo "</form>"?>
+</td>
 </tr>
 <?php else:?>
 <tr>
@@ -77,7 +90,6 @@ No comment.
 <?php endif;?>
 <?php echo form_tag('comment/update') ?>
 <?php echo input_hidden_tag('blog_id',$blog->getId())?>
-<?php echo input_hidden_tag('id','')?>
 <?php $options = array(
 	'rich' => 'fck',
 	'height' => 150,

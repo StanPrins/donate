@@ -38,16 +38,20 @@ function checkNum()
 {
 	var right = document.getElementById('droit').value;
 	var obj = document.getElementById('submit');
+	var org = document.getElementById('original').value;
 	if(right.match(/\d{1,3}/))
 	{
-		 if(right<=100 && right>=0)
+		 if(right<=100 && right>=0 && right!=org)
 		 {
 			 obj.disabled = '';
 		 }
 		 else
 		 {
 			 obj.disabled = 'disabled';
-			 alert('The integer over-ranged.'); 
+			 if(right==org)
+				 alert("Don't be the same value.");
+			 else
+				 alert('The integer over-ranged.'); 
 		 }
 	}
 	else

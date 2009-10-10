@@ -3,8 +3,19 @@
 ?>
 <?php use_helper('Javascript')?>
 <div id="LayoutB" class="Layout">
-
 <div id="Left">
+<?php if(sizeof($nmembers)>0 && $owner->getDroit()>=100):?>
+<div class="parts pageNav">
+<div class="partsHeading"><h3>Not Approved(<?php echo sizeof($nmembers)?>)</h3></div>
+<ul>
+<?php foreach($nmembers as $nmember):?>
+<li><?php echo link_to($nmember->getNickname(),'user/show?id='.$nmember->getId())?></li>
+<?php endforeach;?>
+</ul>
+</div>
+<?php endif;?>
+
+<?php if(sizeof($amembers)>0):?>
 <div class="parts pageNav">
 <div class="partsHeading"><h3>Active Members(<?php echo sizeof($amembers)?>)</h3></div>
 <ul>
@@ -13,7 +24,8 @@
 <?php endforeach;?>
 </ul>
 </div>
-
+<?php endif;?>
+<?php if(sizeof($imembers)>0):?>
 <div class="parts pageNav">
 <div class="partsHeading"><h3>Inactive Memebers(<?php echo sizeof($imembers)?>)</h3></div>
 <ul>
@@ -22,6 +34,7 @@
 <?php endforeach;?>
 </ul>
 </div>
+<?php endif;?>
 </div><!-- Left -->
 
 <div id="Center">
@@ -58,7 +71,7 @@
 <?php foreach($blogs as $blog):?>
 <ul class="articleList">
 <li><span class="date"><?php echo date('y-m-d',strtotime($blog->getCreatedAt()))?></span>
-<?php echo link_to($blog->getTitle(),'blog/show?id='.$blog->getId(),array('target'=>'_blank'))?><br /><?php echo $blog->getUser()->getNickname().'--'.$blog->countComments().' comments'?><?php if($blog->getNewComment()) echo ';'.$blog->getNewComment()->getCreatedAt().'--'.$blog->getNewComment()->getUser()->getNickname()?></li>
+<?php echo link_to($blog->getTitle(),'blog/show?id='.$blog->getId())?><br /><?php echo $blog->getUser()->getNickname().'--'.$blog->countComments().' comments'?><?php if($blog->getNewComment()) echo ';'.$blog->getNewComment()->getCreatedAt().'--'.$blog->getNewComment()->getUser()->getNickname()?></li>
 </ul>
 <?php endforeach;?>
 <? if($bnumber >= $item_max): ?>

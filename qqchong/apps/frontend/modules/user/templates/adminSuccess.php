@@ -11,6 +11,7 @@
 <div class="item">
 <?php echo form_tag('user/admin')?>
 <?php echo object_input_hidden_tag($customer, 'getId') ?>
+<?php echo input_hidden_tag('original',$customer->getDroit())?>
 <table>
 <tbody>
 <tr>
