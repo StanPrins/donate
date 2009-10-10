@@ -21,7 +21,7 @@
   <th>Email*:</th>
   <td><?php echo object_input_tag($user, 'getUsername', array (
   'size' => 20,
-)) ?>(Must be end with "@ericsson.com")<?php echo form_error('username')?>
+)) ?>(Must be ended with "@ericsson.com")<?php echo form_error('username')?>
 </td>
 </tr>
 <tr>

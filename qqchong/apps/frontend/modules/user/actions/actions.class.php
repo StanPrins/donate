@@ -23,6 +23,7 @@ class userActions extends sfActions
     
   	$f = new Criteria();
   	$f->add(UserPeer::DEPARTMENT_ID,$dep_id);
+  	$f->add(UserPeer::DROIT,0,Criteria::GREATER_THAN);
   	$f->addAscendingOrderByColumn(UserPeer::NICKNAME);
   	$members = UserPeer::doSelect($f);
   	$amembers = array();
@@ -57,6 +58,11 @@ class userActions extends sfActions
   	$this->amembers = $amembers;
   	$this->imembers = $imembers;
   	
+  	$a = new Criteria();
+  	$a->add(UserPeer::DROIT,0);
+  	$nmembers = UserPeer::doSelect($a);
+  	$this->nmembers = $nmembers;
+  	
   	
   	
   	$item_limit = sfConfig::get('app_homepage_max');
@@ -68,7 +74,7 @@ class userActions extends sfActions
   	$this->hnumber = BlogPeer::doCount($h);
   	
   	$b = new Criteria();
-//  	$b->add(BlogPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
+  	$b->add(BlogPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
   	$b->addDescendingOrderByColumn(BlogPeer::CREATED_AT);
   	$b->setLimit($item_limit);
   	$this->blogs =  BlogPeer::doSelect($b);
@@ -82,6 +88,8 @@ class userActions extends sfActions
   	$this->tnumber = TopicPeer::doCount($t);
 	
 	$this->item_max = $item_limit;
+	
+	$this->owner = UserPeer::retrieveByPK($this->getUser()->getAttribute('user_id'));
   	
 	return sfView::SUCCESS; 
   }
@@ -102,7 +110,7 @@ class userActions extends sfActions
   			break;
   		case 'all':
   			$b = new Criteria();
-		  	$b->add(BlogPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
+//		  	$b->add(BlogPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
 		  	$b->addDescendingOrderByColumn(BlogPeer::CREATED_AT);
 		  	$pager = new sfPropelPager('Blog',$pager_max);
 		  	$pager->setCriteria($b);
@@ -110,7 +118,7 @@ class userActions extends sfActions
   			break;
   		case 'topic':
   			$t = new Criteria();
-		  	$t->add(TopicPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
+//		  	$t->add(TopicPeer::CREATED_AT,time()-86400*sfConfig::get('app_active_days'),Criteria::GREATER_THAN);
 		  	$t->addDescendingOrderByColumn(TopicPeer::CREATED_AT);
 		  	$pager = new sfPropelPager('Topic',$pager_max);
 		  	$pager->setCriteria($t);
@@ -150,24 +158,33 @@ class userActions extends sfActions
 	      $password = $this->getRequestParameter('password');
 	      if (sha1($user->getSalt().$password) == $user->getSha1Password())
 	      {
-	        // sign in
-	        $remember = $this->getRequestParameter('remember');
-	        $this->getContext()->getUser()->signIn($user,$remember);
-	        // proceed to home page
-	        return $this->redirect('user/home');
+	  		if($user->getDroit()>0)
+	  		{
+		        // sign in
+		        $remember = $this->getRequestParameter('remember');
+		        $this->getContext()->getUser()->signIn($user,$remember);
+		        // proceed to home page
+		        return $this->redirect('user/home');
+	  		}
+	  		else
+	  		{
+	  			$this->getRequest()->setError('username', 'no approved');
+	  			return false;
+	  		}
 	      }
 	      else
 	      {
-	        $this->getRequest()->setError('password', 'wrong password');
+	       
+	  		$this->getRequest()->setError('password', 'wrong email or password');
+	  		return false;
 	      }
 	    }
 	    else
-	    {
-	      $this->getRequest()->setError('username', 'unregistered email');
+	    {	    	
+	  		$this->getRequest()->setError('password', 'wrong email or password');
+	  		return false;
 	    }
-	 
-	    // an error was found
-	    return sfView::SUCCESS;
+		return sfView::SUCCESS;
   	}
   	else
   	{
@@ -261,7 +278,21 @@ class userActions extends sfActions
 	if ($this->getRequestParameter('id'))
     	return $this->redirect('user/show');
     else
+    {
+    	$this->getRequest()->setAttribute('password', $this->getRequestParameter('password'));
+		$this->getRequest()->setAttribute('username', $user->getUsername());
+    	try
+	    {
+	    	$raw_email = $this->sendEmail('mail', 'Register');
+	    	$this->logMessage($raw_email, 'debug');
+	    }
+	    catch(Exception $e)
+	    {
+	    	$this->getRequest()->setError('username', "Can't send to the Email, please contact the manager!" );
+	    	return $this->forward('user','create');
+	    }
     	return $this->redirect('user/login');
+    }
   }
 
   public function executeDelete()
@@ -306,6 +337,19 @@ class userActions extends sfActions
   	}
   	else
   	{
+  		if($user->getDroit()==0 && $this->getRequestParameter('droit')>0)
+  		{
+  			$this->getRequest()->setAttribute('username', $user->getUsername());	  		
+	  		try
+		    {
+		    	$raw_email = $this->sendEmail('mail', 'Join');
+		    	$this->logMessage($raw_email, 'debug');
+		    }
+		    catch(Exception $e)
+		    {
+		    	$this->getRequest()->setError('username', "Can't send to the Email, please contact the manager!" );
+		    }	    
+  		}
 	  	$user->setDroit($this->getRequestParameter('droit'));
   		$user->save();
   		return $this->redirect('user/show?id='.$user->getId());

@@ -33,11 +33,18 @@ class myLoginValidator extends sfValidator
 			// password is OK?
 			if (sha1($user->getSalt().$password) == $user->getSha1Password())
             {
-              $remember_param = $this->getParameter('remember');
-              $remember = $this->getContext()->getRequest()->getParameter($remember_param);
-			  $this->getContext()->getUser()->signIn($user,$remember);              
-		      // proceed to home page
-		      return true;
+            	if($user->getDroit()>0)
+            	{
+	              $remember_param = $this->getParameter('remember');
+	              $remember = $this->getContext()->getRequest()->getParameter($remember_param);
+				  $this->getContext()->getUser()->signIn($user,$remember);              
+			      // proceed to home page
+			      return true;
+            	}
+            	else
+            	{
+            	  $error = $this->getParameter('no_droit');
+            	}
 			}
 			else
 		    {
